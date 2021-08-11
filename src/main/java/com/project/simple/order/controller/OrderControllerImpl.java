@@ -584,6 +584,7 @@ public class OrderControllerImpl implements OrderController {
 		else if (session.getAttribute("member") != null) {
 
 			session.setAttribute("memOrder", orderVO);
+			session.setAttribute("totalPrice", orderVO.getTotalPrice());
 			mav.setViewName("order_01");
 		}
 		return mav;

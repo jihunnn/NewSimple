@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@ page import="com.project.simple.member.vo.MemberVO"%>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
 
 
 
@@ -18,117 +14,18 @@
 .table-light {
 	background: #F7F7F7;
 }
-
 .table {
 	table-border: 2px;
 }
-
 h4 {
 	margin-top: 60px;
 	font-weight: bold;
 }
 </style>
 <script type="text/javascript">
-	//주문자
-	function Check_Order() {
-		var form = document.CheckOrder;
-
-		if (form.user_name.value == "") {
-			alert("주문자정보의 이름을 입력하지 않았습니다.")
-			form.user_name.focus();
-			return false;
-		}
-
-		if (form.address1.value == "") {
-			alert("주문자정보의 주소를 입력하지 않았습니다.")
-			form.address1.focus();
-			return false;
-		}
-		if (form.phone1.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone1.focus();
-			return false;
-		}
-
-		if (form.phone2.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone2.focus();
-			return false;
-		}
-
-		for (var i = 0; i < form.phone2.value.length; i++) {
-			ch = form.phone2.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.phone2.focus();
-				form.phone2.select();
-				return false;
-			}
-		}
-		if (form.phone3.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone3.focus();
-			return false;
-		}
-		for (var i = 0; i < form.phone3.value.length; i++) {
-			ch = form.phone3.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.phone3.focus();
-				form.phone3.select();
-				return false;
-			}
-		}
-		if (form.user_SpName.value == "") {
-			alert("배송정보의 이름을 입력하지 않았습니다.")
-			form.user_Spname.focus();
-			return false;
-		}
-
-		if (form.address1_1.value == "") {
-			alert("배송정보의 주소를 입력하지 않았습니다.")
-			form.addr1.focus();
-			return false;
-		}
-		if (form.phone1_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone1_Sp.focus();
-			return false;
-		}
-		if (form.phone2_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone2_Sp.focus();
-			return false;
-		}
-
-		for (var i = 0; i < form.phone2_Sp.value.length; i++) {
-			ch = form.phone2_Sp.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송정보의 연락처1은 숫자만 입력가능합니다.")
-				form.phone2_Sp.focus();
-				form.phone2_Sp.select();
-				return false;
-			}
-		}
-		if (form.phone3_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone3_Sp.focus();
-			return false;
-		}
-		for (var i = 0; i < form.phone3_Sp.value.length; i++) {
-			ch = form.phone3_Sp.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송정보의 연락처1은 숫자만 입력가능합니다.")
-				form.phone3_Sp.focus();
-				form.phone3_Sp.select();
-				return false;
-			}
-		}
-
-		form.submit();
-
-	}
-
+	
+	
+	
 	function sameInfo(f) {
 		f.memSpName.value = f.memName.value;
 		f.memSpAdr.value = f.memAdr.value;
@@ -138,34 +35,33 @@ h4 {
 		f.memSpPhoneNum1_1.value = f.memPhoneNum1.value;
 		f.memSpPhoneNum1_2.value = f.memPhoneNum2.value;
 	}
-
 	$("input[type=radio]").click(function() {
 		$(this).prop("checked", true);
 		$("form").submit();
 	})
 </script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
+<script type="text/javascript">
 	//비회원 주문자 우편번호
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
 						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
 						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 						var fullAddr = ''; // 최종 주소 변수
 						var extraAddr = ''; // 조합형 주소 변수
-
 						// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 							fullAddr = data.roadAddress;
-
 						} else { // 사용자가 지번 주소를 선택했을 경우(J)
 							fullAddr = data.jibunAddress;
 						}
-
 						// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
 						if (data.userSelectedType === 'R') {
 							//법정동명이 있을 경우 추가한다.
@@ -181,39 +77,31 @@ h4 {
 							fullAddr += (extraAddr !== '' ? ' (' + extraAddr
 									+ ')' : '');
 						}
-
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
 						document.getElementById('sample6_postcode_nonmember').value = data.zonecode; //5자리 새우편번호 사용
 						document.getElementById('sample6_address_nonmember').value = fullAddr;
-
 						// 커서를 상세주소 필드로 이동한다.
 						document.getElementById('sample6_address2_nonmember')
 								.focus();
 					}
 				}).open();
 	}
-
 	//배송지 우편번호
 	function sample6_execDaumPostcode2() {
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
 						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
 						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 						var fullAddr = ''; // 최종 주소 변수
 						var extraAddr = ''; // 조합형 주소 변수
-
 						// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 							fullAddr = data.roadAddress;
-
 						} else { // 사용자가 지번 주소를 선택했을 경우(J)
 							fullAddr = data.jibunAddress;
 						}
-
-						
 						// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
 						if (data.userSelectedType === 'R') {
 							//법정동명이 있을 경우 추가한다.
@@ -229,11 +117,9 @@ h4 {
 							fullAddr += (extraAddr !== '' ? ' (' + extraAddr
 									+ ')' : '');
 						}
-
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
 						document.getElementById('sample6_postcode1').value = data.zonecode; //5자리 새우편번호 사용
 						document.getElementById('sample6_address_1').value = fullAddr;
-
 						// 커서를 상세주소 필드로 이동한다.
 						document.getElementById('sample6_address2_1').focus();
 					}
@@ -251,15 +137,12 @@ h4 {
 	String FullmemPhoneNum = member.getmemPhoneNum();
 	String FullmemEmail = member.getmemEmail();
 	String FullmemAdr = member.getmemAdr();
-
 	String a1 = "-";
 	String e1 = "@";
 	String p1 = "-";
-
 	String[] memAdr = FullmemAdr.split(a1);
 	String[] memEmail = FullmemEmail.split(e1);
 	String[] memPhoneNum = FullmemPhoneNum.split(p1);
-
 	for (int i = 0; i < memAdr.length; i++) {
 	}
 	for (int i = 0; i < memEmail.length; i++) {
@@ -268,14 +151,121 @@ h4 {
 	}
 	%>
 
+
+	<script>
+	//유효성검사 후 주문결제진행
+	//PG사 연동(결제시스템 IMPORT)
+	function iamport() {
+		var IMP = window.IMP;
+		var form = document.CheckOrder;
+		if (form.memSpName.value == "") {
+			alert("주문자정보의 이름을 입력하지 않았습니다.")
+			form.user_name.focus();
+			return false;
+		}
+		if (form.memSpAdr.value == "") {
+			alert("주문자정보의 주소를 입력하지 않았습니다.")
+			form.memSpAdr.focus();
+			return false;
+		}
+		if (form.memSpAdr1.value == "") {
+			alert("주문자정보의 주소를 입력하지 않았습니다.")
+			form.memSpAdr1.focus();
+			return false;
+		}
+		if (form.memSpAdr2.value == "") {
+			alert("주문자정보의 주소를 입력하지 않았습니다.")
+			form.memSpAdr2.focus();
+			return false;
+		}
+		if (form.memSpPhoneNum1_0.value == "") {
+			alert("주문자정보의 연락처를 입력하지 않았습니다.")
+			form.memSpPhoneNum1_0.focus();
+			return false;
+		}
+		for (var i = 0; i < form.memSpPhoneNum1_0.value.length; i++) {
+			ch = form.memSpPhoneNum1_0.value.charAt(i)
+			if (!(ch >= '0' && ch <= '9')) {
+				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
+				form.memSpPhoneNum1_0.focus();
+				form.memSpPhoneNum1_0.select();
+				return false;
+			}
+		}
+		if (form.memSpPhoneNum1_1.value == "") {
+			alert("주문자정보의 연락처를 입력하지 않았습니다.")
+			form.memSpPhoneNum1_1.focus();
+			return false;
+		}
+		for (var i = 0; i < form.memSpPhoneNum1_1.value.length; i++) {
+			ch = form.memSpPhoneNum1_1.value.charAt(i)
+			if (!(ch >= '0' && ch <= '9')) {
+				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
+				form.memSpPhoneNum1_1.focus();
+				form.memSpPhoneNum1_1.select();
+				return false;
+			}
+		}
+		if (form.memSpPhoneNum1_2.value == "") {
+			alert("주문자정보의 연락처를 입력하지 않았습니다.")
+			form.memSpPhoneNum1_2.focus();
+			return false;
+		}
+		for (var i = 0; i < form.memSpPhoneNum1_2.value.length; i++) {
+			ch = form.memSpPhoneNum1_2.value.charAt(i)
+			if (!(ch >= '0' && ch <= '9')) {
+				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
+				form.memSpPhoneNum1_2.focus();
+				form.memSpPhoneNum1_2.select();
+				return false;
+			}
+		}
+		
+		
+		//가맹점 식별코드
+		IMP.init('imp44341689');
+		IMP.request_pay({
+			pg : 'inicis',
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '(주)SIMPLE', //결제창에서 보여질 이름
+			amount : ${totalPrice}, //실제 결제되는 가격
+			buyer_email : '<%=memEmail[0]%>@<%=memEmail[1]%>',
+			buyer_name : '${member.memName}',
+			buyer_tel : '<%=memPhoneNum[0]%>-<%=memPhoneNum[1]%>-<%=memPhoneNum[2]%>',
+			buyer_addr : '<%=memAdr[1]%> <%=memAdr[2]%>	',
+			buyer_postcode : '<%=memAdr[0]%>'
+		}, function(rsp) {
+			console.log(rsp);
+			if (rsp.success) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '고유ID : ' + rsp.imp_uid;
+				msg += '상점 거래ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 : ' + rsp.apply_num;
+				var param = $("form[name=CheckOrder]").serialize();
+				$.ajax({
+					url : "addorderlist.do",
+					type : "POST",	
+					data : param
+				}).done(function(data){					
+				})
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+			}
+			alert(msg);
+		});
+	}
+</script>
 	<!-- 타이틀 -->
 
 	<section class="ftco-section" style="padding-top: 100px;">
 
 		<div class="container">
-			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
+			<form name="CheckOrder"  action="${contextPath}/addorderlist.do"
 				method="post">
-				
+				<input type="hidden" name="totalPrice" value="${totalPrice}" />
 				<!-- 타이틀 끝 -->
 
 
@@ -352,7 +342,7 @@ h4 {
 											</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
+											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -372,7 +362,7 @@ h4 {
 										</th>
 										<th scope="col" style="vertical-align: middle;">${memOrder.productCnt}개</th>
 										<th scope="col" style="vertical-align: middle;">${memOrder.deliverycharge}</th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.productPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${memOrder.totalPrice}원</th>
 									</tr>
 								</tbody>
 							</c:otherwise>
@@ -596,11 +586,11 @@ h4 {
 				<br> <br>
 
 				<div style="text-align: center">
-					<button type="submit" class="btn btn-secondary"
-						onclick="Check_Order()"
-						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">결제하기</button>
+					<input type="button" class="btn btn-secondary" value="결제하기"
+						onclick="iamport();"
+						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
-					<button type="button" class="btn btn-secondary"
+					<button type="submit" class="btn btn-secondary"
 						onclick="location.href='/cart'"
 						style="padding-left: 10px; background-color: white; color: #7e9c8c; border: 1px solid #7e9c8c; border-radius: 2px; width: 130px; height: 45px;">취소하기</button>
 				</div>
