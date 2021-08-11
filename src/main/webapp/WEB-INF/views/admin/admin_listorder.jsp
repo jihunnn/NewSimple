@@ -87,8 +87,8 @@
 <script> src="http://code.jquery.com/jquery-1.6.4.min.js"</script>
 <script type="text/javascript">
     
-	function listMemberSearch() {
-		var form = document.memberSearch;
+	function listMemOrderSearch() {
+		var form = document.memOrderSearch;
 
 		if (form.search.value == "") {
 			alert("검색 단어를 입력해주세요")
@@ -119,7 +119,6 @@
 		});
 	});
 	function deleteValue(){
-		var url="${contextPath}/admin_selectremoveMember.do"; //Controller로 보내고자 하는 url
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
 		for(var i = 0; i < list.length; i++){
@@ -128,11 +127,11 @@
 				}
 			}
 			if(valueArr.length == 0){
-				alert("선택된 회원이 없습니다.");
+				alert("선택된 주문이 없습니다.");
 			}else{
 				if(confirm("정말 삭제하시겠습니까?")){
 				$.ajax({
-					url : "${contextPath}/admin_selectremoveMember.do", //전송 URL
+					url : "${contextPath}/admin_listorder/admin_selectremoveMemOrder.do", //전송 URL
 					type: 'POST',
 					traditional : true,
 					data : {
@@ -140,10 +139,10 @@
 					},
 					success: function(jdata){
 						if(jdata = 1){
-							alert("회원을 삭제하셨습니다.");
-							location.href = '${contextPath}/admin_listmember.do'; //admin_listmember로 페이지 새로고침
+							alert("회원 주문을 삭제하셨습니다.");
+							location.href = '${contextPath}/admin_listorder.do'; //admin_listorder로 페이지 새로고침
 						}else{
-							alert("회원삭제에 실패하셨습니다.");
+							alert("회원주문삭제에 실패하셨습니다.");
 						}	
 					}
 
@@ -167,7 +166,7 @@
 					memOrderNum : memOrderNum
 					},
 				success : function(result) {
-				    alert("회원이 삭제되었습니다");
+				    alert("회원 주문이 삭제되었습니다");
 					location.replace("${contextPath}/admin_listorder.do"); //admin_listorder로 페이지 새로고침
 					},
 				});
@@ -186,8 +185,8 @@
 						memId : memId
 					},
 				success : function(result) {
-				    alert("회원이 삭제되었습니다");
-				    location.href = '${contextPath}/admin_listmember.do'; //admin_listmember로 페이지 새로고침
+				    alert("회원 주문이 삭제되었습니다");
+				    location.href = '${contextPath}/admin_listorder.do'; //admin_listorder로 페이지 새로고침
 					},
 				});
 			}else{
@@ -207,10 +206,10 @@
 		<div class="container">
 			<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
 				flush="false" />
-			<form name="memberSearch"
+			<form name="memOrderSearch"
 				action="${contextPath}/admin_listorder/orderSearch.do" method="post">
 				<div style="margin-bottom: 10px;">
-					<button type="submit" id="buttonmy" class="btn btn-dark"
+					<button type="button" id="buttonmy" class="btn btn-dark" onclick="listMemOrderSearch()"
 						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
 					<input type="text"
 						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
@@ -225,7 +224,7 @@
 						style="font-size: 25px; font-weight: bold; margin-left: 18px; padding-top: 13px; float: left;">
 						<a style="color: #7e9c8c;">주문조회</a>
 					</div>
-					<button type="button" onclick="deleteValue02();"
+					<button type="button" onclick="location.href='${contextPath}/admin_listorder.do'"
 						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
 						class="btn-secondary btn-xs">회원</button>
 					<button type="button" onclick="deleteValue02();"
@@ -254,7 +253,7 @@
 							<c:choose>
 								<c:when test="${empty orderSearchMap.orderSearchList}">
 									<tr height="200">
-										<td colspan="5"
+										<td colspan="10"
 											style="background-color: white; padding-top: 100px;">
 											<p align="center">
 												<b><span style="color: black;">조회된 주문내역이 없습니다.</span></b>
@@ -296,16 +295,15 @@
 							<c:choose>
 								<c:when test="${empty ordersList}">
 									<tr height="200">
-										<td colspan="5"
+										<td colspan="10"
 											style="background-color: white; padding-top: 100px;">
 											<p align="center">
-												<b><span style="color: black;">등록된 회원이 없습니다.</span></b>
+												<b><span style="color: black;">조회된 주문내역이 없습니다.</span></b>
 											</p>
 										</td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<form action="${contextPath}/admin/viewOrder.do" method="post">
 										<c:forEach var="orders" items="${ordersList}">
 
 											<tr 
@@ -330,7 +328,6 @@
 											</tr>
 
 										</c:forEach>
-									</form>
 								</c:otherwise>
 							</c:choose>
 						</c:when>
@@ -338,7 +335,7 @@
 
 				</thead>
 			</table>
-			<button type="button" onclick="deleteValue02();"
+			<button type="button" onclick="deleteValue();"
 				style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
 				class="btn-secondary btn-xs">선택삭제</button>
 		</div>
