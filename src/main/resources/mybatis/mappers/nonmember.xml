@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="mapper.nonmember">
+	<resultMap id="nonmemResult" type="nonmemberVO">
+	    <result property="nonMemOrderSeqNum" column="nonMemOrderSeqNum" />
+	    <result property="productNum" column="productNum" />
+		<result property="nonMemOrderNum" column="nonMemOrderNum" />
+        <result property="nonMemName" column="nonMemName" />
+        <result property="nonMemPwd" column="nonMemPwd" />
+        <result property="nonEmail" column="nonEmail" />
+        <result property="nonMemPhoneNum" column="nonMemPhoneNum" />
+        <result property="nonMemSpName" column="nonMemSpName" />
+        <result property="nonMemPhoneNum1" column="nonMemPhoneNum1" />
+        <result property="nonMemPhoneNum2" column="nonMemPhoneNum2" />
+        <result property="nonMemSpAdr" column="nonMemSpAdr" />
+        <result property="nonMemOrderMsg" column="nonMemOrderMsg" />
+        <result property="nonMemDepositorName" column="nonMemDepositorName" />
+        <result property="nonMemPaymentMethod" column="nonMemPaymentMethod" />
+        <result property="totalPrice" column="totalPrice" />
+        <result property="nonMemOrderDate" column="nonMemOrderDate" />
+        <result property="productCnt" column="productCnt" />
+        <result property="productPrice" column="productPrice" />
+        <result property="productImage" column="productImage" />
+        <result property="currentStatus" column="currentStatus" />
+	</resultMap>
+	
+	<!--비회원 로그인창에서 입력한 id와 비밀번호로 비회원주문정보를 조회하는 sql문 -->
+	<select id="nonmemberorderById" resultMap="nonmemResult"
+		parameterType="nonmemberVO">
+	<![CDATA[ 
+		    select * 
+	    from nonmemberorder right join product on nonmemberorder.productNum=product.productNum
+	    where nonMemOrderNum = #{nonMemOrderNum} and nonMemName = #{nonMemName} and nonMemPwd = #{nonMemPwd};
+
+	]]>
+	</select>
+	
+	
+	</mapper>

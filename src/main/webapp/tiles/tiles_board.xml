@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="side"
+			value="/WEB-INF/views/common/side.jsp" />
+	</definition>
+
+	<definition name="board/listNotice" extends="baseLayout">
+		<put-attribute name="title" value="공지사항목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_01.jsp" />
+	</definition>
+
+	<definition name="board/viewNotice" extends="baseLayout">
+		<put-attribute name="title" value="공지사항상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_02.jsp" />
+	</definition>
+
+	<definition name="board/listQuestion" extends="baseLayout">
+		<put-attribute name="title" value="자주묻는질문목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_03.jsp" />
+	</definition>
+
+	<definition name="board/questionSearch" extends="baseLayout">
+		<put-attribute name="title" value="자주묻는질문목록(검색)" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_03.jsp" />
+	</definition>
+
+	<definition name="board/listInquiry" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_04.jsp" />
+	</definition>
+
+	<definition name="board/inquiryForm" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의글쓰기창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_05.jsp" />
+	</definition>
+
+	<definition name="board/viewInquiry" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의글상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_06.jsp" />
+	</definition>
+
+	<definition name="board/modInquiry" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의글상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_05.jsp" />
+	</definition>
+	<definition name="board/inquirySearch" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의글상세창(검색)" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_04.jsp" />
+	</definition>
+
+	<definition name="board/listAsCenter" extends="baseLayout">
+		<put-attribute name="title" value="AS센터 목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_08.jsp" />
+	</definition>
+	<definition name="board/asCenterSearch" extends="baseLayout">
+		<put-attribute name="title" value="AS센터 검색목록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_08.jsp" />
+	</definition>
+
+	<definition name="board/viewAsCenter" extends="baseLayout">
+		<put-attribute name="title" value="AS센터상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_11.jsp" />
+	</definition>
+
+	<definition name="board/pwdConfirm" extends="baseLayout">
+		<put-attribute name="title" value="AS센터 비밀번호 확인창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_10.jsp" />
+	</definition>
+	<definition name="board/asCenterWrite" extends="baseLayout">
+		<put-attribute name="title" value="AS센터 글쓰기" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_09.jsp" />
+	</definition>
+	<definition name="board/modAsCenter" extends="baseLayout">
+		<put-attribute name="title" value="AS센터 글수정하기" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_09.jsp" />
+	</definition>
+
+
+
+</tiles-definitions>	

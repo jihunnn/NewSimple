@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product">
+
+	<resultMap id="proResult" type="productVO">
+		<result property="productNum" column="productNum" />
+		<result property="productName" column="productName" />
+		<result property="productPrice" column="productPrice" />
+		<result property="category" column="category" />
+		<result property="subcategory" column="subcategory" />
+		<result property="productImage" column="productImage" />
+		<result property="productManufacturer"
+			column="productManufacturer" />
+		<result property="productOrigin" column="productOrigin" />
+		<result property="productContentImage"
+			column="productContentImage" />
+		<result property="option1Name" column="option1name" />
+		<result property="option2Name" column="option2name" />
+		<result property="option1value" column="option1value" />
+		<result property="option2value" column="option2value" />
+	</resultMap>
+	<resultMap id="productReviewResult" type="productVO">
+		<result property="reviewNum" column="reviewNum" />
+		<result property="productReviewTitle"
+			column="productReviewTitle" />
+		<result property="reviewDate" column="reviewDate" />
+		<result property="productContent" column="productContent" />
+		<result property="reviewFile" column="reviewFile" />
+		<result property="memId" column="memId" />
+		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+	</resultMap>
+
+	<resultMap id="productQuestionResult" type="productVO">
+		<result property="memId" column="memId" />
+		<result property="productQuestionTitle"
+			column="productQuestionTitle" />
+		<result property="productQuestionContent"
+			column="productQuestionContent" />
+		<result property="productQuestionDate"
+			column="productQuestionDate" />
+		<result property="productAnswerContent"
+			column="productAnswerContent" />
+		<result property="answerWhether" column="answerWhether" />
+
+	</resultMap>
+
+
+	<!-- best상품 조회 -->
+	<select id="selectBestList" resultMap="proResult">
+	<![CDATA[
+		select productNum, count(*) ,productPrice, productName
+        from( select productNum,MemOrderNum,productPrice,productName
+              from simple.memberorder
+              union
+              select productNum,nonMemOrderNum,nonMemOrderSeqNum,productName
+			  from simple.nonmemberorder) as best
+              group by productNum order by  count(*)desc limit 3 ;
+	]]>
+	</select>
+	<select id="selectProductList" resultMap="proResult"
+		parameterType="java.util.Map">
+      <![CDATA[
+          select p.productNum, productName, productPrice, productImage, count(f.productNum) as favoriteCount
+          from simple.product as p left join simple.favoriteproduct as f on p.productNum=f.productNum
+          where p.productNum in
+          
+      ]]>
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item.productNum}
+		</foreach>
+		group by p.productNum ;
+	</select>
+
+	<!-- 상품 조회 -->
+
+
+	<select id="selectAllProductList" resultMap="proResult"
+		parameterType="java.util.Map">
+
+		<if test='subsort == "x" and filter == "x" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort}
+		</if>
+			
+		<if test='subsort == "x" and filter == "highprice"'>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} order by cast(productPrice as unsigned) desc;
+		</if>
+		
+		<if test='subsort == "x" and filter == "lowprice"'>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} order by cast(productPrice as unsigned) asc;
+		</if>
+		
+		<if test='subsort == "x" and filter == "date"'>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} order by productDate desc;
+		</if>
+		
+		<if test='subsort == "x" and filter == "favorite"'>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} order by favoriteCount desc;
+		</if>
+		
+		<if test='subsort != "x" and filter == "x" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} and subcategory = #{subsort}
+		</if>
+	
+		<if test='subsort != "x" and filter == "highprice" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} and subcategory = #{subsort} order by cast(productPrice as unsigned) desc;
+		</if>
+		
+		<if test='subsort != "x" and filter == "lowprice" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} and subcategory = #{subsort} order by cast(productPrice as unsigned) asc;
+		</if>
+		
+		<if test='subsort != "x" and filter == "date" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} and subcategory = #{subsort} order by productDate desc;
+		</if>
+		
+		<if test='subsort != "x" and filter == "favorite" '>
+			select p.productNum, p.productName, p.productPrice,
+			p.productImage, p.subcategory, p.category, p.productDate, f.favoriteCount
+			from simple.product
+			as p left outer join(SELECT productNum, count(productNum) as favoriteCount FROM simple.favoriteproduct group by productNum) as f on
+			p.productNum=f.productNum where category = #{sort} and subcategory = #{subsort} order by favoriteCount desc;
+		</if>
+
+
+	</select>
+
+	<!-- 옵션조회 -->
+	<select id="selectOptionList1" resultMap="proResult"
+		parameterType="string"> 
+
+	<![CDATA[
+			
+			select option1name,  option1value, option1price from simple.detailoption where productNum = #{productNum} group by option1name, option1value, option1price;
+		
+	]]>
+	</select>
+
+	<select id="selectOptionList2" resultMap="proResult"
+		parameterType="string"> 
+	<![CDATA[
+			
+			select option2name, option2value, option2price from simple.detailoption where productNum = #{productNum} group by option2name, option2value, option2price;
+		
+
+	]]>
+	</select>
+
+
+
+
+	<!-- 관리자 상품 조회 -->
+	<select id="admin_selectAllProductList" resultMap="proResult">
+	<![CDATA[
+		select * from simple.product order by productDate desc
+		limit #{pageStart}, #{perPageNum};
+	]]>
+	</select>
+
+	<select id="selectProductCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as productCount
+			from simple.product;
+			
+
+	]]>
+	</select>
+
+
+
+	<!-- 상품추가 -->
+	<insert id="insertProduct" parameterType="java.util.Map">
+		<![CDATA[ 
+			insert into simple.product(productNum, productName, productPrice, category, subcategory, productImage,productManufacturer,productOrigin,productContentImage) 
+			values(#{productNum},#{productName},#{productPrice},#{category},#{subcategory},#{productImage},#{productManufacturer},#{productOrigin},#{productContentImage})
+		
+		]]>
+	</insert>
+
+
+
+	<!-- 상품수정 -->
+	<!-- into simple.productoption(productNum, option1, option2) values(#{productNum},#{option1},#{option2}) 
+		into simple.productdetail(productNum, productContentImage) values(#{productNum},#{productContentImage}); -->
+	<update id="updateProduct" parameterType="java.util.Map">
+		update simple.product
+		set productName = #{productName},
+		productPrice =
+		#{productPrice},
+		category = #{category},
+		subcategory = #{subcategory},
+		productManufacturer = #{productManufacturer},
+		productOrigin
+		=#{productOrigin}
+		<if test="productImage1!='' and productImage1!=null ">
+			, productImage=#{productImage1}
+		</if>
+		<if test="productContentImage1!='' and productContentImage1!=null ">
+			, productContentImage=#{productContentImage1}
+		</if>
+
+		where productNum=#{productNum}
+	</update>
+	<!-- 상품삭제 -->
+	<delete id="deleteProduct" parameterType="java.util.Map">
+		<![CDATA[ 
+			delete from simple.product 
+			where productNum = #{productNum};
+		]]>
+	</delete>
+
+	<select id="selectProduct" resultType="productVO"
+		parameterType="string"> 
+	<![CDATA[
+			
+			select * from simple.product
+			where productNum = #{productNum};
+			
+	]]>
+	</select>
+	<select id="selectProductBySearchWord" resultMap="proResult"
+		parameterType="String">
+     <![CDATA[
+     select p.productNum, productName, productPrice,
+			productImage,
+			count(f.productNum) as favoriteCount
+			from simple.product
+			as p left join simple.favoriteproduct as f on
+			p.productNum=f.productNum 
+			where productName like CONCAT('%', #{searchWord}, '%')
+			group by p.productNum ;
+			
+		]]>
+	</select><!-- 검색창에 입력한 단어를 가져와 그 단어가 포함된 상품 제목 조회 -->
+
+	<select id="selectKeywordSearch" resultType="String"
+		parameterType="String">
+	    <![CDATA[
+	     select p.productNum, productName, productPrice,
+			productImage,
+			count(f.productNum) as favoriteCount
+			from simple.product
+			as p left join simple.favoriteproduct as f on
+			p.productNum=f.productNum 
+			where productName like CONCAT('%', #{keyword}, '%')
+			group by p.productNum ;
+
+		]]>
+	</select> <!-- 검색창에 입력한 키워드를 가져와 그 키워드가 포함된 상품 제목 조회 -->
+
+	<!-- 상품리뷰 -->
+	<select id="selectAllProductReviewList"
+		resultMap="productReviewResult">
+	<![CDATA[
+			
+			select reviewNum, productNum, memOrderSeqNum , productReviewTitle, reviewDate, productContent, m.memName from simple.member as m right join simple.productReview as a on m.memId=a.memId 
+			where productNum = #{productNum} order by reviewNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+	]]>
+	</select>
+	<select id="selectProductReviewCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*)  from simple.productReview where productNum = #{productNum};
+			
+	]]>
+	</select>
+	<!--마이페이지 상품 리뷰////아이디별 -->
+	<select id="selectAllMypageReviewList"
+		resultMap="productReviewResult">
+	<![CDATA[
+			select reviewNum, o.productImage, reviewFile, r.productNum, r.memOrderSeqNum , productReviewTitle, reviewDate, productContent, p.productName, o.option1Name, o.option2Name, o.option1value, o.option2value 
+			from simple.productReview as r left join simple.product as p on r.productNum=p.productNum
+			join simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+			where r.memId=#{memId} order by reviewNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+	]]>
+	</select>
+	<select id="selectMypageReviewCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from simple.productReview where memId=#{memId};
+			
+	]]>
+	</select>
+
+	<select id="selectAllProductQuestionList"
+		resultMap="productQuestionResult">
+	<![CDATA[
+			select productQuestionNum, answerWhether, productNum, p.memId, productQuestionTitle, productQuestionContent, productQuestionDate, productAnswerContent, m.memName
+			from simple.productQuestion as p left join member as m on p.memId=m.memId where productNum=#{productNum} order by productQuestionNum desc
+			limit #{pageStart2}, #{perPageNum2};
+			
+	]]>
+	</select>
+	<select id="selectProductQuestionCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from simple.productQuestion where productNum=#{productNum};
+			
+	]]>
+	</select>
+	<select id="productSearchList" resultMap="proResult">
+
+		select *
+		from simple.product
+		where
+		<if
+			test="searchType=='productName' and search != null and search != '' ">
+
+			productName like CONCAT('%', #{search}, '%')
+
+
+		</if>
+
+		<if
+			test="searchType=='productNum' and search != null and search != '' ">
+
+			productNum like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		<if
+			test="searchType=='category' and search != null and search != '' ">
+
+			category like CONCAT('%', #{search}, '%')
+
+		</if>
+		<if
+			test="searchType=='subcategory' and search != null and search != '' ">
+
+			subcategory like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		limit #{pageStart}, #{perPageNum};
+
+
+
+
+
+
+
+	</select>
+
+	<select id="productSearchCount" resultType="int"
+		parameterType="java.util.Map">
+
+
+		select count(*)
+		from simple.product
+		where
+		<if
+			test="searchType=='productName' and search != null and search != '' ">
+
+			productName like CONCAT('%', #{search}, '%')
+
+
+		</if>
+
+		<if
+			test="searchType=='productNum' and search != null and search != '' ">
+
+			productNum like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		<if
+			test="searchType=='category' and search != null and search != '' ">
+
+			category like CONCAT('%', #{search}, '%')
+
+		</if>
+		<if
+			test="searchType=='subcategory' and search != null and search != '' ">
+
+			subcategory like CONCAT('%', #{search}, '%')
+
+		</if>
+
+
+
+	</select>
+
+	<insert id="insertNewQuestion" parameterType="productVO">
+		<![CDATA[
+			insert into productQuestion(productNum, memId, productQuestionTitle, productQuestionContent)
+			values(#{productNum},#{memId}, #{productQuestionTitle}, #{productQuestionContent});
+		]]>
+
+	</insert>
+
+	<update id="deleteQuestion" parameterType="int">
+
+		delete from
+		simple.productQuestion
+		where productQuestionNum=#{productQuestionNum};
+
+	</update>
+
+	<update id="updateQuestion" parameterType="productVO">
+		update
+		simple.productQuestion
+		set productQuestionTitle =
+		#{productQuestionTitle},
+		productQuestionContent =
+		#{productQuestionContent}
+		where
+		productQuestionNum=#{productQuestionNum}
+	</update>
+
+	<select id="selectOption1Name" resultType="String"> 
+	<![CDATA[
+			
+			select distinct option1Name from simple.detailoption;
+			
+	]]>
+	</select>
+	<select id="selectOption2Name" resultType="String"> 
+	<![CDATA[
+			
+			select distinct option2Name from simple.detailoption;
+			
+	]]>
+	</select>
+	<select id="selectOption1Value" parameterType="java.util.HashMap" resultType="String"> 
+	<![CDATA[
+			
+			select distinct option1Value from simple.detailoption where option1Name=#{option1Name};
+			
+	]]>
+	</select>
+	<select id="selectOption2Value" parameterType="java.util.HashMap" resultType="String"> 
+	<![CDATA[
+			
+			select distinct option2Value from simple.detailoption;
+			
+	]]>
+	</select>
+
+
+</mapper>

@@ -1,0 +1,6 @@
+.project
+.classpath
+.settings/
+simple/target/
+simple/jj/
+.springBeans

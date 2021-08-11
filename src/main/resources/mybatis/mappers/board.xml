@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.board">
+	<!-- notice 게시판 -->
+	<resultMap id="noticeResult" type="articleVO">
+		<result property="noticeNum" column="noticeNum" />
+		<result property="noticeDate" column="noticeDate" />
+		<result property="noticeTitle" column="noticeTitle" />
+		<result property="noticeWriter" column="noticeWriter" />
+		<result property="noticeContent" column="noticeContent" />
+		<result property="noticeImg" column="noticeImg" />
+		<result property="noticeHit" column="noticeHit" />
+	</resultMap>
+
+	<!-- question 게시판 -->
+	<resultMap id="questionResult" type="articleVO">
+		<result property="questionNum" column="questionNum" />
+		<result property="questionTitle" column="questionTitle" />
+		<result property="questionContent" column="questionContent" />
+	</resultMap>
+
+
+	<!-- inquiry 게시판 -->
+	<resultMap id="inquiryResult" type="articleVO">
+		<result property="memId" column="memId" />
+		<result property="inquiryNum" column="inquiryNum" />
+		<result property="inquiryType" column="inquiryType" />
+		<result property="inquiryDate" column="inquiryDate" />
+		<result property="inquiryTitle" column="inquiryTitle" />
+		<result property="inquiryContent" column="inquiryContent" />
+		<result property="inquiryFile" column="inquiryFile" />
+		<result property="inquiryAnswer" column="inquiryAnswer" />
+		<result property="inquiryReq" column="inquiryReq" />
+	</resultMap>
+
+	<!-- AS 센터 -->
+	<resultMap id="asCenterResult" type="articleVO">
+		<result property="asCenterNum" column="asCenterNum" />
+		<result property="memId" column="memId" />
+		<result property="asCenterTitle" column="asCenterTitle" />
+		<result property="asCenterDate" column="asCenterDate" />
+		<result property="asCenterContent" column="asCenterContent" />
+		<result property="asCenterStatus" column="asCenterStatus" />
+		<result property="asCenterPwd" column="asCenterPwd" />
+	</resultMap>
+
+	<!-- 공지사항 전제 목록 보기 -->
+	<select id="selectAllNoticeList" resultMap="noticeResult">
+	<![CDATA[
+			
+			select noticeNum, noticeDate, noticeTitle, noticeWriter, noticeHit from simple.notice order by noticeNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+
+
+
+	<select id="selectNoticeCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as noticeCount from simple.notice;
+			
+
+	]]>
+	</select>
+
+	<!-- 공지사항 상세보기 -->
+	<select id="selectNotice" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from simple.notice
+			where noticeNum = #{noticeNum}
+			
+
+	]]>
+	</select>
+
+	<update id="updateNoticeHit" parameterType="int">
+		UPDATE simple.notice
+		SET
+		noticeHit = noticeHit + 1 WHERE noticeNum = #{noticeNum}
+	</update>
+
+	<!-- 자주 묻는 질문 -->
+	<select id="selectAllQuestionList" resultMap="questionResult">
+	<![CDATA[
+			
+			select * from simple.question order by questionNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+
+	<select id="selectQuestionCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as questionCount from simple.question;
+			
+
+	]]>
+	</select>
+
+	<select id="questionSearchList" resultMap="questionResult">
+	<![CDATA[
+			
+			select * from simple.question where questionTitle like CONCAT('%', #{search}, '%')  order by questionNum desc
+			limit #{pageStart}, #{perPageNum}
+			;
+			
+
+	]]>
+	</select>
+
+	<select id="questionSearchCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as questionCount from simple.question where questionTitle like CONCAT('%', #{search}, '%');
+			
+
+	]]>
+	</select>
+
+
+	<!-- 1:1문의 -->
+	<select id="selectAllInquiryList"
+		parameterType="java.util.HashMap" resultMap="inquiryResult">
+	<![CDATA[
+			
+			select * from simple.inquiry where memId=#{memId} order by inquiryNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+	<select id="selectInquiryCount" resultType="int">
+	<![CDATA[
+			
+			select count(*) as inquiryCount from simple.inquiry where memId=#{memId};
+			
+
+	]]>
+	</select>
+
+	<select id="inquirySearchList" resultMap="inquiryResult">
+	<![CDATA[
+			
+			select * from simple.inquiry where memId=#{memId} and inquiryDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by inquiryNum desc
+			limit #{pageStart}, #{perPageNum};
+			;
+			
+
+	]]>
+	</select>
+
+	<select id="inquirySearchCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*) from simple.inquiry where memId=#{memId} and inquiryDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			
+
+	]]>
+	</select>
+
+	<select id="adminInquirySearchList" resultMap="inquiryResult">
+	<![CDATA[
+			
+			select * from simple.inquiry where inquiryDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by inquiryNum desc
+			limit #{pageStart}, #{perPageNum};
+			;
+			
+
+	]]>
+	</select>
+
+	<select id="adminInquirySearchCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*) from simple.inquiry where inquiryDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			
+
+	]]>
+	</select>
+
+	<insert id="insertNewInquiry" parameterType="java.util.Map">
+		<![CDATA[
+			insert into simple.inquiry(memId,inquiryNum, inquiryType,inquiryTitle, inquiryContent, inquiryFile)
+			values(#{memId},#{inquiryNum}, #{inquiryType}, #{inquiryTitle}, #{inquiryContent}, #{inquiryFile});
+		]]>
+
+	</insert>
+
+	<select id="selectNewInquiryNum" resultType="int">
+	<![CDATA[
+			
+			select max(inquiryNum)+1 from simple.inquiry;
+	
+
+	]]>
+	</select>
+
+	<select id="selectInquiry" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from simple.inquiry
+			where inquiryNum = #{inquiryNum};
+			
+
+	]]>
+	</select>
+
+	<select id="selectInquiry1" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from simple.inquiry
+			where inquiryNum = #{inquiryNum};
+			
+
+	]]>
+	</select>
+
+	<update id="updateInquiry" parameterType="java.util.Map">
+		update simple.inquiry
+		set inquiryTitle = #{inquiryTitle},
+		inquiryContent =
+		#{inquiryContent}
+		<if test="inquiryFile!='' and inquiryFile!=null">
+			, inquiryFile=#{inquiryFile}
+		</if>
+		where inquiryNum=#{inquiryNum}
+	</update>
+
+	<update id="deleteInquiry" parameterType="java.util.Map">
+
+		delete from
+		simple.inquiry
+		where inquiryNum=#{inquiryNum};
+
+	</update>
+
+	<!-- AS센터 -->
+	<select id="selectAllAsCenterList" resultMap="asCenterResult">
+	<![CDATA[
+			
+			select asCenterNum, asCenterPwd, asCenterTitle , asCenterContent, asCenterDate, asCenterStatus, m.memName from simple.member as m right join simple.asCenter as a on m.memId=a.memId order by asCenterNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+
+	<select id="selectAsCenterCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as asCenterCount from simple.asCenter;
+			
+
+	]]>
+	</select>
+
+	<select id="selectAsCenter" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+		select asCenterNum, asCenterStatus, asCenterTitle , asCenterContent, asCenterPwd, asCenterDate, asCenterFile, m.memName from simple.member as m right join simple.asCenter as a on m.memId=a.memId where asCenterNum=#{asCenterNum};
+			
+
+	]]>
+
+	</select>
+
+	<insert id="insertNewAsCenter" parameterType="java.util.Map">
+		<![CDATA[
+			insert into simple.asCenter(memId,asCenterNum, asCenterTitle, asCenterContent, asCenterPwd, asCenterFile)
+			values(#{memId},#{asCenterNum}, #{asCenterTitle},  #{asCenterContent}, #{asCenterPwd}, #{asCenterFile});
+		]]>
+
+	</insert>
+
+	<select id="selectNewAsCenterNum" resultType="int">
+	<![CDATA[
+			
+			select max(asCenterNum)+1 from simple.asCenter;
+	
+
+	]]>
+	</select>
+
+	<update id="updateAsCenter" parameterType="java.util.Map">
+		update simple.asCenter
+		set asCenterTitle = #{asCenterTitle},
+		asCenterContent =
+		#{asCenterContent},
+		asCenterPwd = #{asCenterPwd}
+		<if test="asCenterFile!='' and asCenterFile!=null">
+			, asCenterFile=#{asCenterFile}
+		</if>
+		where asCenterNum=#{asCenterNum}
+	</update>
+
+	<update id="deleteAsCenter" parameterType="java.util.Map">
+
+		delete from
+		simple.asCenter
+		where asCenterNum=#{asCenterNum};
+
+	</update>
+
+	<select id="asCenterSearchList" resultMap="asCenterResult">
+
+		select asCenterNum, asCenterTitle , asCenterContent, asCenterPwd,
+		asCenterDate, asCenterFile, asCenterStatus, m.memName from
+		simple.member as m right join simple.asCenter as a on m.memId=a.memId
+		where
+		<if
+			test="searchType=='asCenterTitle' and search != null and search != '' ">
+
+			asCenterTitle like CONCAT('%', #{search}, '%')
+
+
+		</if>
+
+		<if
+			test="searchType=='asCenterContent' and search != null and search != '' ">
+
+			asCenterContent like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		<if
+			test="searchType=='memName' and search != null and search != '' ">
+
+			m.memName like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		limit #{pageStart}, #{perPageNum};
+
+
+
+
+
+
+
+	</select>
+
+	<select id="asCenterSearchCount" resultType="int"
+		parameterType="java.util.Map">
+
+
+		select count(*) from simple.member as m right join simple.asCenter as
+		a on m.memId=a.memId where
+		<if
+			test="searchType=='asCenterTitle' and search != null and search != '' ">
+
+			asCenterTitle like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		<if
+			test="searchType=='asCenterContent' and search != null and search != '' ">
+
+			asCenterContent like CONCAT('%', #{search}, '%')
+
+		</if>
+
+		<if
+			test="searchType=='memName' and search != null and search != '' ">
+
+			memName like CONCAT('%', #{search}, '%')
+
+		</if>
+
+
+
+
+	</select>
+</mapper>

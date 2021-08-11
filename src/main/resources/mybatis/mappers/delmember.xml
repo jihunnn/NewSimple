@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.delmember">
+
+    <resultMap id="delmemResult" type="delmemberVO">
+		<result property="memId" column="memId" />
+		<result property="memName" column="memName" />
+		<result property="memPwd" column="memPwd" />
+		<result property="memEmail" column="memEmail" />
+		<result property="memPhoneNum" column="memPhoneNum" />
+		<result property="memAdr" column="memAdr" />
+		<result property="logintype" column="logintype" />
+		<result property="retiredate" column="retiredate" />
+	</resultMap>
+	
+    <select id="selectRetireMember" resultType="delmemberVO">
+    
+    select memId
+    from simple.delmember
+    where date_format(retiredate,'%Y-%m-%d') <![CDATA[<]]> date_format(CURDATE(),'%Y-%m-%d')
+    
+    
+    </select>
+    
+    <delete id = "deleteRetireMember" parameterType="delmemberVO">
+    
+    delete
+    from simple.delmember
+    where memId = #{memId}
+    
+    </delete>
+
+</mapper>

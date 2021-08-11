@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="side"
+			value="/WEB-INF/views/common/side.jsp" />
+	</definition>
+
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/main.jsp" />
+	</definition>
+
+	<definition name="join_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/join_01.jsp" />
+	</definition>
+
+	<definition name="join_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/join_02.jsp" />
+	</definition>
+
+	<definition name="join_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/join_02.jsp" />
+	</definition>
+	
+	<definition name="join_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/join_03.jsp" />
+	</definition>
+
+	<definition name="login_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_01.jsp" />
+	</definition>
+
+	<definition name="login_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_02.jsp" />
+	</definition>
+
+	<definition name="login_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_03.jsp" />
+	</definition>
+
+	<definition name="login_04" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_04.jsp" />
+	</definition>
+
+	<definition name="login_05" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_05.jsp" />
+	</definition>
+
+	<definition name="login_06" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_06.jsp" />
+	</definition>
+
+	<definition name="login_06" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login_06.jsp" />
+	</definition>
+
+	<definition name="cart" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cart.jsp" />
+	</definition>
+
+	<definition name="cs_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_01.jsp" />
+	</definition>
+
+	<definition name="cs_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_02.jsp" />
+	</definition>
+
+	<definition name="cs_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_03.jsp" />
+	</definition>
+
+	<definition name="cs_04" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_04.jsp" />
+	</definition>
+
+	<definition name="cs_05" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_05.jsp" />
+	</definition>
+
+	<definition name="cs_06" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_06.jsp" />
+	</definition>
+
+	<definition name="cs_07" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_07.jsp" />
+	</definition>
+
+	<definition name="cs_08" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_08.jsp" />
+	</definition>
+
+	<definition name="cs_09" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_09.jsp" />
+	</definition>
+
+	<definition name="cs_10" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_10.jsp" />
+	</definition>
+
+	<definition name="cs_11" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cs_11.jsp" />
+	</definition>
+
+	<definition name="drop_out" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/drop_out.jsp" />
+	</definition>
+
+	<definition name="nonorderinquiry" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/nonorderinquiry.jsp" />
+	</definition>
+
+	<definition name="product_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product_01.jsp" />
+	</definition>
+
+	<definition name="product_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product_02.jsp" />
+	</definition>
+
+	<definition name="storeinfomation" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/storeinfomation.jsp" />
+	</definition>
+
+
+	<definition name="order_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order_01.jsp" />
+	</definition>
+
+	<definition name="order_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order_02.jsp" />
+	</definition>
+
+	<definition name="order_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/order_03.jsp" />
+	</definition>
+
+
+	<definition name="mypage_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_01.jsp" />
+	</definition>
+
+	<definition name="mypage_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_02.jsp" />
+	</definition>
+
+	<definition name="mypage_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_03.jsp" />
+	</definition>
+
+	<definition name="mypage_04" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_04.jsp" />
+	</definition>
+
+	<definition name="mypage_05" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_05.jsp" />
+	</definition>
+
+	<definition name="mypage_06" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_06.jsp" />
+	</definition>
+
+	<definition name="mypage_07" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_07.jsp" />
+	</definition>
+
+	<definition name="mypage_08" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_08.jsp" />
+	</definition>
+
+	<definition name="mypage_09" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_09.jsp" />
+	</definition>
+
+	<definition name="mypage_10" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_10.jsp" />
+	</definition>
+
+	<definition name="mypage_13" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_13.jsp" />
+	</definition>
+
+	<definition name="mypage_14" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage_14.jsp" />
+	</definition>
+
+	<definition name="deletemember" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/deletemember.jsp" />
+	</definition>
+
+
+
+
+</tiles-definitions>

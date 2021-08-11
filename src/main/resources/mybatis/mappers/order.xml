@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.order">
+	<!-- notice 게시판 -->
+	<resultMap id="orderResult" type="orderVO">
+		<result property="memId" column="memId" />
+		<result property="memName" column="memName" />
+		<result property="memSpName" column="memSpName" />
+		<result property="memOrderMsg" column="memOrderMsg" />
+		<result property="memSpAdr" column="memSpAdr" />
+		<result property="memSpPhoneNum1" column="memSpPhoneNum1" />
+		<result property="memSpPhoneNum2" column="memSpPhoneNum2" />
+		<result property="memDepositorName" column="memDepositorName" />
+		<result property="productNum" column="productNum" />
+		<result property="productPrice" column="productPrice" />
+		<result property="productCnt" column="productCnt" />
+		<result property="productName" column="productName" />
+		<result property="option1name" column="option1name" />
+		<result property="option2name" column="option2name" />
+		<result property="option1value" column="option1value" />
+		<result property="option2value" column="option2value" />
+		<result property="totalPrice" column="totalPrice" />
+		<result property="productImage" column="productImage" />
+		<result property="deliverycharge" column="deliverycharge" />
+		<result property="memCartId" column="memCartId" />
+		<result property="memOrderNum" column="memOrderNum" />
+		<result property="nonMemOrderNum" column="nonMemOrderNum" />
+		<result property="nonMemSpName" column="nonMemSpName" />
+		<result property="nonMemOrderMsg" column="nonMemOrderMsg" />
+		<result property="nonMemSpAdr" column="nonMemSpAdr" />
+		<result property="nonMemSpPhoneNum1" column="nonMemSpPhoneNum1" />
+		<result property="nonMemSpPhoneNum2" column="nonMemSpPhoneNum2" />
+		<result property="nonMemDepositorName" column="nonMemDepositorName" />
+		<result property="nonMemPaymentMethod" column="nonMemPaymentMethod" />
+		<result property="CurrentStatus" column="CurrenStatus" />
+		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+	</resultMap>
+	<resultMap id="memResult" type="memberVO">
+		<result property="memId" column="memId" />
+		<result property="memName" column="memName" />
+		<result property="memPwd" column="memPwd" />
+		<result property="memEmail" column="memEmail" />
+		<result property="memPhoneNum" column="memPhoneNum" />
+		<result property="memAdr" column="memAdr" />
+		<result property="logintype" column="logintype" />
+		<result property="memRegdate" column="memRegdate" />
+	</resultMap>
+	
+	
+
+
+
+	<!-- 장바구니리스트불러오기 -->
+	<select id="selectcartlist" parameterType="String"
+		resultMap="orderResult">
+		<![CDATA[ 
+			select * from simple.membercart
+			where memCartId = #{memCartId};		
+		]]>
+	</select>
+
+
+	<select id="selectAllOrderList" resultMap="orderResult">
+	<![CDATA[
+		select * from simple.memberorder 
+		group by memOrderNum
+		order by memOrderDate desc
+		limit #{pageStart}, #{perPageNum};
+	]]>
+	</select>
+	
+     <!-- 주문 상품 정보 -->
+	<select id="selectmemOrderList" resultType="orderVO" parameterType="int"> 
+	<![CDATA[
+			
+
+		 select o.memOrderSeqNum, o.memId,o.memOrderDate, purchaseConfirm, reviewConfirm, returnConfirm,  o.memOrderSeqNum, productCnt, option1Name, option2Name, option1value, option2value, p.productImage, p.productPrice, p.productName, p.productNum, d.deliveryStatus ,memSpName,memSpAdr,memSpPhoneNum1,memSpPhoneNum2,memOrderMsg,memDepositorName
+    ,memPaymentMethod, totalPrice , memPwd, memEmail, memAdr,memPhoneNum,memName
+		from  simple.memberOrder as o left join simple.member as m on o.memId = m.memId join  simple.product as p on o.productNum=p.productNum 
+		join  simple.memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum 
+			where memOrderNum = #{memOrderNum} order by memOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+
+    <select id="selectmemberOrderId" resultType="memberVO" parameterType="int"> 
+	<![CDATA[
+			
+
+		select distinct m.memId, memName, memAdr, memPhoneNum
+		from simple.memberOrder as o left join simple.member as m on o.memId = m.memId
+		where memOrderNum = #{memOrderNum} order by memOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+	  <select id="selectmemberOrderInfo" resultType="orderVO" parameterType="int"> 
+	<![CDATA[
+			
+
+		select distinct memSpName, memSpAdr, memSpPhoneNum1, memSpPhoneNum2, memOrderMsg, memDepositorName, memPaymentMethod,memOrderDate
+		from simple.memberOrder 
+		where memOrderNum = #{memOrderNum} order by memOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+
+	<select id="orderSearchList" resultMap="orderResult">
+			select *
+			from simple.memberorder 
+			where
+			<if test="searchType=='memId' and search != null and search != '' ">
+				memId like CONCAT('%', #{search}, '%')			
+			</if>
+			
+			<if test="searchType=='memOrderNum' and search != null and search != '' ">
+				memOrderNum like CONCAT('%', #{search}, '%')
+			</if>
+
+			<if test="searchType=='productName' and search != null and search != '' ">
+				productName like CONCAT('%', #{search}, '%')
+			</if>	
+			
+			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
+				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>	
+			limit #{pageStart}, #{perPageNum};
+	</select>
+	
+	<select id="orderSearchCount" resultType="int"
+		parameterType="java.util.Map">
+			select count(*) 
+			where
+			<if test="searchType=='memId' and search != null and search != '' ">
+				memId like CONCAT('%', #{search}, '%')
+		
+			</if>
+
+			<if test="searchType=='memOrderNum' and search != null and search != '' ">
+				memOrderNum like CONCAT('%', #{search}, '%')
+			</if>
+
+			<if test="searchType=='productName' and search != null and search != '' ">
+				productName like CONCAT('%', #{search}, '%')
+			</if>	
+			
+			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
+				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>	
+	</select>
+
+	<select id="selectOrderCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as orderCount from simple.memberorder;
+	]]>
+	</select>
+	
+	<!-- 주문테이블입력 -->
+	<insert id="insertNewOrder" parameterType="orderVO">
+		
+		
+		 <if test="memId != null">
+			insert into simple.memberorder(memOrderSeqNum, memOrderNum, memId, productNum, productName, option1name, option1value, option2name, option2value, productCnt, productPrice, totalPrice, memOrderDate, memSpName, memOrderMsg, memSpAdr, memSpPhoneNum1, memSpPhoneNum2, memDepositorName, memPaymentMethod, purchaseConfirm, returnConfirm, reviewConfirm, productImage) 
+			values(default, #{memOrderNum}, #{memId}, #{productNum}, #{productName}, #{option1name}, #{option1value}, #{option2name}, #{option2value}, #{productCnt}, #{productPrice}, #{totalPrice}, default, #{memSpName}, #{memOrderMsg}, (select concat_ws('-',#{memSpAdr},#{memSpAdr1},#{memSpAdr2})),(select concat_ws('-',#{memSpPhoneNum1_0},#{memSpPhoneNum1_1},#{memSpPhoneNum1_2})),
+					(select concat_ws('-',#{memSpPhoneNum2_0},#{memSpPhoneNum2_1},#{memSpPhoneNum2_2})), #{memDepositorName}, #{memPaymentMethod}, default, default, default, #{productImage});
+		</if>
+		
+		<if test="memId == null">
+			insert into simple.nonmemberorder(nonMemOrderSeqNum, nonMemOrderNum, nonMemName, productNum, productName, option1name, option1value, option2name, option2value, productCnt, productPrice, totalPrice, nonMemSpName, nonMemOrderMsg, nonMemSpAdr, nonMemSpPhoneNum1, nonMemSpPhoneNum2, nonMemDepositorName, nonMemPaymentMethod, CurrentStatus, productImage) 
+			values(default, #{nonmemOrderNum}, #{nonmemName},  #{productNum}, #{productName}, #{option1name}, #{option1value}, #{option2name}, #{option2value}, #{productCnt}, #{productPrice}, #{totalPrice},  #{nonmemSpName}, #{nonmemOrderMsg}, (select concat_ws('-',#{nonmemSpAdr},#{nonmemSpAdr1},#{nonmemSpAdr2})),(select concat_ws('-',#{nonmemSpPhoneNum1_0},#{nonmemSpPhoneNum1_1},#{nonmemSpPhoneNum1_2})),
+					(select concat_ws('-',#{nonmemSpPhoneNum2_0},#{nonmemSpPhoneNum2_1},#{nonmemSpPhoneNum2_2})), #{nonmemDepositorName}, #{nonmemPaymentMethod}, default, #{productImage});
+		</if>
+		
+	</insert>
+	
+	
+	
+	
+
+</mapper>

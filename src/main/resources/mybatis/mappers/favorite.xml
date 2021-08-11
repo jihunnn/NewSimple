@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="mapper.favorite">
+	<resultMap id="favoriteResult" type="FavoriteVO">
+		<result property="favoriteNum" column="favoriteNum" />
+		<result property="memId" column="memId" />
+		<result property="productNum" column="productNum" />
+	</resultMap>
+	
+	<resultMap id="proResult" type="ProductVO">
+		<result property="productNum" column="productNum" />
+        <result property="productName" column="productName" />
+        <result property="productPrice" column="productPrice" />
+        <result property="category" column="category" />
+        <result property="subcategory" column="subcategory" />
+        <result property="productImage" column="productImage" />
+        <result property="productManufacturer" column="productManufacturer" />
+        <result property="productOrigin" column="productOrigin" />
+        <result property="productContentImage" column="productContentImage" />
+        <result property="option1" column="option1" />
+        <result property="option2" column="option2" />
+	</resultMap>
+	
+	<select id="selectFavoriteList"  parameterType="favoriteVO"  resultMap="favoriteResult"   >
+	    <![CDATA[
+		select favoriteNum, memId, productNum
+		from simple.favoriteproduct
+		where memId=#{memId};
+		]]>
+	</select>
+	<select id="selectProductList" resultMap="proResult" parameterType="java.util.Map">
+      <![CDATA[
+          select *
+          from simple.product
+          where productNum in
+          
+      ]]>
+      <foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.productNum}
+		</foreach>
+		
+	</select>
+	<select id="selectCountInFavorite" resultType="String" parameterType="favoriteVO">
+	  <![CDATA[
+	  select if(count(*) = 0,"false","true")
+	  from simple.favoriteproduct
+	  where productNum=#{productNum} and memId=#{memId};
+	  ]]>
+	</select><!-- 관심상품 테이블에 추가하기 전에 그 상품 번호가 관심상품에 담겨 있는지 조회 -->
+	
+	<insert id="insertProductInFavorite" parameterType="favoriteVO">
+	  <![CDATA[
+	  insert into simple.favoriteproduct(favoriteNum,productNum,memId) values(#{favoriteNum},#{productNum},#{memId});
+	  ]]>
+	</insert><!-- 관심상품에 상품 추가 -->
+
+	<select id="selectMaxFavoriteId" resultType="int">
+	    <![CDATA[
+			select ifnull(max(favoriteNum), 0) + 1 from simple.favoriteproduct ;
+    	]]>
+	</select>
+	
+	<delete id="deleteFavoriteProduct" parameterType="java.util.Map">
+	    <![CDATA[
+	      delete from simple.favoriteproduct
+	      where productNum=#{productNum} and memId=#{memId};;
+    	]]>
+	</delete><!-- 관심상품에 상품 삭제 -->
+		<delete id="deleteRemoveFavorite" parameterType="favoriteVO">
+	    <![CDATA[
+	      delete from simple.favoriteproduct
+	      where productNum=#{productNum} and memId=#{memId};
+    	]]>
+	</delete><!-- 상품 상세페이지에서 관심상품에 상품 삭제 -->
+
+	<select id="selectFavoriteCount" resultType="int">
+	    <![CDATA[
+		select count(*)
+		from simple.favoriteproduct
+		where productNum=#{productNum};
+		]]>
+	</select>
+	
+	</mapper>

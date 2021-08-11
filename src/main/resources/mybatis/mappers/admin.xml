@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin">
+
+	<resultMap id="adminResult" type="adminVO">
+		<result property="adminId" column="adminId" />
+		<result property="adminPwd" column="adminPwd" />
+	</resultMap>
+
+	<resultMap id="memResult" type="memberVO">
+		<result property="memId" column="memId" />
+		<result property="memName" column="memName" />
+		<result property="memPwd" column="memPwd" />
+		<result property="memEmail" column="memEmail" />
+		<result property="memPhoneNum" column="memPhoneNum" />
+		<result property="memAdr" column="memAdr" />
+		<result property="logintype" column="logintype" />
+		<result property="memRegdate" column="memRegdate" />
+	</resultMap>
+
+	<!-- inquiry 게시판 -->
+	<resultMap id="inquiryResult" type="articleVO">
+		<result property="memId" column="memId" />
+		<result property="inquiryNum" column="inquiryNum" />
+		<result property="inquiryType" column="inquiryType" />
+		<result property="inquiryDate" column="inquiryDate" />
+		<result property="inquiryTitle" column="inquiryTitle" />
+		<result property="inquiryContent" column="inquiryContent" />
+		<result property="inquiryFile" column="inquiryFile" />
+		<result property="inquiryAnswer" column="inquiryAnswer" />
+		<result property="inquiryReq" column="inquiryReq" />
+	</resultMap>
+
+	<!-- 공지사항 게시판 -->
+	<resultMap id="noticeResult" type="articleVO">
+		<result property="noticeNum" column="noticeNum" />
+		<result property="noticeDate" column="noticeDate" />
+		<result property="noticeTitle" column="noticeTitle" />
+		<result property="noticeWriter" column="noticeWriter" />
+		<result property="noticeContent" column="noticeContent" />
+		<result property="noticeImg" column="noticeImg" />
+		<result property="noticeHit" column="noticeHit" />
+	</resultMap>
+
+	<!-- question 게시판 -->
+	<resultMap id="questionResult" type="articleVO">
+		<result property="questionNum" column="questionNum" />
+		<result property="questionTitle" column="questionTitle" />
+		<result property="questionContent" column="questionContent" />
+	</resultMap>
+
+	<!--로그인창에서 입력한 id와 비밀번호로 회원정보를 조회하는 sql문 -->
+	<select id="adminloginById" resultType="adminVO"
+		parameterType="adminVO">
+	<![CDATA[ 
+		select * from simple.admin
+		where adminId = #{adminId} and adminPwd = #{adminPwd}
+	]]>
+	</select>
+
+	<!-- 회원정보 상세조회 -->
+	<select id="selectMember" resultType="memberVO"
+		parameterType="String"> 
+	<![CDATA[
+			
+			select * from simple.member
+			where memId = #{memId}
+			
+
+	]]>
+	</select>
+
+	<!-- 1:1문의 -->
+	<select id="selectAllInquiryList"
+		parameterType="java.util.HashMap" resultMap="inquiryResult">
+	<![CDATA[
+			
+			select * from simple.inquiry  order by inquiryNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+
+	<select id="selectInquiryCount" resultType="int">
+	<![CDATA[
+			
+			select count(*) as inquiryCount from simple.inquiry;
+			
+
+	]]>
+	</select>
+
+	<!-- 공지사항게시판 -->
+	<select id="selectNotice" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from notice
+			where noticeNum = #{noticeNum};
+			
+
+	]]>
+	</select>
+
+	<insert id="insertNewNotice" parameterType="java.util.Map">
+		<![CDATA[
+			insert into notice(noticeNum, noticeTitle, noticeWriter, noticeContent, noticeImg)
+			values(#{noticeNum}, #{noticeTitle},  #{noticeWriter}, #{noticeContent}, #{noticeImg});
+		]]>
+
+	</insert>
+
+	<select id="selectNewNoticeNum" resultType="int">
+	<![CDATA[
+			
+			select max(noticeNum)+1 from notice;
+	
+
+	]]>
+	</select>
+
+	<update id="updateNotice" parameterType="java.util.Map">
+		update simple.notice
+		set noticeTitle = #{noticeTitle},
+		noticeContent =
+		#{noticeContent}
+		<if test="noticeImg!='' and noticeImg!=null">
+			, noticeImg=#{noticeImg}
+		</if>
+		where noticeNum=#{noticeNum}
+	</update>
+
+	<update id="deleteNotice" parameterType="int">
+
+		delete from
+		simple.notice
+		where noticeNum=#{noticeNum};
+
+	</update>
+
+	<!-- 자주묻는 질문 게시판 -->
+	<insert id="insertNewQuestion" parameterType="ArticleVO">
+		<![CDATA[
+			insert into question(questionNum, questionTitle, questionContent)
+			values(#{questionNum},#{questionTitle}, #{questionContent});
+		]]>
+
+	</insert>
+
+	<select id="selectQuestion" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from question
+			where questionNum = #{questionNum};
+			
+
+	]]>
+	</select>
+
+	<update id="updateQuestion" parameterType="articleVO">
+		update
+		simple.question
+		set questionTitle =
+		#{questionTitle},
+		questionContent =
+		#{questionContent}
+		where
+		questionNum=#{questionNum}
+	</update>
+
+	<update id="deleteQuestion" parameterType="int">
+
+		delete from
+		simple.question
+		where questionNum=#{questionNum};
+
+	</update>
+
+	<!-- 1:1문의 -->
+	<select id="selectInquiryAnswer" resultType="articleVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			select * from inquiry
+			where inquiryNum = #{inquiryNum};
+			
+
+	]]>
+	</select>
+	<insert id="insertNewInquiryAnswer" parameterType="ArticleVO">
+		<![CDATA[
+			update simple.inquiry set inquiryAnswer=#{inquiryAnswer}
+			where inquiryNum=#{inquiryNum};
+		]]>
+
+	</insert>
+
+	<update id="deleteInquiryAnswer" parameterType="int">
+
+		update
+		simple.inquiry set inquiryAnswer=null
+		where inquiryNum=#{inquiryNum};
+
+	</update>
+	<update id="updateAsCenterConfirm" parameterType="String">
+		update
+		simple.asCenter
+		set asCenterStatus = '접수완료' where
+		asCenterNum
+		=
+		#{asCenterNum};
+	</update>
+
+	<!-- 회원정보수정 -->
+	<update id="updateAdminMember" parameterType="memberVO">
+	<![CDATA[ 
+		update simple.member
+		set memName=#{memName}, memEmail=(select concat_ws('@',#{memEmail},#{memEmail1})), memPhoneNum=(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})), memAdr=(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),logintype = #{logintype} where memId=#{memId} 
+	]]>
+	</update>
+	<!-- 회원 선택 삭제 -->
+	<delete id="deleteSelectRemoveMember" parameterType="memberVO">
+	    <![CDATA[
+	      delete from simple.member
+	      where memId=#{memId};
+    	]]>
+	</delete>
+
+</mapper>

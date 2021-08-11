@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mypage">
+
+	<resultMap id="myOrderInfoResult" type="MypageVO">
+		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+		<result property="memOrderNum" column="memOrderNum" />
+		<result property="memId" column="memId" />
+		<result property="productNum" column="productNum" />
+		<result property="memSpName" column="memSpName" />
+		<result property="memSpPhoneNum1" column="memSpPhoneNum1" />
+		<result property="memSpPhoneNum2" column="memSpPhoneNum2" />
+		<result property="memSpAdr" column="memSpAdr" />
+		<result property="memOrderMsg" column="memOrderMsg" />
+		<result property="memDepositorName" column="memDepositorName" />
+		<result property="memPaymentMethod" column="memPaymentMethod" />
+		<result property="totalPrice" column="totalPrice" />
+		<result property="option1value" column="option1value" />
+		<result property="option2value" column="option2value" />
+		<result property="option1Name" column="option1Name" />
+		<result property="option2Name" column="option2Name" />
+		<result property="memOrderDate" column="memOrderDate" />
+		<result property="productCnt" column="productCnt" />
+		<result property="productImage" column="productImage" />
+		<result property="purchaseConfirm" column="purchaseConfirm" />
+	</resultMap>
+
+	<resultMap id="productReviewResult" type="MypageVO">
+		<result property="reviewNum" column="reviewNum" />
+		<result property="productReviewTitle"
+			column="productReviewTitle" />
+		<result property="reviewDate" column="reviewDate" />
+		<result property="productContent" column="productContent" />
+		<result property="reviewFile" column="reviewFile" />
+		<result property="memId" column="memId" />
+		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+	</resultMap>
+
+	<resultMap id="mypageReturnResult" type="MypageVO">
+		<result property="returnNum" column="returnNum" />
+		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+		<result property="returnType" column="returnType" />
+		<result property="returnContent" column="returnContent" />
+		<result property="currentStatus" column="currentStatus" />
+	</resultMap>
+
+	<!-- inquiry 게시판 -->
+	<resultMap id="inquiryResult" type="articleVO">
+		<result property="memId" column="memId" />
+		<result property="inquiryNum" column="inquiryNum" />
+		<result property="inquiryType" column="inquiryType" />
+		<result property="inquiryDate" column="inquiryDate" />
+		<result property="inquiryTitle" column="inquiryTitle" />
+		<result property="inquiryContent" column="inquiryContent" />
+		<result property="inquiryFile" column="inquiryFile" />
+		<result property="inquiryAnswer" column="inquiryAnswer" />
+		<result property="inquiryReq" column="inquiryReq" />
+	</resultMap>
+
+	<!-- AS 센터 -->
+	<resultMap id="asCenterResult" type="articleVO">
+		<result property="asCenterNum" column="asCenterNum" />
+		<result property="memId" column="memId" />
+		<result property="asCenterTitle" column="asCenterTitle" />
+		<result property="asCenterDate" column="asCenterDate" />
+		<result property="asCenterContent" column="asCenterContent" />
+		<result property="asCenterStatus" column="asCenterStatus" />
+		<result property="asCenterPwd" column="asCenterPwd" />
+	</resultMap>
+
+	<!--마이페이지 주문/배송조회 -->
+	<select id="selectAllMyOrderInfoList"
+		resultMap="myOrderInfoResult">
+	<![CDATA[
+			
+		select memOrderNum, memOrderDate, purchaseConfirm, reviewConfirm, returnConfirm,  o.memOrderSeqNum, productCnt, option1name, option2name, option1value, option2value, p.productImage,p.productPrice, p.productName, p.productNum, d.deliveryStatus 
+		from simple.memberOrder as o left join simple.product as p on o.productNum=p.productNum 
+		join memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum  where o.memId=#{memId} order by memOrderSeqNum desc
+		limit #{pageStart}, #{perPageNum};
+			
+	]]>
+	</select>
+	<select id="selectMyOrderInfoCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memberOrder where memId=#{memId};
+			
+	]]>
+	</select>
+
+
+	<!-- 주문 상품 정보 -->
+	<select id="selectMyOrderInfo" resultType="mypageVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+
+		select memOrderNum, memOrderDate, purchaseConfirm, reviewConfirm, returnConfirm,  o.memOrderSeqNum, productCnt, option1Name, option2Name, option1value, option2value, p.productImage, p.productPrice, p.productName, p.productNum, d.deliveryStatus 
+		from  simple.memberOrder as o left join  simple.product as p on o.productNum=p.productNum 
+		join  simple.memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum
+			where memOrderNum = #{memOrderNum} order by memOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+	<!-- 주문자, 배송지 정보 -->
+	<select id="selectMyOrderInfoMem" resultType="mypageVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+
+		select m.memName, replace(memAdr,'-','') as memAdr, memPhoneNum, memSpName, memSpPhoneNum1, memSpPhoneNum2, replace(memSpAdr,'-','') as memSpAdr,memOrderMsg, memDepositorName, memPaymentMethod, totalPrice
+		from  simple.memberOrder as o left join  simple.member as m on o.memId=m.memId 
+			where memOrderSeqNum = #{memOrderSeqNum} order by memOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+
+
+
+	<select id="myOrderInfoSearchList" resultMap="myOrderInfoResult">
+	<![CDATA[
+			
+			select memOrderNum, memOrderDate, purchaseConfirm, reviewConfirm, returnConfirm,  o.memOrderSeqNum, productCnt, option1value, option2value, p.productImage,p.productPrice, p.productName, p.productNum, d.deliveryStatus 
+			from  simple.memberOrder as o left  simple.join product as p on o.productNum=p.productNum 
+			join  simple.memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum  
+			where memId=#{memId} and memOrderDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by memOrderSeqNum desc
+			limit #{pageStart}, #{perPageNum};
+			;
+			
+
+	]]>
+	</select>
+
+	<select id="myOrderInfoSearchCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*) from  simple.memberOrder where memId=#{memId} and memOrderDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			
+
+	]]>
+	</select>
+
+	<update id="updatePurchaseConfirm" parameterType="String">
+		update
+		 simple.memberOrder
+		set purchaseConfirm = '구매확정(완)' where
+		memOrderSeqNum =
+		#{memOrderSeqNum};
+	</update>
+
+	<select id="selectReviewWrite" resultType="mypageVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+
+		select memOrderNum, memOrderDate, o.memOrderSeqNum, productCnt, option1Name, option2Name, option1value, option2value, p.productImage, p.productPrice, p.productName,p.productNum
+		from  simple.memberOrder as o left join  simple.product as p on o.productNum=p.productNum 
+		join  simple.memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum  where o.memOrderSeqNum=#{memOrderSeqNum};
+			
+
+	]]>
+	</select>
+
+	<select id="reviewSearchList" resultMap="productReviewResult">
+	<![CDATA[
+			
+			select reviewNum, o.productImage, reviewFile, r.productNum, r.memOrderSeqNum , productReviewTitle, reviewDate, productContent, p.productName, o.option1Name, o.option2Name, o.option1value, o.option2value 
+			from  simple.productReview as r left join  simple.product as p on r.productNum=p.productNum
+			join  simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+			where r.memId=#{memId} and reviewDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by reviewNum desc
+			limit #{pageStart}, #{perPageNum};
+			;
+			
+
+	]]>
+	</select>
+
+	<select id="reviewSearchCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*) from  simple.productReview where memId=#{memId} and reviewDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			
+
+	]]>
+	</select>
+
+	<insert id="insertNewReview" parameterType="java.util.Map">
+		<![CDATA[
+			insert into  simple.productReview(memId,productNum, memOrderSeqNum,productReviewTitle, productContent, reviewFile)
+			values(#{memId},#{productNum}, #{memOrderSeqNum}, #{productReviewTitle},  #{productContent}, #{reviewFile});
+		]]>
+
+	</insert>
+
+	<update id="updateReviewConfirm" parameterType="java.util.Map">
+		update
+		 simple.memberOrder
+		set reviewConfirm = '리뷰작성(완)' where
+		memOrderSeqNum =
+		#{memOrderSeqNum};
+	</update>
+
+	<select id="selectNewReviewNum" resultType="int">
+	<![CDATA[
+			
+			select COALESCE(max(reviewNum),0)+1 from  simple.productReview;
+			
+	
+
+	]]>
+	</select>
+
+	<select id="selectReview" resultType="mypageVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+
+			select reviewNum, o.productImage, reviewFile, r.productNum, r.memOrderSeqNum , o.memOrderDate, o.productCnt, o.productPrice, productReviewTitle, reviewDate, productContent, p.productName, o.option1value, o.option2value 
+			from  simple.productReview as r left join  simple.product as p on r.productNum=p.productNum
+			join  simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+			where reviewNum = #{reviewNum} order by reviewNum desc;
+			
+
+	]]>
+	</select>
+
+
+
+	<update id="updateReview" parameterType="java.util.Map">
+		update  simple.productReview
+		set productReviewTitle = #{productReviewTitle},
+		productContent =
+		#{productContent},
+		<if test="reviewFile!='' and reviewFile!=null">
+			reviewFile=#{reviewFile}
+		</if>
+		where reviewNum=#{reviewNum}
+	</update>
+
+	<update id="deleteReview" parameterType="java.util.Map">
+
+		delete from
+		 simple.productReview
+		where reviewNum=#{reviewNum};
+
+	</update>
+
+	<update id="updateReviewOrder" parameterType="java.util.Map">
+		update
+		 simple.memberOrder
+		set reviewConfirm = '리뷰' where
+		memOrderSeqNum =
+		#{memOrderSeqNum};
+	</update>
+
+
+	<select id="selectAllMypageReturnList"
+		resultMap="mypageReturnResult">
+	<![CDATA[
+			
+		select r.memOrderSeqNum, returnDate, returnNum, returnType, returnContent, r.currentStatus,  o.productCnt, o.option1value, o.option2value, o.productImage,o.productPrice, p.productName, o.productNum
+		from  simple.returnhistory as r left join  simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+		join  simple.product as p on r.productNum=p.productNum  where o.memId=#{memId} order by returnDate desc
+		limit #{pageStart}, #{perPageNum};
+			
+	]]>
+	</select>
+	<select id="selectMypageReturnCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memberOrder where memId=#{memId};
+			
+	]]>
+	</select>
+
+	<select id="returnSearchList" resultMap="mypageReturnResult">
+	<![CDATA[
+			
+		select r.memOrderSeqNum, returnDate, returnNum, returnType, returnContent, r.currentStatus,  o.productCnt, o.option1value, o.option2value, o.productImage,o.productPrice, p.productName, o.productNum
+		from  simple.returnhistory as r left join  simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+		join  simple.product as p on r.productNum=p.productNum
+		where r.memId=#{memId} and returnDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by returnNum desc
+		limit #{pageStart}, #{perPageNum};
+			
+			
+
+	]]>
+	</select>
+
+	<select id="returnSearchCount" resultType="int"
+		parameterType="java.util.Map">
+	<![CDATA[
+			
+			select count(*) from  simple.returnHistory where memId=#{memId} and returnDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			
+
+	]]>
+	</select>
+
+
+	<insert id="insertNewReturn" parameterType="java.util.Map">
+		<![CDATA[
+			insert into simple.returnhistory(memOrderSeqNum,memId, productNum, returnType, returnContent)
+			values(#{memOrderSeqNum},#{memId}, #{productNum}, #{returnType}, #{returnContent});
+		]]>
+
+	</insert>
+
+	<update id="updateReturnConfirm" parameterType="java.util.Map">
+		update
+		 simple.memberOrder
+		set returnConfirm = '반품신청(완)' where
+		memOrderSeqNum =
+		#{memOrderSeqNum};
+	</update>
+
+	<select id="selectReturn" resultType="mypageVO"
+		parameterType="int"> 
+	<![CDATA[
+			
+			
+		select r.memOrderSeqNum, returnDate, returnNum, returnType, returnContent, r.currentStatus,  o.productCnt, o.option1value, o.option2value, o.productImage,o.productPrice, p.productName, o.productNum
+		from  simple.returnhistory as r left join  simple.memberOrder as o on r.memOrderSeqNum=o.memOrderSeqNum 
+		join  simple.product as p on r.productNum=p.productNum  where returnNum = #{returnNum} order by returnDate desc
+		;
+			
+
+	]]>
+	</select>
+
+	<update id="updateReturn" parameterType="java.util.Map">
+		update  simple.returnHistory
+		set
+		returnType=#{returnType},
+		returnContent=#{returnContent}
+		where
+		returnNum=#{returnNum}
+	</update>
+
+	<update id="deleteReturn" parameterType="java.util.Map">
+
+		delete from
+		 simple.returnHistory
+		where returnNum=#{returnNum};
+
+	</update>
+
+	<update id="updateReturnOrder" parameterType="java.util.Map">
+		update
+		 simple.memberOrder
+		set returnConfirm = '반품' where
+		memOrderSeqNum =
+		#{memOrderSeqNum};
+	</update>
+
+	<select id="selectOrderCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memberOrder where memId=#{memId};
+			
+	]]>
+	</select>
+
+	<select id="selectReturnCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.returnhistory where memId=#{memId};
+			
+	]]>
+	</select>
+
+	<select id="selectCartCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memberCart where memId=#{memId};
+			
+	]]>
+	</select>
+
+
+
+	<select id="selectOrder_rc_Count" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memdelivery where memId=#{memId} and deliveryStatus='주문접수';
+			
+	]]>
+	</select>
+
+	<select id="selectPayment_cp_Count" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memdelivery where memId=#{memId} and deliveryStatus='결제완료';
+			
+	]]>
+	</select>
+
+	<select id="selectProduct_pp_Count" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memdelivery where memId=#{memId} and deliveryStatus='상품준비중';
+			
+	]]>
+	</select>
+
+	<select id="selectDeliveryCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memdelivery where memId=#{memId} and deliveryStatus='배송중';
+			
+	]]>
+	</select>
+
+	<select id="selectDeliver_cp_Count" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*)  from  simple.memdelivery where memId=#{memId} and deliveryStatus='배송완료';
+			
+	]]>
+	</select>
+
+	<select id="selectListInquiry" resultMap="inquiryResult">
+	<![CDATA[
+			
+		select * from  simple.inquiry where memId=#{memId} limit 1,2;
+			
+	]]>
+	</select>
+
+	<select id="selectListAsCenter" resultMap="asCenterResult">
+	<![CDATA[
+			
+		select * from  simple.asCenter where memId=#{memId} limit 1,2;
+			
+	]]>
+	</select>
+
+
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="side"
+			value="/WEB-INF/views/common/side.jsp" />
+	</definition>
+
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/main.jsp" />
+	</definition>
+
+	<definition name="join_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/join_01.jsp" />
+	</definition>
+
+	<definition name="join_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/join_02.jsp" />
+	</definition>
+
+	<definition name="join_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/join_03.jsp" />
+	</definition>
+
+	<definition name="login_01" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_01.jsp" />
+	</definition>
+
+	<definition name="login_02" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_02.jsp" />
+	</definition>
+
+	<definition name="login_03" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_03.jsp" />
+	</definition>
+
+
+	<definition name="login_04" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_04.jsp" />
+	</definition>
+
+	<definition name="login_05" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_05.jsp" />
+	</definition>
+
+	<definition name="login_06" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login_06.jsp" />
+	</definition>
+
+	<definition name="storeinfomation" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/storeinfomation.jsp" />
+	</definition>
+
+
+
+
+</tiles-definitions>

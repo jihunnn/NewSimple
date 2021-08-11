@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.member">
+
+	<resultMap id="memResult" type="memberVO">
+		<result property="memId" column="memId" />
+		<result property="memName" column="memName" />
+		<result property="memPwd" column="memPwd" />
+		<result property="memEmail" column="memEmail" />
+		<result property="memPhoneNum" column="memPhoneNum" />
+		<result property="memAdr" column="memAdr" />
+		<result property="logintype" column="logintype" />
+		<result property="memRegdate" column="memRegdate" />
+		<result property="Approval_key" column="Approval_key"/>
+	</resultMap>
+	
+	
+	<!-- 비밀번호 변경 -->
+	<update id="update_pw" parameterType="memberVO">
+		update simple.member set Approval_key = #{Approval_key} where memId = #{memId}
+	</update>
+	
+    <select id="find_Id" resultType="memberVO"
+		parameterType="memberVO">
+    <![CDATA[
+		select * from simple.member where memName=#{memName} and memPhoneNum=#{memPhoneNum};
+	]]>
+	</select>
+	<!-- 비번찾기(아이디 확인) -->
+	<select id="check_id" parameterType="String" resultType="int">
+		select count(*) from simple.member where memId = #{memId};
+	</select>
+	<!-- 비번찾기(이메일 확인) -->
+	<select id="check_email" parameterType="String" resultType="memberVO">
+		select * from simple.member where memId = #{memId};
+	</select>
+	<!-- 비번찾기(핸드폰 확인) -->
+	<select id="check_phone" parameterType="String" resultType="memberVO">
+		select * from simple.member where memId = #{memId};
+	</select>
+	<!-- 아이디 중복 확인 -->
+	<select id="selectOverlappedID" parameterType="String" resultType="String">
+	   select if(count(*) = 1,"true","false")
+	   from simple.member
+	  where memId=#{memId};
+	</select>
+	
+	
+	<update id="updatenewPassWord" parameterType="MemberVO">
+	<![CDATA[ 
+	update simple.member
+		set memPwd = #{memPwd} where memId=#{memId};
+	]]>
+	</update>
+	
+	
+	
+	<!-- 이메일 인증번호 확인 -->
+	<select id="EmailConfirm" parameterType="String" resultType="MemberVO">
+	 select *
+	  from simple.member
+	  where Approval_key=#{Approval_key};
+     </select>
+	<!-- 회원리스트 조회 -->
+	<select id="selectAllMemberList" resultMap="memResult">
+	<![CDATA[
+		select * from simple.member order by memRegdate desc
+		limit #{pageStart}, #{perPageNum};
+	]]>
+	</select>
+		<select id="selectMemberCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as memberCount from simple.member;
+			
+
+	]]>
+	</select>
+
+	<!-- 일반회원가입 -->
+	<insert id="insertMember" parameterType="memberVO">
+		<![CDATA[ 
+
+
+
+			insert into simple.member(memId, memName, memPwd, memEmail, memPhoneNum, memAdr, logintype,approval_key) 
+			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"일반",#{approval_key});
+
+		]]>
+	</insert>
+
+	<!-- 네이버아이디로로그인 후 추가정보기입 -->
+	<insert id="insertMember_naver" parameterType="memberVO">
+		<![CDATA[ 
+
+			insert into simple.member(memId, memName, memPwd, memEmail, memPhoneNum, memAdr, logintype) 
+			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"카카오");
+		]]>
+	</insert>
+
+	<!--DB에있는 네이버아이디정보로로그인(네이버로그인) -->
+	<select id="loginBynaver" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[ 
+
+		select * from simple.member
+		where memId = #{memId};
+		]]>
+	</select>
+
+     <!--DB에있는 네이버아이디정보로로그인(네이버로그인) -->
+	<select id="loginBykakao" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[ 
+
+		select * from simple.member
+		where memId = #{memId};
+		]]>
+	</select>
+	<!-- 네이버아이디로로그인 후 추가정보기입 -->
+	<insert id="insertMember_kakao" parameterType="memberVO">
+		<![CDATA[ 
+
+			insert into simple.member(memId, memName, memPwd, memEmail, memPhoneNum, memAdr, logintype) 
+			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"네이버");
+		]]>
+	</insert>
+
+	<!--로그인창에서 입력한 id와 비밀번호로 회원정보를 조회하는 sql문 -->
+	<select id="loginById" resultType="memberVO"
+		parameterType="memberVO">
+	<![CDATA[ 
+		select * from simple.member
+		where memId = #{memId} 
+	]]>
+	</select>
+
+
+
+	<!-- 회원정보수정 -->
+	<update id="updateMember" parameterType="MemberVO">
+	<![CDATA[ 
+		update simple.member
+		set memPwd = #{memPwd}, memEmail=(select concat_ws('@',#{memEmail},#{memEmail1})), memPhoneNum=(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})), memAdr=(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})) where memId=#{memId} 
+	]]>
+	</update>
+
+
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="MemberVO">
+	<![CDATA[
+	   delete from  simple.member
+	   where
+	   memId=#{memId} and memPwd=#{memPwd}
+	]]>
+	</delete>
+	
+	<!-- 회원삭제 -->
+	<delete id="deleteMemberlist" parameterType="MemberVO">
+	<![CDATA[
+	   delete from  simple.member
+	   where
+	   memId=#{memId};
+	]]>
+	</delete>
+	
+	
+	
+	<select id="memberSearchList" resultMap="memResult">
+			
+			select *
+			from simple.member 
+			where
+			<if test="searchType=='memId' and search != null and search != '' ">
+
+				memId like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+			<if test="searchType=='memName' and search != null and search != '' ">
+
+				memName like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+			<if test="searchType=='memEmail' and search != null and search != '' ">
+
+				memEmail like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+
+			<if test="searchType=='memPhoneNum' and search != null and search != '' ">
+
+				memPhoneNum like CONCAT('%', #{search}, '%')
+
+			</if>
+
+			<if test="searchType=='memAdr' and search != null and search != '' ">
+
+				memAdr like CONCAT('%', #{search}, '%')
+
+			</if>	
+			<if test="searchType=='logintype' and search != null and search != '' ">
+
+				logintype like CONCAT('%', #{search}, '%')
+
+			</if>	
+
+			limit #{pageStart}, #{perPageNum};
+			
+			
+	
+			
+			
+
+	
+	</select>
+	
+		<select id="memberSearchCount" resultType="int"
+		parameterType="java.util.Map">
+
+			
+			select count(*) 
+			from simple.member 
+			where
+				<if test="searchType=='memId' and search != null and search != '' ">
+
+				memId like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+			<if test="searchType=='memName' and search != null and search != '' ">
+
+				memName like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+			<if test="searchType=='memEmail' and search != null and search != '' ">
+
+				memEmail like CONCAT('%', #{search}, '%')
+			
+
+			</if>
+
+			<if test="searchType=='memPhoneNum' and search != null and search != '' ">
+
+				memPhoneNum like CONCAT('%', #{search}, '%')
+
+			</if>
+
+			<if test="searchType=='memAdr' and search != null and search != '' ">
+
+				memAdr like CONCAT('%', #{search}, '%')
+
+			</if>	
+			<if test="searchType=='logintype' and search != null and search != '' ">
+
+				logintype like CONCAT('%', #{search}, '%')
+
+			</if>	
+			
+
+
+	</select>
+
+</mapper>
+		
+		

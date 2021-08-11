@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="side"
+			value="/WEB-INF/views/common/side.jsp" />
+	</definition>
+
+	<definition name="admin_listmember" extends="baseLayout">
+		<put-attribute name="title" value="관리자 회원관리창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listmember.jsp" />
+	</definition>
+	<definition name="admin_listmember/memberSearch"
+		extends="baseLayout">
+		<put-attribute name="title" value="관리자 회원조회창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listmember.jsp" />
+	</definition>
+	<definition name="admin/viewMember" extends="baseLayout">
+		<put-attribute name="title" value="회원상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_detailmember.jsp" />
+	</definition>
+	<definition name="product/add_product" extends="baseLayout">
+		<put-attribute name="title" value="관리자상품등록창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/add_product.jsp" />
+	</definition>
+
+	<definition name="product/admin_listProduct"
+		extends="baseLayout">
+		<put-attribute name="title" value="관리자상품목록창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listproduct.jsp" />
+	</definition>
+	<definition name="product/admin_detailproduct"
+		extends="baseLayout">
+		<put-attribute name="title" value="관리자상품상세창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_detailproduct.jsp" />
+	</definition>
+	<definition name="product/modProduct" extends="baseLayout">
+		<put-attribute name="title" value="관리자상품수정창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/modProduct.jsp" />
+	</definition>
+
+	<definition name="product/admin_listProduct/productSearch"
+		extends="baseLayout">
+		<put-attribute name="title" value="관리자상품목록검색창" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listproduct.jsp" />
+	</definition>
+	<definition name="admin/listAllInquiry" extends="baseLayout">
+		<put-attribute name="title" value="1:1문의 리스트" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/board/Inquiry.jsp" />
+	</definition>
+	<definition name="admin/noticeForm" extends="baseLayout">
+		<put-attribute name="title" value="공지사항글쓰기폼" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_board.jsp" />
+	</definition>
+	<definition name="admin/modNotice" extends="baseLayout">
+		<put-attribute name="title" value="공지사항수정하기폼" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_board.jsp" />
+	</definition>
+
+	<definition name="admin_listorder" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listorder.jsp" />
+	</definition>
+	<definition name="admin/modQuestion" extends="baseLayout">
+		<put-attribute name="title" value="자주묻는질문글쓰기폼" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_question.jsp" />
+	</definition>
+	<definition name="admin/inquiryAnswerForm"
+		extends="baseLayout">
+		<put-attribute name="title" value="1:1문의답변폼" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_Answer.jsp" />
+	</definition>
+	<definition name="admin/viewInquiryAnswer"
+		extends="baseLayout">
+		<put-attribute name="title" value="1:1문의답변상세페이지" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_Answer.jsp" />
+	</definition>
+
+
+</tiles-definitions>	
