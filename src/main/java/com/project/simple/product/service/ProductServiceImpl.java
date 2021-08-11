@@ -169,12 +169,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Map<String,Object> selectOption1Value(Map<String,Object> option1Value) throws Exception {
 		List<String> option1 = productDAO.selectOption1Value(option1Value);
+
 		if(option1.size()>1) {
 		for(int i=0; i<option1.size();i++) {
-		option1Value.put("option1Value"+i, option1.get(i));
+		option1Value.put(option1.get(i), option1.get(i));
 		}
 		}else {
-			option1Value.put("option1Value",option1.get(0));
+			option1Value.put(option1.get(0),option1.get(0));
 		}
 		return option1Value;
 	}

@@ -163,6 +163,10 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public List<String> selectOption1Value(Map<String,Object> option1Value) throws DataAccessException {
 		List<String> selectOptionValue = sqlSession.selectList("mapper.product.selectOption1Value",option1Value);
+		
+		if(selectOptionValue.size() == 0) {
+			selectOptionValue = sqlSession.selectList("mapper.product.selectOption2Value",option1Value);
+		}
 
 		return selectOptionValue;
 	}
