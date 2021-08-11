@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import com.project.simple.admin.vo.AdminVO;
 import com.project.simple.board.vo.ArticleVO;
 import com.project.simple.member.vo.MemberVO;
+import com.project.simple.order.vo.OrderVO;
 import com.project.simple.page.Criteria;
 import com.project.simple.product.vo.ProductVO;
 
@@ -39,6 +40,7 @@ public interface AdminService {
 
 	public void admin_selectremoveMember(String memId) throws Exception ;
 	
+	public OrderVO removeMemOrder(int memOrderNum) throws Exception;
 	
 
 

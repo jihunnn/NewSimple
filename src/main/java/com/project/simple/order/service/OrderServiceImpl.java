@@ -88,6 +88,13 @@ public class OrderServiceImpl implements OrderService {
 		OrderVO orderVO = orderDAO.selectmemberOrderInfo(memOrderNum);
 		return orderVO;
 	}
+	
+	@Override
+	public int adminModMemOrder(OrderVO orderVO) throws Exception {
+		return orderDAO.updateAdminModMemOrder(orderVO);
+		
+	}
+
 
 }
 	

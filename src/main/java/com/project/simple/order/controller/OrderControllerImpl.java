@@ -1,5 +1,6 @@
 package com.project.simple.order.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -391,6 +392,45 @@ public class OrderControllerImpl implements OrderController {
 			mav.addObject("order", orderVO);
 			return mav;
 		}
+		//관리자 주문내역 수정화면
+				@RequestMapping(value = "/admin_listorder/admin_ModVeiwMemorder.do", method = RequestMethod.GET)
+				public ModelAndView admin_ModVeiwMemorder(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request,
+						HttpServletResponse response) throws Exception {
+					String viewName = (String) request.getAttribute("viewName");
+					HttpSession session = request.getSession();
+		            
+			
+					ModelAndView mav = new ModelAndView();
+					mav.setViewName(viewName);
+				
+					return mav;
+				}
+				
+				//관리자 주문내역 수정
+				@RequestMapping(value = "/admin_listorder/admin_ModMemorder.do", method = RequestMethod.POST)
+				private void admin_ModMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+						HttpServletResponse response) throws Exception {
+					response.setContentType("text/html;charset=utf-8");
+					PrintWriter out = response.getWriter();
+					String viewName = (String) request.getAttribute("viewName");
+					HttpSession session = request.getSession();
+					int result = 0;
+					result = orderService.adminModMemOrder(orderVO);
+					System.out.println(result);
+					if(result != 0) {
+						session.removeAttribute("member");
+						session.removeAttribute("order");
+						session.removeAttribute("OrderList");
+						out.println("<script>");
+						out.println("alert('회원 주문 정보를 수정하였습니다.');");
+						out.println("location.href = '/simple/admin_listorder.do';");
+						out.println("</script>");
+						out.close();
+					}
+
+					
+				}
+
 
 	@Override
 	@RequestMapping(value = "/admin_listorder/orderSearch.do", method = { RequestMethod.GET, RequestMethod.POST })

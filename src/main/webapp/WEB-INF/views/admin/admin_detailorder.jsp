@@ -134,49 +134,27 @@ h4 {
 						<tr style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
 							<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-							<th scope="col"><input type="text" name="memName"
-									value="${member.memName}" disabled
-									style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></th>
+							<th scope="col">${member.memName}</th>
 						</tr>
 						<tr style="border-bottom: 1px solid #eeeeee;">
 							<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
-							<th scope="col"><input type="text" name="memAdr"
-									value="<%=memAdr[0]%>" disabled id="sample6_postcode" disabled
-									style="font-size: 14px; border: 1px solid #dcdcdc; width: 211px; height: 36px;">
+							<th scope="col"><%=memAdr[0]%>
 									&nbsp;&nbsp;&nbsp;
 									<p>
-										<br> <input type="text" name="memAdr1"
-											value="<%=memAdr[1]%>" disabled id="sample6_address" readonly
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+										<br><%=memAdr[1]%>
 
 									</p>
 									<p>
-										<input type="text" name="memAdr2" id="sample6_address2"
-											value="<%=memAdr[2]%>" readonly disabled
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
-
-
+										<%=memAdr[2]%>
 									</p>
 							</th>
 						</tr>
 						<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처</th>
-								<th scope="col"><select name="memPhoneNum" disabled
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="<%=memPhoneNum[0]%>"><%=memPhoneNum[0]%></option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-										<option value="019">019</option>
-										<option value="010">010</option>
-								</select> - <input type="text" name="memPhoneNum1"
-									value="<%=memPhoneNum[1]%>" readonly disabled
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input type="text" name="memPhoneNum2"
-									value="<%=memPhoneNum[2]%>" readonly disabled
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+								<th scope="col"><%=memPhoneNum[0]%> - <%=memPhoneNum[1]%>
+									- <%=memPhoneNum[2]%></th>
 							</tr>
 					</tbody>
 				</table>
@@ -194,64 +172,33 @@ h4 {
 						<tr style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
 							<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-							<th scope="col"><input type="text" name="memSpName"
-									value="${order.memSpName }" disabled
-									style="font-size: 14px; width: 326px; border: 1px solid #dcdcdc; height: 36px;"></th>
+							<th scope="col">${order.memSpName }</th>
 						</tr>
-						<tr>
-						<th style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);"><a
+						<tr style="border-bottom: 1px solid #eeeeee;">
+						<th ><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
-						    <th scope="col">
-							<input type="text" name="memSpAdr"
-									value="<%=memSpAdr[0]%>" disabled id="sample6_postcode" disabled
-									style="font-size: 14px; border: 1px solid #dcdcdc; width: 211px; height: 36px;">
+						    <th scope="col"><%=memSpAdr[0]%>
 									&nbsp;&nbsp;&nbsp;
 									<p>
-										<br> <input type="text" name="memSpAdr1"
-											value="<%=memSpAdr[1]%>" disabled id="sample6_address" readonly
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+										<br> <%=memSpAdr[1]%>
 
 									</p>
 									<p>
-										<input type="text" name="memSpAdr2" id="sample6_address2"
-											value="<%=memSpAdr[2]%>" readonly disabled
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
-
-
+										<%=memSpAdr[2]%>
 									</p>
 							</th>
 						<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처1</th>
-								<th scope="col"><select name="memSpPhoneNum1_0" disabled
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="<%=memSpPhoneNum[0]%>"><%=memSpPhoneNum[0]%></option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-										<option value="019">019</option>
-										<option value="010">010</option>
-								</select> - <input disabled type="text" name="memSpPhoneNum1_1" value="<%=memSpPhoneNum[1]%>"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input disabled type="text" name="memSpPhoneNum1_2" value="<%=memSpPhoneNum[2]%>"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+								<th scope="col"><%=memSpPhoneNum[0]%> - <%=memSpPhoneNum[1]%>
+									- <%=memSpPhoneNum[2]%></th>
 							</tr>
 			
 		
 				                <tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
-								<th scope="col"><select name="memSpPhoneNum2_0" disabled
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="<%=memSpPhoneNum2[0]%>"><%=memSpPhoneNum2[0]%></option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-										<option value="019">019</option>
-										<option value="010">010</option>
-								</select> - <input disabled type="text" name="memSpPhoneNum2_1" value="<%=memSpPhoneNum2[1]%>"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input disabled type="text" name="memSpPhoneNum2_2" value="<%=memSpPhoneNum2[2]%>"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+								<th scope="col"><%=memSpPhoneNum2[0]%> - <%=memSpPhoneNum2[1]%>
+									- <%=memSpPhoneNum2[2]%></th>
 							   </tr>
 		
 							<tr style="border-bottom: 1px solid #eeeeee;">
@@ -262,9 +209,7 @@ h4 {
 							</tr>
 							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-								<th scope="col"><input name="memDepositorName" type="text" disabled value="${order.memDepositorName}"
-									value=""
-									style="font-size: 14px; border: 1px solid #dcdcdc; height: 36px; width: 326px;"></th>
+								<th scope="col">${order.memDepositorName}</th>
 							</tr>
 					
 					</tbody>
@@ -276,7 +221,7 @@ h4 {
 
 				<div style="text-align: center">
 					<input type="button" class="btn btn-secondary" value="수정하기"
-						onclick="iamport();"
+						onclick="location.href='${contextPath}/admin_listorder/admin_ModVeiwMemorder.do?memOrderNum=${order.memOrderNum}'"
 						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
 					<button type="submit" class="btn btn-secondary"
