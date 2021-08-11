@@ -209,8 +209,11 @@
 	            	alert("에러가 발생했습니다."+data);
 	            },
 	            success : function(data){
-	            	var obj = JSON.parse(data);
-	            	alert(obj.option1Value);
+
+	    			var jList = data["list"];
+	    			   alert(jList[0]);
+
+	            	
 
 	         }
 	             
@@ -431,6 +434,9 @@
 						</div>
 					</section>
 				</div>
+				<a name="test" id="test">
+				
+				</a>
 				<div class="container" style="margin-top: 200px;">
 					<section class="Easy-sgin-in-wrap4">
 						<ul class="sign-button-list4">
