@@ -195,6 +195,29 @@
 		form.submit();
 	}
 	
+	function optionSelect(option1Name) {
+
+	      $.ajax({
+	             
+	            type : "GET",
+	            url : "${contextPath}/product/option1Value.do",
+	            data:{
+	            	option1Name:option1Name
+	            },	
+	            dataType : "json",
+	            error : function(data){
+	            	alert("에러가 발생했습니다."+data);
+	            },
+	            success : function(data){
+	            	var obj = JSON.parse(data); 
+	            	alert(obj);
+
+	            }
+	             
+	        });
+
+	}
+	
 
 </script>
 <script type="text/javascript">
