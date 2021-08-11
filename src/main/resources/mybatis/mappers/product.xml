@@ -479,7 +479,7 @@
 	<select id="selectOption2Value" parameterType="java.util.HashMap" resultType="String"> 
 	<![CDATA[
 			
-			select distinct option2Value from simple.detailoption;
+			select distinct option2Value from simple.detailoption where option2Name=#{option1Name};
 			
 	]]>
 	</select>

@@ -880,14 +880,15 @@ return mav;
 	// 상품옵션 value 가져오기
 	@RequestMapping(value = "product/option1Value.do", method = RequestMethod.GET)
 	@ResponseBody
-	private String optionValue(@RequestParam("option1Name") String option1Name, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private Map<String,Object> optionValue(@RequestParam("option1Name") String option1Name, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			
 		Map<String,Object> option1Value = new HashMap<String,Object>();
 		option1Value.put("option1Name", option1Name);
 		productService.selectOption1Value(option1Value);
-		System.out.println(option1Value);
 
-		return JSONObject.fromObject(option1Value).toString();
+		option1Value.remove("option1Name");
+
+		return option1Value;
 	}
 
 
