@@ -155,6 +155,12 @@ public class AdminServiceImpl implements AdminService {
 		return orderVO;
 	}
 
+	@Override
+	public void admin_selectremoveMemOrder(String memOrderNum) throws Exception {
+		adminDAO.deleteSelectRemoveMemOrder(memOrderNum);
+		
+	}
+
 
 
 }
