@@ -80,6 +80,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_listorder.jsp" />
 	</definition>
+	<definition name="admin_listorder/orderSearch" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_listorder.jsp" />
+	</definition>
 	<definition name="admin_listorder/detailorder" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_detailorder.jsp" />

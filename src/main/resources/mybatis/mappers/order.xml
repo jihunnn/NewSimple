@@ -121,7 +121,7 @@
 
 	<select id="orderSearchList" resultMap="orderResult">
 			select *
-			from simple.memberorder 
+			from (select * from simple.memberorder group by memOrderNum) as memOrder 
 			where
 			<if test="searchType=='memId' and search != null and search != '' ">
 				memId like CONCAT('%', #{search}, '%')			
@@ -144,6 +144,7 @@
 	<select id="orderSearchCount" resultType="int"
 		parameterType="java.util.Map">
 			select count(*) 
+			from (select * from simple.memberorder group by memOrderNum) as memOrder
 			where
 			<if test="searchType=='memId' and search != null and search != '' ">
 				memId like CONCAT('%', #{search}, '%')
@@ -160,7 +161,8 @@
 			
 			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
 				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
-			</if>	
+			</if>
+	
 	</select>
 
 	<select id="selectOrderCount" resultType="int"

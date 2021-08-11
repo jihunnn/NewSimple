@@ -668,11 +668,26 @@ public class AdminControllerImpl implements AdminController {
 			
 			ModelAndView mav = new ModelAndView();
 			orderVO = adminService.removeMemOrder(memOrderNum);
-			mav.addObject("orderVO", orderVO);
+			mav.addObject("order", orderVO);
+			System.out.println(memOrderNum);
 			mav.setViewName("redirect:/admin_listorder.do");
 			return mav;
 		}
-	
+	@RequestMapping(value = "/admin_listorder/admin_selectremoveMemOrder.do",method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView admin_selectremoveMemOrder(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+		
+			adminService.admin_selectremoveMemOrder(ajaxMsg[i]);
+		}
+
+		mav.setViewName("redirect:/admin_listorder.do");
+		return mav;
+	}
 	
 
 
