@@ -34,6 +34,7 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public int insertProduct(Map productMap)throws DataAccessException{
 		int result=sqlSession.insert("mapper.product.insertProduct", productMap);
+		sqlSession.insert("mapper.product.insertDetailOption", productMap);
 		return result;
 	}
 	
@@ -161,11 +162,11 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//상품 옵션 값 선택
 	@Override
-	public List<String> selectOption1Value(Map<String,Object> option1Value) throws DataAccessException {
-		List<String> selectOptionValue = sqlSession.selectList("mapper.product.selectOption1Value",option1Value);
+	public List<String> selectOptionValue(Map<String,Object> optionValue) throws DataAccessException {
+		List<String> selectOptionValue = sqlSession.selectList("mapper.product.selectOption1Value",optionValue);
 		
 		if(selectOptionValue.size() == 0) {
-			selectOptionValue = sqlSession.selectList("mapper.product.selectOption2Value",option1Value);
+			selectOptionValue = sqlSession.selectList("mapper.product.selectOption2Value",optionValue);
 		}
 
 		return selectOptionValue;
