@@ -209,10 +209,10 @@
 	            	alert("에러가 발생했습니다."+data);
 	            },
 	            success : function(data){
-	            	var obj = JSON.parse(data); 
-	            	alert(obj);
+	            	var obj = JSON.parse(data);
+	            	alert(obj.option1Value);
 
-	            }
+	         }
 	             
 	        });
 
