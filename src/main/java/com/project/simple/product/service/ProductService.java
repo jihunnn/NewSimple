@@ -38,7 +38,7 @@ public interface ProductService {
 	public void modQuestion(ProductVO question) throws Exception;
 	
 	public List<String> selectOptionName() throws Exception ;
-	public Map<String,Object> selectOption1Value(Map<String,Object> option1Value) throws Exception;
+	public Map<String,Object> selectOptionValue(Map<String,Object> option1Value) throws Exception;
 
 
 

@@ -27,7 +27,7 @@
 
 #LeftBox {
 	width: 600px;
-	height: 620px;
+	height: 820px;
 	border: 1px solid #eeeeee;
 	margin: 10 10 10 10;
 }
@@ -194,15 +194,16 @@
 
 		form.submit();
 	}
+	<!-- option1 선택값 가져오기-->
+	function option1Select(optionName) {
 
-	function optionSelect(option1Name) {
 		$('#option1value').children('option').remove(); //기존 option value 삭제
 		$.ajax({
 
 			type : "GET",
-			url : "${contextPath}/product/option1Value.do",
+			url : "${contextPath}/product/optionValue.do",
 			data : {
-				option1Name : option1Name
+				optionName : optionName
 			},
 			dataType : "json",
 			error : function(data) {
@@ -223,15 +224,47 @@
 
 	}
 	
-	 function optionNameDiect(obj){ //옵션 이름 직접입력 버튼 클릭시 input box change
-		 $("#option"+obj+"Name").replaceWith("<input type = 'text' id='option"+obj+"Name' name='option"+obj+"Name' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
-            }
-	 
-	 function optionValueDiect(obj){ //옵션 값 직접입력 버튼 클릭시 input box change
-		 $("#option"+obj+"value").replaceWith("<input type = 'text' id='option"+obj+"value' name='option"+obj+"value' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
-            }
-       
-   
+	<!-- option2 선택값 가져오기-->
+	function option2Select(optionName) {
+
+		$('#option2value').children('option').remove(); //기존 option value 삭제
+		$.ajax({
+
+			type : "GET",
+			url : "${contextPath}/product/optionValue.do",
+			data : {
+				optionName : optionName
+			},
+			dataType : "json",
+			error : function(data) {
+				alert("에러가 발생했습니다." + data);
+			},
+			success : function(data) {
+
+				$.each(data, function(index, item) { // key=index,  value=item  
+					let option1value = document.querySelector("#option2value");
+					$(option2value).append(
+							"<option value='"+ item+"'>" + item + "</option>");
+
+				});
+
+			}
+
+		});
+
+	}
+
+	function optionNameDiect(obj) { //옵션 이름 직접입력 버튼 클릭시 input box change
+		$("#option" + obj + "Name")
+				.replaceWith(
+						"<input type = 'text' id='option"+obj+"Name' name='option"+obj+"Name' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
+	}
+
+	function optionValueDiect(obj) { //옵션 값 직접입력 버튼 클릭시 input box change
+		$("#option" + obj + "value")
+				.replaceWith(
+						"<input type = 'text' id='option"+obj+"value' name='option"+obj+"value' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
+	}
 </script>
 <script type="text/javascript">
 	$('document')
@@ -405,45 +438,62 @@
 								</div>
 								<div style="padding-left: 77px;">
 
-									<label style="margin-right: 45px;">상품옵션1 이름</label> <select
-										onchange="optionSelect(this.value)" name="option1Name"
+									<label style="margin-right: 43px;">옵션1 이름</label> <select
+										onchange="option1Select(this.value)" name="option1Name"
 										id="option1Name"
 										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+										<option disabled selected="selected">선택</option>
 										<c:forEach var="optionName" items="${optionName}">
 											<option>${optionName}</option>
 										</c:forEach>
 									</select>
-									<button type="button"
-										onclick="optionNameDiect(1)"
-										style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
-										class="btn-secondary btn-xs" >직접입력</button>
+									<button type="button" onclick="optionNameDiect(1)"
+										style="margin-top:10px; height:38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+										class="btn-secondary btn-xs">직접입력</button>
 								</div>
 								<div style="padding-left: 77px;">
-									<label style="margin-right: 45px;">상품옵션1 값</label> <select
+									<label style="margin-right: 57px;">옵션1 값</label> <select
 										name="option1value" id="option1value"
 										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
 
 									</select>
-									<button type="button"
-										onclick="optionNameDiect(1)"
-										style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
-										class="btn-secondary btn-xs" >직접입력</button>
+									<button type="button" onclick="optionValueDiect(1)"
+										style="margin-top:10px; height:38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+										class="btn-secondary btn-xs">직접입력</button>
 								</div>
 								<div style="padding-left: 77px;">
-									<label style="margin-right: 45px;">금액추가</label> <select name=""
-										id=""
-										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
-										<option></option>
-									</select>
+									<label style="margin-right: 15px; ">옵션1 금액추가</label> <input
+										name="option1Price" id="option1Price"
+										style="font-size: 14px; margin-top: 10px; margin-bottom:none !important; border: 1px solid #dcdcdc; width: 250px; height: 36px;" /><span style="font-size:10px; margin-top:20px; margin-right:55px; color:gray; float:right;">숫자만 입력해주세요</span>
+
 								</div>
 								<div style="padding-left: 77px;">
-									<label style="margin-right: 45px;">상품옵션2</label><select name=""
-										id=""
+									<label style="margin-right: 43px;">옵션2 이름</label><select
+										name="option2Name" id="option2Name" onchange="option2Select(this.value)"
 										style="font-size: 14px; margin-top: 10px; margin-left: 3px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+										<option disabled selected="selected">선택</option>
 										<c:forEach var="optionName" items="${optionName}">
 											<option>${optionName}</option>
 										</c:forEach>
 									</select>
+									<button type="button" onclick="optionNameDiect(2)"
+										style="margin-top:10px; height:38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+										class="btn-secondary btn-xs">직접입력</button>
+								</div>
+								<div style="padding-left: 77px;">
+									<label style="margin-right: 57px;">옵션2 값</label> <select
+										name="option2value" id="option2value"
+										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+									</select>
+									<button type="button" onclick="optionValueDiect(2)"
+										style="margin-top:10px; height:38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+										class="btn-secondary btn-xs">직접입력</button>
+								</div>
+								<div style="padding-left: 77px;">
+									<label style="margin-right: 15px;">옵션2 금액추가</label> <input
+										name="option2Price" id="option2Price"
+										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" /><span style="font-size:10px; margin-top:20px; margin-right:55px; color:gray; float:right;">숫자만 입력해주세요</span>
+
 								</div>
 							</form>
 
@@ -451,8 +501,7 @@
 						</div>
 					</section>
 				</div>
-				<a name="test" id="test"> </a>
-				<div class="container" style="margin-top: 200px;">
+				<div class="container">
 					<section class="Easy-sgin-in-wrap4">
 						<ul class="sign-button-list4">
 							<li style="margin-left: 50px;"><button

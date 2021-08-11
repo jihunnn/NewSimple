@@ -167,17 +167,17 @@ public class ProductServiceImpl implements ProductService {
 
 	// 상품등록 옵션1값 선택
 	@Override
-	public Map<String,Object> selectOption1Value(Map<String,Object> option1Value) throws Exception {
-		List<String> option1 = productDAO.selectOption1Value(option1Value);
+	public Map<String,Object> selectOptionValue(Map<String,Object> optionValue) throws Exception {
+		List<String> option = productDAO.selectOptionValue(optionValue);
 
-		if(option1.size()>1) {
-		for(int i=0; i<option1.size();i++) {
-		option1Value.put(option1.get(i), option1.get(i));
+		if(option.size()>1) {
+		for(int i=0; i<option.size();i++) {
+			optionValue.put(option.get(i), option.get(i));
 		}
 		}else {
-			option1Value.put(option1.get(0),option1.get(0));
+			optionValue.put(option.get(0),option.get(0));
 		}
-		return option1Value;
+		return optionValue;
 	}
 
 }
