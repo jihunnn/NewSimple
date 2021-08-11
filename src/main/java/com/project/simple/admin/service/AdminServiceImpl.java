@@ -16,6 +16,7 @@ import com.project.simple.admin.vo.AdminVO;
 import com.project.simple.board.vo.ArticleVO;
 import com.project.simple.member.vo.MemberVO;
 import com.project.simple.mypage.vo.MypageVO;
+import com.project.simple.order.vo.OrderVO;
 import com.project.simple.page.Criteria;
 import com.project.simple.product.vo.ProductVO;
 
@@ -146,6 +147,14 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.deleteSelectRemoveMember(memId);
 		
 	}
+	
+	@Override
+	public OrderVO removeMemOrder(int memOrderNum) throws Exception {
+		OrderVO orderVO = adminDAO.deleteMemOrder(memOrderNum);
+		
+		return orderVO;
+	}
+
 
 
 }

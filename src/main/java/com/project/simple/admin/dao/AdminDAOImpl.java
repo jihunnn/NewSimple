@@ -13,6 +13,7 @@ import com.project.simple.admin.vo.AdminVO;
 import com.project.simple.board.vo.ArticleVO;
 import com.project.simple.member.vo.MemberVO;
 import com.project.simple.mypage.vo.MypageVO;
+import com.project.simple.order.vo.OrderVO;
 import com.project.simple.page.Criteria;
 import com.project.simple.product.vo.ProductVO;
 
@@ -140,6 +141,12 @@ public class AdminDAOImpl implements AdminDAO {
 	public void deleteSelectRemoveMember(String memId) throws DataAccessException {
 		sqlSession.delete("mapper.admin.deleteSelectRemoveMember",memId);
 		
+	}
+	
+	@Override
+	public OrderVO deleteMemOrder(int memOrderNum) throws DataAccessException {
+		OrderVO result = sqlSession.selectOne("mapper.admin.deleteMemOrder",memOrderNum);
+		return result;
 	}
 
 }

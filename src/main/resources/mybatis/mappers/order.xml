@@ -98,17 +98,26 @@
 
 	]]>
 	</select>
-	  <select id="selectmemberOrderInfo" resultType="orderVO" parameterType="int"> 
+	   <select id="selectmemberOrderInfo" resultType="orderVO" parameterType="int"> 
 	<![CDATA[
 			
 
-		select distinct memSpName, memSpAdr, memSpPhoneNum1, memSpPhoneNum2, memOrderMsg, memDepositorName, memPaymentMethod,memOrderDate
+		select distinct memOrderNum,memSpName, memSpAdr, memSpPhoneNum1, memSpPhoneNum2, memOrderMsg, memDepositorName, memPaymentMethod,memOrderDate
 		from simple.memberOrder 
 		where memOrderNum = #{memOrderNum} order by memOrderSeqNum desc;
 			
 
 	]]>
 	</select>
+	<!-- 관리자 회원 주문정보 수정 -->
+	<update id="updateAdminModMemOrder" parameterType="orderVO" >
+	<![CDATA[ 
+		update simple.memberorder
+		set memSpName = #{memSpName}, memSpAdr = (select concat_ws('-',#{memSpAdr},#{memSpAdr1},#{memSpAdr2})),memSpPhoneNum1= (select concat_ws('-',#{memSpPhoneNum1_0},#{memSpPhoneNum1_1},#{memSpPhoneNum1_2})), memSpPhoneNum2=(select concat_ws('-',#{memSpPhoneNum2_0},#{memSpPhoneNum2_1},#{memSpPhoneNum2_2})), 
+		memDepositorName = #{memDepositorName},memOrderMsg = #{memOrderMsg}
+		where memOrderNum=#{memOrderNum}; 
+	]]>
+	</update>
 
 	<select id="orderSearchList" resultMap="orderResult">
 			select *

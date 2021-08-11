@@ -34,6 +34,7 @@ import com.project.simple.admin.service.AdminService;
 import com.project.simple.admin.vo.AdminVO;
 import com.project.simple.board.vo.ArticleVO;
 import com.project.simple.member.vo.MemberVO;
+import com.project.simple.order.vo.OrderVO;
 import com.project.simple.page.Criteria;
 import com.project.simple.page.PageMaker;
 import com.project.simple.product.vo.ProductVO;
@@ -53,6 +54,10 @@ public class AdminControllerImpl implements AdminController {
 	private MemberVO memberVO;
 
 	private ArticleVO articleVO;
+	
+	@Autowired
+	private OrderVO orderVO;
+
 
 	// @Override
 	@RequestMapping(value = "/admin/login.do", method = RequestMethod.POST)
@@ -657,7 +662,16 @@ public class AdminControllerImpl implements AdminController {
 		return mav;
 	}
 	
-
+	//관리자 회원주문 삭제
+		@RequestMapping(value = "/admin_listorder/removeMemOrder.do",method = { RequestMethod.GET, RequestMethod.POST })
+		private ModelAndView removeMemOrder(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request, HttpServletResponse response)  throws Exception{
+			
+			ModelAndView mav = new ModelAndView();
+			orderVO = adminService.removeMemOrder(memOrderNum);
+			mav.addObject("orderVO", orderVO);
+			mav.setViewName("redirect:/admin_listorder.do");
+			return mav;
+		}
 	
 	
 

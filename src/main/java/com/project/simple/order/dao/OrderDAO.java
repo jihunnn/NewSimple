@@ -23,5 +23,5 @@ public interface OrderDAO {
 	public List<OrderVO> selectmemOrderList(int memOrderNum) throws DataAccessException;
 	public MemberVO selectmemberOrderId(int memOrderNum) throws DataAccessException;
 	public OrderVO selectmemberOrderInfo(int memOrderNum) throws DataAccessException;
-
+	public int updateAdminModMemOrder(OrderVO orderVO)throws DataAccessException;
 }

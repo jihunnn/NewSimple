@@ -80,6 +80,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_listorder.jsp" />
 	</definition>
+	<definition name="admin_listorder/detailorder" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_detailorder.jsp" />
+	</definition>
+	<definition name="admin_listorder/admin_ModVeiwMemorder" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_modmemorder.jsp" />
+	</definition>
+	
 	<definition name="admin/modQuestion" extends="baseLayout">
 		<put-attribute name="title" value="자주묻는질문글쓰기폼" />
 		<put-attribute name="body"

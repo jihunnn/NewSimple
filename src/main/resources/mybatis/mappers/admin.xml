@@ -230,5 +230,14 @@
 	      where memId=#{memId};
     	]]>
 	</delete>
+	
+	<!-- 관리자 회원 주문 삭제 -->
+	<delete id="deleteMemOrder" parameterType="orderVO">
+	<![CDATA[
+	   delete from  simple.memberorder
+	   where
+	   memOrderNum=#{memOrderNum};
+	]]>
+	</delete>
 
 </mapper>
