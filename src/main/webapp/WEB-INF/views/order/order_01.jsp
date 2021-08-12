@@ -223,7 +223,7 @@ h4 {
 		
 		
 		//가맹점 식별코드
-		IMP.init('imp44341689');
+	
 		IMP.request_pay({
 			pg : 'inicis',
 			pay_method : 'card',
@@ -322,6 +322,7 @@ h4 {
 								<th scope="col" width="100">수량</th>
 								<th scope="col" width="80">배송비</th>
 								<th scope="col" width="150">가격</th>
+								<th scope="col" width="80">합계</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -342,6 +343,7 @@ h4 {
 											</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
+											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
 										</tr>
 									</tbody>
@@ -362,6 +364,7 @@ h4 {
 										</th>
 										<th scope="col" style="vertical-align: middle;">${memOrder.productCnt}개</th>
 										<th scope="col" style="vertical-align: middle;">${memOrder.deliverycharge}</th>
+										<th scope="col" style="vertical-align: middle;">${memOrder.productPrice}원</th>
 										<th scope="col" style="vertical-align: middle;">${memOrder.totalPrice}원</th>
 									</tr>
 								</tbody>

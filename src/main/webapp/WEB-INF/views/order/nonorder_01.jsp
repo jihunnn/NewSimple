@@ -28,106 +28,155 @@ h4 {
 }
 </style>
 <script type="text/javascript">
-	//주문자
-	function Check_Order() {
+	//유효성검사 후 주문결제진행
+	//PG사 연동(결제시스템 IMPORT)
+	function iamport() {
+		var IMP = window.IMP;
 		var form = document.CheckOrder;
+		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
 
-		if (form.user_name.value == "") {
+		if (form.nonMemName.value == "") {
 			alert("주문자정보의 이름을 입력하지 않았습니다.")
-			form.user_name.focus();
+			form.nonMemName.focus();
 			return false;
 		}
-
-		if (form.address1.value == "") {
+		if (form.nonmemAdr.value == "") {
 			alert("주문자정보의 주소를 입력하지 않았습니다.")
-			form.address1.focus();
+			form.nonmemAdr.focus();
 			return false;
 		}
-		if (form.phone1.value == "") {
+		if (form.nonmemAdr1.value == "") {
+			alert("주문자정보의 주소를 입력하지 않았습니다.")
+			form.nonmemAdr1.focus();
+			return false;
+		}
+		if (form.nonmemAdr2.value == "") {
+			alert("주문자정보의 주소를 입력하지 않았습니다.")
+			form.nonmemAdr2.focus();
+			return false;
+		}
+		if (form.nonmemPhoneNum.value == "") {
 			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone1.focus();
+			form.nonmemPhoneNum.focus();
 			return false;
 		}
 
-		if (form.phone2.value == "") {
+		if (form.nonmemPhoneNum1.value == "") {
 			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone2.focus();
+			form.nonmemPhoneNum1.focus();
 			return false;
 		}
-
-		for (var i = 0; i < form.phone2.value.length; i++) {
-			ch = form.phone2.value.charAt(i)
+		for (var i = 0; i < form.nonmemPhoneNum1.value.length; i++) {
+			ch = form.nonmemPhoneNum1.value.charAt(i)
 			if (!(ch >= '0' && ch <= '9')) {
 				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.phone2.focus();
-				form.phone2.select();
+				form.nonmemPhoneNum1.focus();
+				form.nonmemPhoneNum1.select();
 				return false;
 			}
 		}
-		if (form.phone3.value == "") {
+		if (form.nonmemPhoneNum2.value == "") {
 			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.phone3.focus();
+			form.nonmemPhoneNum2.focus();
 			return false;
 		}
-		for (var i = 0; i < form.phone3.value.length; i++) {
-			ch = form.phone3.value.charAt(i)
+		for (var i = 0; i < form.nonmemPhoneNum2.value.length; i++) {
+			ch = form.nonmemPhoneNum2.value.charAt(i)
 			if (!(ch >= '0' && ch <= '9')) {
 				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.phone3.focus();
-				form.phone3.select();
+				form.nonmemPhoneNum2.focus();
+				form.nonmemPhoneNum2.select();
 				return false;
 			}
 		}
-		if (form.user_SpName.value == "") {
-			alert("배송정보의 이름을 입력하지 않았습니다.")
-			form.user_Spname.focus();
+		if (form.nonMemSpName.value == "") {
+			alert("배송받는분 이름을 입력하지 않았습니다.")
+			form.nonMemSpName.focus();
+			return false;
+		}
+		if (form.nonMemSpAdr.value == "") {
+			alert("배송지 주소를 입력하지 않았습니다.")
+			form.nonMemSpAdr.focus();
+			return false;
+		}
+		if (form.nonMemSpAdr1.value == "") {
+			alert("배송지 주소를 입력하지 않았습니다.")
+			form.nonMemSpAdr1.focus();
+			return false;
+		}
+		if (form.nonMemSpAdr2.value == "") {
+			alert("배송지 주소를 입력하지 않았습니다.")
+			form.nonMemSpAdr2.focus();
+			return false;
+		}
+		if (form.nonMemSpPhoneNum1_0.value == "") {
+			alert("배송받는분 연락처를 입력하지 않았습니다.")
+			form.nonMemSpPhoneNum1_0.focus();
 			return false;
 		}
 
-		if (form.address1_1.value == "") {
-			alert("배송정보의 주소를 입력하지 않았습니다.")
-			form.addr1.focus();
+		if (form.nonMemSpPhoneNum1_1.value == "") {
+			alert("배송받는분 연락처를 입력하지 않았습니다.")
+			form.nonMemSpPhoneNum1_1.focus();
 			return false;
 		}
-		if (form.phone1_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone1_Sp.focus();
-			return false;
-		}
-		if (form.phone2_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone2_Sp.focus();
-			return false;
-		}
-
-		for (var i = 0; i < form.phone2_Sp.value.length; i++) {
-			ch = form.phone2_Sp.value.charAt(i)
+		for (var i = 0; i < form.nonMemSpPhoneNum1_1.value.length; i++) {
+			ch = form.nonMemSpPhoneNum1_1.value.charAt(i)
 			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송정보의 연락처1은 숫자만 입력가능합니다.")
-				form.phone2_Sp.focus();
-				form.phone2_Sp.select();
+				alert("배송받는분 연락처는 숫자만 입력가능합니다.")
+				form.nonMemSpPhoneNum1_1.focus();
+				form.nonMemSpPhoneNum1_1.select();
 				return false;
 			}
 		}
-		if (form.phone3_Sp.value == "") {
-			alert("배송정보의 연락처1을 입력하지 않았습니다.")
-			form.phone3_Sp.focus();
+		if (form.nonMemSpPhoneNum1_2.value == "") {
+			alert("배송받는분 연락처를 입력하지 않았습니다.")
+			form.nonMemSpPhoneNum1_2.focus();
 			return false;
 		}
-		for (var i = 0; i < form.phone3_Sp.value.length; i++) {
-			ch = form.phone3_Sp.value.charAt(i)
+		for (var i = 0; i < form.nonMemSpPhoneNum1_2.value.length; i++) {
+			ch = form.nonMemSpPhoneNum1_2.value.charAt(i)
 			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송정보의 연락처1은 숫자만 입력가능합니다.")
-				form.phone3_Sp.focus();
-				form.phone3_Sp.select();
+				alert("배송받는분 연락처는 숫자만 입력가능합니다.")
+				form.nonMemSpPhoneNum1_2.focus();
+				form.nonMemSpPhoneNum1_2.select();
 				return false;
 			}
 		}
 
-		form.submit();
+		//가맹점 식별코드
+		IMP.init('imp44341689');
+		IMP.request_pay({
+			pg : 'inicis',
+			pay_method : payType,
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '(주)SIMPLE', //결제창에서 보여질 이름
+			amount : 100
+		//실제 결제되는 가격
 
+		}, function(rsp) {
+			console.log(rsp);
+			if (rsp.success) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '고유ID : ' + rsp.imp_uid;
+				msg += '상점 거래ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 : ' + rsp.apply_num;
+				var param = $("form[name=CheckOrder]").serialize();
+				$.ajax({
+					url : "addorderlist.do",
+					type : "POST",
+					data : param
+				}).done(function(data) {
+				})
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+			}
+			alert(msg);
+		});
 	}
-
+	
 	function sameInfo(f) {
 		f.nonMemSpName.value = f.nonMemName.value;
 		f.nonMemSpAdr.value = f.nonmemAdr.value;
@@ -309,6 +358,7 @@ h4 {
 								<th scope="col" width="100">수량</th>
 								<th scope="col" width="80">배송비</th>
 								<th scope="col" width="150">가격</th>
+								<th scope="col" width="100">합계</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -330,6 +380,7 @@ h4 {
 											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
 											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
+											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -350,6 +401,7 @@ h4 {
 										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productCnt}개</th>
 										<th scope="col" style="vertical-align: middle;">${nonMemOrder.deliverycharge}</th>
 										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${nonMemOrder.totalPrice}원</th>
 									</tr>
 								</tbody>
 							</c:otherwise>
@@ -359,15 +411,16 @@ h4 {
 						<c:when test="${nonMemOrder == null}">
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${totalPrice}원</a>
-												<input type="hidden" name="totalPrice" value="${totalPrice}" />
+								<input type="hidden" name="totalPrice" value="${totalPrice}" />
 							</div>
 						</c:when>
 						<c:otherwise>
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${nonMemOrder.totalPrice}원</a>
-												<input type="hidden" name="totalPrice" value="${nonMemOrder.totalPrice}" />
-												
-		
+								<input type="hidden" name="totalPrice"
+									value="${nonMemOrder.totalPrice}" />
+
+
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -511,14 +564,6 @@ h4 {
 								<th scope="col"><input type="text" name="nonMemOrderMsg"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
-							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-								<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-								<th scope="col"><input name="nonMemDepositorName"
-									type="text" value=""
-									style="font-size: 14px; border: 1px solid #dcdcdc; height: 36px; width: 326px;"><a
-									style="font-size: 14px; color: color:#b3b3b3;">ㅤ(무통장 입금 시
-										입력)</a></th>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -536,34 +581,22 @@ h4 {
 								style="border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
-								<th scope="col"><input type="radio"
-									name="nonMemPaymentMethod" value="카드결제">신용/체크카드&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="무통장입금">무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="휴대폰결제">휴대폰결제</th>
+								<th scope="col"><input type="radio" checked="checked"
+									name="nonMemPaymentMethod" value="card">신용/체크카드&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="trnas">계좌이체&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="phone">휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="무통장입금">무통장입금</th>
 							</tr>
-							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-								<th scope="col" style="padding-left: 23px;">카드선택</th>
-								<th scope="col"><select id="month"
-									style="width: 326px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="현대카드">현대카드</option>
-										<option value="국민카드">국민카드</option>
-										<option value="농협카드">농협카드</option>
-										<option value="비씨카드">BC카드</option>
-										<option value="우리카드">우리카드</option>
-										<option value="신한카드">신한카드</option>
-								</select></th>
-
-							</tr>
-
+							
 						</tbody>
 					</table>
 				</div>
 				<br> <br>
 
 				<div style="text-align: center">
-					<button type="submit" class="btn btn-secondary"
-						onclick="Check_Order()"
-						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">결제하기</button>
+					<input type="button" class="btn btn-secondary"
+						onclick="iamport()" value="결제하기"
+						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
 					<button type="button" class="btn btn-secondary"
 						onclick="location.href='/cart'"
