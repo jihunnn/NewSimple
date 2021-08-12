@@ -643,4 +643,62 @@ public class OrderControllerImpl implements OrderController {
 		return mav;
 
 	}
+	//관리자 주문내역 상세보기
+		@RequestMapping(value = "/admin_listNoOrder/detailNonOrder.do", method = RequestMethod.GET)
+		public ModelAndView viewNonOrderInfo(@RequestParam("nonMemOrderNum") int nonMemOrderNum, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			String viewName = (String) request.getAttribute("viewName");
+			HttpSession session = request.getSession();
+	            
+			List<OrderVO> NonOrderList = orderService.NonMemOrderNumList(nonMemOrderNum);
+			OrderVO orderVO = orderService.NonMemOrderInfo(nonMemOrderNum);
+
+	
+			session.setAttribute("NonOrder", orderVO);
+			session.setAttribute("NonOrderList", NonOrderList);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName(viewName);
+			mav.addObject("NonOrderList", NonOrderList);
+
+			mav.addObject("order", orderVO);
+			return mav;
+		}
+		
+		//관리자 주문내역 수정화면
+		@RequestMapping(value = "/admin_listNoOrder/admin_ModVeiwNonMemorder.do", method = RequestMethod.GET)
+		public ModelAndView admin_ModVeiwNonMemorder(@RequestParam("nonMemOrderNum") int nonMemOrderNum, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			String viewName = (String) request.getAttribute("viewName");
+			HttpSession session = request.getSession();
+            
+	
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName(viewName);
+		
+			return mav;
+		}
+		
+		//관리자 주문내역 수정
+		@RequestMapping(value = "/admin_listNoOrder/admin_ModNonMemorder.do", method = RequestMethod.POST)
+		private void admin_ModNonMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			String viewName = (String) request.getAttribute("viewName");
+			HttpSession session = request.getSession();
+			int result = 0;
+			result = orderService.adminModNonMemOrder(orderVO);
+			System.out.println(result);
+			if(result != 0) {
+				session.removeAttribute("NonOrder");
+				session.removeAttribute("NonOrderList");
+				out.println("<script>");
+				out.println("alert('비회원 주문 정보를 수정하였습니다.');");
+				out.println("location.href = '/simple/admin_listNoOrder.do';");
+				out.println("</script>");
+				out.close();
+			}
+
+			
+		}
 }

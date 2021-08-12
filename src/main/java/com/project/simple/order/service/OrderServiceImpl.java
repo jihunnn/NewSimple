@@ -122,6 +122,23 @@ public class OrderServiceImpl implements OrderService {
 		return NoOrderSearchCount;
 	}
 
+	@Override
+	public List<OrderVO> NonMemOrderNumList(int nonMemOrderNum) throws Exception {
+		List<OrderVO> orderVO = orderDAO.selectNonMemOrderList(nonMemOrderNum);
+		return orderVO;
+	}
+
+	@Override
+	public OrderVO NonMemOrderInfo(int nonMemOrderNum) throws Exception {
+		OrderVO orderVO = orderDAO.selectNonMemberOrderInfo(nonMemOrderNum);
+		return orderVO;
+	}
+
+	@Override
+	public int adminModNonMemOrder(OrderVO orderVO) throws Exception {
+		return orderDAO.updateAdminModNonMemOrder(orderVO);
+	}
+
 
 }
 	

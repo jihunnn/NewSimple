@@ -149,4 +149,10 @@ public class AdminDAOImpl implements AdminDAO {
 		
 	}
 
+	@Override
+	public void deleteSelectRemoveNonMemOrder(String nonMemOrderNum) throws DataAccessException {
+		sqlSession.delete("mapper.admin.deleteSelectRemoveNonMemOrder",nonMemOrderNum);
+		
+	}
+
 }

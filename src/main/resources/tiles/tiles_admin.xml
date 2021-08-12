@@ -77,18 +77,22 @@
 	</definition>
 
 	<definition name="admin_listorder" extends="baseLayout">
+	 <put-attribute name="title" value="관리자회원주문조회" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_listorder.jsp" />
 	</definition>
 	<definition name="admin_listorder/orderSearch" extends="baseLayout">
+	 <put-attribute name="title" value="관리자회원주문검색" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_listorder.jsp" />
 	</definition>
 	<definition name="admin_listorder/detailorder" extends="baseLayout">
+	 <put-attribute name="title" value="관리자회원주문상세" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_detailorder.jsp" />
 	</definition>
 	<definition name="admin_listorder/admin_ModVeiwMemorder" extends="baseLayout">
+	 <put-attribute name="title" value="관리자회원주문수정" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_modmemorder.jsp" />
 	</definition>
@@ -121,6 +125,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_listnoorder.jsp" />
 	</definition>
-
+    <definition name="admin_listNoOrder/detailNonOrder" extends="baseLayout">
+    <put-attribute name="title" value="관리자비회원주문상세" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_detailNonorder.jsp" />
+	</definition>
+	<definition name="admin_listNoOrder/admin_ModVeiwNonMemorder" extends="baseLayout">
+	 <put-attribute name="title" value="관리자비회원주문수정" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/admin_modNonmemorder.jsp" />
+	</definition>
 
 </tiles-definitions>	

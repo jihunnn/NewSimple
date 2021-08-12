@@ -104,8 +104,6 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public int updateAdminModMemOrder(OrderVO orderVO) throws DataAccessException {
 		int result = sqlSession.update("mapper.order.updateAdminModMemOrder", orderVO);
-		System.out.println(orderVO);
-		System.out.println(result);
 		return result;
 	}
 	
@@ -133,6 +131,22 @@ public class OrderDAOImpl implements OrderDAO {
 		int NoOrderSearchCount = sqlSession.selectOne("mapper.order.NoOrderSearchCount",search);
 
 		return NoOrderSearchCount;
+	}
+
+	@Override
+	public List<OrderVO> selectNonMemOrderList(int nonMemOrderNum) throws DataAccessException {
+		return sqlSession.selectList("mapper.order.selectNonMemOrderList", nonMemOrderNum);
+	}
+
+	@Override
+	public OrderVO selectNonMemberOrderInfo(int nonMemOrderNum) throws DataAccessException {
+		return sqlSession.selectOne("mapper.order.selectNonMemberOrderInfo",nonMemOrderNum);
+	}
+
+	@Override
+	public int updateAdminModNonMemOrder(OrderVO orderVO) throws DataAccessException {
+		int result = sqlSession.update("mapper.order.updateAdminModNonMemOrder", orderVO);
+		return result;
 	}
 }
 

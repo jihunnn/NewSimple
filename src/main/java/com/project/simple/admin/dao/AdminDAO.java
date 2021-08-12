@@ -44,5 +44,7 @@ public interface AdminDAO {
 
 	public void deleteSelectRemoveMemOrder(String memOrderNum)throws DataAccessException;
 
+	public void deleteSelectRemoveNonMemOrder(String nonMemOrderNum)throws DataAccessException;
+
 
 }

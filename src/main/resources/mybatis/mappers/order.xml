@@ -250,5 +250,42 @@
 	
 	</select>
 	
+	
+	  <!-- 비회원 주문 상품 정보 -->
+	<select id="selectNonMemOrderList" resultType="orderVO" parameterType="int"> 
+	<![CDATA[
+			
+
+		 select o.nonMemOrderSeqNum,o.nonMemOrderDate,  o.nonMemOrderNum, productCnt, option1Name, option2Name, option1value, option2value, p.productImage, p.productPrice, p.productName, p.productNum, d.deliveryStatus ,nonMemSpName,nonMemSpAdr,nonMemSpPhoneNum1,nonMemSpPhoneNum2,nonMemOrderMsg,nonMemDepositorName
+    ,nonMemPaymentMethod, totalPrice 
+		from  simple.nonmemberorder as o join  simple.product as p on o.productNum=p.productNum 
+		join  simple.nonmemdelivery as d on o.nonMemOrderSeqNum=d.nonMemOrderSeqNum 
+			where nonMemOrderNum = #{nonMemOrderNum} order by nonMemOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+	
+	 <select id="selectNonMemberOrderInfo" resultType="orderVO" parameterType="int"> 
+	<![CDATA[
+			
+
+		select distinct nonMemOrderNum,nonMemSpName, nonMemSpAdr, nonMemSpPhoneNum1, nonMemSpPhoneNum2, nonMemOrderMsg, nonMemDepositorName, nonMemPaymentMethod,nonMemOrderDate
+		from simple.nonmemberorder 
+		where nonMemOrderNum = #{nonMemOrderNum} order by nonMemOrderSeqNum desc;
+			
+
+	]]>
+	</select>
+	
+	<!-- 관리자 비회원 주문정보 수정 -->
+	<update id="updateAdminModNonMemOrder" parameterType="orderVO" >
+	<![CDATA[ 
+		update simple.nonmemberorder
+		set nonMemSpName = #{nonMemSpName}, nonMemSpAdr = (select concat_ws('-',#{nonMemSpAdr},#{nonMemSpAdr1},#{nonMemSpAdr2})),nonMemSpPhoneNum1= (select concat_ws('-',#{nonMemSpPhoneNum1_0},#{nonMemSpPhoneNum1_1},#{nonMemSpPhoneNum1_2})), nonMemSpPhoneNum2=(select concat_ws('-',#{nonMemSpPhoneNum2_0},#{nonMemSpPhoneNum2_1},#{nonMemSpPhoneNum2_2})), 
+		nonMemDepositorName = #{nonMemDepositorName},nonMemOrderMsg = #{nonMemOrderMsg}
+		where nonMemOrderNum=#{nonMemOrderNum}; 
+	]]>
+	</update>
 
 </mapper>

@@ -238,5 +238,13 @@
 	      where memOrderNum=#{memOrderNum};
     	]]>
 	</delete>
+	
+	<!-- 관리자 비회원 주문 선택 삭제 -->
+	<delete id="deleteSelectRemoveNonMemOrder" parameterType="orderVO">
+	    <![CDATA[
+	      delete from simple.nonmemberorder
+	      where nonMemOrderNum=#{nonMemOrderNum};
+    	]]>
+	</delete>
 
 </mapper>

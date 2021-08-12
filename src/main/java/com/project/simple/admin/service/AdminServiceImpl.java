@@ -154,6 +154,12 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public void admin_selectremoveNonMemOrder(String nonMemOrderNum) throws Exception {
+		adminDAO.deleteSelectRemoveNonMemOrder(nonMemOrderNum);
+		
+	}
+
 
 
 }

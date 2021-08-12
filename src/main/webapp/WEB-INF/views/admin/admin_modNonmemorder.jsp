@@ -29,7 +29,7 @@ function Check_order() {
 	var form = document.Checkmodify;
 
 	
-	 if (confirm("회원주문정보를 수정하시겠습니까?")){ //확인
+	 if (confirm("비회원주문정보를 수정하시겠습니까?")){ //확인
     	 form.submit();
     } else { //취소
      	return false;
@@ -40,53 +40,7 @@ function Check_order() {
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
-	//회원 주문자 우편번호
-	function sample6_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-						var fullAddr = ''; // 최종 주소 변수
-						var extraAddr = ''; // 조합형 주소 변수
-
-						// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-							fullAddr = data.roadAddress;
-
-						} else { // 사용자가 지번 주소를 선택했을 경우(J)
-							fullAddr = data.jibunAddress;
-						}
-
-						// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
-						if (data.userSelectedType === 'R') {
-							//법정동명이 있을 경우 추가한다.
-							if (data.bname !== '') {
-								extraAddr += data.bname;
-							}
-							// 건물명이 있을 경우 추가한다.
-							if (data.buildingName !== '') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-							// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-							fullAddr += (extraAddr !== '' ? ' (' + extraAddr
-									+ ')' : '');
-						}
-
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
-						document.getElementById('sample6_address').value = fullAddr;
-
-						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById('sample6_address2')
-								.focus();
-					}
-				}).open();
-	}
-
+	
 	//배송지 우편번호
 	function sample6_execDaumPostcode2() {
 		new daum.Postcode(
@@ -134,45 +88,28 @@ function Check_order() {
 	}
 </script>
 </head>
-<title>관리자 회원 주문 상세창</title>
+<title>관리자 비회원 주문 상세창</title>
 <body>
 	
-	<%
-	MemberVO member = (MemberVO) session.getAttribute("member");
+		<% 
+	OrderVO NonOrder = (OrderVO) session.getAttribute("NonOrder");
 	
-	String FullmemPhoneNum = member.getmemPhoneNum();
-	String FullmemAdr = member.getmemAdr();
-
-	String a1 = "-";
-	String p1 = "-";
-
-	String[] memAdr = FullmemAdr.split(a1);
-	String[] memPhoneNum = FullmemPhoneNum.split(p1);
-    
-	for (int i = 0; i < memAdr.length; i++) {
-	}
-	for (int i = 0; i < memPhoneNum.length; i++) {
-	}
-	%>
-	<% 
-	OrderVO order = (OrderVO) session.getAttribute("order");
-	
-	String FullmemSpPhoneNum = order.getMemSpPhoneNum1();
-	String FullmemSpPhoneNum2 = order.getMemSpPhoneNum2();
-	String FullmemSpAdr = order.getMemSpAdr();
+	String FullnonMemSpPhoneNum = NonOrder.getNonMemSpPhoneNum1();
+	String FullnonMemSpPhoneNum2 = NonOrder.getNonMemSpPhoneNum2();
+	String FullNonMemSpAdr = NonOrder.getNonMemSpAdr();
 	
 	String q1 = "-";
 	String w1 = "-";
 	
-	String[] memSpPhoneNum = FullmemSpPhoneNum.split(q1); 
-	String[] memSpPhoneNum2 = FullmemSpPhoneNum2.split(q1); 
-	String[] memSpAdr = FullmemSpAdr.split(w1); 
+	String[] nonMemSpPhoneNum = FullnonMemSpPhoneNum.split(q1); 
+	String[] nonMemSpPhoneNum2 = FullnonMemSpPhoneNum2.split(q1); 
+	String[] nonMemSpAdr = FullNonMemSpAdr.split(w1); 
 	
-	for (int i = 0; i < memSpPhoneNum.length; i++) {
+	for (int i = 0; i < nonMemSpPhoneNum.length; i++) {
 	}
-	for (int i = 0; i < memSpPhoneNum2.length; i++) {
+	for (int i = 0; i < nonMemSpPhoneNum2.length; i++) {
 	}
-	for (int i = 0; i < memSpAdr.length; i++) {
+	for (int i = 0; i < nonMemSpAdr.length; i++) {
 	}
 	
 	%>
@@ -203,7 +140,7 @@ function Check_order() {
 						</tr>
 					</thead>
 					
-					<c:forEach var="item" items="${OrderList}">
+					<c:forEach var="item" items="${NonOrderList}">
 						<tbody>
 						<tr class="tr1"
 									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
@@ -223,58 +160,20 @@ function Check_order() {
 				</table>
 				
 					<div style="font-size: 18px; float: right;">
-						<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${OrderList[0].totalPrice}원</a>
+						<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${NonOrderList[0].totalPrice}원</a>
 					</div>
 				
 			</div>
 
           
 			<div style="font-size: 25px; font-weight: bold; margin-top: 70px;">
-					<a style="color: #7e9c8c; margin-top: 40px;">주문자정보</a>
+					<a style="color: #7e9c8c; margin-top: 40px;">수령인정보</a>
 			</div>
-			<a>주문일자: ${order.memOrderDate }</a>
-			<div class="order_list">
-				<table class="table">
-				
-					<colgroup>
-						<col width="20%" />
-					</colgroup>
-					<tbody>
-						<tr style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
-							<th scope="col"><a
-									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-							<th scope="col">${member.memName}</th>
-						</tr>
-						<tr style="border-bottom: 1px solid #eeeeee;">
-							<th scope="col"><a
-									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
-							<th scope="col"><%=memAdr[0]%>
-									&nbsp;&nbsp;&nbsp;
-									<p>
-										<br><%=memAdr[1]%>
+			<a>주문일자: ${NonOrder.nonMemOrderDate }</a>
 
-									</p>
-									<p>
-										<%=memAdr[2]%>
-									</p>
-							</th>
-						</tr>
-						<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-								<th scope="col"><a
-									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처</th>
-								<th scope="col"><%=memPhoneNum[0]%> - <%=memPhoneNum[1]%>
-									- <%=memPhoneNum[2]%></th>
-							</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<div style="font-size: 25px; margin-top: 40px; font-weight: bold;">
-					<a style="color: #7e9c8c;">수령인정보</a>
-				</div>
 			<div class="order_list">
-			<form name="Checkmodify"  action="${contextPath}/admin_listorder/admin_ModMemorder.do" method="post">
-			<input type="hidden" name="memOrderNum" value="${order.memOrderNum}" />
+			<form name="Checkmodify"  action="${contextPath}/admin_listNoOrder/admin_ModNonMemorder.do" method="post">
+			<input type="hidden" name="nonMemOrderNum" value="${NonOrder.nonMemOrderNum}" />
 				<table class="table">
 					<colgroup>
 						<col width="20%" />
@@ -283,30 +182,30 @@ function Check_order() {
 						<tr style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
 							<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-							<th scope="col"><input type="text" name="memSpName"
-									value="${order.memSpName }" 
+							<th scope="col"><input type="text" name="nonMemSpName"
+									value="${NonOrder.nonMemSpName }" 
 									style="font-size: 14px; width: 326px; border: 1px solid #dcdcdc; height: 36px;"></th>
 						</tr>
 						<tr>
 						<th style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
 						    <th scope="col">
-							<input type="text" name="memSpAdr"
-									value="<%=memSpAdr[0]%>"  id="sample6_postcode1"  readonly
+							<input type="text" name="nonMemSpAdr"
+									value="<%=nonMemSpAdr[0]%>"  id="sample6_postcode1"  readonly
 									style="font-size: 14px; border: 1px solid #dcdcdc; width: 211px; height: 36px;">
 									&nbsp;&nbsp;&nbsp;
 									<input type="button" onclick="sample6_execDaumPostcode2()"
 									value="우편번호 찾기"
 									style="font-size: 14px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
 									<p>
-										<br> <input type="text" name="memSpAdr1"
-											value="<%=memSpAdr[1]%>" id="sample6_address_1" readonly
+										<br> <input type="text" name="nonMemSpAdr1"
+											value="<%=nonMemSpAdr[1]%>" id="sample6_address_1" readonly
 											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 
 									</p>
 									<p>
-										<input type="text" name="memSpAdr2"  id="sample6_address2_1"
-											value="<%=memSpAdr[2]%>"  
+										<input type="text" name="nonMemSpAdr2"  id="sample6_address2_1"
+											value="<%=nonMemSpAdr[2]%>"  
 											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 
 
@@ -315,46 +214,46 @@ function Check_order() {
 						<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처1</th>
-								<th scope="col"><select name="memSpPhoneNum1_0" 
+								<th scope="col"><select name="nonMemSpPhoneNum1_0" 
 									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="<%=memSpPhoneNum[0]%>"><%=memSpPhoneNum[0]%></option>
+										<option value="<%=nonMemSpPhoneNum[0]%>"><%=nonMemSpPhoneNum[0]%></option>
 										<option value="011">011</option>
 										<option value="016">016</option>
 										<option value="017">017</option>
 										<option value="019">019</option>
 										<option value="010">010</option>
-								</select> - <input  type="text" name="memSpPhoneNum1_1" value="<%=memSpPhoneNum[1]%>"
+								</select> - <input  type="text" name="nonMemSpPhoneNum1_1" value="<%=nonMemSpPhoneNum[1]%>"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input  type="text" name="memSpPhoneNum1_2" value="<%=memSpPhoneNum[2]%>"
+									- <input  type="text" name="nonMemSpPhoneNum1_2" value="<%=nonMemSpPhoneNum[2]%>"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 			
 		
 				                <tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
-								<th scope="col"><select name="memSpPhoneNum2_0" 
+								<th scope="col"><select name="nonMemSpPhoneNum2_0" 
 									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="<%=memSpPhoneNum2[0]%>"><%=memSpPhoneNum2[0]%></option>
+										<option value="<%=nonMemSpPhoneNum2[0]%>"><%=nonMemSpPhoneNum2[0]%></option>
 										<option value="011">011</option>
 										<option value="016">016</option>
 										<option value="017">017</option>
 										<option value="019">019</option>
 										<option value="010">010</option>
-								</select> - <input  type="text" name="memSpPhoneNum2_1" value="<%=memSpPhoneNum2[1]%>"
+								</select> - <input  type="text" name="nonMemSpPhoneNum2_1" value="<%=nonMemSpPhoneNum2[1]%>"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input type="text" name="memSpPhoneNum2_2" value="<%=memSpPhoneNum2[2]%>"
+									- <input type="text" name="nonMemSpPhoneNum2_2" value="<%=nonMemSpPhoneNum2[2]%>"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							   </tr>
 		
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"
 									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메세지<br>(100자내외)</th>
-								<th scope="col"><input type="text" name="memOrderMsg" value="${order.memOrderMsg}"
+								<th scope="col"><input type="text" name="nonMemOrderMsg" value="${NonOrder.nonMemOrderMsg}"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-								<th scope="col"><input name="memDepositorName" type="text"  value="${order.memDepositorName}"
+								<th scope="col"><input name="nonMemDepositorName" type="text"  value="${NonOrder.nonMemDepositorName}"
 									value=""
 									style="font-size: 14px; border: 1px solid #dcdcdc; height: 36px; width: 326px;"></th>
 							</tr>
