@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.project.simple.product.page.Criteria1;
+import com.project.simple.product.vo.OptionVO;
 import com.project.simple.product.vo.ProductVO;
 
 @Repository("productDAO")
@@ -34,7 +35,6 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public int insertProduct(Map productMap)throws DataAccessException{
 		int result=sqlSession.insert("mapper.product.insertProduct", productMap);
-		sqlSession.insert("mapper.product.insertDetailOption", productMap);
 		return result;
 	}
 	
@@ -170,6 +170,15 @@ public class ProductDAOImpl implements ProductDAO{
 		}
 
 		return selectOptionValue;
+	}
+	
+	//상품 옵션 등록
+	@Override
+	public List<OptionVO> addNewOption(OptionVO option) throws DataAccessException {
+		sqlSession.insert("mapper.product.insertOption",option);
+		List<OptionVO> optionList = sqlSession.selectList("mapper.product.selectOptionList",option);
+			
+		return optionList;
 	}
 
 	

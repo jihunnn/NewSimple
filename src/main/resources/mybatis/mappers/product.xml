@@ -22,6 +22,15 @@
 		<result property="option1value" column="option1value" />
 		<result property="option2value" column="option2value" />
 	</resultMap>
+	<resultMap id="optionResult" type="optionVO">
+	<result property="productNum" column="productNum" />
+		<result property="option1Name" column="option1name" />
+		<result property="option2Name" column="option2name" />
+		<result property="option1value" column="option1value" />
+		<result property="option2value" column="option2value" />
+		<result property="option1price" column="option1price" />
+		<result property="option2price" column="option2price" />
+	</resultMap>
 	<resultMap id="productReviewResult" type="productVO">
 		<result property="reviewNum" column="reviewNum" />
 		<result property="productReviewTitle"
@@ -261,15 +270,6 @@
 
 
 	</insert>
-	<insert id="insertDetailOption" parameterType="java.util.Map">
-		<![CDATA[ 
-			insert into simple.detailoption(productNum, option1name, option1value, option1price, option2name,option2value,option2price) 
-			values(#{productNum},#{option1Name},#{option1value},#{option1Price},#{option2Name},#{option2value},#{option2Price});
-		]]>
-
-
-	</insert>
-
 
 
 	<!-- 상품수정 -->
@@ -537,6 +537,22 @@
 			
 	]]>
 	</select>
+	<select id="selectOptionList" parameterType="OptionVO"
+		resultMap="optionResult"> 
+	<![CDATA[
+			
+			select * from simple.detailoption where productNum=#{productNum};
+			
+	]]>
+	</select>
+
+	<insert id="insertOption" parameterType="OptionVO">
+		<![CDATA[
+			insert into simple.detailOption(productNum, option1Name, option1value, option1price, option2Name, option2value, option2price)
+			values(#{productNum},#{option1Name}, #{option1value}, #{option1price}, #{option2Name}, #{option2value}, #{option2price});
+		]]>
+
+	</insert>
 
 
 </mapper>

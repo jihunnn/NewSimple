@@ -42,6 +42,7 @@ import com.project.simple.product.page.Criteria2;
 import com.project.simple.product.page.PageMaker1;
 import com.project.simple.product.page.PageMaker2;
 import com.project.simple.product.service.ProductService;
+import com.project.simple.product.vo.OptionVO;
 import com.project.simple.product.vo.ProductVO;
 
 @Controller("productController")
@@ -878,6 +879,19 @@ public class ProductControllerImpl implements ProductController {
 		optionValue.remove("optionName");
 
 		return optionValue;
+	}
+	
+	// 상품옵션 추가하기
+	@RequestMapping(value = "product/addNewOption.do", method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String,Object> addNewOption(@ModelAttribute("option") OptionVO option, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Map<String, Object> optionMap = new HashMap<String, Object>();
+		List<OptionVO> optionList = productService.addNewOption(option);
+		optionMap.put("optionList", optionList);
+	
+
+		return optionMap;
 	}
 
 }
