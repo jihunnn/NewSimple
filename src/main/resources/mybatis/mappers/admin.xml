@@ -231,15 +231,6 @@
     	]]>
 	</delete>
 	
-	<!-- 관리자 회원 주문 삭제 -->
-	<delete id="deleteMemOrder" parameterType="orderVO">
-	<![CDATA[
-	   delete from  simple.memberorder
-	   where
-	   memOrderNum=#{memOrderNum};
-	]]>
-	</delete>
-	
 	<!-- 관리자 회원 주문 선택 삭제 -->
 	<delete id="deleteSelectRemoveMemOrder" parameterType="orderVO">
 	    <![CDATA[

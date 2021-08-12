@@ -108,5 +108,31 @@ public class OrderDAOImpl implements OrderDAO {
 		System.out.println(result);
 		return result;
 	}
+	
+	 //관리자 비회원 주문 리스트
+	@Override
+	public List<OrderVO> selectAllNoOrdersList(Criteria cri) throws DataAccessException {
+		List<OrderVO> NoOrdersList = sqlSession.selectList("mapper.order.selectAllNoOrdersList", cri);
+		return NoOrdersList;
+	}
+
+	@Override
+	public int selectNoOrderCount() throws DataAccessException {
+		int NoOrderCount = sqlSession.selectOne("mapper.order.selectNoOrderCount");
+		return NoOrderCount;
+	}
+
+	@Override
+	public List<OrderVO> NoOrderSearchList(Map<String, Object> noOrderSearchMap) throws DataAccessException {
+		List<OrderVO> NoOrderSearchList =sqlSession.selectList("mapper.order.NoOrderSearchList",noOrderSearchMap);		
+		return NoOrderSearchList;
+	}
+
+	@Override
+	public int NoOrderSearchCount(Map<String, Object> search) throws DataAccessException {
+		int NoOrderSearchCount = sqlSession.selectOne("mapper.order.NoOrderSearchCount",search);
+
+		return NoOrderSearchCount;
+	}
 }
 

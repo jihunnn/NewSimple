@@ -94,6 +94,33 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.updateAdminModMemOrder(orderVO);
 		
 	}
+	
+	//관리자 비회원 주문 리스트
+	@Override
+	public List<OrderVO> admin_listNoOrder(Criteria cri) throws Exception {
+		List<OrderVO> NoOrdersList = orderDAO.selectAllNoOrdersList(cri);
+		return NoOrdersList;
+	}
+
+	@Override
+	public int NoOrderCount() throws Exception {
+		int NoOrderCount = orderDAO.selectNoOrderCount();
+		return NoOrderCount;
+	}
+
+	@Override
+	public Map<String, Object> NoOrderSearch(Map<String, Object> NoOrderSearchMap) throws Exception {
+		List<OrderVO> NoOrderSearchList=orderDAO.NoOrderSearchList(NoOrderSearchMap);
+		NoOrderSearchMap.put("NoOrderSearchList", NoOrderSearchList);
+
+		return NoOrderSearchMap;
+	}
+
+	@Override
+	public int NoOrderSearchCount(Map<String, Object> search) throws Exception {
+		int NoOrderSearchCount = orderDAO.NoOrderSearchCount(search);
+		return NoOrderSearchCount;
+	}
 
 
 }

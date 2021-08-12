@@ -131,9 +131,9 @@
 				memOrderNum like CONCAT('%', #{search}, '%')
 			</if>
 
-			<if test="searchType=='productName' and search != null and search != '' ">
-				productName like CONCAT('%', #{search}, '%')
-			</if>	
+			<if test="searchType=='memSpAdr' and search != null and search != '' ">
+				memSpAdr like CONCAT('%', #{search}, '%')			
+			</if>
 			
 			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
 				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
@@ -155,9 +155,9 @@
 				memOrderNum like CONCAT('%', #{search}, '%')
 			</if>
 
-			<if test="searchType=='productName' and search != null and search != '' ">
-				productName like CONCAT('%', #{search}, '%')
-			</if>	
+			<if test="searchType=='memSpAdr' and search != null and search != '' ">
+				memSpAdr like CONCAT('%', #{search}, '%')			
+			</if>
 			
 			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
 				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
@@ -168,8 +168,7 @@
 	<select id="selectOrderCount" resultType="int"
 		parameterType="int">
 	<![CDATA[
-			
-			select count(*) as orderCount from simple.memberorder;
+			select count(*) as orderCount from (select * from simple.memberorder group by memOrderNum) as memOrder  ;
 	]]>
 	</select>
 	
@@ -185,14 +184,71 @@
 		
 		<if test="memId == null">
 			insert into simple.nonmemberorder(nonMemOrderSeqNum, nonMemOrderNum, nonMemName, productNum, productName, option1name, option1value, option2name, option2value, productCnt, productPrice, totalPrice, nonMemSpName, nonMemOrderMsg, nonMemSpAdr, nonMemSpPhoneNum1, nonMemSpPhoneNum2, nonMemDepositorName, nonMemPaymentMethod, CurrentStatus, productImage) 
-			values(default, #{nonmemOrderNum}, #{nonmemName},  #{productNum}, #{productName}, #{option1name}, #{option1value}, #{option2name}, #{option2value}, #{productCnt}, #{productPrice}, #{totalPrice},  #{nonmemSpName}, #{nonmemOrderMsg}, (select concat_ws('-',#{nonmemSpAdr},#{nonmemSpAdr1},#{nonmemSpAdr2})),(select concat_ws('-',#{nonmemSpPhoneNum1_0},#{nonmemSpPhoneNum1_1},#{nonmemSpPhoneNum1_2})),
-					(select concat_ws('-',#{nonmemSpPhoneNum2_0},#{nonmemSpPhoneNum2_1},#{nonmemSpPhoneNum2_2})), #{nonmemDepositorName}, #{nonmemPaymentMethod}, default, #{productImage});
+			values(default, #{nonMemOrderNum}, #{nonMemName},  #{productNum}, #{productName}, #{option1name}, #{option1value}, #{option2name}, #{option2value}, #{productCnt}, #{productPrice}, #{totalPrice},  #{nonMemSpName}, #{nonMemOrderMsg}, (select concat_ws('-',#{nonMemSpAdr},#{nonMemSpAdr1},#{nonMemSpAdr2})),(select concat_ws('-',#{nonMemSpPhoneNum1_0},#{nonMemSpPhoneNum1_1},#{nonMemSpPhoneNum1_2})),
+					(select concat_ws('-',#{nonMemSpPhoneNum2_0},#{nonMemSpPhoneNum2_1},#{nonMemSpPhoneNum2_2})), #{nonMemDepositorName}, #{nonMemPaymentMethod}, default, #{productImage});
 		</if>
 		
 	</insert>
 	
+	<!-- 관리자 회원 주문 리스트 -->
+	<select id="selectAllNoOrdersList" resultMap="orderResult">
+	<![CDATA[
+		select * from simple.nonmemberorder 
+		group by nonMemOrderNum
+		order by nonMemOrderDate desc
+		limit #{pageStart}, #{perPageNum};
+	]]>
+	</select>
+	<select id="selectNoOrderCount" resultType="int"
+		parameterType="int">
+	<![CDATA[
+			
+			select count(*) as NoOrderCount from (select * from simple.nonmemberorder group by nonMemOrderNum) as nonmemOrder  ;
+	]]>
+	</select>
 	
+	<select id="NoOrderSearchList" resultMap="orderResult">
+			select *
+			from (select * from simple.nonmemberorder group by nonMemOrderNum) as nonmemOrder 
+			where
+			<if test="searchType=='nonMemName' and search != null and search != '' ">
+				nonMemName like CONCAT('%', #{search}, '%')			
+			</if>
+			
+			<if test="searchType=='nonMemOrderNum' and search != null and search != '' ">
+				nonMemOrderNum like CONCAT('%', #{search}, '%')
+			</if>
+			<if test="searchType=='nonMemSpAdr' and search != null and search != '' ">
+				nonMemSpAdr like CONCAT('%', #{search}, '%')			
+			</if>
+			
+			<if test="searchType=='nonMemSpPhoneNum1' and search != null and search != '' ">
+				nonMemSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>	
+			limit #{pageStart}, #{perPageNum};
+	</select>
 	
+	<select id="NoOrderSearchCount" resultType="int"
+		parameterType="java.util.Map">
+			select count(*) 
+			from (select * from simple.nonmemberorder group by nonMemOrderNum) as nonmemOrder
+			where
+			<if test="searchType=='nonMemName' and search != null and search != '' ">
+				nonMemName like CONCAT('%', #{search}, '%')
+		
+			</if>
+
+			<if test="searchType=='nonMemOrderNum' and search != null and search != '' ">
+				nonMemOrderNum like CONCAT('%', #{search}, '%')
+			</if>	
+			<if test="searchType=='nonMemSpAdr' and search != null and search != '' ">
+				nonMemSpAdr like CONCAT('%', #{search}, '%')			
+			</if>
+			<if test="searchType=='nonMemSpPhoneNum1' and search != null and search != '' ">
+				nonMemSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>
+	
+	</select>
 	
 
 </mapper>
