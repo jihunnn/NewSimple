@@ -83,6 +83,7 @@
 	border-radius: 2px;
 	padding-top: 1.8px;
 }
+
 </style>
 <script> src="http://code.jquery.com/jquery-1.6.4.min.js"</script>
 <script type="text/javascript">
@@ -184,7 +185,7 @@
 						<a style="color: #7e9c8c;">주문조회</a>
 					</div>
 					<button type="button" onclick="location.href='${contextPath}/admin_listorder.do'"
-						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
 						class="btn-secondary btn-xs">회원</button>
 					<button type="button" onclick="location.href='${contextPath}/admin_listNoOrder.do'"
 						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"

@@ -29,4 +29,8 @@ public interface OrderDAO {
 	public int selectNoOrderCount() throws DataAccessException;
 	public List<OrderVO> NoOrderSearchList(Map<String, Object> noOrderSearchMap) throws DataAccessException;
 	public int NoOrderSearchCount(Map<String, Object> search) throws DataAccessException;
+	
+	public List<OrderVO> selectNonMemOrderList(int nonMemOrderNum) throws DataAccessException;
+	public OrderVO selectNonMemberOrderInfo(int nonMemOrderNum) throws DataAccessException;
+	public int updateAdminModNonMemOrder(OrderVO orderVO)throws DataAccessException;
 }

@@ -87,8 +87,8 @@
 <script> src="http://code.jquery.com/jquery-1.6.4.min.js"</script>
 <script type="text/javascript">
     
-	function listMemOrderSearch() {
-		var form = document.memOrderSearch;
+	function listNoMemOrderSearch() {
+		var form = document.nonmemOrderSearch;
 
 		if (form.search.value == "") {
 			alert("검색 단어를 입력해주세요")
@@ -131,7 +131,7 @@
 			}else{
 				if(confirm("정말 삭제하시겠습니까?")){
 				$.ajax({
-					url : "${contextPath}/admin_listorder/admin_selectremoveMemOrder.do", //전송 URL
+					url : "${contextPath}/admin_listorder/admin_selectremoveNonMemOrder.do", //전송 URL
 					type: 'POST',
 					traditional : true,
 					data : {
@@ -139,10 +139,10 @@
 					},
 					success: function(jdata){
 						if(jdata = 1){
-							alert("회원 주문을 삭제하셨습니다.");
-							location.href = '${contextPath}/admin_listorder.do'; //admin_listorder로 페이지 새로고침
+							alert("비회원 주문을 삭제하셨습니다.");
+							location.href = '${contextPath}/admin_listNoOrder.do'; //admin_listNoOrder로 페이지 새로고침
 						}else{
-							alert("회원주문삭제에 실패하셨습니다.");
+							alert("비회원주문삭제에 실패하셨습니다.");
 						}	
 					}
 
@@ -157,7 +157,7 @@
 </script>
 
 </head>
-<title>관리자 회원 주문조회창</title>
+<title>관리자 비회원 주문조회창</title>
 <body>
 
 	<section class="ftco-section testimony-section"
@@ -169,7 +169,7 @@
 			<form name="nonmemOrderSearch"
 				action="${contextPath}/admin_listNoOrder/NoOrderSearch.do" method="post">
 				<div style="margin-bottom: 10px;">
-					<button type="button" id="buttonmy" class="btn btn-dark" onclick="listMemOrderSearch()"
+					<button type="button" id="buttonmy" class="btn btn-dark" onclick="listNoMemOrderSearch()"
 						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
 					<input type="text"
 						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
@@ -188,7 +188,7 @@
 						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
 						class="btn-secondary btn-xs">회원</button>
 					<button type="button" onclick="location.href='${contextPath}/admin_listNoOrder.do'"
-						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
 						class="btn-secondary btn-xs">비회원</button>
 
 				</div>
@@ -235,7 +235,7 @@
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemSpAdr}</th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemOrderDate}</th>
 											<th scope="col" style="vertical-align: middle;">
-												<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listorder/detailorder.do?nonMemOrderNum=${NoOrderSearch.nonMemOrderNum}'"
+												<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailNonOrder.do?nonMemOrderNum=${NoOrderSearch.nonMemOrderNum}'"
 														style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 90px; height: 30px; font-size: 14px;">상세보기</button>
 												<br>
 											</th>
@@ -272,7 +272,7 @@
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemSpAdr}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemOrderDate}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">
-													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailorder.do?nonMemOrderNum=${NoOrders.nonMemOrderNum}'"
+													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailNonOrder.do?nonMemOrderNum=${NoOrders.nonMemOrderNum}'"
 														style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 90px; height: 30px; font-size: 14px;">상세보기</button>
 													<br>
 												</th>

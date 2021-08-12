@@ -217,47 +217,6 @@
 	
 	
 </script>
-  <script type="text/javascript">
-		function listMemberdelete() {
-			var memId=$("#memId").val();
-			if(confirm("정말 삭제하시겠습니까?")){
-				$.ajax({
-				url : "${contextPath}/admin_removeMember.do",
-				type : "POST",
-				data : {
-						memId : memId
-					},
-				success : function(result) {
-				    alert("회원이 삭제되었습니다");
-					location.replace("${contextPath}/admin_listmember.do"); //admin_listmember로 페이지 새로고침
-					},
-				});
-			}else{
-					 return false;
-				  }
-		  }
-		
-		function listMemberdelete1() {
-			var memId=$("#memId1").val();
-			if(confirm("정말 삭제하시겠습니까?")){
-				$.ajax({
-				url : "${contextPath}/admin_removeMember.do",
-				type : "POST",
-				data : {
-						memId : memId
-					},
-				success : function(result) {
-				    alert("회원이 삭제되었습니다");
-				    location.href = '${contextPath}/admin_listmember.do'; //admin_listmember로 페이지 새로고침
-					},
-				});
-			}else{
-					 return false;
-				  }
-		  }
-		
-			  
- </script>
 </head>
 <title>회원관리창</title>
 <body>
@@ -311,7 +270,7 @@
 						<td scope="col">주소</td>
 						<td scope="col" style="width: 100px;">회원유형</td>
 						<td scope="col">가입일</td>
-						<td scope="col">삭제</td>
+						<td scope="col">수정</td>
 					</tr>
 					<c:choose>
 						<c:when test="${!empty memberSearchMap.search}">
@@ -341,16 +300,11 @@
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">${memberSearch.logintype }</td>
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">${memberSearch.memRegdate}</td>
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">
-											<input
-												type="hidden" value="${memberSearch.memId}" name="memId" />
 												<button type="button" class="btn btn-dark"
 													onclick="location.href='${contextPath}/admin/viewMember.do?memId=${memberSearch.memId }'"
 													style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">수정</button>
 												<br>
-												<button type="button"
-													onclick="listMemberdelete1()"
-													class="btn btn-dark"
-													style="border-radius: 2px; margin-bottom: 3px; margin-top: 5px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">삭제</button></td>
+										</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
@@ -397,11 +351,7 @@
 													onclick="location.href='${contextPath}/admin/viewMember.do?memId=${member.memId }'"
 													style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">수정</button>
 												<br>
-												<button type="button"
-													onclick="listMemberdelete()"
-													class="btn btn-dark"
-													style="border-radius: 2px; margin-bottom: 3px; margin-top: 5px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">삭제</button>
-											
+
 											</td>
 										</tr>
 

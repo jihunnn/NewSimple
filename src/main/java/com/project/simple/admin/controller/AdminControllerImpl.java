@@ -679,6 +679,22 @@ public class AdminControllerImpl implements AdminController {
 		return mav;
 	}
 	
+	//관리자 회원주문 삭제
+	@RequestMapping(value = "/admin_listorder/admin_selectremoveNonMemOrder.do",method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView admin_selectremoveNonMemOrder(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		ModelAndView mav = new ModelAndView();
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for (int i = 0; i < size; i++) {
+			
+			adminService.admin_selectremoveNonMemOrder(ajaxMsg[i]);
+		}
+
+		mav.setViewName("redirect:/admin_listNoOrder.do");
+		return mav;
+	}
 	
 
 

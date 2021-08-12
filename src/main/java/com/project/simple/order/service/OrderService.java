@@ -29,4 +29,8 @@ public interface OrderService {
 	public Map<String, Object> NoOrderSearch(Map<String, Object> NoOrderSearchMap) throws Exception;
 	public int NoOrderSearchCount(Map<String, Object> search) throws Exception;
 	
+	public List<OrderVO> NonMemOrderNumList(int nonMemOrderNum) throws Exception;
+	public OrderVO NonMemOrderInfo(int nonMemOrderNum) throws Exception;
+	public int adminModNonMemOrder(OrderVO orderVO) throws Exception;
+	
 }

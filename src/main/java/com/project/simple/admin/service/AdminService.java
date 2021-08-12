@@ -42,4 +42,7 @@ public interface AdminService {
 
 	public void admin_selectremoveMemOrder(String memOrderNum) throws Exception ;
 
+	public void admin_selectremoveNonMemOrder(String nonMemOrderNum) throws Exception ;
+
+
 }
