@@ -149,13 +149,6 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public OrderVO removeMemOrder(int memOrderNum) throws Exception {
-		OrderVO orderVO = adminDAO.deleteMemOrder(memOrderNum);
-		
-		return orderVO;
-	}
-
-	@Override
 	public void admin_selectremoveMemOrder(String memOrderNum) throws Exception {
 		adminDAO.deleteSelectRemoveMemOrder(memOrderNum);
 		

@@ -663,16 +663,6 @@ public class AdminControllerImpl implements AdminController {
 	}
 	
 	//관리자 회원주문 삭제
-		@RequestMapping(value = "/admin_listorder/removeMemOrder.do",method = { RequestMethod.GET, RequestMethod.POST })
-		private ModelAndView removeMemOrder(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request, HttpServletResponse response)  throws Exception{
-			
-			ModelAndView mav = new ModelAndView();
-			orderVO = adminService.removeMemOrder(memOrderNum);
-			mav.addObject("order", orderVO);
-			System.out.println(memOrderNum);
-			mav.setViewName("redirect:/admin_listorder.do");
-			return mav;
-		}
 	@RequestMapping(value = "/admin_listorder/admin_selectremoveMemOrder.do",method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView admin_selectremoveMemOrder(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -688,6 +678,7 @@ public class AdminControllerImpl implements AdminController {
 		mav.setViewName("redirect:/admin_listorder.do");
 		return mav;
 	}
+	
 	
 
 

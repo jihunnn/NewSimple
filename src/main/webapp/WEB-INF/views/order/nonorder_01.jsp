@@ -129,13 +129,13 @@ h4 {
 	}
 
 	function sameInfo(f) {
-		f.nonmemSpName.value = f.nonmemName.value;
-		f.nonmemSpAdr.value = f.nonmemAdr.value;
-		f.nonmemSpAdr1.value = f.nonmemAdr1.value;
-		f.nonmemSpAdr2.value = f.nonmemAdr2.value;
-		f.nonmemSpPhoneNum1_0.value = f.nonmemPhoneNum.value;
-		f.nonmemSpPhoneNum1_1.value = f.nonmemPhoneNum1.value;
-		f.nonmemSpPhoneNum1_2.value = f.nonmemPhoneNum2.value;
+		f.nonMemSpName.value = f.nonMemName.value;
+		f.nonMemSpAdr.value = f.nonmemAdr.value;
+		f.nonMemSpAdr1.value = f.nonmemAdr1.value;
+		f.nonMemSpAdr2.value = f.nonmemAdr2.value;
+		f.nonMemSpPhoneNum1_0.value = f.nonmemPhoneNum.value;
+		f.nonMemSpPhoneNum1_1.value = f.nonmemPhoneNum1.value;
+		f.nonMemSpPhoneNum1_2.value = f.nonmemPhoneNum2.value;
 	}
 
 	$("input[type=radio]").click(function() {
@@ -388,7 +388,7 @@ h4 {
 								style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-								<th scope="col"><input type="text" name="nonmemName"
+								<th scope="col"><input type="text" name="nonMemName"
 									value=""
 									style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></th>
 							</tr>
@@ -448,27 +448,27 @@ h4 {
 								style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-								<th scope="col"><input type="text" name="nonmemSpName"
+								<th scope="col"><input type="text" name="nonMemSpName"
 									value=""
 									style="font-size: 14px; width: 326px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
-								<th scope="col"><input type="text" name="nonmemSpAdr"
+								<th scope="col"><input type="text" name="nonMemSpAdr"
 									value="" id="sample6_postcode1" readonly
 									style="font-size: 14px; width: 211px; border: 1px solid #dcdcdc; height: 36px;">&nbsp;&nbsp;&nbsp;
 									<input type="button" onclick="sample6_execDaumPostcode2()"
 									value="우편번호 찾기"
 									style="font-size: 14px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
 									<p>
-										<br> <input type="text" name="nonmemSpAdr1" value=""
+										<br> <input type="text" name="nonMemSpAdr1" value=""
 											id="sample6_address_1" readonly
 											style="width: 325px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
 
 									</p>
 									<p>
-										<input type="text" name="nonmemSpAdr2" id="sample6_address2_1"
+										<input type="text" name="nonMemSpAdr2" id="sample6_address2_1"
 											value=""
 											style="width: 325px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
 
@@ -477,7 +477,7 @@ h4 {
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처1</th>
-								<th scope="col"><select name="nonmemSpPhoneNum1_0"
+								<th scope="col"><select name="nonMemSpPhoneNum1_0"
 									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value=""></option>
 										<option value="011">011</option>
@@ -485,14 +485,14 @@ h4 {
 										<option value="017">017</option>
 										<option value="019">019</option>
 										<option value="010">010</option>
-								</select> - <input type="text" name="nonmemSpPhoneNum1_1" value=""
+								</select> - <input type="text" name="nonMemSpPhoneNum1_1" value=""
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input type="text" name="nonmemSpPhoneNum1_2" value=""
+									- <input type="text" name="nonMemSpPhoneNum1_2" value=""
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
-								<th scope="col"><select name="nonmemSpPhoneNum2_0"
+								<th scope="col"><select name="nonMemSpPhoneNum2_0"
 									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value="">선택</option>
 										<option value="011">011</option>
@@ -500,20 +500,20 @@ h4 {
 										<option value="017">017</option>
 										<option value="019">019</option>
 										<option value="010">010</option>
-								</select> - <input type="text" name="nonmemSpPhoneNum2_1"
+								</select> - <input type="text" name="nonMemSpPhoneNum2_1"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-									- <input type="text" name="nonmemSpPhoneNum2_2"
+									- <input type="text" name="nonMemSpPhoneNum2_2"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"
 									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메세지<br>(100자내외)</th>
-								<th scope="col"><input type="text" name="nonmemOrderMsg"
+								<th scope="col"><input type="text" name="nonMemOrderMsg"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-								<th scope="col"><input name="nonmemDepositorName"
+								<th scope="col"><input name="nonMemDepositorName"
 									type="text" value=""
 									style="font-size: 14px; border: 1px solid #dcdcdc; height: 36px; width: 326px;"><a
 									style="font-size: 14px; color: color:#b3b3b3;">ㅤ(무통장 입금 시
@@ -537,9 +537,9 @@ h4 {
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
 								<th scope="col"><input type="radio"
-									name="nonmemPaymentMethod" value="카드결제">신용/체크카드&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonmemPaymentMethod" value="무통장입금">무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonmemPaymentMethod" value="휴대폰결제">휴대폰결제</th>
+									name="nonMemPaymentMethod" value="카드결제">신용/체크카드&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="무통장입금">무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="휴대폰결제">휴대폰결제</th>
 							</tr>
 							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col" style="padding-left: 23px;">카드선택</th>

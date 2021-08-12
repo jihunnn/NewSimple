@@ -146,11 +146,11 @@ th:nth-child(2n+1), td:nth-child(2n+1) {
 					<th width="250"
 						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">주문번호</th>
 					<th width="300"
-						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${nonmemOrderNum}</th>
+						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${nonMemOrderNum}</th>
 					<th width="250"
 						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">결제방법</th>
 					<th width="300"
-						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${nonmemPaymentMethod}</th>
+						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${nonMemPaymentMethod}</th>
 				</tr>
 				<tr height="60">
 					<th width="250"

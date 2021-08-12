@@ -118,21 +118,24 @@ public class OrderVO {
 	
 	//비회원주문페이지	
 	private int nonmemOrderSeqNum;         //비회원 주문 상품 일련 번호
-	private int nonmemOrderNum;            //비회원 주문 번호
-	private String nonmemName;             //비회원 주문자
-	private String nonmemSpName;      		 //비회원 받는 사람
-	private String nonmemSpPhoneNum1_0;             //비회원 전화번호	
-	private String nonmemSpPhoneNum1_1;             //비회원 받는 사람 전화번호1
-	private String nonmemSpPhoneNum1_2;             //비회원 받는 사람 전화번호2
-	private String nonmemSpPhoneNum2_0;             //비회원 전화번호	
-	private String nonmemSpPhoneNum2_1;             //비회원 받는 사람 전화번호1
-	private String nonmemSpPhoneNum2_2;             //비회원 받는 사람 전화번호2
-	private String nonmemSpAdr;
-	private String nonmemSpAdr1;   
-	private String nonmemSpAdr2;   
-	private String nonmemOrderMsg;             //주문 메시지
-	private String nonmemDepositorName;         
-	private String nonmemPaymentMethod;             //지불 방법
+	private int nonMemOrderNum;            //비회원 주문 번호
+	private String nonMemName;             //비회원 주문자
+	private String nonMemSpName;      		 //비회원 받는 사람
+	private String nonMemSpPhoneNum1;
+	private String nonMemSpPhoneNum1_0;             //비회원 전화번호	
+	private String nonMemSpPhoneNum1_1;             //비회원 받는 사람 전화번호1
+	private String nonMemSpPhoneNum1_2;             //비회원 받는 사람 전화번호2
+	private String nonMemSpPhoneNum2;
+	private String nonMemSpPhoneNum2_0;             //비회원 전화번호	
+	private String nonMemSpPhoneNum2_1;             //비회원 받는 사람 전화번호1
+	private String nonMemSpPhoneNum2_2;             //비회원 받는 사람 전화번호2
+	private String nonMemSpAdr;
+	private String nonMemSpAdr1;   
+	private String nonMemSpAdr2;   
+	private String nonMemOrderMsg;             //주문 메시지
+	private String nonMemDepositorName;         
+	private String nonMemPaymentMethod;             //지불 방법
+	private String nonMemOrderDate;
 	private String productImage;
 	
 	
@@ -330,96 +333,120 @@ public class OrderVO {
 	public void setNonmemOrderSeqNum(int nonmemOrderSeqNum) {
 		this.nonmemOrderSeqNum = nonmemOrderSeqNum;
 	}
-	public int getNonmemOrderNum() {
-		return nonmemOrderNum;
+	
+	public int getNonMemOrderNum() {
+		return nonMemOrderNum;
 	}
-	public void setNonmemOrderNum(int nonmemOrderNum) {
-		this.nonmemOrderNum = nonmemOrderNum;
+	public void setNonMemOrderNum(int nonMemOrderNum) {
+		this.nonMemOrderNum = nonMemOrderNum;
 	}
-	public String getNonmemName() {
-		return nonmemName;
+
+	public String getNonMemName() {
+		return nonMemName;
 	}
-	public void setNonmemName(String nonmemName) {
-		this.nonmemName = nonmemName;
+	public void setNonMemName(String nonMemName) {
+		this.nonMemName = nonMemName;
 	}
-	public String getNonmemSpName() {
-		return nonmemSpName;
+	public String getNonMemSpName() {
+		return nonMemSpName;
 	}
-	public void setNonmemSpName(String nonmemSpName) {
-		this.nonmemSpName = nonmemSpName;
+	public void setNonMemSpName(String nonMemSpName) {
+		this.nonMemSpName = nonMemSpName;
+	}
+
+	
+	public String getNonMemSpPhoneNum1() {
+		return nonMemSpPhoneNum1;
+	}
+	public void setNonMemSpPhoneNum1(String nonMemSpPhoneNum1) {
+		this.nonMemSpPhoneNum1 = nonMemSpPhoneNum1;
+	}
+	public String getNonMemSpPhoneNum2() {
+		return nonMemSpPhoneNum2;
+	}
+	public void setNonMemSpPhoneNum2(String nonMemSpPhoneNum2) {
+		this.nonMemSpPhoneNum2 = nonMemSpPhoneNum2;
+	}
+	public String getNonMemSpPhoneNum1_0() {
+		return nonMemSpPhoneNum1_0;
+	}
+	public void setNonMemSpPhoneNum1_0(String nonMemSpPhoneNum1_0) {
+		this.nonMemSpPhoneNum1_0 = nonMemSpPhoneNum1_0;
+	}
+	public String getNonMemSpPhoneNum1_1() {
+		return nonMemSpPhoneNum1_1;
+	}
+	public void setNonMemSpPhoneNum1_1(String nonMemSpPhoneNum1_1) {
+		this.nonMemSpPhoneNum1_1 = nonMemSpPhoneNum1_1;
+	}
+	public String getNonMemSpPhoneNum1_2() {
+		return nonMemSpPhoneNum1_2;
+	}
+	public void setNonMemSpPhoneNum1_2(String nonMemSpPhoneNum1_2) {
+		this.nonMemSpPhoneNum1_2 = nonMemSpPhoneNum1_2;
+	}
+	public String getNonMemSpPhoneNum2_0() {
+		return nonMemSpPhoneNum2_0;
+	}
+	public void setNonMemSpPhoneNum2_0(String nonMemSpPhoneNum2_0) {
+		this.nonMemSpPhoneNum2_0 = nonMemSpPhoneNum2_0;
+	}
+	public String getNonMemSpPhoneNum2_1() {
+		return nonMemSpPhoneNum2_1;
+	}
+	public void setNonMemSpPhoneNum2_1(String nonMemSpPhoneNum2_1) {
+		this.nonMemSpPhoneNum2_1 = nonMemSpPhoneNum2_1;
+	}
+	public String getNonMemSpPhoneNum2_2() {
+		return nonMemSpPhoneNum2_2;
+	}
+	public void setNonMemSpPhoneNum2_2(String nonMemSpPhoneNum2_2) {
+		this.nonMemSpPhoneNum2_2 = nonMemSpPhoneNum2_2;
+	}
+	public String getNonMemSpAdr() {
+		return nonMemSpAdr;
+	}
+	public void setNonMemSpAdr(String nonMemSpAdr) {
+		this.nonMemSpAdr = nonMemSpAdr;
+	}
+	public String getNonMemSpAdr1() {
+		return nonMemSpAdr1;
+	}
+	public void setNonMemSpAdr1(String nonMemSpAdr1) {
+		this.nonMemSpAdr1 = nonMemSpAdr1;
+	}
+	public String getNonMemSpAdr2() {
+		return nonMemSpAdr2;
+	}
+	public void setNonMemSpAdr2(String nonMemSpAdr2) {
+		this.nonMemSpAdr2 = nonMemSpAdr2;
+	}
+	public String getNonMemOrderMsg() {
+		return nonMemOrderMsg;
+	}
+	public void setNonMemOrderMsg(String nonMemOrderMsg) {
+		this.nonMemOrderMsg = nonMemOrderMsg;
 	}
 	
-	public String getNonmemSpPhoneNum1_0() {
-		return nonmemSpPhoneNum1_0;
+	public String getNonMemDepositorName() {
+		return nonMemDepositorName;
 	}
-	public void setNonmemSpPhoneNum1_0(String nonmemSpPhoneNum1_0) {
-		this.nonmemSpPhoneNum1_0 = nonmemSpPhoneNum1_0;
+	public void setNonMemDepositorName(String nonMemDepositorName) {
+		this.nonMemDepositorName = nonMemDepositorName;
 	}
-	public String getNonmemSpPhoneNum1_1() {
-		return nonmemSpPhoneNum1_1;
+	
+	public String getNonMemPaymentMethod() {
+		return nonMemPaymentMethod;
 	}
-	public void setNonmemSpPhoneNum1_1(String nonmemSpPhoneNum1_1) {
-		this.nonmemSpPhoneNum1_1 = nonmemSpPhoneNum1_1;
+	public void setNonMemPaymentMethod(String nonMemPaymentMethod) {
+		this.nonMemPaymentMethod = nonMemPaymentMethod;
 	}
-	public String getNonmemSpPhoneNum1_2() {
-		return nonmemSpPhoneNum1_2;
+	
+	public String getNonMemOrderDate() {
+		return nonMemOrderDate;
 	}
-	public void setNonmemSpPhoneNum1_2(String nonmemSpPhoneNum1_2) {
-		this.nonmemSpPhoneNum1_2 = nonmemSpPhoneNum1_2;
-	}
-	public String getNonmemSpPhoneNum2_0() {
-		return nonmemSpPhoneNum2_0;
-	}
-	public void setNonmemSpPhoneNum2_0(String nonmemSpPhoneNum2_0) {
-		this.nonmemSpPhoneNum2_0 = nonmemSpPhoneNum2_0;
-	}
-	public String getNonmemSpPhoneNum2_1() {
-		return nonmemSpPhoneNum2_1;
-	}
-	public void setNonmemSpPhoneNum2_1(String nonmemSpPhoneNum2_1) {
-		this.nonmemSpPhoneNum2_1 = nonmemSpPhoneNum2_1;
-	}
-	public String getNonmemSpPhoneNum2_2() {
-		return nonmemSpPhoneNum2_2;
-	}
-	public void setNonmemSpPhoneNum2_2(String nonmemSpPhoneNum2_2) {
-		this.nonmemSpPhoneNum2_2 = nonmemSpPhoneNum2_2;
-	}
-	public String getNonmemSpAdr() {
-		return nonmemSpAdr;
-	}
-	public void setNonmemSpAdr(String nonmemSpAdr) {
-		this.nonmemSpAdr = nonmemSpAdr;
-	}
-	public String getNonmemSpAdr1() {
-		return nonmemSpAdr1;
-	}
-	public void setNonmemSpAdr1(String nonmemSpAdr1) {
-		this.nonmemSpAdr1 = nonmemSpAdr1;
-	}
-	public String getNonmemSpAdr2() {
-		return nonmemSpAdr2;
-	}
-	public void setNonmemSpAdr2(String nonmemSpAdr2) {
-		this.nonmemSpAdr2 = nonmemSpAdr2;
-	}
-	public String getNonmemOrderMsg() {
-		return nonmemOrderMsg;
-	}
-	public void setNonmemOrderMsg(String nonmemOrderMsg) {
-		this.nonmemOrderMsg = nonmemOrderMsg;
-	}
-	public String getNonmemDepositorName() {
-		return nonmemDepositorName;
-	}
-	public void setNonmemDepositorName(String nonmemDepositorName) {
-		this.nonmemDepositorName = nonmemDepositorName;
-	}
-	public String getNonmemPaymentMethod() {
-		return nonmemPaymentMethod;
-	}
-	public void setNonmemPaymentMethod(String nonmemPaymentMethod) {
-		this.nonmemPaymentMethod = nonmemPaymentMethod;
+	public void setNonMemOrderDate(String nonMemOrderDate) {
+		this.nonMemOrderDate = nonMemOrderDate;
 	}
 	public String getProductImage() {
 		return productImage;

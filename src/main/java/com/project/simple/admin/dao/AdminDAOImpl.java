@@ -142,12 +142,6 @@ public class AdminDAOImpl implements AdminDAO {
 		sqlSession.delete("mapper.admin.deleteSelectRemoveMember",memId);
 		
 	}
-	
-	@Override
-	public OrderVO deleteMemOrder(int memOrderNum) throws DataAccessException {
-		OrderVO result = sqlSession.selectOne("mapper.admin.deleteMemOrder",memOrderNum);
-		return result;
-	}
 
 	@Override
 	public void deleteSelectRemoveMemOrder(String memOrderNum) throws DataAccessException {

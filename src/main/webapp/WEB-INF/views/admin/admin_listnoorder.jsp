@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:if test="${!empty orderSearchMap.search}">
-	<c:set var="orderSearchList" value="${orderSearchMap.orderSearchList}" />
+<c:if test="${!empty NoOrderSearchMap.search}">
+	<c:set var="NoOrderSearchList" value="${NoOrderSearchMap.NoOrderSearchList}" />
 </c:if>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,6 +155,7 @@
 	
 	
 </script>
+
 </head>
 <title>관리자 회원 주문조회창</title>
 <body>
@@ -165,8 +166,8 @@
 		<div class="container">
 			<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
 				flush="false" />
-			<form name="memOrderSearch"
-				action="${contextPath}/admin_listorder/orderSearch.do" method="post">
+			<form name="nonmemOrderSearch"
+				action="${contextPath}/admin_listNoOrder/NoOrderSearch.do" method="post">
 				<div style="margin-bottom: 10px;">
 					<button type="button" id="buttonmy" class="btn btn-dark" onclick="listMemOrderSearch()"
 						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
@@ -174,10 +175,10 @@
 						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
 						name="search"> <select name="searchType"
 						style="font-size: 14px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
-						<option value="memId">아이디</option>
-						<option value="memOrderNum">주문번호</option>
-						<option value="memSpAdr">주소</option>
-						<option value="memSpPhoneNum1">전화번호</option>
+						<option value="nonMemName">주문자</option>
+						<option value="nonMemOrderNum">주문번호</option>
+						<option value="nonMemSpAdr">주소</option>
+						<option value="nonMemSpPhoneNum1">전화번호</option>
 					</select>
 					<div
 						style="font-size: 25px; font-weight: bold; margin-left: 18px; padding-top: 13px; float: left;">
@@ -200,7 +201,7 @@
 						style="background-color: #eeeeee; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 14px;">
 						<td scope="col" style="width: 50px;">선택</td>
 						<td scope="col" style="width: 60px;">주문번호</td>
-						<td scope="col" style="width: 60px;">아이디</td>
+						<td scope="col" style="width: 60px;">주문자</td>
 						<td scope="col" style="width: 1px;">가격</td>
 						<td scope="col" style="width: 100px;">전화번호</td>
 						<td scope="col" style="width: 130px;">주소</td>
@@ -208,9 +209,9 @@
 						<td scope="col" style="width: 80px;">보기</td>
 					</tr>
 					<c:choose>
-						<c:when test="${!empty orderSearchMap.search}">
+						<c:when test="${!empty NoOrderSearchMap.search}">
 							<c:choose>
-								<c:when test="${empty orderSearchMap.orderSearchList}">
+								<c:when test="${empty NoOrderSearchMap.NoOrderSearchList}">
 									<tr height="200">
 										<td colspan="10"
 											style="background-color: white; padding-top: 100px;">
@@ -222,23 +223,21 @@
 								</c:when>
 								<c:otherwise>
 
-									<c:forEach var="orderSearch" items="${orderSearchList}">
+									<c:forEach var="NoOrderSearch" items="${NoOrderSearchList}">
 										<tr
 											style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black; ">
 											<th scope="col" style="vertical-align: middle;"><input
 												type="checkbox" name="chk" value=""></th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memOrderNum}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memId}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.totalPrice}원</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memSpPhoneNum1}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memSpAdr}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memOrderDate}</th>
-											<th scope="col" style="vertical-align: middle;"><input
-												type="hidden" value="${orderSearch.memId}" name="memId" />
-												<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listorder/detailorder.do?memOrderNum=${orderSearch.memOrderNum}'"
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemOrderNum}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemName}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.totalPrice}원</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemSpPhoneNum1}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemSpAdr}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemOrderDate}</th>
+											<th scope="col" style="vertical-align: middle;">
+												<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listorder/detailorder.do?nonMemOrderNum=${NoOrderSearch.nonMemOrderNum}'"
 														style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 90px; height: 30px; font-size: 14px;">상세보기</button>
 												<br>
-												
 											</th>
 											</tr>
 											
@@ -247,9 +246,9 @@
 								</c:otherwise>
 							</c:choose>
 						</c:when>
-						<c:when test="${empty orderSearchMap.search}">
+						<c:when test="${empty NoOrderSearchMap.search}">
 							<c:choose>
-								<c:when test="${empty ordersList}">
+								<c:when test="${empty NoOrdersList}">
 									<tr height="200">
 										<td colspan="10"
 											style="background-color: white; padding-top: 100px;">
@@ -260,20 +259,20 @@
 									</tr>
 								</c:when>
 								<c:otherwise>
-										<c:forEach var="orders" items="${ordersList}">
+										<c:forEach var="NoOrders" items="${NoOrdersList}">
 
 											<tr 
 												style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
 												<th scope="col" style="vertical-align: middle;"><input
-													type="checkbox" name="RowCheck" id="memOrderNum" value="${orders.memOrderNum}"></th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memOrderNum}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memId}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.totalPrice}원</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memSpPhoneNum1}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memSpAdr}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memOrderDate}</th>
+													type="checkbox" name="RowCheck" id="nonMemOrderNum" value="${NoOrders.nonMemOrderNum}"></th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemOrderNum}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemName}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.totalPrice}원</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemSpPhoneNum1}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemSpAdr}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemOrderDate}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">
-													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listorder/detailorder.do?memOrderNum=${orders.memOrderNum}'"
+													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailorder.do?nonMemOrderNum=${NoOrders.nonMemOrderNum}'"
 														style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 90px; height: 30px; font-size: 14px;">상세보기</button>
 													<br>
 												</th>

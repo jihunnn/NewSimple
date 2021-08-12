@@ -24,5 +24,9 @@ public interface OrderService {
 	public OrderVO memOrderInfo(int memOrderNum)throws Exception;
 	public int adminModMemOrder(OrderVO orderVO)throws Exception;
 	
+	public List<OrderVO> admin_listNoOrder(Criteria cri)throws Exception;
+	public int NoOrderCount() throws Exception;
+	public Map<String, Object> NoOrderSearch(Map<String, Object> NoOrderSearchMap) throws Exception;
+	public int NoOrderSearchCount(Map<String, Object> search) throws Exception;
 	
 }

@@ -19,4 +19,10 @@ public interface OrderController {
 			Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 	//public ModelAndView orderAllCartGoods(@RequestParam  String[] cart_goods_qty,HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	//public ModelAndView payToOrderGoods(@RequestParam Map<String, String> orderMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	
+	public ModelAndView admin_listNoOrder(Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView NoOrderSearch(@RequestParam("search") String search, @RequestParam("searchType") String searchType,
+			Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
 }

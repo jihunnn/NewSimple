@@ -39,8 +39,6 @@ public interface AdminService {
 	public int admin_modMember(MemberVO modmember) throws DataAccessException;
 
 	public void admin_selectremoveMember(String memId) throws Exception ;
-	
-	public OrderVO removeMemOrder(int memOrderNum) throws Exception;
 
 	public void admin_selectremoveMemOrder(String memOrderNum) throws Exception ;
 

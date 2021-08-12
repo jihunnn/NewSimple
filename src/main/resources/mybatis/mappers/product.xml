@@ -385,7 +385,7 @@
 		resultMap="productQuestionResult">
 	<![CDATA[
 			select productQuestionNum, answerWhether, productNum, p.memId, productQuestionTitle, productQuestionContent, productQuestionDate, productAnswerContent, m.memName
-			from simple.productQuestion as p left join member as m on p.memId=m.memId where productNum=#{productNum} order by productQuestionNum desc
+			from simple.productQuestion as p left join simple.member as m on p.memId=m.memId where productNum=#{productNum} order by productQuestionNum desc
 			limit #{pageStart2}, #{perPageNum2};
 			
 	]]>
@@ -482,7 +482,7 @@
 
 	<insert id="insertNewQuestion" parameterType="productVO">
 		<![CDATA[
-			insert into productQuestion(productNum, memId, productQuestionTitle, productQuestionContent)
+			insert into simple.productQuestion(productNum, memId, productQuestionTitle, productQuestionContent)
 			values(#{productNum},#{memId}, #{productQuestionTitle}, #{productQuestionContent});
 		]]>
 
