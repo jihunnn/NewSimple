@@ -9,6 +9,7 @@
 		<typeAlias type="com.project.simple.member.vo.MemberVO" alias="memberVO" />
 		<typeAlias type="com.project.simple.board.vo.ArticleVO" alias="ArticleVO" />
 		<typeAlias alias="productVO" type="com.project.simple.product.vo.ProductVO"/>
+		<typeAlias alias="optionVO" type="com.project.simple.product.vo.OptionVO"/>
 		<typeAlias alias="adminVO" type="com.project.simple.admin.vo.AdminVO"/>
 		<typeAlias alias="cartVO" type="com.project.simple.cart.vo.CartVO"/>
 		<typeAlias alias="favoriteVO" type="com.project.simple.favorite.vo.FavoriteVO"/>
@@ -16,5 +17,6 @@
 		<typeAlias alias="nonmemberVO" type="com.project.simple.nonmember.vo.NonmemberVO"/>
 		<typeAlias alias="delmemberVO" type="com.project.simple.delmember.vo.DelMemberVO"/>
 		<typeAlias alias="orderVO" type="com.project.simple.order.vo.OrderVO"/>
+		
 	</typeAliases>
 </configuration>

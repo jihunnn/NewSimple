@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.simple.product.vo.OptionVO;
 import com.project.simple.product.vo.ProductVO;
 import com.project.simple.favorite.vo.FavoriteVO;
 import com.project.simple.product.dao.ProductDAO;
@@ -178,6 +179,14 @@ public class ProductServiceImpl implements ProductService {
 			optionValue.put(option.get(0),option.get(0));
 		}
 		return optionValue;
+	}
+	
+	// 상품등록 옵션등록
+	@Override
+	public List<OptionVO> addNewOption(OptionVO option) throws Exception {
+		List<OptionVO> optionList = productDAO.addNewOption(option);
+
+		return optionList;
 	}
 
 }

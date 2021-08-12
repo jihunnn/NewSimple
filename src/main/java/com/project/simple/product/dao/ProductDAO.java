@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.project.simple.product.page.Criteria1;
+import com.project.simple.product.vo.OptionVO;
 import com.project.simple.product.vo.ProductVO;
 
 public interface ProductDAO {
@@ -37,5 +38,7 @@ public interface ProductDAO {
 	
 	public List<String> selectOptionName() throws DataAccessException;
 	public List<String> selectOptionValue(Map<String,Object> option1Value) throws DataAccessException ;
+	
+	public List<OptionVO> addNewOption(OptionVO option) throws DataAccessException;
 	
 }
