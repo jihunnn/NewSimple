@@ -195,6 +195,21 @@
 		</if>
 		
 	</insert>
+	<!-- 주문테이블배송 -->
+	<insert id="insertNewOrderdelivery" parameterType="orderVO">
+		
+		
+		 <if test="memId != null">
+			insert into simple.memberorder(memOrderSeqNum, memId,deliveryStatus) 
+			values(default, #{memId},"주문접수");
+		</if>
+		
+		<if test="memId == null">
+			insert into simple.nonmemberorder(nonMemOrderSeqNum , deliveryStatus) 
+			values(default,"주문접수");
+		</if>
+		
+	</insert>
 	
 	<!-- 관리자 회원 주문 리스트 -->
 	<select id="selectAllNoOrdersList" resultMap="orderResult">
