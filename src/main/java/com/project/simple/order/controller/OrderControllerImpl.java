@@ -106,7 +106,7 @@ public class OrderControllerImpl implements OrderController {
 
 	// 회원주문내역 DB 저장(주문완료)
 	@RequestMapping(value = "/memaddorderlist.do", method = RequestMethod.POST)
-	private ModelAndView memaddorderlist(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+	private ModelAndView memaddorderlist(@RequestParam("paymentMethod") String paymentMethod, @ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -117,7 +117,7 @@ public class OrderControllerImpl implements OrderController {
 			if (session.getAttribute("orderlist") != null) {
 				ArrayList<OrderVO> orderlist = (ArrayList) session.getAttribute("orderlist");
 				int size = orderlist.size();
-				System.out.println("오오오오오오오오오");
+			
 
 				String memPaymentMethod = orderVO.getMemPaymentMethod();
 				String Price = orderVO.getTotalPrice();
@@ -136,6 +136,7 @@ public class OrderControllerImpl implements OrderController {
 					String productPrice = vo.getProductPrice();
 					String totalPrice = orderVO.getTotalPrice();
 					String productImage = vo.getProductImage();
+					orderVO.setMemPaymentMethod(paymentMethod);
 					orderVO.setProductNum(productNum);
 					orderVO.setProductName(productName);
 					orderVO.setOption1name(option1name);
@@ -159,7 +160,7 @@ public class OrderControllerImpl implements OrderController {
 				session.removeAttribute("memCartId");
 				mav.addObject("point", point);
 				mav.addObject("Price", Price);
-				mav.addObject("memPaymentMethod", memPaymentMethod);
+				mav.addObject("memPaymentMethod", paymentMethod);
 				mav.setViewName("order_03");
 			} else {
 
@@ -183,6 +184,7 @@ public class OrderControllerImpl implements OrderController {
 				orderVO.setOption2name(option2name);
 				orderVO.setOption2value(option2value);
 				orderVO.setDeliverycharge(deliverycharge);
+				orderVO.setMemPaymentMethod(paymentMethod);
 				orderVO.setProductCnt(productCnt);
 				orderVO.setProductPrice(productPrice);
 				orderVO.setTotalPrice(totalPrice);
@@ -194,7 +196,7 @@ public class OrderControllerImpl implements OrderController {
 				orderService.addNewOrder(orderVO);
 				mav.addObject("orderVO", orderVO);
 				mav.addObject("point", point);
-				mav.addObject("memPaymentMethod", memPaymentMethod);
+				mav.addObject("memPaymentMethod", paymentMethod);
 				mav.addObject("Price", Price);
 				mav.setViewName("order_03");
 			}
@@ -324,8 +326,8 @@ public class OrderControllerImpl implements OrderController {
 
 	// 주문결과페이지이동(회원)
 	@RequestMapping(value = "/memberOrderResult.do", method = RequestMethod.GET)
-	private ModelAndView order_03(@RequestParam("Price") String price, @RequestParam("point") String point,
-			String memPaymentMethod, @RequestParam(" memOrderNum") String memOrderNum, HttpServletRequest request,
+	private ModelAndView order_03(@RequestParam("Price") String price, @RequestParam("Point") String point,
+			String memPaymentMethod, @RequestParam("memOrderNum") String memOrderNum, @RequestParam("paymentMethod") String paymentMethod, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();

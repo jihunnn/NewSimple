@@ -226,7 +226,10 @@ h4 {
 		
 		
 		//가맹점 식별코드
-		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
+		var payType = document.querySelector('input[name="memPaymentMethod"]:checked').value;
+		var radioCheck = $('input[name="memPaymentMethod"]:checked').val();
+		var paymentMethod = $("label[for='"radioCheck"']").text();
+
 		var param = $("form[name=CheckOrder]").serialize();
 		var merchant_uid = ${orderNum};
 		IMP.init('imp44341689');
@@ -264,10 +267,10 @@ h4 {
 						$.ajax({
 							url : "memaddorderlist.do",
 							type : "POST",
-							data : param,
+							data : param, paymentMethod
 							success: function (data) {				                   
 				                    alert("주문내용테이블입력완료");	
-				                    location.href="${contextPath}/memberOrderResult.do";
+				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&Point=${totalPrice}/10&memOrderNum=${orderNum}&paymentMethod=${paymentMethod}";
 				                }
 						})					
 					}else{
@@ -288,12 +291,15 @@ h4 {
 </script>
 	<!-- 타이틀 -->
 
+
+
 	<section class="ftco-section" style="padding-top: 100px;">
 
 		<div class="container">
 			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
 				method="post">
-				<input type="hidden" name="memOrderNum" value=${orderNum}/>
+				<input type="hidden" name="memOrderNum" value="${orderNum}"/>
+				
 			
 				<!-- 타이틀 끝 -->
 
@@ -588,10 +594,10 @@ h4 {
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
 								<th scope="col"><input type="radio" checked="checked"
-									name="nonMemPaymentMethod" value="card"/><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="trans">계좌이체&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="phone">휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="vbank">가상계좌/무통장입금</th>
+									name="memPaymentMethod" value="card"/><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="memPaymentMethod" value="trans"><label for="trans">계좌이체</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="memPaymentMethod" value="phone"><label for="phone">휴대폰결제</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="memPaymentMethod" value="vbank"><label for="vbank">가상계좌/무통장입금</label></th>
 							</tr>
 
 						</tbody>
