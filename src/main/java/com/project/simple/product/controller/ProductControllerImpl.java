@@ -893,5 +893,17 @@ public class ProductControllerImpl implements ProductController {
 
 		return optionMap;
 	}
+	
+	// 惑前可记 急琶昏力
+	@RequestMapping(value = "product/removeSelectOption.do", method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String,Object> removeSelectOption(@ModelAttribute("option") OptionVO option, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Map<String, Object> optionMap = new HashMap<String, Object>();
+		List<OptionVO> optionList = productService.removeSelectOption(option);
+		optionMap.put("optionList", optionList);
+	
+		return optionMap;
+	}
 
 }

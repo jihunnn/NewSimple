@@ -69,6 +69,8 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public void deleteProduct(String productNum) throws DataAccessException{
 		sqlSession.delete("mapper.product.deleteProduct", productNum);
+		sqlSession.delete("mapper.product.deleteProductOption", productNum);
+		
 	}
 	@Override
 	public void updateProduct(Map productMap) throws DataAccessException {
@@ -154,6 +156,7 @@ public class ProductDAOImpl implements ProductDAO{
 		List<String> selectOptionName = sqlSession.selectList("mapper.product.selectOption1Name");
 		List<String> selectOption2Name = sqlSession.selectList("mapper.product.selectOption2Name");
 		for(int i=0; i<selectOption2Name.size(); i++) {
+			if(!selectOptionName.contains(selectOption2Name.get(i)))//옵션1이름, 옵션2이름 중복제거
 			selectOptionName.add(selectOption2Name.get(i));
 		}
 
@@ -176,6 +179,15 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public List<OptionVO> addNewOption(OptionVO option) throws DataAccessException {
 		sqlSession.insert("mapper.product.insertOption",option);
+		List<OptionVO> optionList = sqlSession.selectList("mapper.product.selectOptionList",option);
+			
+		return optionList;
+	}
+	
+	//상품 옵션 선택 삭제
+	@Override
+	public List<OptionVO> removeSelectOption(OptionVO option) throws DataAccessException {
+		sqlSession.delete("mapper.product.deleteSelectOption",option);
 		List<OptionVO> optionList = sqlSession.selectList("mapper.product.selectOptionList",option);
 			
 		return optionList;
