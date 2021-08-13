@@ -267,10 +267,13 @@ h4 {
 						$.ajax({
 							url : "memaddorderlist.do",
 							type : "POST",
-							data : param, paymentMethod,
+							data :{
+								param, 
+								paymentMethod
+							},
 							success: function (data) {				                   
 				                    alert("주문내용테이블입력완료");	
-				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&Point=${totalPrice}/10&memOrderNum=${orderNum}&paymentMethod=${paymentMethod}";
+				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&memOrderNum=${orderNum}&paymentMethod="+paymentMethod;
 				                }
 						})					
 					}else{
@@ -293,13 +296,12 @@ h4 {
 
 
 
+
 	<section class="ftco-section" style="padding-top: 100px;">
 
 		<div class="container">
-			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
-				method="post">
-				<input type="hidden" name="memOrderNum" value="${orderNum}"/>
-				
+			<form name="CheckOrder" method="post">
+				<input type="hidden" name="memOrderNum" value="${orderNum}"/>		
 			
 				<!-- 타이틀 끝 -->
 

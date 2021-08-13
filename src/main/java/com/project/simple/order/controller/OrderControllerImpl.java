@@ -113,6 +113,9 @@ public class OrderControllerImpl implements OrderController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("totalPrice");
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		MemberVO membervo = (MemberVO) session.getAttribute("member");
+		String memId = membervo.getmemId();
+		
 
 		if (isLogOn == true) {
 			if (session.getAttribute("orderlist") != null) {
@@ -122,7 +125,7 @@ public class OrderControllerImpl implements OrderController {
 
 				String memPaymentMethod = orderVO.getMemPaymentMethod();
 				String Price = orderVO.getTotalPrice();
-				int point = Integer.parseInt(Price) / 10;
+			
 
 				for (int i = 0; i < size; i++) {
 					OrderVO vo = orderlist.get(i);
@@ -139,6 +142,7 @@ public class OrderControllerImpl implements OrderController {
 					String productImage = vo.getProductImage();
 					orderVO.setMemPaymentMethod(paymentMethod);
 					orderVO.setProductNum(productNum);
+					orderVO.setMemId(memId);
 					orderVO.setProductName(productName);
 					orderVO.setOption1name(option1name);
 					orderVO.setOption1value(option1value);
@@ -176,6 +180,7 @@ public class OrderControllerImpl implements OrderController {
 				String productPrice = order.getProductPrice();
 				String totalPrice = orderVO.getTotalPrice();
 				String productImage = order.getProductImage();
+				orderVO.setMemId(memId);
 				orderVO.setProductNum(productNum);
 				orderVO.setProductName(productName);
 				orderVO.setOption1name(option1name);
@@ -193,7 +198,6 @@ public class OrderControllerImpl implements OrderController {
 			
 				
 				orderService.addNewOrder(orderVO);
-				mav.addObject("orderVO", orderVO);
 			
 				mav.setViewName("order_03");
 			}
@@ -323,10 +327,12 @@ public class OrderControllerImpl implements OrderController {
 
 	// 주문결과페이지이동(회원)
 	@RequestMapping(value = "/memberOrderResult.do", method = RequestMethod.GET)
-	private ModelAndView order_03(@RequestParam("Price") String price, @RequestParam("Point") String point,
+	private ModelAndView order_03(@RequestParam("Price") int price,
 			String memPaymentMethod, @RequestParam("memOrderNum") String memOrderNum, @RequestParam("paymentMethod") String paymentMethod, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
+		
+		
+		int point = price/10; 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("Price", price);
 		mav.addObject("Point", point);
