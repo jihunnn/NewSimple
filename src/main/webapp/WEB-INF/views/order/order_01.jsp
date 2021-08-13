@@ -14,9 +14,11 @@
 .table-light {
 	background: #F7F7F7;
 }
+
 .table {
 	table-border: 2px;
 }
+
 h4 {
 	margin-top: 60px;
 	font-weight: bold;
@@ -158,6 +160,7 @@ h4 {
 	function iamport() {
 		var IMP = window.IMP;
 		var form = document.CheckOrder;
+		
 		if (form.memSpName.value == "") {
 			alert("주문자정보의 이름을 입력하지 않았습니다.")
 			form.user_name.focus();
@@ -223,11 +226,14 @@ h4 {
 		
 		
 		//가맹점 식별코드
-	
+		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
+		var param = $("form[name=CheckOrder]").serialize();
+		var merchant_uid = ${orderNum};
+		IMP.init('imp44341689');
 		IMP.request_pay({
 			pg : 'inicis',
-			pay_method : 'card',
-			merchant_uid : 'merchant_' + new Date().getTime(),
+			pay_method : payType,
+			merchant_uid : merchant_uid,
 			name : '(주)SIMPLE', //결제창에서 보여질 이름
 			amount : ${totalPrice}, //실제 결제되는 가격
 			buyer_email : '<%=memEmail[0]%>@<%=memEmail[1]%>',
@@ -236,20 +242,42 @@ h4 {
 			buyer_addr : '<%=memAdr[1]%> <%=memAdr[2]%>	',
 			buyer_postcode : '<%=memAdr[0]%>'
 		}, function(rsp) {
-			console.log(rsp);
-			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.';
-				msg += '고유ID : ' + rsp.imp_uid;
-				msg += '상점 거래ID : ' + rsp.merchant_uid;
-				msg += '결제 금액 : ' + rsp.paid_amount;
-				msg += '카드 승인번호 : ' + rsp.apply_num;
-				var param = $("form[name=CheckOrder]").serialize();
+			if (rsp.success) {		
+				console.log(rsp);
 				$.ajax({
-					url : "addorderlist.do",
+					url : "verifyIamport.do",
 					type : "POST",	
-					data : param
-				}).done(function(data){					
-				})
+					data : {
+						imp_uid : rsp.imp_uid,
+						merchant_uid: rsp.merchant_uid
+					}
+				}).done(function(data){			
+					console.log(data);
+					if(rsp.paid_amount == data.response.amount) {		
+						alert("결제 및 결제검증완료");
+						var msg = '결제가 완료되었습니다.';
+						msg += '고유ID : ' + rsp.imp_uid;
+						msg += '상점 거래ID : ' + rsp.merchant_uid;
+						msg += '결제 금액 : ' + rsp.paid_amount;
+						msg += '카드 승인번호 : ' + rsp.apply_num;
+						alert(msg);
+						$.ajax({
+							url : "memaddorderlist.do",
+							type : "POST",
+							data : param,
+							success: function (data) {				                   
+				                    alert("주문내용테이블입력완료");	
+				                    location.href="${contextPath}/memberOrderResult.do";
+				                }
+						})					
+					}else{
+						alert("결제 실패")
+						//아직제대로 결제가 되지 않았습니다.
+						//결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+					}		
+				});
+				
+				
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -263,9 +291,10 @@ h4 {
 	<section class="ftco-section" style="padding-top: 100px;">
 
 		<div class="container">
-			<form name="CheckOrder"  action="${contextPath}/addorderlist.do"
+			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
 				method="post">
-				<input type="hidden" name="totalPrice" value="${totalPrice}" />
+				<input type="hidden" name="memOrderNum" value=${orderNum}/>
+			
 				<!-- 타이틀 끝 -->
 
 
@@ -322,7 +351,7 @@ h4 {
 								<th scope="col" width="100">수량</th>
 								<th scope="col" width="80">배송비</th>
 								<th scope="col" width="150">가격</th>
-								<th scope="col" width="80">합계</th>
+								<th scope="col" width="100">합계</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -377,15 +406,16 @@ h4 {
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${totalPrice}원</a>
 								<input type="hidden" name="totalPrice" value="${totalPrice}" />
-							
-								
+
+
 							</div>
 						</c:when>
 						<c:otherwise>
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${memOrder.totalPrice}원</a>
-								<input type="hidden" name="totalPrice" value="${memOrder.totalPrice}" />
-								<input type="hidden" name="productNum" value="${memOrder.productNum}" />
+								<input type="hidden" name="totalPrice"
+									value="${memOrder.totalPrice}" /> <input type="hidden"
+									name="productNum" value="${memOrder.productNum}" />
 
 							</div>
 						</c:otherwise>
@@ -539,14 +569,7 @@ h4 {
 								<th scope="col"><input type="text" name="memOrderMsg"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
-							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-								<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-								<th scope="col"><input name="memDepositorName" type="text"
-									value=""
-									style="font-size: 14px; border: 1px solid #dcdcdc; height: 36px; width: 326px;"><a
-									style="font-size: 14px; color: color:#b3b3b3;">ㅤ(무통장 입금 시
-										입력)</a></th>
-							</tr>
+
 						</tbody>
 					</table>
 				</div>
@@ -564,23 +587,11 @@ h4 {
 								style="border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
-								<th scope="col"><input type="radio" name="memPaymentMethod"
-									value="카드결제">신용/체크카드&nbsp;&nbsp;&nbsp; <input
-									type="radio" name="memPaymentMethod" value="무통장입금">무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="memPaymentMethod" value="휴대폰결제">휴대폰결제</th>
-							</tr>
-							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-								<th scope="col" style="padding-left: 23px;">카드선택</th>
-								<th scope="col"><select id="month"
-									style="width: 326px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
-										<option value="현대카드">현대카드</option>
-										<option value="국민카드">국민카드</option>
-										<option value="농협카드">농협카드</option>
-										<option value="비씨카드">BC카드</option>
-										<option value="우리카드">우리카드</option>
-										<option value="신한카드">신한카드</option>
-								</select></th>
-
+								<th scope="col"><input type="radio" checked="checked"
+									name="nonMemPaymentMethod" value="card"/><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="trans">계좌이체&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="phone">휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="vbank">가상계좌/무통장입금</th>
 							</tr>
 
 						</tbody>

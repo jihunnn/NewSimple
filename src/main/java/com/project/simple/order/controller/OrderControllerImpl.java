@@ -88,10 +88,14 @@ public class OrderControllerImpl implements OrderController {
 			String totalPrice = request.getParameter("totalPrice");
 			int size = ajaxMsg.length;
 
+			String randomnumber = numberGen(9, 1);
+			int memOrderNum = Integer.parseInt(randomnumber);
+
 			for (int i = 0; i < size; i++) {
 				orderlist.add(orderService.selectcartlist(ajaxMsg[i]));
 			}
 
+			mav.addObject("memOrderNum", memOrderNum);
 			session.setAttribute("memCartId", ajaxMsg);
 			session.setAttribute("totalPrice", totalPrice);
 			session.setAttribute("orderlist", orderlist);
@@ -100,96 +104,38 @@ public class OrderControllerImpl implements OrderController {
 		return mav;
 	}
 
-	// 주문페이지 이동(회원)
-	@RequestMapping(value = "/order_01.do", method = RequestMethod.GET)
-	private ModelAndView order_01(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+	// 회원주문내역 DB 저장(주문완료)
+	@RequestMapping(value = "/memaddorderlist.do", method = RequestMethod.POST)
+	private ModelAndView memaddorderlist(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
 		ModelAndView mav = new ModelAndView();
-		return mav;
+		HttpSession session = request.getSession();
+		session.removeAttribute("totalPrice");
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 
-	}
+		if (isLogOn == true) {
+			if (session.getAttribute("orderlist") != null) {
+				ArrayList<OrderVO> orderlist = (ArrayList) session.getAttribute("orderlist");
+				int size = orderlist.size();
+				System.out.println("오오오오오오오오오");
 
-	// 주문페이지 이동(회원)
-	@RequestMapping(value = "/nonorder_01.do", method = RequestMethod.GET)
-	private ModelAndView nonorder_01(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+				String memPaymentMethod = orderVO.getMemPaymentMethod();
+				String Price = orderVO.getTotalPrice();
+				int point = Integer.parseInt(Price) / 10;
 
-		ModelAndView mav = new ModelAndView();
-		return mav;
-
-	}
-
-	// 주문내역 DB 저장(주문완료)
-		@RequestMapping(value = "/addorderlist.do", method = RequestMethod.POST)
-		private ModelAndView addorderlist(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			ModelAndView mav = new ModelAndView();
-			HttpSession session = request.getSession();
-			session.removeAttribute("totalPrice");
-			Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-
-			if (isLogOn == null) {
-				if (session.getAttribute("orderlist") != null) {
-					ArrayList<CartVO> orderlist = (ArrayList) session.getAttribute("orderlist");
-					int size = orderlist.size();
-
-					String randomnumber = numberGen(9, 1);
-					int nonMemOrderNum = Integer.parseInt(randomnumber);
-					String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
-					String Price = orderVO.getTotalPrice();
-
-					for (int i = 0; i < size; i++) {
-						CartVO vo = orderlist.get(i);
-						String productNum = vo.getProductNum();
-						String productName = vo.getProductName();
-						String option1name = vo.getOption1name();
-						String option1value = vo.getOption1value();
-						String option2name = vo.getOption2name();
-						String option2value = vo.getOption2value();
-						String deliverycharge = vo.getDeliverycharge();
-						int productCnt = vo.getProductCnt();
-						String productPrice = vo.getProductPrice();
-						String totalPrice = orderVO.getTotalPrice();
-						String productImage = vo.getProductImage();
-						orderVO.setProductNum(productNum);
-						orderVO.setProductName(productName);
-						orderVO.setOption1name(option1name);
-						orderVO.setOption1value(option1value);
-						orderVO.setOption2name(option2name);
-						orderVO.setOption2value(option2value);
-						orderVO.setDeliverycharge(deliverycharge);
-						orderVO.setNonMemOrderNum(nonMemOrderNum);
-						orderVO.setProductCnt(productCnt);
-						orderVO.setProductPrice(productPrice);
-						orderVO.setTotalPrice(totalPrice);
-						orderVO.setProductImage(productImage);
-
-						orderService.addNewOrder(orderVO);
-					}
-
-					session.removeAttribute("cartlist");
-
-					mav.addObject("Price", Price);
-					mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
-					mav.addObject("nonMemOrderNum", randomnumber);
-					mav.setViewName("order_03");
-				}
-
-				else {
-					OrderVO order = (OrderVO) session.getAttribute("nonMemOrder");
-
-					String productNum = order.getProductNum();
-					String productName = order.getProductName();
-					String option1name = order.getOption1name();
-					String option1value = order.getOption1value();
-					String option2name = order.getOption2name();
-					String option2value = order.getOption2value();
-					String deliverycharge = order.getDeliverycharge();
-					int productCnt = order.getProductCnt();
-					String productPrice = order.getProductPrice();
+				for (int i = 0; i < size; i++) {
+					OrderVO vo = orderlist.get(i);
+					String productNum = vo.getProductNum();
+					String productName = vo.getProductName();
+					String option1name = vo.getOption1name();
+					String option1value = vo.getOption1value();
+					String option2name = vo.getOption2name();
+					String option2value = vo.getOption2value();
+					String deliverycharge = vo.getDeliverycharge();
+					int productCnt = vo.getProductCnt();
+					String productPrice = vo.getProductPrice();
 					String totalPrice = orderVO.getTotalPrice();
-					String productImage = order.getProductImage();
+					String productImage = vo.getProductImage();
 					orderVO.setProductNum(productNum);
 					orderVO.setProductName(productName);
 					orderVO.setOption1name(option1name);
@@ -202,118 +148,158 @@ public class OrderControllerImpl implements OrderController {
 					orderVO.setTotalPrice(totalPrice);
 					orderVO.setProductImage(productImage);
 
-					String randomnumber = numberGen(9, 1);
-					int nonMemOrderNum = Integer.parseInt(randomnumber);
-					orderVO.setNonMemOrderNum(nonMemOrderNum);
-					String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
-					String Price = orderVO.getTotalPrice();
-					orderService.addNewOrder(orderVO);
-					mav.addObject("orderVO", orderVO);
-					mav.addObject("nonMemOrderNum", randomnumber);
-					mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
-					mav.addObject("Price", Price);
-					mav.setViewName("order_03");
+					orderService.addNewOrder(orderVO); // 마이바티스에서 분기
 				}
 
-			}
-
-			else if (isLogOn == true) {
-				if (session.getAttribute("orderlist") != null) {
-					ArrayList<OrderVO> orderlist = (ArrayList) session.getAttribute("orderlist");
-					int size = orderlist.size();
-					System.out.println("오오오오오오오오오");
-
-					String randomnumber = numberGen(9, 1);
-					int memOrderNum = Integer.parseInt(randomnumber);
-					String memPaymentMethod = orderVO.getMemPaymentMethod();
-					String Price = orderVO.getTotalPrice();
-					int point = Integer.parseInt(Price) / 10;
-
-					for (int i = 0; i < size; i++) {
-						OrderVO vo = orderlist.get(i);
-						String productNum = vo.getProductNum();
-						String productName = vo.getProductName();
-						String option1name = vo.getOption1name();
-						String option1value = vo.getOption1value();
-						String option2name = vo.getOption2name();
-						String option2value = vo.getOption2value();
-						String deliverycharge = vo.getDeliverycharge();
-						int productCnt = vo.getProductCnt();
-						String productPrice = vo.getProductPrice();
-						String totalPrice = orderVO.getTotalPrice();
-						String productImage = vo.getProductImage();
-						orderVO.setProductNum(productNum);
-						orderVO.setProductName(productName);
-						orderVO.setOption1name(option1name);
-						orderVO.setOption1value(option1value);
-						orderVO.setOption2name(option2name);
-						orderVO.setOption2value(option2value);
-						orderVO.setDeliverycharge(deliverycharge);
-						orderVO.setMemOrderNum(memOrderNum);
-						orderVO.setProductCnt(productCnt);
-						orderVO.setProductPrice(productPrice);
-						orderVO.setTotalPrice(totalPrice);
-						orderVO.setProductImage(productImage);
-
-						orderService.addNewOrder(orderVO); // 마이바티스에서 분기
-					}
-
-					String[] memCartId = (String[]) session.getAttribute("memCartId");
-					for (int i = 0; i < size; i++) {
-						cartService.removeCompleteCartlist(memCartId[i]);
-					}
-
-					session.removeAttribute("memCartId");
-					mav.addObject("point", point);
-					mav.addObject("Price", Price);
-					mav.addObject("memPaymentMethod", memPaymentMethod);
-					mav.addObject("memOrderNum", randomnumber);
-					mav.setViewName("order_03");
-				} else {
-
-					OrderVO order = (OrderVO) session.getAttribute("memOrder");
-
-					String productNum = order.getProductNum();
-					String productName = order.getProductName();
-					String option1name = order.getOption1name();
-					String option1value = order.getOption1value();
-					String option2name = order.getOption2name();
-					String option2value = order.getOption2value();
-					String deliverycharge = order.getDeliverycharge();
-					int productCnt = order.getProductCnt();
-					String productPrice = order.getProductPrice();
-					String totalPrice = orderVO.getTotalPrice();
-					String productImage = order.getProductImage();
-					orderVO.setProductNum(productNum);
-					orderVO.setProductName(productName);
-					orderVO.setOption1name(option1name);
-					orderVO.setOption1value(option1value);
-					orderVO.setOption2name(option2name);
-					orderVO.setOption2value(option2value);
-					orderVO.setDeliverycharge(deliverycharge);
-					orderVO.setProductCnt(productCnt);
-					orderVO.setProductPrice(productPrice);
-					orderVO.setTotalPrice(totalPrice);
-					orderVO.setProductImage(productImage);
-
-					String randomnumber = numberGen(9, 1);
-					int memOrderNum = Integer.parseInt(randomnumber);
-					String Price = orderVO.getTotalPrice();
-					String memPaymentMethod = orderVO.getMemPaymentMethod();
-					int point = Integer.parseInt(Price) / 10;
-					orderVO.setMemOrderNum(memOrderNum);
-					orderService.addNewOrder(orderVO);
-					mav.addObject("orderVO", orderVO);
-					mav.addObject("point", point);
-					mav.addObject("memPaymentMethod", memPaymentMethod);
-					mav.addObject("Price", Price);
-					mav.addObject("memOrderNum", randomnumber);
-					mav.setViewName("order_03");
+				String[] memCartId = (String[]) session.getAttribute("memCartId");
+				for (int i = 0; i < size; i++) {
+					cartService.removeCompleteCartlist(memCartId[i]);
 				}
 
+				session.removeAttribute("memCartId");
+				mav.addObject("point", point);
+				mav.addObject("Price", Price);
+				mav.addObject("memPaymentMethod", memPaymentMethod);
+				mav.setViewName("order_03");
+			} else {
+
+				OrderVO order = (OrderVO) session.getAttribute("memOrder");
+
+				String productNum = order.getProductNum();
+				String productName = order.getProductName();
+				String option1name = order.getOption1name();
+				String option1value = order.getOption1value();
+				String option2name = order.getOption2name();
+				String option2value = order.getOption2value();
+				String deliverycharge = order.getDeliverycharge();
+				int productCnt = order.getProductCnt();
+				String productPrice = order.getProductPrice();
+				String totalPrice = orderVO.getTotalPrice();
+				String productImage = order.getProductImage();
+				orderVO.setProductNum(productNum);
+				orderVO.setProductName(productName);
+				orderVO.setOption1name(option1name);
+				orderVO.setOption1value(option1value);
+				orderVO.setOption2name(option2name);
+				orderVO.setOption2value(option2value);
+				orderVO.setDeliverycharge(deliverycharge);
+				orderVO.setProductCnt(productCnt);
+				orderVO.setProductPrice(productPrice);
+				orderVO.setTotalPrice(totalPrice);
+				orderVO.setProductImage(productImage);
+
+				String Price = orderVO.getTotalPrice();
+				String memPaymentMethod = orderVO.getMemPaymentMethod();
+				int point = Integer.parseInt(Price) / 10;
+				orderService.addNewOrder(orderVO);
+				mav.addObject("orderVO", orderVO);
+				mav.addObject("point", point);
+				mav.addObject("memPaymentMethod", memPaymentMethod);
+				mav.addObject("Price", Price);
+				mav.setViewName("order_03");
 			}
-			return mav;
+
 		}
+		return mav;
+	}
+
+	// 비회원주문내역 DB 저장(주문완료)
+	@RequestMapping(value = "/nonmemaddorderlist.do", method = RequestMethod.POST)
+	private ModelAndView nonmemaddorderlist(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		session.removeAttribute("totalPrice");
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+
+		if (isLogOn == null) {
+			if (session.getAttribute("orderlist") != null) {
+				ArrayList<CartVO> orderlist = (ArrayList) session.getAttribute("orderlist");
+				int size = orderlist.size();
+
+				String randomnumber = numberGen(9, 1);
+				int nonMemOrderNum = Integer.parseInt(randomnumber);
+				String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
+				String Price = orderVO.getTotalPrice();
+
+				for (int i = 0; i < size; i++) {
+					CartVO vo = orderlist.get(i);
+					String productNum = vo.getProductNum();
+					String productName = vo.getProductName();
+					String option1name = vo.getOption1name();
+					String option1value = vo.getOption1value();
+					String option2name = vo.getOption2name();
+					String option2value = vo.getOption2value();
+					String deliverycharge = vo.getDeliverycharge();
+					int productCnt = vo.getProductCnt();
+					String productPrice = vo.getProductPrice();
+					String totalPrice = orderVO.getTotalPrice();
+					String productImage = vo.getProductImage();
+					orderVO.setProductNum(productNum);
+					orderVO.setProductName(productName);
+					orderVO.setOption1name(option1name);
+					orderVO.setOption1value(option1value);
+					orderVO.setOption2name(option2name);
+					orderVO.setOption2value(option2value);
+					orderVO.setDeliverycharge(deliverycharge);
+					orderVO.setNonMemOrderNum(nonMemOrderNum);
+					orderVO.setProductCnt(productCnt);
+					orderVO.setProductPrice(productPrice);
+					orderVO.setTotalPrice(totalPrice);
+					orderVO.setProductImage(productImage);
+
+					orderService.addNewOrder(orderVO);
+				}
+
+				session.removeAttribute("cartlist");
+
+				mav.addObject("Price", Price);
+				mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
+				mav.addObject("nonMemOrderNum", randomnumber);
+				mav.setViewName("order_03");
+			}
+
+			else {
+				OrderVO order = (OrderVO) session.getAttribute("nonMemOrder");
+
+				String productNum = order.getProductNum();
+				String productName = order.getProductName();
+				String option1name = order.getOption1name();
+				String option1value = order.getOption1value();
+				String option2name = order.getOption2name();
+				String option2value = order.getOption2value();
+				String deliverycharge = order.getDeliverycharge();
+				int productCnt = order.getProductCnt();
+				String productPrice = order.getProductPrice();
+				String totalPrice = orderVO.getTotalPrice();
+				String productImage = order.getProductImage();
+				orderVO.setProductNum(productNum);
+				orderVO.setProductName(productName);
+				orderVO.setOption1name(option1name);
+				orderVO.setOption1value(option1value);
+				orderVO.setOption2name(option2name);
+				orderVO.setOption2value(option2value);
+				orderVO.setDeliverycharge(deliverycharge);
+				orderVO.setProductCnt(productCnt);
+				orderVO.setProductPrice(productPrice);
+				orderVO.setTotalPrice(totalPrice);
+				orderVO.setProductImage(productImage);
+
+				String randomnumber = numberGen(9, 1);
+				int nonMemOrderNum = Integer.parseInt(randomnumber);
+				orderVO.setNonMemOrderNum(nonMemOrderNum);
+				String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
+				String Price = orderVO.getTotalPrice();
+				orderService.addNewOrder(orderVO);
+				mav.addObject("orderVO", orderVO);
+				mav.addObject("nonMemOrderNum", randomnumber);
+				mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
+				mav.addObject("Price", Price);
+				mav.setViewName("order_03");
+			}
+		}
+		return mav;
+	}
 
 	// 10자리 주문번호 난수 생성
 	public static String numberGen(int len, int dupCd) {
@@ -339,8 +325,8 @@ public class OrderControllerImpl implements OrderController {
 	// 주문결과페이지이동(회원)
 	@RequestMapping(value = "/memberOrderResult.do", method = RequestMethod.GET)
 	private ModelAndView order_03(@RequestParam("Price") String price, @RequestParam("point") String point,
-			 String memPaymentMethod, @RequestParam(" memOrderNum") String memOrderNum,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String memPaymentMethod, @RequestParam(" memOrderNum") String memOrderNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("order_03");
@@ -356,7 +342,7 @@ public class OrderControllerImpl implements OrderController {
 			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		List<OrderVO> ordersList = orderService.listOrders(cri);
-		//System.out.println(ordersList);
+		// System.out.println(ordersList);
 		int orderCount = orderService.orderCount();
 		ModelAndView mav = new ModelAndView(viewName);
 		PageMaker pageMaker = new PageMaker();
@@ -370,67 +356,65 @@ public class OrderControllerImpl implements OrderController {
 
 		return mav;
 	}
-	
-	//관리자 주문내역 상세보기
-		@RequestMapping(value = "/admin_listorder/detailorder.do", method = RequestMethod.GET)
-		public ModelAndView viewMyOrderInfo(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			String viewName = (String) request.getAttribute("viewName");
-			HttpSession session = request.getSession();
-            
-			List<OrderVO> OrderList = orderService.memOrderNumList(memOrderNum);
-			OrderVO orderVO = orderService.memOrderInfo(memOrderNum);
-			MemberVO memberVO = orderService.memOrderId(memOrderNum);
-			
-			session.setAttribute("member", memberVO);
-			session.setAttribute("order", orderVO);
-			session.setAttribute("OrderList", OrderList);
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName(viewName);
-			mav.addObject("OrderList", OrderList);
-			mav.addObject("member", memberVO);
-			mav.addObject("order", orderVO);
-			return mav;
+
+	// 관리자 주문내역 상세보기
+	@RequestMapping(value = "/admin_listorder/detailorder.do", method = RequestMethod.GET)
+	public ModelAndView viewMyOrderInfo(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+
+		List<OrderVO> OrderList = orderService.memOrderNumList(memOrderNum);
+		OrderVO orderVO = orderService.memOrderInfo(memOrderNum);
+		MemberVO memberVO = orderService.memOrderId(memOrderNum);
+
+		session.setAttribute("member", memberVO);
+		session.setAttribute("order", orderVO);
+		session.setAttribute("OrderList", OrderList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		mav.addObject("OrderList", OrderList);
+		mav.addObject("member", memberVO);
+		mav.addObject("order", orderVO);
+		return mav;
+	}
+
+	// 관리자 주문내역 수정화면
+	@RequestMapping(value = "/admin_listorder/admin_ModVeiwMemorder.do", method = RequestMethod.GET)
+	public ModelAndView admin_ModVeiwMemorder(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+
+		return mav;
+	}
+
+	// 관리자 주문내역 수정
+	@RequestMapping(value = "/admin_listorder/admin_ModMemorder.do", method = RequestMethod.POST)
+	private void admin_ModMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		int result = 0;
+		result = orderService.adminModMemOrder(orderVO);
+		System.out.println(result);
+		if (result != 0) {
+			session.removeAttribute("member");
+			session.removeAttribute("order");
+			session.removeAttribute("OrderList");
+			out.println("<script>");
+			out.println("alert('회원 주문 정보를 수정하였습니다.');");
+			out.println("location.href = '/simple/admin_listorder.do';");
+			out.println("</script>");
+			out.close();
 		}
-		//관리자 주문내역 수정화면
-				@RequestMapping(value = "/admin_listorder/admin_ModVeiwMemorder.do", method = RequestMethod.GET)
-				public ModelAndView admin_ModVeiwMemorder(@RequestParam("memOrderNum") int memOrderNum, HttpServletRequest request,
-						HttpServletResponse response) throws Exception {
-					String viewName = (String) request.getAttribute("viewName");
-					HttpSession session = request.getSession();
-		            
-			
-					ModelAndView mav = new ModelAndView();
-					mav.setViewName(viewName);
-				
-					return mav;
-				}
-				
-				//관리자 주문내역 수정
-				@RequestMapping(value = "/admin_listorder/admin_ModMemorder.do", method = RequestMethod.POST)
-				private void admin_ModMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
-						HttpServletResponse response) throws Exception {
-					response.setContentType("text/html;charset=utf-8");
-					PrintWriter out = response.getWriter();
-					String viewName = (String) request.getAttribute("viewName");
-					HttpSession session = request.getSession();
-					int result = 0;
-					result = orderService.adminModMemOrder(orderVO);
-					System.out.println(result);
-					if(result != 0) {
-						session.removeAttribute("member");
-						session.removeAttribute("order");
-						session.removeAttribute("OrderList");
-						out.println("<script>");
-						out.println("alert('회원 주문 정보를 수정하였습니다.');");
-						out.println("location.href = '/simple/admin_listorder.do';");
-						out.println("</script>");
-						out.close();
-					}
 
-					
-				}
-
+	}
 
 	@Override
 	@RequestMapping(value = "/admin_listorder/orderSearch.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -577,12 +561,20 @@ public class OrderControllerImpl implements OrderController {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("member") == null) {
 
+			String randomnumber = numberGen(9, 1);
+			int orderNum = Integer.parseInt(randomnumber);
+
+			mav.addObject("orderNum", orderNum);
 			session.setAttribute("nonMemOrder", orderVO);
 			mav.setViewName("nonorder_01");
 		}
 
 		else if (session.getAttribute("member") != null) {
 
+			String randomnumber = numberGen(9, 1);
+			int orderNum = Integer.parseInt(randomnumber);
+
+			mav.addObject("orderNum", orderNum);
 			session.setAttribute("memOrder", orderVO);
 			session.setAttribute("totalPrice", orderVO.getTotalPrice());
 			mav.setViewName("order_01");
@@ -597,7 +589,7 @@ public class OrderControllerImpl implements OrderController {
 			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		List<OrderVO> NoOrdersList = orderService.admin_listNoOrder(cri);
-		//System.out.println(ordersList);
+		// System.out.println(ordersList);
 		int NoOrderCount = orderService.NoOrderCount();
 		ModelAndView mav = new ModelAndView(viewName);
 		PageMaker pageMaker = new PageMaker();
@@ -643,62 +635,60 @@ public class OrderControllerImpl implements OrderController {
 		return mav;
 
 	}
-	//관리자 주문내역 상세보기
-		@RequestMapping(value = "/admin_listNoOrder/detailNonOrder.do", method = RequestMethod.GET)
-		public ModelAndView viewNonOrderInfo(@RequestParam("nonMemOrderNum") int nonMemOrderNum, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			String viewName = (String) request.getAttribute("viewName");
-			HttpSession session = request.getSession();
-	            
-			List<OrderVO> NonOrderList = orderService.NonMemOrderNumList(nonMemOrderNum);
-			OrderVO orderVO = orderService.NonMemOrderInfo(nonMemOrderNum);
 
-	
-			session.setAttribute("NonOrder", orderVO);
-			session.setAttribute("NonOrderList", NonOrderList);
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName(viewName);
-			mav.addObject("NonOrderList", NonOrderList);
+	// 관리자 주문내역 상세보기
+	@RequestMapping(value = "/admin_listNoOrder/detailNonOrder.do", method = RequestMethod.GET)
+	public ModelAndView viewNonOrderInfo(@RequestParam("nonMemOrderNum") int nonMemOrderNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
 
-			mav.addObject("order", orderVO);
-			return mav;
-		}
-		
-		//관리자 주문내역 수정화면
-		@RequestMapping(value = "/admin_listNoOrder/admin_ModVeiwNonMemorder.do", method = RequestMethod.GET)
-		public ModelAndView admin_ModVeiwNonMemorder(@RequestParam("nonMemOrderNum") int nonMemOrderNum, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			String viewName = (String) request.getAttribute("viewName");
-			HttpSession session = request.getSession();
-            
-	
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName(viewName);
-		
-			return mav;
-		}
-		
-		//관리자 주문내역 수정
-		@RequestMapping(value = "/admin_listNoOrder/admin_ModNonMemorder.do", method = RequestMethod.POST)
-		private void admin_ModNonMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			String viewName = (String) request.getAttribute("viewName");
-			HttpSession session = request.getSession();
-			int result = 0;
-			result = orderService.adminModNonMemOrder(orderVO);
-			System.out.println(result);
-			if(result != 0) {
-				session.removeAttribute("NonOrder");
-				session.removeAttribute("NonOrderList");
-				out.println("<script>");
-				out.println("alert('비회원 주문 정보를 수정하였습니다.');");
-				out.println("location.href = '/simple/admin_listNoOrder.do';");
-				out.println("</script>");
-				out.close();
-			}
+		List<OrderVO> NonOrderList = orderService.NonMemOrderNumList(nonMemOrderNum);
+		OrderVO orderVO = orderService.NonMemOrderInfo(nonMemOrderNum);
 
-			
+		session.setAttribute("NonOrder", orderVO);
+		session.setAttribute("NonOrderList", NonOrderList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		mav.addObject("NonOrderList", NonOrderList);
+
+		mav.addObject("order", orderVO);
+		return mav;
+	}
+
+	// 관리자 주문내역 수정화면
+	@RequestMapping(value = "/admin_listNoOrder/admin_ModVeiwNonMemorder.do", method = RequestMethod.GET)
+	public ModelAndView admin_ModVeiwNonMemorder(@RequestParam("nonMemOrderNum") int nonMemOrderNum,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+
+		return mav;
+	}
+
+	// 관리자 주문내역 수정
+	@RequestMapping(value = "/admin_listNoOrder/admin_ModNonMemorder.do", method = RequestMethod.POST)
+	private void admin_ModNonMemorder(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		int result = 0;
+		result = orderService.adminModNonMemOrder(orderVO);
+		System.out.println(result);
+		if (result != 0) {
+			session.removeAttribute("NonOrder");
+			session.removeAttribute("NonOrderList");
+			out.println("<script>");
+			out.println("alert('비회원 주문 정보를 수정하였습니다.');");
+			out.println("location.href = '/simple/admin_listNoOrder.do';");
+			out.println("</script>");
+			out.close();
 		}
+
+	}
 }
