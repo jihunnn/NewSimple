@@ -227,8 +227,8 @@ h4 {
 		
 		//가맹점 식별코드
 		var payType = document.querySelector('input[name="memPaymentMethod"]:checked').value;
-		var radioCheck = $('input[name="memPaymentMethod"]:checked').val();
-		var paymentMethod = $("label[for='"radioCheck"']").text();
+		
+		var paymentMethod = $("label[for='"+payType+"']").text();
 
 		var param = $("form[name=CheckOrder]").serialize();
 		var merchant_uid = ${orderNum};
@@ -267,7 +267,7 @@ h4 {
 						$.ajax({
 							url : "memaddorderlist.do",
 							type : "POST",
-							data : param, paymentMethod
+							data : param, paymentMethod,
 							success: function (data) {				                   
 				                    alert("주문내용테이블입력완료");	
 				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&Point=${totalPrice}/10&memOrderNum=${orderNum}&paymentMethod=${paymentMethod}";

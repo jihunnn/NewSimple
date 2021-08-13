@@ -159,9 +159,7 @@ public class OrderControllerImpl implements OrderController {
 				}
 
 				session.removeAttribute("memCartId");
-				mav.addObject("point", point);
-				mav.addObject("Price", Price);
-				mav.addObject("memPaymentMethod", paymentMethod);
+				
 				mav.setViewName("order_03");
 			} else {
 
@@ -192,13 +190,11 @@ public class OrderControllerImpl implements OrderController {
 				orderVO.setProductImage(productImage);
 
 				String Price = orderVO.getTotalPrice();
-				String memPaymentMethod = orderVO.getMemPaymentMethod();
-				int point = Integer.parseInt(Price) / 10;
+			
+				
 				orderService.addNewOrder(orderVO);
 				mav.addObject("orderVO", orderVO);
-				mav.addObject("point", point);
-				mav.addObject("memPaymentMethod", paymentMethod);
-				mav.addObject("Price", Price);
+			
 				mav.setViewName("order_03");
 			}
 
@@ -332,6 +328,10 @@ public class OrderControllerImpl implements OrderController {
 			HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("Price", price);
+		mav.addObject("Point", point);
+		mav.addObject("memOrderNum", memOrderNum);
+		mav.addObject("memPaymentMethod", paymentMethod);
 		mav.setViewName("order_03");
 		return mav;
 
