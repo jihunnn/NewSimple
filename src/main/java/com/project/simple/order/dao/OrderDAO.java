@@ -33,4 +33,7 @@ public interface OrderDAO {
 	public List<OrderVO> selectNonMemOrderList(int nonMemOrderNum) throws DataAccessException;
 	public OrderVO selectNonMemberOrderInfo(int nonMemOrderNum) throws DataAccessException;
 	public int updateAdminModNonMemOrder(OrderVO orderVO)throws DataAccessException;
+	
+	public int updateAdmindeliveryModify(OrderVO orderVO) throws DataAccessException;
+	public int updateAdmindeliveryModifyNon(OrderVO orderVO) throws DataAccessException;
 }

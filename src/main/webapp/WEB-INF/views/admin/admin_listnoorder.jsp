@@ -175,10 +175,11 @@
 						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
 						name="search"> <select name="searchType"
 						style="font-size: 14px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
-						<option value="nonMemName">주문자</option>
 						<option value="nonMemOrderNum">주문번호</option>
+						<option value="nonMemName">주문자</option>
 						<option value="nonMemSpAdr">주소</option>
-						<option value="nonMemSpPhoneNum1">전화번호</option>
+						<option value="nonMemSpPhoneNum1">연락처1</option>
+						<option value="nonMemSpPhoneNum2">연락처2</option>
 					</select>
 					<div
 						style="font-size: 25px; font-weight: bold; margin-left: 18px; padding-top: 13px; float: left;">
@@ -203,8 +204,7 @@
 						<td scope="col" style="width: 60px;">주문번호</td>
 						<td scope="col" style="width: 60px;">주문자</td>
 						<td scope="col" style="width: 1px;">가격</td>
-						<td scope="col" style="width: 100px;">전화번호</td>
-						<td scope="col" style="width: 130px;">주소</td>
+						<td scope="col" style="width: 230px;">배송지정보</td>
 						<td scope="col" style="width: 80px;">주문날짜</td>
 						<td scope="col" style="width: 80px;">보기</td>
 					</tr>
@@ -231,8 +231,15 @@
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemOrderNum}</th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemName}</th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.totalPrice}원</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemSpPhoneNum1}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemSpAdr}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">
+												수령인 : ${NoOrderSearch.nonMemSpName} <br>
+												주소 : ${NoOrderSearch.nonMemSpAdr} <br>
+												연락처1 : ${NoOrderSearch.nonMemSpPhoneNum1}
+												<c:choose>
+								                <c:when test="${NoOrderSearch.nonMemSpPhoneNum2 != '--'}">
+								                연락처2 : ${NoOrderSearch.nonMemSpPhoneNum2}
+								                </c:when>
+								                </c:choose></th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrderSearch.nonMemOrderDate}</th>
 											<th scope="col" style="vertical-align: middle;">
 												<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailNonOrder.do?nonMemOrderNum=${NoOrderSearch.nonMemOrderNum}'"
@@ -268,8 +275,15 @@
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemOrderNum}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemName}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.totalPrice}원</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemSpPhoneNum1}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemSpAdr}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">
+												수령인 : ${NoOrders.nonMemSpName} <br>
+												주소 : ${NoOrders.nonMemSpAdr} <br>
+												연락처1 : ${NoOrders.nonMemSpPhoneNum1}
+												<c:choose>
+								                <c:when test="${NoOrders.nonMemSpPhoneNum2 != '--'}">
+								                연락처2 : ${NoOrders.nonMemSpPhoneNum2}
+								                </c:when>
+								                </c:choose></th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${NoOrders.nonMemOrderDate}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">
 													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listNoOrder/detailNonOrder.do?nonMemOrderNum=${NoOrders.nonMemOrderNum}'"

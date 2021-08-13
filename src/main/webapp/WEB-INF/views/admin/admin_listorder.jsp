@@ -175,10 +175,11 @@
 						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
 						name="search"> <select name="searchType"
 						style="font-size: 14px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
-						<option value="memId">아이디</option>
 						<option value="memOrderNum">주문번호</option>
+						<option value="memId">아이디</option>
 						<option value="memSpAdr">주소</option>
-						<option value="memSpPhoneNum1">전화번호</option>
+						<option value="memSpPhoneNum1">연락처1</option>
+						<option value="memSpPhoneNum2">연락처2</option>
 					</select>
 					<div
 						style="font-size: 25px; font-weight: bold; margin-left: 18px; padding-top: 13px; float: left;">
@@ -203,8 +204,7 @@
 						<td scope="col" style="width: 60px;">주문번호</td>
 						<td scope="col" style="width: 60px;">아이디</td>
 						<td scope="col" style="width: 1px;">가격</td>
-						<td scope="col" style="width: 100px;">전화번호</td>
-						<td scope="col" style="width: 130px;">주소</td>
+						<td scope="col" style="width: 230px;">배송지정보</td>
 						<td scope="col" style="width: 80px;">주문날짜</td>
 						<td scope="col" style="width: 80px;">보기</td>
 					</tr>
@@ -231,8 +231,15 @@
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memOrderNum}</th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memId}</th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.totalPrice}원</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memSpPhoneNum1}</th>
-											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memSpAdr}</th>
+											<th scope="col" style="vertical-align: middle; font-weight: normal;">
+												수령인 : ${orderSearch.memSpName} <br>
+												주소 : ${orderSearch.memSpAdr} <br>
+												연락처1 : ${orderSearch.memSpPhoneNum1}
+												<c:choose>
+								                <c:when test="${orderSearch.memSpPhoneNum2 != '--'}">
+								                연락처2 : ${orderSearch.memSpPhoneNum2}
+								                </c:when>
+								                </c:choose></th>
 											<th scope="col" style="vertical-align: middle; font-weight: normal;">${orderSearch.memOrderDate}</th>
 											<th scope="col" style="vertical-align: middle;"><input
 												type="hidden" value="${orderSearch.memId}" name="memId" />
@@ -270,8 +277,15 @@
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memOrderNum}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memId}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.totalPrice}원</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memSpPhoneNum1}</th>
-												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memSpAdr}</th>
+												<th scope="col" style="vertical-align: middle; font-weight: normal;">
+												수령인 : ${orders.memSpName} <br>
+												주소 : ${orders.memSpAdr} <br>
+												연락처1 : ${orders.memSpPhoneNum1}
+												<c:choose>
+								                <c:when test="${orders.memSpPhoneNum2 != '--'}">
+								                연락처2 : ${orders.memSpPhoneNum2}
+								                </c:when>
+								                </c:choose></th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">${orders.memOrderDate}</th>
 												<th scope="col" style="vertical-align: middle; font-weight: normal;">
 													<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/admin_listorder/detailorder.do?memOrderNum=${orders.memOrderNum}'"

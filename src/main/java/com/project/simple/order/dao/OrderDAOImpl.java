@@ -148,5 +148,17 @@ public class OrderDAOImpl implements OrderDAO {
 		int result = sqlSession.update("mapper.order.updateAdminModNonMemOrder", orderVO);
 		return result;
 	}
+	
+	@Override
+	public int updateAdmindeliveryModify(OrderVO orderVO) throws DataAccessException {
+		int result = sqlSession.update("mapper.order.updateAdmindeliveryModify", orderVO);
+		return result;
+	}
+
+	@Override
+	public int updateAdmindeliveryModifyNon(OrderVO orderVO) throws DataAccessException {
+		int result = sqlSession.update("mapper.order.updateAdmindeliveryModifyNon", orderVO);
+		return result;
+	}
 }
 

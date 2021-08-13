@@ -137,6 +137,7 @@ function Check_order() {
 								<th scope="col" width="100">수량</th>
 								<th scope="col" width="80">배송비</th>
 								<th scope="col" width="150">가격</th>
+								<th scope="col" width="150">배송상태</th>
 						</tr>
 					</thead>
 					
@@ -153,6 +154,7 @@ function Check_order() {
 							<th scope="col" style="vertical-align: middle;">${item.productCnt}개</th>
 							<th scope="col" style="vertical-align: middle;">무료배송</th>
 							<th scope="col" style="vertical-align: middle;">${item.productPrice}원</th>
+							<th scope="col" style="vertical-align: middle;">${item.deliveryStatus}</th>
 						</tr>
 						</tbody>
 					</c:forEach>
@@ -228,12 +230,14 @@ function Check_order() {
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 			
-		
+		                       <c:choose>
+								<c:when test="${NonOrder.nonMemSpPhoneNum2 != '--'}">
 				                <tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
 								<th scope="col"><select name="nonMemSpPhoneNum2_0" 
 									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value="<%=nonMemSpPhoneNum2[0]%>"><%=nonMemSpPhoneNum2[0]%></option>
+										<option value=""></option>
 										<option value="011">011</option>
 										<option value="016">016</option>
 										<option value="017">017</option>
@@ -244,10 +248,29 @@ function Check_order() {
 									- <input type="text" name="nonMemSpPhoneNum2_2" value="<%=nonMemSpPhoneNum2[2]%>"
 									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							   </tr>
+							   </c:when>
+							   <c:when test="${NonOrder.nonMemSpPhoneNum2 == '--'}">
+				                <tr style="border-bottom: 1px solid #eeeeee;">
+								<th scope="col" style="padding-left: 23px;">연락처2</th>
+								<th scope="col"><select name="nonMemSpPhoneNum2_0" 
+									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+										<option value=""></option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="019">019</option>
+										<option value="010">010</option>
+								</select> - <input  type="text" name="nonMemSpPhoneNum2_1" value=""
+									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									- <input type="text" name="nonMemSpPhoneNum2_2" value=""
+									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+							   </tr>
+							   </c:when>
+							   </c:choose>
 		
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"
-									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메세지<br>(100자내외)</th>
+									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메시지<br>(100자내외)</th>
 								<th scope="col"><input type="text" name="nonMemOrderMsg" value="${NonOrder.nonMemOrderMsg}"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
