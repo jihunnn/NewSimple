@@ -139,6 +139,15 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.updateAdminModNonMemOrder(orderVO);
 	}
 
+	@Override
+	public int deliveryModify(OrderVO orderVO) throws Exception {
+		return orderDAO.updateAdmindeliveryModify(orderVO);
+	}
+
+	@Override
+	public int deliveryModifyNon(OrderVO orderVO) throws Exception {
+		return orderDAO.updateAdmindeliveryModifyNon(orderVO);
+	}
 
 }
 	

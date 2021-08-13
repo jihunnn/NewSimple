@@ -138,6 +138,17 @@ public class OrderVO {
 	private String nonMemOrderDate;
 	private String productImage;
 	
+    private String deliveryStatus;
+	
+	
+	
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+	
 	
 	public String getMemOrderDate() {
 		return memOrderDate;

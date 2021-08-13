@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -692,5 +693,38 @@ public class OrderControllerImpl implements OrderController {
 			out.close();
 		}
 
+	}
+	
+	@RequestMapping(value = "/admin_listorder/deliveryModify.do", method = RequestMethod.POST)
+	public @ResponseBody void deliveryModify(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response ) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		int result = 0;
+		result = orderService.deliveryModify(orderVO);
+		if(result != 0) {
+			out.print("회원 주문 배송상태를 수정하였습니다.");
+			out.close();
+		}
+
+		
+	}
+	@RequestMapping(value = "/admin_listNoOrder/deliveryModifyNon.do", method = RequestMethod.POST)
+	public @ResponseBody void deliveryModifyNon(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response ) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		int result = 0;
+		result = orderService.deliveryModifyNon(orderVO);
+		if(result != 0) {
+			out.print("비회원 주문 배송상태를 수정하였습니다.");
+			out.close();
+		}
+
+		
 	}
 }

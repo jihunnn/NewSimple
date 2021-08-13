@@ -24,6 +24,32 @@ h4 {
 	font-weight: bold;
 }
 </style>
+<script  type="text/javascript">
+//배송상태 수정
+function deliveryindex(index){
+
+		var index = document.querySelector('input[name=deliveryModify'+index+']');
+		var Index = parseInt(index.getAttribute('class'));
+		if(confirm("배송상태를 수정하시겠습니까?")){
+		$.ajax({
+			url : "${contextPath}/admin_listorder/deliveryModify.do",
+			type : "POST",
+			data : {
+				memOrderSeqNum : $(".memOrderSeqNum"+ Index).val(),
+				deliveryStatus : $(".deliveryStatus"+ Index).val()
+			},
+			success : function(result) {
+				alert(result);
+				document.location.reload();
+			
+			},
+		});
+		}else{
+			return false;
+		}
+	};
+
+</script>
 </head>
 <title>관리자 회원 주문 상세창</title>
 <body>
@@ -91,15 +117,19 @@ h4 {
 								<th scope="col" width="100">수량</th>
 								<th scope="col" width="80">배송비</th>
 								<th scope="col" width="150">가격</th>
+								<th scope="col" width="150">배송상태</th>
+								<th scope="col" width="150">배송수정</th>
 						</tr>
 					</thead>
 					
-					<c:forEach var="item" items="${OrderList}">
+					<c:forEach var="item" items="${OrderList}" varStatus="status" >
+					
 						<tbody>
 						<tr class="tr1"
 									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-							<th scope="col" style="vertical-align: middle;"><img src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productImage}" width=80 height=80>
+							<th scope="col" style="vertical-align: middle;"><img src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productimage}" width=80 height=80>
 							</th>
+							
 							<th scope="col" style="vertical-align: middle;">${item.productName}
 							<th scope="col" style="text-align: left; vertical-align: middle;">${item.option1name}
 							: ${item.option1value}<br>${item.option2name} :
@@ -107,6 +137,55 @@ h4 {
 							<th scope="col" style="vertical-align: middle;">${item.productCnt}개</th>
 							<th scope="col" style="vertical-align: middle;">무료배송</th>
 							<th scope="col" style="vertical-align: middle;">${item.productPrice}원</th>
+							<th scope="col" style="vertical-align: middle;">
+							<input type="hidden" id="memOrderSeqNum${status.index }" class="memOrderSeqNum${status.index }" value="${item.memOrderSeqNum}" />
+							<select name="deliveryStatus" id ="deliveryStatus${status.index }" class="deliveryStatus${status.index }"
+									style="width: 110px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									<c:choose>
+									 <c:when test="${item.deliveryStatus=='주문접수' }">
+										<option value="주문접수" selected>주문접수</option>
+										<option value="결제완료">결제완료</option>
+										<option value="상품준비중">상품준비중</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료">배송완료</option>
+									</c:when>
+									 <c:when test="${item.deliveryStatus=='결제완료' }">
+										<option value="주문접수" >주문접수</option>
+										<option value="결제완료" selected>결제완료</option>
+										<option value="상품준비중">상품준비중</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료">배송완료</option>
+									</c:when>
+									 <c:when test="${item.deliveryStatus=='상품준비중' }">
+										<option value="주문접수" >주문접수</option>
+										<option value="결제완료">결제완료</option>
+										<option value="상품준비중" selected>상품준비중</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료">배송완료</option>
+									</c:when>
+									 <c:when test="${item.deliveryStatus=='배송중' }">
+										<option value="주문접수" >주문접수</option>
+										<option value="결제완료">결제완료</option>
+										<option value="상품준비중">상품준비중</option>
+										<option value="배송중" selected>배송중</option>
+										<option value="배송완료">배송완료</option>
+									</c:when>
+									 <c:when test="${item.deliveryStatus=='배송완료' }">
+										<option value="주문접수" >주문접수</option>
+										<option value="결제완료">결제완료</option>
+										<option value="상품준비중">상품준비중</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료" selected>배송완료</option>
+									</c:when>
+								</c:choose>
+								</select>
+								</th>
+							
+							<th scope="col" style="vertical-align: middle;">
+							<input type="hidden" id="index" value="${status.index }"/>
+							<input type="button" id="deliveryModify" class="${status.index }"  name="deliveryModify${status.index }"onclick="deliveryindex(${status.index })" value="배송수정"
+										style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 90px; height: 30px; font-size: 14px;">
+									</th>
 						</tr>
 						</tbody>
 					</c:forEach>
@@ -193,17 +272,20 @@ h4 {
 								<th scope="col"><%=memSpPhoneNum[0]%> - <%=memSpPhoneNum[1]%>
 									- <%=memSpPhoneNum[2]%></th>
 							</tr>
-			
-		
+							<c:choose>
+								<c:when test="${order.memSpPhoneNum2 != '--'}">
+								
 				                <tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
 								<th scope="col"><%=memSpPhoneNum2[0]%> - <%=memSpPhoneNum2[1]%>
 									- <%=memSpPhoneNum2[2]%></th>
 							   </tr>
+							   </c:when>
+							</c:choose>
 		
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"
-									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메세지<br>(100자내외)</th>
+									style="padding-bottom: 50px; padding-left: 23px;"><br>주문메시지<br>(100자내외)</th>
 								<th scope="col"><input type="text" name="memOrderMsg" disabled value="${order.memOrderMsg}"
 									style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							</tr>
@@ -220,7 +302,7 @@ h4 {
 			<br> <br>
 
 				<div style="text-align: center">
-					<input type="button" class="btn btn-secondary" value="수정하기"
+					<input type="button" class="btn btn-secondary" value="정보수정"
 						onclick="location.href='${contextPath}/admin_listorder/admin_ModVeiwMemorder.do?memOrderNum=${order.memOrderNum}'"
 						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;

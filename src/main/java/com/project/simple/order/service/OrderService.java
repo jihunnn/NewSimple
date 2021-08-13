@@ -33,4 +33,8 @@ public interface OrderService {
 	public OrderVO NonMemOrderInfo(int nonMemOrderNum) throws Exception;
 	public int adminModNonMemOrder(OrderVO orderVO) throws Exception;
 	
+
+	public int deliveryModify(OrderVO orderVO) throws Exception;
+	public int deliveryModifyNon(OrderVO orderVO) throws Exception;
+	
 }

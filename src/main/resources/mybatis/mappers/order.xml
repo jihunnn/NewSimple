@@ -138,6 +138,9 @@
 			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
 				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
 			</if>	
+			<if test="searchType=='memSpPhoneNum2' and search != null and search != '' ">
+				memSpPhoneNum2 like CONCAT('%', #{search}, '%')
+			</if>
 			limit #{pageStart}, #{perPageNum};
 	</select>
 	
@@ -161,6 +164,9 @@
 			
 			<if test="searchType=='memSpPhoneNum1' and search != null and search != '' ">
 				memSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>
+			<if test="searchType=='memSpPhoneNum2' and search != null and search != '' ">
+				memSpPhoneNum2 like CONCAT('%', #{search}, '%')
 			</if>
 	
 	</select>
@@ -224,6 +230,9 @@
 			
 			<if test="searchType=='nonMemSpPhoneNum1' and search != null and search != '' ">
 				nonMemSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>
+			<if test="searchType=='nonMemSpPhoneNum2' and search != null and search != '' ">
+				nonMemSpPhoneNum2 like CONCAT('%', #{search}, '%')
 			</if>	
 			limit #{pageStart}, #{perPageNum};
 	</select>
@@ -246,6 +255,9 @@
 			</if>
 			<if test="searchType=='nonMemSpPhoneNum1' and search != null and search != '' ">
 				nonMemSpPhoneNum1 like CONCAT('%', #{search}, '%')
+			</if>
+			<if test="searchType=='nonMemSpPhoneNum2' and search != null and search != '' ">
+				nonMemSpPhoneNum2 like CONCAT('%', #{search}, '%')
 			</if>
 	
 	</select>
@@ -287,5 +299,23 @@
 		where nonMemOrderNum=#{nonMemOrderNum}; 
 	]]>
 	</update>
+	
+			<!-- 관리자 회원 배송정보 수정 -->
+	<update id="updateAdmindeliveryModify" parameterType="orderVO" >
+	<![CDATA[ 
+		update simple.memdelivery
+		set deliveryStatus = #{deliveryStatus}
+		where memOrderSeqNum=#{memOrderSeqNum}; 
+	]]>
+	</update>
+		<!-- 관리자 비회원 배송정보 수정 -->
+	<update id="updateAdmindeliveryModifyNon" parameterType="orderVO" >
+	<![CDATA[ 
+		update simple.nonmemdelivery
+		set deliveryStatus = #{deliveryStatus}
+		where nonmemOrderSeqNum=#{nonmemOrderSeqNum}; 
+	]]>
+	</update>
+	
 
 </mapper>
