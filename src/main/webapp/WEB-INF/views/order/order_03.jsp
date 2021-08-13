@@ -117,7 +117,7 @@ th:nth-child(2n+1), td:nth-child(2n+1) {
 					<th width="250"
 						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">지급 예정 적립금</th>
 					<th width="300"
-						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${point}원</th>
+						style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #7e9c8c;">${Point}원</th>
 						
 				</tr>
 			</table>
