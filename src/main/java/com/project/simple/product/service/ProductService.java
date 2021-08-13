@@ -42,6 +42,7 @@ public interface ProductService {
 	public Map<String,Object> selectOptionValue(Map<String,Object> option1Value) throws Exception;
 	
 	public List<OptionVO> addNewOption(OptionVO option) throws Exception;
+	public List<OptionVO> removeSelectOption(OptionVO option) throws Exception;
 
 
 

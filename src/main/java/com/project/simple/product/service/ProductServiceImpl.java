@@ -188,5 +188,13 @@ public class ProductServiceImpl implements ProductService {
 
 		return optionList;
 	}
+	
+	// 상품등록 옵션선택삭제
+	@Override
+	public List<OptionVO> removeSelectOption(OptionVO option) throws Exception {
+		List<OptionVO> optionList = productDAO.removeSelectOption(option);
+
+		return optionList;
+	}
 
 }

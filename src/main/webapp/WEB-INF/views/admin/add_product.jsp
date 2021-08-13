@@ -32,6 +32,13 @@
 	margin: 10 10 10 10;
 }
 
+#RightBox {
+	width: 600px;
+	height: 430px;
+	border: 1px solid #eeeeee;
+	margin: 10 10 10 10;
+}
+
 #login_text {
 	padding: 20px;
 	margin: 10 10 10 10;
@@ -107,6 +114,12 @@
 	font-size: 10px;
 }
 
+#sect {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 10px;
+}
+
 .Easy-sgin-in-wrap4 {
 	display: flex;
 	flex-direction: column; /*column으로 정렬 */
@@ -136,6 +149,10 @@
 
 .Easy-sgin-in-wrap4 .sign-button-list4 li button i {
 	font-size: 25px;
+}
+
+button {
+	font-size: 13px !important;
 }
 </style>
 <script type="text/javascript">
@@ -216,7 +233,7 @@
 				$.each(data, function(index, item) { // key=index,  value=item  
 					let option1value = document.querySelector("#option1value");
 					$(option1value).append(
-							"<option value='"+ item+"'>" + item + "</option>");
+							"<option style='font-size:13px;' value='"+ item+"'>" + item + "</option>");
 
 				});
 
@@ -246,7 +263,7 @@
 				$.each(data, function(index, item) { // key=index,  value=item  
 					let option1value = document.querySelector("#option2value");
 					$(option2value).append(
-							"<option value='"+ item+"'>" + item + "</option>");
+							"<option style='font-size:13px;' value='"+ item+"'>" + item + "</option>");
 
 				});
 
@@ -259,26 +276,90 @@
 	function optionNameDiect(obj) { //옵션 이름 직접입력 버튼 클릭시 input box change
 		$("#option" + obj + "Name")
 				.replaceWith(
-						"<input type = 'text' id='option"+obj+"Name' name='option"+obj+"Name' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
+						"<input type = 'text' id='option"+obj+"Name' name='option"+obj+"Name' placeholder='직접입력' style='font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left:6px;'>"); //selectbox 태그를 input 태그로 변경
+		$("#option1NameSelect").removeAttr("onclick");
+		$("#option1NameSelect").attr("onclick","optionNameDiect("+obj+");");				
 	}
 
 	function optionValueDiect(obj) { //옵션 값 직접입력 버튼 클릭시 input box change
 		$("#option" + obj + "value")
 				.replaceWith(
-						"<input type = 'text' id='option"+obj+"value' name='option"+obj+"value' placeholder='직접입력' style='font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;'>"); //selectbox 태그를 input 태그로 변경
+						"<input type = 'text' id='option"+obj+"value' name='option"+obj+"value' placeholder='직접입력' style='font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left:2px;'>"); //selectbox 태그를 input 태그로 변경
 	}
 	
-	function removeOption() {
-	var optionNum = $('#optionNum').val();
-	alert(optionNum);
+	function removeOption(idx) {
+		$( 'tr' ).remove( '.optionsList' ); //tr 리스트 비우기
+
+		var item = document.querySelector('input[name=optionNum'+idx+']');
+        var number = parseInt(item.getAttribute('value'));
+		var productNum = $('#productNum').val();
+
+ 		$('#inputOptionNum').children('input').remove();
+
+	      $.ajax({
+	             
+	            type : "GET",
+	            url : "${contextPath}/product/removeSelectOption.do",
+	            data: {
+	            	optionNum : number,
+	            	productNum : productNum
+	            	},
+	            error : function(data){
+	            	alert("에러가 발생했습니다."+data);
+	            },
+	            success : function(data){
+
+	            	 values = data.optionList ; 
+	            	 
+	            		if(values==""){
+	            			$(optionList).append("<tr class='optionsList'><td colspan='7' style='text-align:center;'>옵션을 등록해주세요</td></tr>");	
+	            		}
+
+		            	$.each(values, function( index, value ) {
+
+		            		$(inputOptionNum).append("<input type='hidden' style='width:30px;' id='optionNum' name='optionNum"+index+"' value='"+value.optionNum+"'/>");
+		            		$(optionList).append("<tr style='text-align:center; border-bottom:1px solid #eeeeee;' class='optionsList'><td>"+value.option1Name+"</td><td>"+value.option1value+"</td><td>"+value.option1price+"</td><td>"+value.option2Name+"</td><td>"+value.option2value+"</td><td>"+value.option2price+"</td><td><button type='button' style='border:none; background-color:white; color:#7e9c8c; cursor:pointer;' onclick='removeOption("+index+")'>삭제</button></td></tr>");
+
+		            		 
+		                    });
+
+	
+	            	
+	            }
+	             
+	        });
+       
 		
 	}
 
 	function addOption(){
+		//옵션1과 옵션2의 이름이 같을 때
+		var option1Name = $("#option1Name option:selected").val();
+		var option2Name = $("#option2Name option:selected").val();
+		var productNum = $('#productNum').val();
+		
+		if(productNum == ""){
+			alert("상품번호를 입력해주세요");
+			return false;
+		}
+		
+		if(option1Name == '선택' || option2Name=='선택') {
+			alert("옵션이름이선택되지 않았어요");
+			return false;
+		}	
+		
+		if(option1Name == option2Name) {
+			alert("옵션1과 옵션2의 이름이 같습니다. 다시 설정해주세요~!");
+			return false;
+		}
+				
 		var param = $("form[name=addOptionValue]").serialize();
-		$('#optionList').children('tr').remove(); 
+		$( 'tr' ).remove( '.optionsList' ); //tr 리스트 비우기
+		$('#inputOptionNum').children('input').remove(); //옵션number 리스트 비우기
 		let optionList = document.querySelector("#optionList");
-		$(optionList).append("<tr><td>옵션1이름</td><td>옵션1값</td><td>옵션1가격</td><td>옵션2이름</td><td>옵션2값</td><td>옵션2가격</td></tr>")
+		let inputOptionNum = document.querySelector("#inputOptionNum");
+
+
 	      $.ajax({
 	             
 	            type : "GET",
@@ -288,11 +369,16 @@
 	            	alert("에러가 발생했습니다."+data);
 	            },
 	            success : function(data){
-
+						
 	            	 values = data.optionList ; 
+	            	 
+	            		if(values == ""){
+	            			$(optionList).append("<tr class='optionsList'><td colspan='6' style='text-align:center;'>옵션을 등록해주세요</td></tr>");	
+	            		}
+	            		
 		            	$.each(values, function( index, value ) {
-							
-		            		$(optionList).append("<tr><td>"+value.option1Name+"</td><td>"+value.option1value+"</td><td>"+value.option1price+"</td><td>"+value.option2Name+"</td><td>"+value.option2value+"</td><td>"+value.option2price+"</td><td><button type='button' onclick='location.href='>삭제</button></td></tr><input type='hidden' id='optionNum' value='"+value.optionNum+"'/>");
+		            		$(inputOptionNum).append("<input type='hidden' style='width:30px;' id='optionNum' name='optionNum"+index+"' value='"+value.optionNum+"'/>");
+		            		$(optionList).append("<tr style='text-align:center; border-bottom:1px solid #eeeeee;' class='optionsList'><td>"+value.option1Name+"</td><td>"+value.option1value+"</td><td>"+value.option1price+"</td><td>"+value.option2Name+"</td><td>"+value.option2value+"</td><td>"+value.option2price+"</td><td><button type='button' style='border:none; background-color:white; color:#7e9c8c; cursor:pointer;' onclick='removeOption("+index+")'>삭제</button></td></tr>");
 		            		 
 		                    });
 	
@@ -301,8 +387,10 @@
 	             
 	        });
 
-
 		};
+		
+
+
 
 </script>
 <script type="text/javascript">
@@ -413,10 +501,10 @@
 <title>상품등록창</title>
 <body>
 
-	<section class="ftco-section testimony-section"
-		style="padding-top: 100px;">
+	<section class="ftco-section testimony-section" id="sect"
+		style="padding-top: 30px; margin-top: 70px;">
 		<div class="container">
-			<div id="LeftBox" style="font-size: 14px;">
+			<div id="LeftBox" style="font-size: 13px; margin-left: 300px;">
 				<h3 id="login_text"
 					style="color: #7e9c8c; font-weight: bold; padding-left: 70px;">상품등록</h3>
 				<form name="newProduct"
@@ -441,75 +529,79 @@
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 					</div>
 					<div style="padding-left: 70px;">
-						<div style="padding-left: 120px;">
+						<div style="padding-left: 116px;">
 							<select name="category" id="category"
-								style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
+								style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
 							<select name="subcategory" id="subcategory"
-								style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
+								style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
 						</div>
 					</div>
 					<div style="padding-left: 70px; padding-top: 10px;">
 						<label style="margin-right: 35px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품이미지</label>
-						<input type="file" name="productImage" size=40 value="">
+						<input type="file" name="productImage" size=40 value=""
+							style="font-size: 13px; padding-left: 2px;">
 					</div>
 					<div style="padding-left: 70px;">
 						<label style="margin-right: 35px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품제조사</label>
 						<input type="text" name="productManufacturer" value=""
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; margin-left: 2px; width: 326px; height: 36px;">
 					</div>
 					<div style="padding-left: 70px;">
 						<label style="margin-right: 35px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품원산지</label>
 						<input type="text" name="productOrigin" value=""
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; margin-left: 2px; width: 326px; height: 36px;">
 					</div>
-					<div style="padding-left: 70px; padding-top: 10px;">
-						<label style="margin-right: 7px;"><a
+					<div
+						style="padding-left: 70px; padding-top: 10px; padding-right: 2px;">
+						<label style="margin-right: 7px; font-size: 13px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품상세이미지</label>
-						<input type="file" name="productContentImage" value="">
+						<input type="file" name="productContentImage" value=""
+							style="padding-left: 4px;">
 					</div>
 				</form>
 
 			</div>
 		</div>
 		<div class="container">
-			<div id="LeftBox" style="font-size: 14px; ">
+			<div id="RightBox" style="font-size: 13px;">
 				<h3 id="login_text"
 					style="color: #7e9c8c; font-weight: bold; padding-left: 70px;">옵션추가</h3>
 				<form name="addOptionValue" action="" method="post">
 					<div style="padding-left: 77px;">
-						<label style="margin-right: 57px;">상품번호</label>
-						<input type="text" name="productNum" style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;"/> <br>
-						<label
-							style="margin-right: 43px;">옵션1 이름</label> <select
+						<label style="margin-right: 57px;">상품번호</label> <input type="text"
+							name="productNum" id="productNum"
+							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" />
+						<br> <label style="margin-right: 43px;">옵션1 이름</label> <select
 							onchange="option1Select(this.value)" name="option1Name"
 							id="option1Name"
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+							style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left: 3px;">
 							<option disabled selected="selected">선택</option>
 							<c:forEach var="optionName" items="${optionName}">
 								<option>${optionName}</option>
 							</c:forEach>
 						</select>
-						<button type="button" onclick="optionNameDiect(1)"
-							style="margin-top: 10px; height: 38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+						<button type="button" onclick="optionNameDiect(1)" id="option1NameSelect"
+							style="margin-top: 10px; height: 37px; border-radius: 2px; margin-bottom: 3px; background-color: #5f5f5f; color: white; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
 							class="btn-secondary btn-xs">직접입력</button>
 					</div>
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 57px;">옵션1 값</label> <select
 							name="option1value" id="option1value"
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
-
+							style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left: 2px;">
+							<option disabled selected="selected" style="font-size: 13px;">옵션1이름을
+								먼저 선택해주세요</option>
 						</select>
-						<button type="button" onclick="optionValueDiect(1)"
-							style="margin-top: 10px; height: 38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+						<button type="button" onclick="optionValueDiect(1)" id="optionValueSelect"
+							style="margin-top: 10px; height: 37px; border-radius: 2px; margin-bottom: 3px; background-color: #5f5f5f; color: white; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
 							class="btn-secondary btn-xs">직접입력</button>
 					</div>
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 15px;">옵션1 금액추가</label> <input
 							name="option1price" id="option1price"
-							style="font-size: 14px; margin-top: 10px; margin-bottom: none !important; border: 1px solid #dcdcdc; width: 250px; height: 36px;" /><span
+							style="font-size: 13px; margin-top: 10px; margin-bottom: none !important; border: 1px solid #dcdcdc; margin-left: 5px; width: 250px; height: 36px;" /><span
 							style="font-size: 10px; margin-top: 20px; margin-right: 55px; color: gray; float: right;">숫자만
 							입력해주세요</span>
 
@@ -518,42 +610,65 @@
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 43px;">옵션2 이름</label><select
 							name="option2Name" id="option2Name"
-							onchange="option2Select(this.value)"
-							style="font-size: 14px; margin-top: 10px; margin-left: 3px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+							onchange="option2Select(this.value)" 
+							style="font-size: 13px; margin-top: 10px; margin-left: 6px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
 							<option disabled selected="selected">선택</option>
 							<c:forEach var="optionName" items="${optionName}">
 								<option>${optionName}</option>
 							</c:forEach>
 						</select>
-						<button type="button" onclick="optionNameDiect(2)"
-							style="margin-top: 10px; height: 38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+						<button type="button" onclick="optionNameDiect(2)"  id="optionNameSelect"
+							style="margin-top: 10px; height: 37px; border-radius: 2px; margin-bottom: 3px; background-color: #5f5f5f; color: white; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
 							class="btn-secondary btn-xs">직접입력</button>
 					</div>
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 57px;">옵션2 값</label> <select
 							name="option2value" id="option2value"
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;">
+							style="margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left: 2px;">
+							<option disabled selected="selected" style="font-size: 13px;">옵션2이름을
+								먼저 선택해주세요</option>
 						</select>
-						<button type="button" onclick="optionValueDiect(2)"
-							style="margin-top: 10px; height: 38px; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
+						<button type="button" onclick="optionValueDiect(2)" id="optionValueSelect"
+							style="margin-top: 10px; height: 37px; border-radius: 2px; margin-bottom: 3px; background-color: #5f5f5f; color: white; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
 							class="btn-secondary btn-xs">직접입력</button>
 					</div>
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 15px;">옵션2 금액추가</label> <input
 							name="option2price" id="option2price"
-							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" /><span
+							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px; margin-left: 5px;" /><span
 							style="font-size: 10px; margin-top: 20px; margin-right: 55px; color: gray; float: right;">숫자만
 							입력해주세요</span>
 
 					</div>
-					<button type="button" onclick="addOption()">추가</button>
-					<table name="optionList" id="optionList" style="width:100%;">
 
-					</table>
 				</form>
 
 
 			</div>
+			<div class="container" style="padding-right:0px; padding-left:0px;">
+			<button type="button" onclick="addOption()"
+				style="border: none; cursor: pointer;  background-color: white; color: #7e9c8c; text-align: left; height: 30px; width: 100px;">추가버튼+</button>
+			<table name="optionList" id="optionList"
+				style="width: 65%; font-size:13px;">
+				<tr
+					style="background-color: #fbfbfb; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; font-size: 13px; text-align: center;">
+					<td>옵션1이름</td>
+					<td>옵션1값</td>
+					<td>옵션1가격</td>
+					<td>옵션2이름</td>
+					<td>옵션2값</td>
+					<td>옵션3가격</td>
+					<td style="width:50px;"></td>
+				</tr>
+				<tr class="optionsList">
+					<td colspan="7"
+						style="height: 50px; text-align: center; padding-top: 30px; font-size:13px;">옵션을
+						등록해주세요</td>
+				</tr>
+
+			</table>
+			<div name="inputOptionNum" id="inputOptionNum"></div>
+		</div>
 		</div>
 	</section>
 

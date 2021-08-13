@@ -40,5 +40,6 @@ public interface ProductDAO {
 	public List<String> selectOptionValue(Map<String,Object> option1Value) throws DataAccessException ;
 	
 	public List<OptionVO> addNewOption(OptionVO option) throws DataAccessException;
+	public List<OptionVO> removeSelectOption(OptionVO option) throws DataAccessException;
 	
 }

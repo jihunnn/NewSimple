@@ -23,7 +23,7 @@
 		<result property="option2value" column="option2value" />
 	</resultMap>
 	<resultMap id="optionResult" type="optionVO">
-	<result property="productNum" column="productNum" />
+		<result property="productNum" column="productNum" />
 		<result property="option1Name" column="option1name" />
 		<result property="option2Name" column="option2name" />
 		<result property="option1value" column="option1value" />
@@ -301,6 +301,13 @@
 			where productNum = #{productNum};
 		]]>
 	</delete>
+	<!-- 상품옵션 삭제 -->
+	<delete id="deleteProductOption" parameterType="java.util.Map">
+		<![CDATA[ 
+			delete from simple.detailOption 
+			where productNum = #{productNum};
+		]]>
+	</delete>
 
 	<select id="selectProduct" resultType="productVO"
 		parameterType="string"> 
@@ -553,6 +560,14 @@
 		]]>
 
 	</insert>
+	
+	<!-- 선택 옵션 삭제 -->
+	<delete id="deleteSelectOption" parameterType="OptionVO">
+		<![CDATA[ 
+			delete from simple.detailOption 
+			where optionNum = #{optionNum};
+		]]>
+	</delete>
 
 
 </mapper>
