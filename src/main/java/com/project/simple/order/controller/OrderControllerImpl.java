@@ -95,19 +95,45 @@ public class OrderControllerImpl implements OrderController {
 			for (int i = 0; i < size; i++) {
 				orderlist.add(orderService.selectcartlist(ajaxMsg[i]));
 			}
-
-			mav.addObject("memOrderNum", memOrderNum);
+			
+			
+			
 			session.setAttribute("memCartId", ajaxMsg);
 			session.setAttribute("totalPrice", totalPrice);
+			session.setAttribute("orderCart", true);
 			session.setAttribute("orderlist", orderlist);
 			mav.setViewName("order_01");
 		}
 		return mav;
 	}
+	
+	// 주문페이지 이동(회원)
+		@RequestMapping(value = "/order_01.do", method = RequestMethod.GET)
+		private ModelAndView order_01(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+
+			ModelAndView mav = new ModelAndView();
+			
+			String randomnumber = numberGen(9, 1);
+			int orderNum = Integer.parseInt(randomnumber);
+			mav.addObject("orderNum", orderNum);
+			return mav;
+
+		}
+
+		// 주문페이지 이동(회원)
+		@RequestMapping(value = "/nonorder_01.do", method = RequestMethod.GET)
+		private ModelAndView nonorder_01(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+
+			ModelAndView mav = new ModelAndView();
+			return mav;
+
+		}
 
 	// 회원주문내역 DB 저장(주문완료)
 	@RequestMapping(value = "/memaddorderlist.do", method = RequestMethod.POST)
-	private ModelAndView memaddorderlist(@RequestParam("paymentMethod") String paymentMethod, @ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
+	private ModelAndView memaddorderlist(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -121,12 +147,6 @@ public class OrderControllerImpl implements OrderController {
 			if (session.getAttribute("orderlist") != null) {
 				ArrayList<OrderVO> orderlist = (ArrayList) session.getAttribute("orderlist");
 				int size = orderlist.size();
-			
-
-				String memPaymentMethod = orderVO.getMemPaymentMethod();
-				String Price = orderVO.getTotalPrice();
-			
-
 				for (int i = 0; i < size; i++) {
 					OrderVO vo = orderlist.get(i);
 					String productNum = vo.getProductNum();
@@ -139,8 +159,7 @@ public class OrderControllerImpl implements OrderController {
 					int productCnt = vo.getProductCnt();
 					String productPrice = vo.getProductPrice();
 					String totalPrice = orderVO.getTotalPrice();
-					String productImage = vo.getProductImage();
-					orderVO.setMemPaymentMethod(paymentMethod);
+					String productImage = vo.getProductImage();	
 					orderVO.setProductNum(productNum);
 					orderVO.setMemId(memId);
 					orderVO.setProductName(productName);
@@ -153,7 +172,6 @@ public class OrderControllerImpl implements OrderController {
 					orderVO.setProductPrice(productPrice);
 					orderVO.setTotalPrice(totalPrice);
 					orderVO.setProductImage(productImage);
-
 					orderService.addNewOrder(orderVO); // 마이바티스에서 분기
 				}
 
@@ -168,7 +186,6 @@ public class OrderControllerImpl implements OrderController {
 			} else {
 
 				OrderVO order = (OrderVO) session.getAttribute("memOrder");
-
 				String productNum = order.getProductNum();
 				String productName = order.getProductName();
 				String option1name = order.getOption1name();
@@ -187,16 +204,11 @@ public class OrderControllerImpl implements OrderController {
 				orderVO.setOption1value(option1value);
 				orderVO.setOption2name(option2name);
 				orderVO.setOption2value(option2value);
-				orderVO.setDeliverycharge(deliverycharge);
-				orderVO.setMemPaymentMethod(paymentMethod);
+				orderVO.setDeliverycharge(deliverycharge);		
 				orderVO.setProductCnt(productCnt);
 				orderVO.setProductPrice(productPrice);
 				orderVO.setTotalPrice(totalPrice);
-				orderVO.setProductImage(productImage);
-
-				String Price = orderVO.getTotalPrice();
-			
-				
+				orderVO.setProductImage(productImage);			
 				orderService.addNewOrder(orderVO);
 			
 				mav.setViewName("order_03");
@@ -584,6 +596,7 @@ public class OrderControllerImpl implements OrderController {
 			int orderNum = Integer.parseInt(randomnumber);
 
 			mav.addObject("orderNum", orderNum);
+			session.setAttribute("orderNow", true);
 			session.setAttribute("memOrder", orderVO);
 			session.setAttribute("totalPrice", orderVO.getTotalPrice());
 			mav.setViewName("order_01");

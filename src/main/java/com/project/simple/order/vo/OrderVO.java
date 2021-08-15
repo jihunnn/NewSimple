@@ -19,6 +19,7 @@ public class OrderVO {
 	private String memSpPhoneNum2;  //관리자 주문리스트조회할때 사용
 	private String memOrderDate;   	//관리자 주문리스트조회할때 사용
 	
+	
 	//회원주문페이지
 	private String memId;
 	private String memName;

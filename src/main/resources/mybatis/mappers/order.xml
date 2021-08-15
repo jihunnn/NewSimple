@@ -37,6 +37,7 @@
 		<result property="nonMemPaymentMethod" column="nonMemPaymentMethod" />
 		<result property="CurrentStatus" column="CurrenStatus" />
 		<result property="memOrderSeqNum" column="memOrderSeqNum" />
+		<result property="deliveryStatus" column="deliveryStatus" />
 	</resultMap>
 	<resultMap id="memResult" type="memberVO">
 		<result property="memId" column="memId" />
@@ -200,12 +201,12 @@
 		
 		
 		 <if test="memId != null">
-			insert into simple.memberorder(memOrderSeqNum, memId,deliveryStatus) 
-			values(default, #{memId},"주문접수");
+			insert into simple.memdelivery(memOrderSeqNum, deliveryStatus, memId) 
+			values(default, "주문접수", #{memId});
 		</if>
 		
 		<if test="memId == null">
-			insert into simple.nonmemberorder(nonMemOrderSeqNum , deliveryStatus) 
+			insert into simple.nonmemdelivery(nonMemOrderSeqNum , deliveryStatus) 
 			values(default,"주문접수");
 		</if>
 		

@@ -265,12 +265,9 @@ h4 {
 						msg += '카드 승인번호 : ' + rsp.apply_num;
 						alert(msg);
 						$.ajax({
-							url : "memaddorderlist.do",
+							url : "${contextPath}/memaddorderlist.do",
 							type : "POST",
-							data :{
-								param, 
-								paymentMethod
-							},
+							data :	param, paymentMethod,  	
 							success: function (data) {				                   
 				                    alert("주문내용테이블입력완료");	
 				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&memOrderNum=${orderNum}&paymentMethod="+paymentMethod;
@@ -300,7 +297,7 @@ h4 {
 	<section class="ftco-section" style="padding-top: 100px;">
 
 		<div class="container">
-			<form name="CheckOrder" method="post">
+			<form name="CheckOrder" action="" method="post">
 				<input type="hidden" name="memOrderNum" value="${orderNum}"/>		
 			
 				<!-- 타이틀 끝 -->
@@ -363,7 +360,7 @@ h4 {
 							</tr>
 						</thead>
 						<c:choose>
-							<c:when test="${memOrder == null}">
+							<c:when test="${orderCart == true}">
 								<c:forEach items="${orderlist}" var="orderlist"
 									varStatus="status">
 									<tbody>
@@ -621,6 +618,10 @@ h4 {
 		</div>
 	</section>
 
+<%
+session.removeAttribute("orderNow");
+session.removeAttribute("orderCart");
+%>
 </body>
 </html>
 
