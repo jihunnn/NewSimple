@@ -38,7 +38,7 @@
 					<td style="padding-left:30px;"></td>
 				</tr>
 				<tr style="height: 25px;  cursor:pointer;">
-					<td style="padding-left:30px;"><a onclick="location.href='${contextPath}/product/add_product.do'">ㆍ상품문의</a></td>
+					<td style="padding-left:30px;"><a onclick="location.href='${contextPath}/admin/listProductQuestion.do'">ㆍ상품문의</a></td>
 					<td style="padding-left:30px;"></td>
 					<td style="padding-left:30px;"></td>
 					<td style="padding-left:30px;"><a onclick="location.href='${contextPath}/admin/listAllInquiry.do'">ㆍ1:1문의</a></td>

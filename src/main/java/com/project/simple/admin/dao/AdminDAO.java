@@ -45,6 +45,13 @@ public interface AdminDAO {
 	public void deleteSelectRemoveMemOrder(String memOrderNum)throws DataAccessException;
 
 	public void deleteSelectRemoveNonMemOrder(String nonMemOrderNum)throws DataAccessException;
-
+	
+	public List<ProductVO> listProductQuestion(Criteria cri) throws DataAccessException;
+	public int productQuestionCount() throws DataAccessException ;
+	
+	public void addProductQuestion(ProductVO productQuestion) throws DataAccessException;
+	public void modNewProductAnswer(ProductVO productQuestion) throws DataAccessException;
+	public void deleteProductQuestion(int productQuestionNum) throws DataAccessException;
+	public void deleteProductAnswer(int productQuestionNum) throws DataAccessException;
 
 }

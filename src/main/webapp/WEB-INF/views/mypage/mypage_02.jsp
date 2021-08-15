@@ -181,7 +181,7 @@
 <body>
 	<!-- 마이페이지 상단메뉴 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px; margin-top:30px;">
+		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px; margin-top:50px;">
 		<div class="container">
 
 			<!-- 마이페이지 상단메뉴 끝 -->
@@ -198,27 +198,25 @@
 			<form action="${contextPath}/mypage_03.do" method="post">
 				<div class="container02"
 					style="padding-left: 300px; padding-top: 30px;">
-					<div id="MyPage_top">
+					<div id="MyPage_top" style="margin-bottom:50px;">
 						<h4
-							style="text-align: center; padding-left: 60px; font-size: 20px; font-weight:bold;">비밀번호 재확인</h4>
+							style="text-align: center; padding-left: 60px; font-size: 20px; font-weight:bold; margin-bottom:20px; color:#7e9c8c;">비밀번호 재확인</h4>
 													<h6
 							style="text-align: center; padding-left: 60px; font-size: 14px;">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</h6>
 					</div>
-					<div id="MyPage_top1" style="padding-top: 20px; margin-left: 30px;">
-						<img src="${contextPath}/resources/images/pwd.png" width="60">
-					</div>
-					<div id="MyPage_top2" style="padding-top: 10px; height: 50px;">
-						<p>
+
+					<div id="MyPage_top2" style="padding-top: 10px; height: 50px; padding-left:220px;">
+						<p style="font-size:13px;">
 							PASSWORD<input type="password" name="memPwd"
-								class="PASSWORD_confirm_text" size="22" style="font-size:14px;"
+								class="PASSWORD_confirm_text" size="22" style="font-size:13px; height:35px;  width:179px; border:1px solid #dcdcdc;"
 								placeholder="비밀번호를 입력하세요">
 						</p>
 
-						<div id="MyPage_top3" style="padding-left: 99px;">
+						<div id="MyPage_top3" style="padding-left: 83px;">
 							<button type="submit" id="buttonmy" class="btn btn-dark"
-								style="width: 80px; font-size:14px;padding-top:4px;">확인</button>
+								style="width: 80px; font-size:13px;padding-top:4px; background-color:#7e9c8c; color:white; border:none;">확인</button>
 							<button onClick="location.href='${contextPath}/main.do'" id="buttonmy"
-								class="btn btn-dark" style="width: 80px; margin-left: 20px; font-size:14px;padding-top:4px;">취소</button>
+								class="btn btn-dark" style="width: 80px; margin-left: 20px; font-size:13px;padding-top:4px; border:1px solid #eeeeee; background-color:white; color:gray;">취소</button>
 						</div>
 					</div>
 				</div>

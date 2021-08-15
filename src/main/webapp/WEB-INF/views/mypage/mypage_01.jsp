@@ -207,7 +207,7 @@
 
 	<!-- 마이페이지 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px; margin-top: 30px;">
+		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px; margin-top: 50px;">
 		<div class="container">
 
 			<!-- 마이페이지 타이틀 끝 -->
@@ -219,8 +219,7 @@
 				flush="false" />
 			<!-- left Menu 끝-->
 			<!-- 마이페이지 상단 공통 ui -->
-			<div
-				style="font-size: 20px; font-weight: bold; margin-left: 18px; padding-bottom: 7px;">마이페이지</div>
+
 			<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp"
 				flush="false" />
 
@@ -231,7 +230,7 @@
 						<tbody id="MyPage_center2">
 							<tr height="30%">
 								<th
-									style="font-size: 20px!importent; font-weight: bold; margin-left: 18px; padding-top: 20px;"
+									style="font-size: 15px; color: !importent; font-weight: bold; margin-left: 18px; padding-top: 20px;"
 									colspan="4">주문/배송조회(최근 1개월)</th>
 								<th width="80"
 									style="text-align: right; font-size: 11px; padding-top: 40px;"><a
@@ -239,18 +238,18 @@
 									style="color: gray; cursor: pointer;">더보기 ></a></th>
 							</tr>
 							<tr align="center"
-								style="padding-left: 10px; font-size: 14px; background-color: #c6c6c6; color: white;"
-								height="35%">
-								<th width="132" style="text-align: center;">주문접수</th>
-								<th width="132" style="text-align: center;">결제완료</th>
-								<th width="132" style="text-align: center;">상품준비중</th>
-								<th width="132" style="text-align: center;">배송중</th>
-								<th width="132" style="text-align: center;">배송완료</th>
+								style="padding-left: 10px; font-size: 13px; background-color: #eeeeee; color: white;"
+								height="45%">
+								<th width="132" style="text-align: center; color: #5f5f5f; height:35px;">주문접수</th>
+								<th width="132" style="text-align: center; color: #5f5f5f;">결제완료</th>
+								<th width="132" style="text-align: center; color: #5f5f5f;">상품준비중</th>
+								<th width="132" style="text-align: center; color: #5f5f5f;">배송중</th>
+								<th width="132" style="text-align: center; color: #5f5f5f;">배송완료</th>
 							</tr>
 							<tr align="center"
-								style="padding-left: 10px; font-size: 16px; background-color: #c6c6c6;"
-								height="35%">
-								<th width="132" style="text-align: center;"><a
+								style="padding-left: 10px; font-size: 16px; background-color: #eeeeee;"
+								height="45%">
+								<th width="132" style="text-align: center; height:35px;"><a
 									style="color: #7e9c8c;">${myInfo.order_rc}</a><a
 									style="font-size: 14px; color: gray;">건</a></th>
 								<th width="132" style="text-align: center;"><a
@@ -269,11 +268,12 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="MyPage_top" style="width: 1000px; margin-left: 265px;">
+				<div id="MyPage_top"
+					style="width: 1000px; margin-left: 265px; font-size: 13px;">
 					<table style="width: 1000px; height: 80px;">
 						<tr height="55%">
 							<th colspan="2"
-								style="font-size: 20px!importent; font-weight: bold; margin-left: 18px; padding-top: 40px;"
+								style="font-size: 15px; ! importent; font-weight: bold; margin-left: 18px; padding-top: 40px;"
 								colspan="4"><a style="padding-bottom: 10px;">1:1문의내역</a></th>
 							<th width="80"
 								style="text-align: right; font-size: 11px; padding-top: 40px;"><a
@@ -282,10 +282,10 @@
 
 						</tr>
 						<tr align="center"
-							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
-							<th>문의유형</th>
+							style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+							<th style="height: 40px; width: 250px;">문의유형</th>
 							<th>제목</th>
-							<th>작성일</th>
+							<th style="width: 150px;">작성일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty myInfo.listInquiry}">
@@ -297,34 +297,45 @@
 								<c:forEach var="inquiry" items="${myInfo.listInquiry}">
 
 									<tr align="left"
-										style="font-size: 14px; border: 1px solid #e3e3e3; text-align: center;"
+										style="font-size: 13px; border-bottom: 1px solid #eeeeee; text-align: center;"
 										height="50%">
-										<th>${inquiry.inquiryType}</th>
-										<th><a
+										<th style=" color: black;height: 40px;font-weight:normal;">${inquiry.inquiryType}</th>
+										<th style=" color: black;text-align: left; font-weight:normal;"><a
 											href="${contextPath}/board/viewInquiry.do?inquiryNum=${inquiry.inquiryNum}"
-											style="color: gray; padding-left: 10px; text-align: center;">${inquiry.inquiryTitle}</a></th>
-										<th><fmt:formatDate value="${inquiry.inquiryDate}" /></th>
+											style="color: black; font-weight:normal; padding-left: 10px; text-align: center;">${inquiry.inquiryTitle}</a></th>
+										<th style=" color: black; font-weight:normal;"><fmt:formatDate value="${inquiry.inquiryDate}" /></th>
 									</tr>
+									<c:if test="${inquiry.inquiryAnswer != null}">
+										<tr
+											style="border-bottom: 1px solid #eeeeee; background-color: white; color: black;">
+											<td scope="col" width="50" style="height:40px;"></td>
+											<td align="left" scope="col" width="500" style=><a
+												href="${contextPath}/admin/viewInquiryAnswer.do?inquiryNum=${inquiry.inquiryNum}"
+												style="color: black; padding-left: 30px; margin-bottom: 0px; padding-left:13px;">↳ㅤ[답변]ㅤ${inquiry.inquiryAnswer}</a></td>
+											<td scope="col" width="150"></td>
+										</tr>
+									</c:if>
 								</c:forEach>
 							</c:when>
 						</c:choose>
 					</table>
 				</div>
 				<div id="MyPage_top1" style="padding-bottom: 50px;">
-					<table style="width: 1000px; height: 80px; align: center;">
+					<table style="width: 1000px; height: 80px; align: center; font-size:13px;">
 						<tr height="60%">
 							<th colspan="2"
-								style="font-size: 20px!importent; font-weight: bold; margin-left: 18px; padding-top: 20px;"
+								style="font-size: 15px; ! importent; font-weight: bold; margin-left: 18px; padding-top: 20px;"
 								colspan="4"><a>A/S 접수</a></th>
 							<th width="80"
 								style="text-align: right; font-size: 11px; padding-top: 30px;"><a
-								href="${contextPath}/board/listAsCenter.do" style="color: gray; cursor: pointer;">더보기 ></a></th>
+								href="${contextPath}/board/listAsCenter.do"
+								style="color: gray; cursor: pointer;">더보기 ></a></th>
 						</tr>
 						<tr align="center"
-							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
-							<th>접수상태</th>
+							style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+							<th style="height:40px; width:322px;">접수상태</th>
 							<th>제목</th>
-							<th>작성일</th>
+							<th style="width: 150px;">작성일</th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty myInfo.listAsCenter}">
@@ -335,12 +346,12 @@
 							<c:when test="${!empty myInfo.listAsCenter}">
 								<c:forEach var="asCenter" items="${myInfo.listAsCenter}">
 									<tr align="left"
-										style="font-size: 14px; border: 1px solid #e3e3e3; text-align: center;"
+										style="font-size: 13px; border-bottom: 1px solid #eeeeee; text-align: center;"
 										height="50%">
-										<th>${asCenter.asCenterStatus}</th>
-										<th width="660" height="40px;"><a href="/CS-07"
-											style="padding-left: 10px; color: gray;">${asCenter.asCenterTitle}</a></th>
-										<th><fmt:formatDate value="${asCenter.asCenterDate}" /></th>
+										<th style=" color: black;height: 40px;font-weight:normal; color:green;">${asCenter.asCenterStatus}</th>
+										<th width="660" height="40px;" style="color: black; font-weight:normal; text-align:left;"><a href="${contextPath}/board/pwdConfirm.do?asCenterNum=${asCenter.asCenterNum}"
+											style="padding-left: 10px; color: gray; ">${asCenter.asCenterTitle}</a></th>
+										<th style="color: black; font-weight:normal;"><fmt:formatDate value="${asCenter.asCenterDate}" /></th>
 									</tr>
 								</c:forEach>
 							</c:when>

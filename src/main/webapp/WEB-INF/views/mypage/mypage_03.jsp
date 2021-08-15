@@ -488,15 +488,9 @@ function div_show(selectList) {
 
 	<!-- 마이페이지 상단메뉴 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section	 ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
+
 			<!-- 마이페이지 상단메뉴 끝 -->
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -509,76 +503,76 @@ function div_show(selectList) {
 			<!-- left Menu 끝-->
 			<!-- 내용 -->
 			<div class="container02"
-				style="padding-left: 200px; padding-top: 25px; margin-bottom: .30px;">
-				<h5 style="font-size: 18px;">회원정보 수정</h5>
+				style="padding-left: 200px;margin-bottom: .30px;">
+				<h5 style="font-size: 20px; color:#7e9c8c; font-weight:bold;">회원정보 수정</h5>
 				<form name="Checkmodify" action="${contextPath}/modMember.do"
 					method="post">
 
 					<table
-						style="width: 1000px; height: 400px; border: 1px solid black;">
+						style="width: 1000px; height: 400px; font-size:13px; border: 1px solid #eeeeee;">
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px; height:53px;"
 								class="user_name" width="250">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;">*</a>이름
 								</div>
 							</td>
-							<td colspan="3" class="user_name" style="padding-left: 10px;">
-								<input type="text" name="memName" readonly size="25"
+							<td colspan="3" class="user_name" style="padding-left: 10px; border:1px solid #eeeeee;">
+								<input type="text" name="memName" readonly size="25" style="border:1px solid #dcdcdc; height:31px; "
 								value="${member.memName}">
 							</td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="user_id" width="250">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;">*</a>아이디
 								</div>
 							</td>
-							<td colspan="3" class="user_id" style="padding-left: 10px;">
-								<input type="text" name="memId" readonly size="25"
+							<td colspan="3" class="user_id" style="padding-left: 10px; border:1px solid #eeeeee;">
+								<input type="text" name="memId" readonly size="25" style="border:1px solid #dcdcdc; height:37px;"
 								value="${member.memId}">
 							</td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="user_password1">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;margin-top: 5px;">*</a>비밀번호
 								</div>
 							</td>
 							<td colspan="3" class="user_password1"
-								style="padding-left: 10px;"><input type="password"
-								placeholder="비밀번호를 입력해주세요." name="memPwd" size="25" value=""></td>
+								style="padding-left: 10px; border:1px solid #eeeeee;"><input type="password"
+								placeholder="비밀번호를 입력해주세요." name="memPwd" size="25" value="" style="border:1px solid #dcdcdc; height:37px;"></td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="user_password2">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;margin-top: 5px;">*</a>비밀번호 재확인
 								</div>
 							</td>
 							<td colspan="3" class="user_password2"
-								style="padding-left: 10px;"><input type="password"
-								placeholder="비밀번호를 입력해주세요." name="memPwd1" size="25" value=""></td>
+								style="padding-left: 10px; border:1px solid #eeeeee;"><input type="password"
+								placeholder="비밀번호를 입력해주세요." name="memPwd1" size="25" value="" style="border:1px solid #dcdcdc; height:37px;"></td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="email">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;">*</a>이메일
 								</div>
 							</td>
-							<td colspan="3" class="email" style="padding-left: 10px;">
+							<td colspan="3" class="email" style="padding-left: 10px; border:1px solid #eeeeee;">
 							<input type="text" name="memEmail" placeholder=""
-								value=<%=memEmail[0]%> size="20"> @ <select
+								value=<%=memEmail[0]%> size="20" style="border:1px solid #dcdcdc;  height:37px;"> @ <select
 								name="memEmail1" id="selcet1"
-								style="height: 35px; width: 200px;">
+								style="height: 35px; width: 135px; border:1px solid #dcdcdc;">
 									<option value=<%=memEmail[1]%>><%=memEmail[1]%></option>
 									<option value="naver.com">naver.com</option>
 									<option value="gmail.com">gmail.com</option>
@@ -589,16 +583,16 @@ function div_show(selectList) {
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb;border:1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="phone">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;">*</a>핸드폰
 								</div>
 							</td>
-							<td colspan="3" class="phone" style="padding-left: 10px;">
-							<input type="hidden" id="memPhoneNum4" />
+							<td colspan="3" class="phone" style="padding-left: 10px; background-color: #fbfbfb; border-bottom: 1px solid #eeeeee;">
+							<input type="hidden" id="memPhoneNum4"  style="border:1px solid #dcdcdc; height:37px"/>
 							<select name="memPhoneNum" id="phone1"
-								style="height: 35px; width: 80px;">
+								style="height: 35px; width: 80px; border:1px solid #dcdcdc; height:37px;">
 									<option value=<%=memPhoneNum[0]%>><%=memPhoneNum[0]%></option>
 									<option value="010">010</option>
 									<option value="011">011</option>
@@ -607,49 +601,49 @@ function div_show(selectList) {
 									<option value="019">019</option>
 									<option value="010">010</option>
 							</select>- <input type="text" name="memPhoneNum1" id="phone2"
-								value=<%=memPhoneNum[1]%> size="5">- <input type="text" id="phone3"
-								name="memPhoneNum2" value=<%=memPhoneNum[2]%> size="5">
+								value=<%=memPhoneNum[1]%> size="5" style="border:1px solid #dcdcdc;  height:37px;">- <input type="text" id="phone3"
+								name="memPhoneNum2" value=<%=memPhoneNum[2]%> size="5" style="border:1px solid #dcdcdc;  height:37px; width:67px;">
 								<button type="button" name="phone_certification" id="BtnPhoneConf" onclick="div_show('0');"
 											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px; margin-top: 5px;">핸드폰인증</button>
 								<div id="phone_con" style="display: none;">
 									    <input type="text" name="Approval_key" id="Approval_key"
 											size="10"  placeholder="인증번호를 입력하세요"
-											style="margin-top: 5px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
+											style="margin-top: 5px; margin-bottom: 10px; border: 1px solid #dcdcdc; height:31px; width: 218px;">
 										<button type="button" id="findBtnPhone"
-											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호 확인</button>
+											style="background-color: #c6c6c6; border: none;  color: white; height: 36px; margin-left: 4px;">인증번호 확인</button>
 										</div>			
 								
 							</td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border-bottom: 1px solid #eeeeee; padding-left:100px;  height:53px;"
 								class="addr1">
-								<div align="center" style="color: white;">
+								<div align="left" style="color: black;">
 									<a style="color: red; padding-right: 5px;">*</a>주소
 								</div>
 							</td>
-							<td colspan="3" class="addr" style="padding-left: 10px;"><input
-								type="text" value="<%=memAdr[0]%>" name="memAdr"
+							<td colspan="3" class="addr" style="padding-left: 10px; border:1px solid #eeeeee;"><input
+								type="text" value="<%=memAdr[0]%>" name="memAdr" style="border:1px solid #dcdcdc; width:199px; height:37px;"
 								id="sample6_postcode" readonly size="15">
 								<input type="button" onclick="sample6_execDaumPostcode()"
-									style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;"
+									style="background-color: #c6c6c6; border: none; color: white;  height:37px; margin-left: 4px;"
 								value="우편번호 찾기">
 							</td>
 						</tr>
 						<tr>
 							<td
-								style="background-color: #212529; border-bottom: 1px solid white;"
+								style="background-color: #fbfbfb; border:1px solid #eeeeee; padding-left:100px;"
 								class="addr2" height=100px;>
-								<div align="center" style="color: white;">
-								<a style="color: red; padding-right: 5px;">*</a>상세주소</div>
+								<div align="left" style="color: black;">
+								<a style="color: red; padding-right: 5px; ">*</a>상세주소</div>
 							</td>
 							<td colspan="3" class="addr1" style="padding-left: 10px;"><input
-								type="text" name="memAdr1" id="sample6_address" size="40"
+								type="text" name="memAdr1" id="sample6_address" size="40" style="border:1px solid #dcdcdc; width:300px; height:37px;"
 								value="<%=memAdr[1]%>">
 								<div style="padding-top: 10px;">
 									<input type="text" id="sample6_address2" name="memAdr2"
-										size="40" value="<%=memAdr[2]%>">
+										size="40" value="<%=memAdr[2]%>" style="border:1px solid #dcdcdc;  width:300px;   height:37px;">
 								</div></td>
 
 						</tr>
@@ -660,12 +654,12 @@ function div_show(selectList) {
 				
 
 				<div align="center" id="btn_modify_reset"
-					style="margin-top: 30px; margin-left: 500px;">
+					style="margin-top: 30px; margin-left: 500px; font-size:13px;">
 					<input type="button" name="modify" value="수 정 " id="buttonmy"
 						onclick="Check_Join()"
-						style="margin-right: 20px; cursor: pointer;"> <input
+						style="margin-right: 20px; color:white; background-color:#7e9c8c; cursor: pointer; border:none; width: 104px; height: 34px;"> <input
 						type="button" value="취   소" id="buttonmy"
-						onclick="location.href='/mypage_01'" style="cursor: pointer;">
+						onclick="location.href='/mypage_01'" style="cursor: pointer; color:gray; background-color:white;  border:1px solid #eeeeee; width: 104px; height: 34px;">
 				</div>
 				</form>
 			</div>

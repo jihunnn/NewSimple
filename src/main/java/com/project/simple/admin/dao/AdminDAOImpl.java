@@ -154,5 +154,47 @@ public class AdminDAOImpl implements AdminDAO {
 		sqlSession.delete("mapper.admin.deleteSelectRemoveNonMemOrder",nonMemOrderNum);
 		
 	}
+	
+	
+	//상품 문의 조회
+	@Override
+	public List<ProductVO> listProductQuestion(Criteria cri) throws DataAccessException {
+		List<ProductVO> listProductQuestion = sqlSession.selectList("mapper.admin.selectProductQuestionList", cri);
+		return listProductQuestion;
+	}
+	
+	@Override
+	public int productQuestionCount() throws DataAccessException {
+		int productQuestionCount = sqlSession.selectOne("mapper.admin.selectProductQuestionCount");
+
+		return productQuestionCount;
+	}
+	
+	//상품문의 답변 등록
+	@Override
+	public void addProductQuestion(ProductVO productQuestion) throws DataAccessException {
+		sqlSession.update("mapper.admin.insertNewProductQuestion", productQuestion);		
+
+	}
+	
+	//상품문의 답변 수정
+	@Override
+	public void modNewProductAnswer(ProductVO productQuestion) throws DataAccessException {
+		sqlSession.update("mapper.admin.updateNewProductQuestion", productQuestion);		
+
+	}
+	
+	//상품문의 삭제하기
+	@Override
+	public void deleteProductQuestion(int productQuestionNum) throws DataAccessException {
+		sqlSession.delete("mapper.admin.deleteProductQuestion", productQuestionNum);
+	}
+	
+	//상품문의 삭제하기
+	@Override
+	public void deleteProductAnswer(int productQuestionNum) throws DataAccessException {
+		sqlSession.update("mapper.admin.deleteProductAnswer", productQuestionNum);
+	}
+	
 
 }

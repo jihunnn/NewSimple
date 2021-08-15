@@ -43,6 +43,13 @@ public interface AdminService {
 	public void admin_selectremoveMemOrder(String memOrderNum) throws Exception ;
 
 	public void admin_selectremoveNonMemOrder(String nonMemOrderNum) throws Exception ;
-
+	
+	public List<ProductVO> listProductQuestion(Criteria cri) throws Exception;
+	public int productQuestionCount() throws Exception;
+	
+	public void addProductQuestion(ProductVO productQuestion) throws Exception;	
+	public void modNewProductAnswer(ProductVO productQuestion) throws Exception;
+	public void removeProductQuestion(int productQuestionNum) throws Exception ;
+	public void removeProductAnswer(int productQuestionNum) throws Exception;
 
 }

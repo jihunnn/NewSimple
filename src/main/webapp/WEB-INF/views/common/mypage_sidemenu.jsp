@@ -17,11 +17,11 @@
 </head>
 <body>
 	<div class="col-lg-2" 
-		style="float: left; margin-right: 50px; width: 230px; font-size: 15px;padding-left: 0px; ">
-		<div style="font-size:25px; font-weight:bold; margin-left:18px;"><a style="color:#7e9c8c;">마이페이지</a></div>
-		<div class="list-group list-group-flush">
+		style="float: left; margin-right: 50px; width: 230px; font-size: 13px;padding-left: 0px; ">
+		<div style="font-size:20px; font-weight:bold; margin-left:18px;"><a style="color:#7e9c8c;">마이페이지</a></div>
+		<div class="list-group list-group-flush" >
 			<a href="${contextPath}/mypage_01.do"
-				class="list-group-item list-group-item-action text-center font-weight-bold" style="text-align:left !important; ">마이
+				class="list-group-item list-group-item-action text-center font-weight-bold" style="text-align:left !important;">마이
 				쇼핑<span style="float:right;">〉</span></a> 
 			<a href="${contextPath}/mypage_02.do"
 				class="list-group-item list-group-item-action text-center font-weight-bold" style="text-align:left !important; " >회원정보

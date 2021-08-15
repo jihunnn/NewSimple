@@ -467,11 +467,7 @@ button {
 
 		};
 		
-//상품 수정시 등록했던 상품 select 선택하게하기		
-		$(document).ready(function() {
-			var returnType = jQuery('#returnType').val();
-			$('#returnType1').val(returnType).prop("selected", true);
-		});
+
 		
 </script>
 <script type="text/javascript">
@@ -539,6 +535,10 @@ button {
 																});
 											}
 										});
+						
+						//상품 수정시 등록했던 카테고리 선택하게하기		
+						/*var selectCategory = jQuery('#selectCategory').val();
+						$('#category').val(selectCategory).prop("selected", true);*/
 
 					});
 
@@ -575,7 +575,45 @@ button {
 
 										}); // end click                                            
 
+
 					}); // end ready
+					
+					//옵션 리스트 불러오기
+					$(document)
+					.ready(
+							function() {
+								
+								var productNum = $('#productNum').val();
+								
+				      $.ajax({
+				             
+				            type : "GET",
+				            url : "${contextPath}/product/optionList.do",
+				            data: {
+				            	productNum : productNum
+				            	},
+				            error : function(data){
+				            	alert("에러가 발생했습니다."+data);
+				            },
+				            success : function(data){
+				            	 values = data.optionList ; 
+				            	 
+				            		if(values==""){
+				            			$(optionList).append("<tr class='optionsList'><td colspan='7' style='text-align:center;'>옵션을 등록해주세요</td></tr>");	
+				            		}
+					            	$.each(values, function( index, value ) {
+					            		$(inputOptionNum).append("<input type='hidden' style='width:30px;' id='optionNum' name='optionNum"+index+"' value='"+value.optionNum+"'/>");
+					            		$(optionList).append("<tr style='text-align:center; border-bottom:1px solid #eeeeee;' class='optionsList'><td>"+value.option1Name+"</td><td>"+value.option1value+"</td><td>"+value.option1price+"</td><td>"+value.option2Name+"</td><td>"+value.option2value+"</td><td>"+value.option2price+"</td><td><button type='button' style='border:none; background-color:white; color:#7e9c8c; cursor:pointer;' onclick='removeOption("+index+")'>삭제</button></td></tr>");
+					            		 
+					                    });
+				
+				            	
+				            }
+				             
+				        });
+				      
+							});
+					
 </script>
 
 </head>
@@ -618,6 +656,9 @@ button {
 								style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
 							<select name="subcategory" id="subcategory"
 								style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></select>
+							<input type="hidden" id="selectCategory"
+								value="${productNum.category}" /> <input type="hidden"
+								id="selectSubCategory" value="${productNum.subcategory}" />
 						</div>
 					</div>
 					<div style="padding-left: 70px; padding-top: 10px;">
@@ -671,6 +712,7 @@ button {
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 57px;">상품번호</label> <input type="text"
 							name="productNum" id="productNum"
+							value="${productNum.productNum}"
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" />
 						<br> <label style="margin-right: 43px;">옵션1 이름</label> <select
 							onchange="option1Select(this.value)" name="option1Name"
@@ -680,8 +722,7 @@ button {
 							<c:forEach var="optionName" items="${optionName}">
 								<option>${optionName}</option>
 							</c:forEach>
-						</select>
-						<input type="hidden" value=""/>
+						</select> <input type="hidden" value="" />
 						<button type="button" onclick="optionNameDiect(1)"
 							id="option1NameSelect"
 							style="margin-top: 10px; height: 37px; border-radius: 2px; margin-bottom: 3px; background-color: #5f5f5f; color: white; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; font-size: 14px;"
@@ -761,9 +802,7 @@ button {
 						<td style="width: 50px;"></td>
 					</tr>
 					<tr class="optionsList">
-						<td colspan="7"
-							style="height: 50px; text-align: center; padding-top: 30px; font-size: 13px;">옵션을
-							등록해주세요</td>
+
 					</tr>
 
 				</table>
@@ -775,7 +814,8 @@ button {
 	<div class="container">
 		<section class="Easy-sgin-in-wrap4">
 			<ul class="sign-button-list4">
-				<li style="margin-left: 50px;"><button onclick="Product_update()"
+				<li style="margin-left: 50px;"><button
+						onclick="Product_update()"
 						style="background-color: #7e9c8c; font-size: 14px; color: white; border: none; border-radius: 2px; width: 400px; float: left;">
 						<i class="sgin-up"></i><span>수 정</span>
 					</button></li>

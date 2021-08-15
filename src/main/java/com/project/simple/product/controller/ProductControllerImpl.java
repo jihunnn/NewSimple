@@ -442,9 +442,11 @@ public class ProductControllerImpl implements ProductController {
 
 		String viewName = (String) multipartRequest.getAttribute("viewName");
 		productVO = productService.productForm(productNum);
+		List<String> optionName = productService.selectOptionName();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("productNum", productVO);
+		mav.addObject("optionName", optionName);
 
 		return mav;
 	}
@@ -916,6 +918,18 @@ public class ProductControllerImpl implements ProductController {
 		optionNameMap.put("optionNameList", optionNameList);
 
 		return optionNameMap;
+	}
+	
+	// 옵션 리스트 불러오기
+	@RequestMapping(value = "product/optionList.do", method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String,Object> optionList(@ModelAttribute("option") OptionVO option, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Map<String, Object> optionMap = new HashMap<String, Object>();
+		List<OptionVO> optionList = productService.addNewOption(option);
+		optionMap.put("optionList", optionList);
+	
+		return optionMap;
 	}
 	
 

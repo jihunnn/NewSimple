@@ -439,7 +439,7 @@
 	<select id="selectListInquiry" resultMap="inquiryResult">
 	<![CDATA[
 			
-		select * from  simple.inquiry where memId=#{memId} limit 1,2;
+		select * from  simple.inquiry where memId=#{memId} order by inquiryNum desc limit 0,2;
 			
 	]]>
 	</select>
@@ -447,7 +447,7 @@
 	<select id="selectListAsCenter" resultMap="asCenterResult">
 	<![CDATA[
 			
-		select * from  simple.asCenter where memId=#{memId} limit 1,2;
+		select * from  simple.asCenter where memId=#{memId} order by ascenterNum desc limit 0,2;
 			
 	]]>
 	</select>
