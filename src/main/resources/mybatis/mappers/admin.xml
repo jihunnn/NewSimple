@@ -52,6 +52,21 @@
 		<result property="questionContent" column="questionContent" />
 	</resultMap>
 
+	<!-- 관리자페이지 상품문의 -->
+	<resultMap id="productQuestionResult" type="productVO">
+		<result property="memId" column="memId" />
+		<result property="productQuestionTitle"
+			column="productQuestionTitle" />
+		<result property="productQuestionContent"
+			column="productQuestionContent" />
+		<result property="productQuestionDate"
+			column="productQuestionDate" />
+		<result property="productAnswerContent"
+			column="productAnswerContent" />
+		<result property="answerWhether" column="answerWhether" />
+
+	</resultMap>
+
 	<!--로그인창에서 입력한 id와 비밀번호로 회원정보를 조회하는 sql문 -->
 	<select id="adminloginById" resultType="adminVO"
 		parameterType="adminVO">
@@ -230,7 +245,7 @@
 	      where memId=#{memId};
     	]]>
 	</delete>
-	
+
 	<!-- 관리자 회원 주문 선택 삭제 -->
 	<delete id="deleteSelectRemoveMemOrder" parameterType="orderVO">
 	    <![CDATA[
@@ -238,13 +253,66 @@
 	      where memOrderNum=#{memOrderNum};
     	]]>
 	</delete>
-	
+
 	<!-- 관리자 비회원 주문 선택 삭제 -->
-	<delete id="deleteSelectRemoveNonMemOrder" parameterType="orderVO">
+	<delete id="deleteSelectRemoveNonMemOrder"
+		parameterType="orderVO">
 	    <![CDATA[
 	      delete from simple.nonmemberorder
 	      where nonMemOrderNum=#{nonMemOrderNum};
     	]]>
 	</delete>
+
+	<!-- 상품문의 -->
+	<select id="selectProductQuestionList"
+		resultMap="productQuestionResult">
+	<![CDATA[
+			
+			select * from simple.productQuestion  order by productQuestionNum desc
+			limit #{pageStart}, #{perPageNum};
+			
+
+	]]>
+	</select>
+
+	<select id="selectProductQuestionCount" resultType="int">
+	<![CDATA[
+			
+			select count(*) as productQuestionCount from simple.productQuestion;
+			
+	]]>
+	</select>
+	<insert id="insertNewProductQuestion" parameterType="ProductVO">
+		<![CDATA[
+			update simple.productQuestion set productAnswerContent=#{productAnswerContent},answerWhether='답변완료'
+			where productQuestionNum=#{productQuestionNum};
+		]]>
+
+	</insert>
+	<insert id="updateNewProductQuestion" parameterType="ProductVO">
+		<![CDATA[
+			update simple.productQuestion set productAnswerContent=#{productAnswerContent}
+			where productQuestionNum=#{productQuestionNum};
+		]]>
+
+	</insert>
+
+	<update id="deleteProductQuestion" parameterType="int">
+
+		delete from
+		simple.productQuestion
+		where productQuestionNum=#{productQuestionNum};
+
+	</update>
+
+	<update id="deleteProductAnswer" parameterType="int">
+
+		update
+		simple.productQuestion set productAnswerContent=null, answerWhether='미답변' where
+		productQuestionNum=#{productQuestionNum};
+
+	</update>
+
+
 
 </mapper>

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.simple.board.vo.ArticleVO;
 import com.project.simple.page.Criteria;
+import com.project.simple.product.vo.ProductVO;
 
 public interface AdminController {
 
@@ -37,4 +38,20 @@ public interface AdminController {
 	
 	public ResponseEntity removeInquiryAnswer(@RequestParam("inquiryNum") int inquiryNum, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
+	
+	public ModelAndView listProductQuestion(Criteria cri, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
+	
+	public ResponseEntity addProductQuestion(@ModelAttribute("productQuestion") ProductVO productQuestion, HttpServletRequest request,
+			HttpServletResponse response) throws Exception ;
+	
+	public ResponseEntity modNewProductAnswer(@ModelAttribute("productQuestion") ProductVO productQuestion, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
+	
+	public ResponseEntity removeProductQuestion(@RequestParam("productQuestionNum") int productQuestionNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+	
+	public ResponseEntity removeProductAnswer(
+			@RequestParam("productQuestionNum") int productQuestionNum, HttpServletRequest request,
+			HttpServletResponse response) throws Exception ;
 }

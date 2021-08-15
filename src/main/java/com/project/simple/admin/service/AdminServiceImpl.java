@@ -159,7 +159,41 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.deleteSelectRemoveNonMemOrder(nonMemOrderNum);
 		
 	}
-
+	
+	//상품문의 전체 리스트
+	public List<ProductVO> listProductQuestion(Criteria cri) throws Exception{
+		List<ProductVO> productQuestionList = adminDAO.listProductQuestion(cri);
+		return productQuestionList;
+	}
+	
+	public int productQuestionCount() throws Exception{
+		int productQuestionCount = adminDAO.productQuestionCount();
+		return productQuestionCount;
+	}
+	
+	//상품문의 답변 등록
+	@Override
+	public void addProductQuestion(ProductVO productQuestion) throws Exception{
+		adminDAO.addProductQuestion(productQuestion);
+	}
+	
+	//상품문의 답변 수정
+	@Override
+	public void modNewProductAnswer(ProductVO productQuestion) throws Exception{
+		adminDAO.modNewProductAnswer(productQuestion);
+	}
+	
+	//상품문의 삭제하기
+	@Override
+	public void removeProductQuestion(int productQuestionNum) throws Exception {
+		adminDAO.deleteProductQuestion(productQuestionNum);
+	}
+	
+	//상품문의 삭제하기
+	@Override
+	public void removeProductAnswer(int productQuestionNum) throws Exception {
+		adminDAO.deleteProductAnswer(productQuestionNum);
+	}
 
 
 }
