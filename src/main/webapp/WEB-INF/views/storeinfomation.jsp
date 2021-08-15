@@ -37,10 +37,11 @@
 
 
 	<section class="ftco-section"
-		style="padding-top: 20px; margin-bottom: 50px; padding-bottom: 0px; margin-bottom: 400px;">
+		style="padding-top: 10px; margin-bottom: 50px; padding-bottom: 0px; margin-bottom: 400px;">
+		<img src="${contextPath}/resources/images/store.jpg" width=100%
+			height=350px>
 		<div class="container">
-	<img src="${contextPath}/resources/images/store.jpg" width=100%
-		height=350px>
+
 
 
 			<!-- 탭메뉴 영역 -->
@@ -48,9 +49,9 @@
 			<ul class="nav  tabs " style="margin-top: 100px; margin-left: 0px;">
 				<li role="presentation" class="active"
 					style="width: 500px; margin-lift: 300px;"><a href="#tab1"
-					style="text-align: center; font-size: 20px; color: black; padding-left: 300px;">회사소개</a></li>
+					style="text-align: center; font-size: 20px; color: black; padding-left: 300px; font-weight:bold;">회사소개</a></li>
 				<li role="presentation" style="width: 500px;"><a href="#tab2"
-					style="text-align: center; font-size: 20px; color: black; padding-left: 300px;">매장안내</a></li>
+					style="text-align: center; font-size: 20px; color: black; padding-left: 300px; font-weight:bold;">매장안내</a></li>
 			</ul>
 			<hr>
 			<div id="wrapper">
@@ -68,7 +69,8 @@
 						<!--Content-->
 						<table style="margin-top: 50px; width: 1000px; font-size: 13px;">
 							<thead class="table-dark" align=center>
-								<tr align="center" style="height: 41px; color:black; background-color: #eeeeee; border-top:1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca;">
+								<tr align="center"
+									style="height: 41px; color: black; background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca;">
 									<td scope="col" width="100">대전 본사</td>
 									<td scope="col" width="100">천안 칙영</td>
 
@@ -90,13 +92,11 @@
 									style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
 
 									<td scope="col" width="100" height="400" Style="float: left;">
-										<br>
-										<br>
-										
+										<br> <br>
 
 
-										<div id="map" style="width: 400px; height: 300px; "></div> 
-										<script
+
+										<div id="map" style="width: 400px; height: 300px;"></div> <script
 											type="text/javascript"
 											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c83ccc3f8927a61c4d4a118cbe7ec75f&libraries=services"></script>
 
@@ -154,64 +154,67 @@
 										</script>
 									</td>
 									<td scope="col" width="50">
-									
-									<div id="map1" style="width: 400px; height: 300px; float:right;">
-										<script
-											type="text/javascript"
-											src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c83ccc3f8927a61c4d4a118cbe7ec75f&libraries=services"></script>
 
-										<script>
-											var container = document
-													.getElementById('map1');
-											var options = {
-												center : new kakao.maps.LatLng(
-														33.450701, 126.570667),
-												level : 3
-											};
+										<div id="map1"
+											style="width: 400px; height: 300px; float: right;">
+											<script type="text/javascript"
+												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c83ccc3f8927a61c4d4a118cbe7ec75f&libraries=services"></script>
 
-											var map1 = new kakao.maps.Map(
-													container, options);
+											<script>
+												var container = document
+														.getElementById('map1');
+												var options = {
+													center : new kakao.maps.LatLng(
+															33.450701,
+															126.570667),
+													level : 3
+												};
 
-											// 주소-좌표 변환 객체를 생성합니다
-											var geocoder = new kakao.maps.services.Geocoder();
+												var map1 = new kakao.maps.Map(
+														container, options);
 
-											// 주소로 좌표를 검색합니다
-											geocoder
-													.addressSearch(
-															'충남 천안시 서북구 쌍용동 1736',
-															function(result,
-																	status) {
+												// 주소-좌표 변환 객체를 생성합니다
+												var geocoder = new kakao.maps.services.Geocoder();
 
-																// 정상적으로 검색이 완료됐으면 
-																if (status === kakao.maps.services.Status.OK) {
+												// 주소로 좌표를 검색합니다
+												geocoder
+														.addressSearch(
+																'충남 천안시 서북구 쌍용동 1736',
+																function(
+																		result,
+																		status) {
 
-																	var coords = new kakao.maps.LatLng(
-																			result[0].y,
-																			result[0].x);
+																	// 정상적으로 검색이 완료됐으면 
+																	if (status === kakao.maps.services.Status.OK) {
 
-																	// 결과값으로 받은 위치를 마커로 표시합니다
-																	var marker = new kakao.maps.Marker(
-																			{
-																				map : map1,
-																				position : coords
-																			});
+																		var coords = new kakao.maps.LatLng(
+																				result[0].y,
+																				result[0].x);
 
-																	// 인포윈도우로 장소에 대한 설명을 표시합니다
-																	var infowindow = new kakao.maps.InfoWindow(
-																			{
-																				content : '<div style="width:150px; border:none; text-align:center;  background-color:#7e9c8c; padding:6px 0;"><a href="http://kko.to/AcBPrbT4M" style=" color:white;">SIMPLE 천안직영</a></div>'
-																			});
-																	infowindow
-																			.open(
-																					map1,
-																					marker);
+																		// 결과값으로 받은 위치를 마커로 표시합니다
+																		var marker = new kakao.maps.Marker(
+																				{
+																					map : map1,
+																					position : coords
+																				});
 
-																	// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-																	map1
-																			.setCenter(coords);
-																}
-															});
-										</script></div>
+																		// 인포윈도우로 장소에 대한 설명을 표시합니다
+																		var infowindow = new kakao.maps.InfoWindow(
+																				{
+																					content : '<div style="width:150px; border:none; text-align:center;  background-color:#7e9c8c; padding:6px 0;"><a href="http://kko.to/AcBPrbT4M" style=" color:white;">SIMPLE 천안직영</a></div>'
+																				});
+																		infowindow
+																				.open(
+																						map1,
+																						marker);
+
+																		// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+																		map1
+																				.setCenter(coords);
+																	}
+																});
+											</script>
+										</div>
 									</td>
 								</tr>
 							</thead>

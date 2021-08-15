@@ -254,9 +254,9 @@ style
 			</c:choose>
 
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">자주묻는질문</h2>
+				<h2 style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold;color:#7e9c8c;">자주묻는질문</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">고객님들께서
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">고객님들께서
 					자주 묻는 질문을 모았습니다.</h5>
 			</div>
 
@@ -265,9 +265,9 @@ style
 
 			<!-- 내용 -->
 			<button type="button" class="btn btn-dark" id="btnSearch"
-				style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none; border-radius: 2px;">검색</button>
+				style="margin-top: 13px; float: right; padding-top: 4px; height: 34px; font-size: 13px; padding-top: 4px; background-color: #7e9c8c; border: none; border-radius: 2px;">검색</button>
 			<input type="text" class="form-control" class="btn btn-dark"
-				style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px; width: 159px;"
+				style="margin-top: 13px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px; width: 159px;"
 				name="search" id="search">
 
 
@@ -277,10 +277,10 @@ style
 			<div>
 
 				<table class="table"
-					style="margin-bottom: 50px; width: 1275px; height: 25px; font-size: 14px;">
+					style="margin-bottom: 50px; width: 1275px; height: 25px; font-size: 13px;">
 					<thead class="table-dark" align=center>
 						<tr align="center"
-							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+							style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee; ">
 							<td scope="col" width="100">번호</td>
 							<td scope="col" width="500">내용</td>
 
@@ -290,21 +290,21 @@ style
 						<c:forEach var="question" items="${questionList}"
 							varStatus="questionNum">
 							<tr
-								style="border-bottom: 1px solid #c6c8ca !important; background-color: white; color: black;">
+								style="border-bottom: 1px solid #eeeeee !important; background-color: white; color: black;">
 
 								<td scope="col" width="50" style="padding-top: 12px;">${num}</td>
 								<td align="left" scope="col" width="500"
-									style="padding-top: 15px; padding-bottom: 0px;">
+									style="padding-top: 10px; padding-bottom: 0px; padding-top:0px; vertical-align: middle;">
 									<div>
 										<div id="section1b" class="label">
 											<p
-												style="color: black; text-align: left; cursor: pointer; font-weight: normal;">
+												style="color: black; text-align: left; padding-top:10px; padding-bottom:10px; cursor: pointer; margin-bottom:0px; font-weight: normal;">
 												<span style="color: red">Q</span>. ${question.questionTitle }
 											</p>
 										</div>
 										<div id="section1b" class="elements">
-											<hr style="margin-bottom: 20px; margin-top: 0px;">
-											<p style="color: black; text-align: left; cursor: pointer;">
+											<hr style="margin-bottom: 10px; margin-top: 0px;">
+											<p style="color: black; text-align: left; cursor: pointer; margin-bottom:10px;">
 												<span style="color: green;">A</span>.
 												${question.questionContent }
 												<c:if test="${AdminisLogOn== true &&admin !=null}">
@@ -369,7 +369,7 @@ style
 
 							<c:if test="${pageMaker.prev}">
 
-								<a class="arrow prev"
+								<a class="arrow prev" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
 									href='<c:url value="/board/listQuestion?page=${pageMaker.startPage-1 }"/>'><i
 									class="fa fa-chevron-left"></i></a>
@@ -378,7 +378,7 @@ style
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="pageNum">
 
-								<a
+								<a style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
 									href='<c:url value="/board/listQuestion.do?page=${pageNum }"/>'><i
 									class="fa">${pageNum }</i></a>
@@ -386,7 +386,7 @@ style
 							</c:forEach>
 							<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
-								<a class="arrow next"
+								<a class="arrow next" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
 									href='<c:url value="/board/listQuestion?page=${pageMaker.endPage+1 }"/>'><i
 									class="fa fa-chevron-right"></i></a>
@@ -402,7 +402,7 @@ style
 
 							<c:if test="${pageMaker.prev}">
 
-								<a class="arrow prev"
+								<a class="arrow prev" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									href='<c:url value="/board/questionSearch.do?search=${questionSearchMap.search}&page=${pageMaker.startPage-1 }"/>'><i
 									class="fa fa-chevron-left"></i></a>
 
@@ -410,14 +410,14 @@ style
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="pageNum">
 
-								<a
+								<a style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									href='<c:url value="/board/questionSearch.do?search=${questionSearchMap.search}&page=${pageNum }"/>'><i
 									class="fa">${pageNum }</i></a>
 
 							</c:forEach>
 							<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
-								<a class="arrow next"
+								<a class="arrow next" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;"
 									href='<c:url value="/board/questionSearch.do?search=${questionSearchMap.search}&page=${pageMaker.endPage+1 }"/>'><i
 									class="fa fa-chevron-right"></i></a>
 

@@ -105,7 +105,7 @@
 }
 
 #buttonmy {
-	width: 80px;
+
 	height: 30px;
 	float: left;
 	border-radius: 2px;
@@ -141,9 +141,9 @@ function InquiryList() {
 			</c:choose>
 
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">A/S센터</h2>
+				<h2 style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">A/S센터</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">빠르게
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">빠르게
 					접수 도와드리겠습니다.</h5>
 			</div>
 			<!-- 타이틀 끝 -->
@@ -159,11 +159,11 @@ function InquiryList() {
 
 					<button type="button" onclick="asCenter()" id="buttonmy"
 						class="btn btn-dark"
-						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none;">검색</button>
+						style="margin-top: 15px; float: right; padding-top: 4px; height: 34px; font-size: 13px; padding-top: 4px; background-color: #7e9c8c; border: none;">검색</button>
 					<input type="text"
-						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
+						style="margin-top: 15px; float: right; width:130px; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px;"
 						name="search"> <select name="searchType"
-						style="font-size: 14px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
+						style="font-size: 13px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 15px;">
 						<option value="asCenterTitle">제목</option>
 						<option value="memName">작성자</option>
 						<option value="asCenterContent">내용</option>
@@ -171,10 +171,10 @@ function InquiryList() {
 				</div>
 			</form>
 			<table class="table"
-				style="margin-top: 20px; text-align: center; font-size: 14px;">
+				style="margin-top: 20px; text-align: center; font-size: 13px;">
 				<thead class="table-dark" align=center>
 					<tr
-						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+						style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 						<td style="width: 100px;">번호</td>
 						<td style="width: 500px;">제목</td>
 						<td style="width: 200px;">작성자</td>
@@ -187,7 +187,7 @@ function InquiryList() {
 							<c:choose>
 								<c:when test="${empty asCenterSearchMap.asCenterSearchList}">
 									<tr style="background-color: white;">
-										<td colspan="5" style="color: black; height: 300px;">검색된
+										<td colspan="5" style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">검색된
 											글이 없습니다.</td>
 									</tr>
 								</c:when>
@@ -196,7 +196,7 @@ function InquiryList() {
 										value="${pageMaker.totalCount - ((pageNum-1) * 10) }" />
 									<c:forEach var="asCenterSearch" items="${asCenterSearchList}">
 										<tr
-											style="border-bottom: 1px solid #c6c8ca; height: 30px; background-color: white;">
+											style="border-bottom: 1px solid #eeeeee; height: 30px; background-color: white;">
 											<td style="width: 100px; color: black;">${num}</td>
 											<td
 												style="width: 500px; color: black; text-align: left; padding-left: 50px;"><a
@@ -216,7 +216,7 @@ function InquiryList() {
 							<c:choose>
 								<c:when test="${empty asCenterList}">
 									<tr style="background-color: white;">
-										<td colspan="5" style="color: black; height: 300px;">등록된
+										<td colspan="5" style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">등록된
 											글이 없습니다.</td>
 									</tr>
 								</c:when>
@@ -225,7 +225,7 @@ function InquiryList() {
 										value="${pageMaker.totalCount - ((pageNum-1) * 10) }" />
 									<c:forEach var="asCenter" items="${asCenterList}">
 										<tr
-											style="border-bottom: 1px solid #c6c8ca; height: 30px; background-color: white;">
+											style="border-bottom: 1px solid #eeeeee; height: 30px; background-color: white;">
 											<td style="width: 100px; color: black;">${num}</td>
 											<td
 												style="width: 500px; color: black; text-align: left; padding-left: 50px;"><a
@@ -247,7 +247,7 @@ function InquiryList() {
 				</thead>
 			</table>
 			<a id="buttonmy" class="btn btn-dark" onClick="asCenterForm()"
-				style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px;">글쓰기</a>
+				style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px;  width: 104px; height: 34px; font-size: 13px; padding-top:7px;">글쓰기</a>
 			<!-- 페이징 글번호 -->
 			<div class="page_wrap" style="margin-left: 80px; margin-top: 50px;">
 				<div class="page_nation">

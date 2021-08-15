@@ -144,11 +144,12 @@
 
 
 
-	<section class="ftco-section" style="padding-top: 30px;">
+	<section class="ftco-section" style="padding-top: 0px;">
+
+		<img src="${contextPath}/resources/images/product/selina.jpg"
+			width=100% height=350px style="margin-bottom: 50px;">
 		<div class="container">
 
-			<img src="${contextPath}/resources/images/product/selina.jpg"
-				width=100% height=350px style="margin-bottom: 30px;">
 			<!-- 최근 본 상품 -->
 
 			<!-- 최근 본 상품 끝 -->

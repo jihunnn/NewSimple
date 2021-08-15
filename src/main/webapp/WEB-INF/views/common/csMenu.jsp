@@ -82,30 +82,21 @@
 </script>
 </head>
 <body>
+	<table
+		style="width: 100%; height: 60px; border-bottom: 1px solid #e9e9e9; font-size: 13px; margin-bottom: 60px; ">
+		<tr
+			style="font-weight: bold; font-size: 15px; height: 19px; color: black; text-align:center; ">
+			<td style="vertical-align: middle;"><a
+			onclick="location.href='${contextPath}/board/listNotice.do'" style="cursor: pointer;">ㆍNOTICE<span style="font-size:12px;">(공지사항)</span></a></td>
+			<td style=" vertical-align: middle;"><a
+			onclick="location.href='${contextPath}/board/listQuestion.do'" style="cursor: pointer;">ㆍQUSTION<span style="font-size:12px;">(자주묻는질문)</span></a></td>
+			<td style=" vertical-align: middle;"><a
+			onclick="InquiryList()" style="cursor: pointer;">ㆍINQUIRY<span style="font-size:12px;">(1:1문의)</span></a></td>
+			<td style=" vertical-align: middle;"><a
+			onclick="location.href='${contextPath}/board/listAsCenter.do'" style="cursor: pointer;">ㆍASCENTER<span style="font-size:12px;">(A/S센터)</span></a></td>
+		</tr>
+	</table>
 
-	<ul class="snip1284" style="margin-bottom:30px; padding-left:0px;">
-		<li class="current"><a
-			onclick="location.href='${contextPath}/board/listNotice.do'"
-			data-hover="공지사항"
-			style="font-size: 19px; border: none; color: #5a5a5a; margin-right: 150px; cursor: pointer; background-color: white; margin-left: 20px; padding-bottom: 0px;">공지사항</a></li>
-
-
-		<li><a
-			onclick="location.href='${contextPath}/board/listQuestion.do'"
-			data-hover="자주 묻는 질문"
-			style="font-size: 19px; border: none; color: #5a5a5a; margin-right: 150px; cursor: pointer; background-color: white; padding-bottom: 0px;">자주
-				묻는 질문</a></li>
-
-
-		<li><a onclick="InquiryList()" data-hover="1:1문의"
-			style="font-size: 19px; border: none; color: #5a5a5a; margin-right: 150px; cursor: pointer; background-color: white; padding-bottom: 0px;">1:1문의</a></li>
-
-
-		<li><a
-			onclick="location.href='${contextPath}/board/listAsCenter.do'"
-			data-hover="A/S센터"
-			style="font-size: 19px; border: none; color: #5a5a5a; background-color: white; cursor: pointer; padding-bottom: 0px;">A/S센터</a></li>
-	</ul>
 
 
 </body>

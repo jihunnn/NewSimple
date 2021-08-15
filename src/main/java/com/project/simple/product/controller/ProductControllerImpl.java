@@ -902,8 +902,21 @@ public class ProductControllerImpl implements ProductController {
 		Map<String, Object> optionMap = new HashMap<String, Object>();
 		List<OptionVO> optionList = productService.removeSelectOption(option);
 		optionMap.put("optionList", optionList);
-	
+
 		return optionMap;
 	}
+	
+	// 옵션 name 가져오기
+	@RequestMapping(value = "product/optionNameList.do", method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String,Object> optionNameList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map<String, Object> optionNameMap = new HashMap<String, Object>();
+		List<String> optionNameList = productService.selectOptionName();
+
+		optionNameMap.put("optionNameList", optionNameList);
+
+		return optionNameMap;
+	}
+	
 
 }

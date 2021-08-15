@@ -99,9 +99,9 @@ request.setCharacterEncoding("utf-8");
 				</c:otherwise>
 			</c:choose>
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">공지사항</h2>
+				<h2 style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold;color:#7e9c8c;">공지사항</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">SIMPLE의
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">SIMPLE의
 					새로운 소식을 확인해보세요.</h5>
 			</div>
 
@@ -113,10 +113,10 @@ request.setCharacterEncoding("utf-8");
 
 			<!-- 내용 -->
 
-			<table class="table" style="height: 25px; font-size: 14px;">
+			<table class="table" style="height: 25px; font-size: 13px;">
 				<thead class="table-dark" align=center>
 					<tr align="center"
-						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+						style="background-color: #fbfbfb; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee;">
 						<td scope="col" width="100"><p
 								style="color: black; margin-bottom: 0px;">번호</p></td>
 						<td scope="col" width="500"><p
@@ -142,7 +142,7 @@ request.setCharacterEncoding("utf-8");
 						<c:when test="${!empty noticeList}">
 							<c:forEach var="notice" items="${noticeList}">
 								<tr
-									style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
+									style=" border-bottom: 1px solid #eeeeee; background-color: white; color: black;">
 									<td scope="col" width="50">${notice.noticeNum}</td>
 									<td align="left" scope="col" width="500"><a
 										href="${contextPath}/board/viewNotice.do?noticeNum=${notice.noticeNum}"
@@ -161,14 +161,14 @@ request.setCharacterEncoding("utf-8");
 			<c:if test="${AdminisLogOn== true &&admin !=null}">
 				<a id="buttonmy" class="btn btn-dark"
 					onClick="location.href='${contextPath}/admin/noticeForm.do'"
-					style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px;">글쓰기</a>
+					style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px; padding-top: 10px; font-size: 13px;">글쓰기</a>
 			</c:if>
 		</div>
 
 		<!-- 내용 끝 -->
 
 		<!-- 페이징 글번호 -->
-		<div class="page_wrap" style="margin-left: 80px; margin-top: 50px;">
+		<div class="page_wrap" style="margin-left: 80px; margin-top: 50px; font-size:13px; ">
 			<div class="page_nation">
 
 				<c:if test="${pageMaker.prev}">

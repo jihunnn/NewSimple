@@ -106,66 +106,6 @@
 
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Raleway:500);
-
-.snip1284 {
-	font-family: 'Raleway', Arial, sans-serif;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 1px;
-}
-
-.snip1284 * {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-}
-
-.snip1284 li {
-	display: inline-block;
-	list-style: outside none none;
-	margin: 0.5em 1.2em;
-	padding: 0;
-}
-
-.snip1284 a {
-	padding: 0 0.6em;
-	color: rgba(255, 255, 255, 0.5);
-	position: relative;
-	text-decoration: none;
-}
-
-.snip1284 a:before, .snip1284 a:after {
-	width: 3px;
-	height: 0;
-	position: absolute;
-	content: '';
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-	background-color: #7e9c8c;
-}
-
-.snip1284 a:before {
-	top: 0;
-	right: 0;
-}
-
-.snip1284 a:after {
-	bottom: 0;
-	left: 0;
-}
-
-.snip1284 a:hover, .snip1284 .current a {
-	color: #ffffff;
-}
-
-.snip1284 a:hover:before, .snip1284 .current a:before, .snip1284 a:hover:after,
-	.snip1284 .current a:after {
-	height: 100%;
-}
-
 .page_wrap {
 	text-align: center;
 	font-size: 0;
@@ -262,9 +202,10 @@
 			</c:choose>
 
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">1:1문의</h2>
+				<h2
+					style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">1:1문의</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">빠르게
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">빠르게
 					답변해 드리겠습니다.</h5>
 			</div>
 			<!-- 타이틀 끝 -->
@@ -274,32 +215,32 @@
 			<!-- 최근 본 상품 끝 -->
 			<!-- 내용 -->
 			<form name="inquirySearch"
-				action="${contextPath}/board/inquirySearch.do" method="post">
+				action="${contextPath}/board/inquirySearch.do" method="post" style="height:50px;">
 				<div style="display: inline !important;">
 					<p
-						style="float: left; width: 70px; margin-top: 25px; margin-left: 529px; font-size: 14px; , margin-bottom: 10px;">작성기간</p>
+						style="float: left; width: 60px; margin-top: 27px; margin-left: 689px; font-size: 13px; margin-bottom: 10px;">작성기간</p>
 
 					<input type="text" id="datepicker1" name="search1"
 						autocomplete='off'
-						style="width: 120px; margin-right: 50px; margin-top: 25px; height: 30px; border: 1px solid #dcdcdc; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+						style="width: 100px; margin-right: 35px; font-size:13px; margin-top: 25px; height: 30px; border: 1px solid #dcdcdc; flaot: left; border-radius: 2px; margin-bottom: 5px; display: inline !important;">
 
 					<span class="glyphicon glyphicon-calendar" aria-hidden="true"
-						style="margin-left: -35px;"></span>~ㅤ<input type="text"
+						style="margin-left: -35px;"></span>~<input type="text"
 						autocomplete='off' name="search2" id="datepicker2"
-						style="width: 120px; margin-right: 40px; height: 30px; border: 1px solid #dcdcdc; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+						style="width: 100px; margin-right: 35px; margin-left:5px; font-size:13px; height: 30px; border: 1px solid #dcdcdc; flaot: left; border-radius: 2px; display: inline !important;">
 
 					<span class="glyphicon glyphicon-calendar" aria-hidden="true"
 						style="margin-left: -35px;"> </span>
 
 					<button type="button" onclick="inquiry()" class="btn btn-default"
-						style="background-color: #dcdcdc; font-size: 14px; fmargin-left: 380px; margin-top: 0px; margin-bottom: 3px; width: 80px; height: 34px; font-size: 14px; display: inline !important; background-color: #7e9c8c; border: none; color: white; border-radius: 2px; height: 30px; padding-top: 3px;">조회</button>
+						style="background-color: #dcdcdc; font-size: 13px; margin-bottom: 1px; fmargin-left: 380px; margin-top: 0px; height: 34px; font-size: 13px; display: inline !important; background-color: #7e9c8c; border: none; color: white; border-radius: 2px; height: 30px;">조회</button>
 				</div>
 			</form>
 			<table class="table"
-				style="height: 30px; height: 25px; font-size: 14px;">
+				style="height: 30px; height: 25px; font-size: 13px;">
 				<thead class="table-dark" align=center>
 					<tr align="center"
-						style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+						style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 						<td scope="col" width="100">번호</td>
 						<td scope="col" width="150">문의유형</td>
 						<td scope="col" width="500"><p style="margin-bottom: 0px;">제목</p></td>
@@ -310,7 +251,7 @@
 							<c:choose>
 								<c:when test="${empty inquirySearchMap.inquirySearchList}">
 									<tr>
-										<td style="backgroundcolor: white; width: 300px;" colspan="5">찾으시는
+										<td style="background-color: white; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f; border-bottom:1px solid #eeeeee;" colspan="5">찾으시는
 											결과가 없습니다.</td>
 									</tr>
 								</c:when>
@@ -320,7 +261,7 @@
 									<c:forEach var="inquirySearch" items="${inquirySearch}"
 										varStatus="inquiryNum">
 										<tr
-											style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
+											style="border-bottom: 1px solid #eeeeee; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
 											<td scope="col" width="50">${num}</td>
 											<td scope="col" width="150">${inquirySearch.inquiryType}</td>
 											<td align="left" scope="col" width="500"><a
@@ -331,7 +272,7 @@
 										</tr>
 										<c:if test="${inquirySearch.inquiryAnswer != null}">
 											<tr
-												style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
+												style="border-bottom: 1px solid #eeeeee; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
 												<td scope="col" width="50"></td>
 												<td scope="col" width="150"></td>
 												<td align="left" scope="col" width="500" style=><a
@@ -350,7 +291,7 @@
 							<c:choose>
 								<c:when test="${empty inquiryList}">
 									<tr style="background-color: white;">
-										<td colspan="5" style="color: black; height: 300px;">등록된
+										<td colspan="5" style="background-color: white; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f; border-bottom:1px solid #eeeeee;">등록된
 											글이 없습니다.</td>
 									</tr>
 
@@ -360,7 +301,7 @@
 										value="${pageMaker.totalCount - ((inquiryMap.pageNum-1) * 10) }" />
 									<c:forEach var="inquiry" items="${inquiryList}">
 										<tr
-											style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
+											style="border-bottom: 1px solid #eeeeee; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
 											<td scope="col" width="50">${num}</td>
 											<td scope="col" width="150">${inquiry.inquiryType}</td>
 											<td align="left" scope="col" width="500"><a
@@ -371,7 +312,7 @@
 										</tr>
 										<c:if test="${inquiry.inquiryAnswer != null}">
 											<tr
-												style="border-bottom: 1px solid #c6c8ca; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
+												style="border-bottom: 1px solid #eeeeee; border-top: 1px solid #c6c8ca; background-color: white; color: black;">
 												<td scope="col" width="50"></td>
 												<td scope="col" width="150"></td>
 												<td align="left" scope="col" width="500" style=><a
@@ -393,7 +334,7 @@
 			<c:if test="${isLogOn== true &&member !=null}">
 				<a id="buttonmy" class="btn btn-dark"
 					href="${contextPath}/board/inquiryForm.do"
-					style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px;">글쓰기</a>
+					style="float: right; margin-top: 23px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px; padding-top: 8px; font-size: 13px;">글쓰기</a>
 			</c:if>
 			<!-- 내용 끝 -->
 			<!-- 페이징 글번호 -->
@@ -401,7 +342,7 @@
 
 				<c:when test="${!empty inquirySearchMap.search1}">
 					<div class="page_wrap"
-						style="margin-left: 80px; margin-top: 60px; width: 1300px;">
+						style="margin-left: 80px; margin-top: 60px; width: 1300px; font-size:13px;">
 						<div class="page_nation">
 
 							<c:if test="${pageMaker.prev}">
@@ -437,7 +378,7 @@
 					<c:choose>
 						<c:when test="${AdminisLogOn == true && admin != null}">
 							<div class="page_wrap"
-								style="margin-left: 80px; margin-top: 50px; width: 1300px;">
+								style="margin-left: 80px; margin-top: 50px; width: 1300px; font-size:13px;">
 								<div class="page_nation">
 
 									<c:if test="${pageMaker.prev}">
