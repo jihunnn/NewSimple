@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"
-    isELIgnored="false"
-    %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
+	pageEncoding="utf-8" isELIgnored="false"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 
 <!DOCTYPE html>
@@ -143,20 +141,21 @@
 </head>
 <body>
 
-	
-	<section class="ftco-section" style="padding-top: 30px;">
+
+	<section class="ftco-section" style="padding-top: 0px;">
+		<img src="${contextPath}/resources/images/product/bed.jpg"
+			width=100% height=400px style="margin-bottom: 50px;">
 		<div class="container">
-		<img src="${contextPath}/resources/images/product/selina.jpg" width=100%
-		height=350px style="margin-bottom:30px;">
-		
+
+
 
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
-            <hr style="margin-top: -15px; margin-bottom: 30px;">
+			<hr style="margin-top: -15px; margin-bottom: 30px;">
 
-			
 
-				<div class="row">
+
+			<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
 						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
@@ -209,8 +208,8 @@
 
 
 			</div>
-		
-	</div>
+
+		</div>
 
 
 	</section>

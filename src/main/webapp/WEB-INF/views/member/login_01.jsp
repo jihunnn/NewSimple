@@ -22,7 +22,7 @@
 	height: 100px;
 	align-items: center;
 	padding-top: 10px;
-	font-size: 20px;
+	font-size: 13px;
 }
 
 #LeftBox {
@@ -37,6 +37,8 @@
 	padding: 20px;
 	margin: 10 10 10 10;
 	font-size: 20px;
+	color: #7e9c8c;
+	font-weight: bold;
 }
 
 .id_pwd_text {
@@ -58,11 +60,11 @@
 }
 
 #id_pwd_save {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .btn_member_id_pwd {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 #find_id_pwd {
@@ -124,12 +126,15 @@
 	height: 450px;
 	border: 1px solid #eeeeee;
 	margin: 10 10 10 10;
+	font-size:13px;
 }
 
 #Non_login_text {
 	padding: 20px;
 	margin-right: 20px;
 	font-size: 20px;
+	color: #7e9c8c;
+	font-weight: bold;
 }
 
 #order_input {
@@ -197,7 +202,7 @@
 }
 
 .Easy-sgin-in-wrap1 .sign-button-list1 li button i {
-	font-size: 25px;
+	font-size: 13px;
 }
 
 .Easy-sgin-in-wrap3 {
@@ -229,65 +234,67 @@
 }
 
 .Easy-sgin-in-wrap3 .sign-button-list3 li button i {
-	font-size: 25px;
+	font-size: 13px;
 }
 </style>
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
+		$("input[name='memId']").val(userInputId);
 
-$(document).ready(function(){
-    var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
-    $("input[name='memId']").val(userInputId); 
-     
-    if($("input[name='memId']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩
-                                           // 아이디 저장하기 체크되어있을 시,
-        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
-    }
-     
-    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 발생시
-        if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
-            var userInputId = $("input[name='memId']").val();
-            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
-        }else{ // ID 저장하기 체크 해제 시,
-            deleteCookie("userInputId");
-        }
-    });
-     
-    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
-    $("input[name='memId']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-        if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
-            var userInputId = $("input[name='memId']").val();
-            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
-        }
-    });
-});
- 
-function setCookie(cookieName, value, exdays){
-    var exdate = new Date();
-    exdate.setDate(exdate.getDate() + exdays);
-    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
-    document.cookie = cookieName + "=" + cookieValue;
-}
- 
-function deleteCookie(cookieName){
-    var expireDate = new Date();
-    expireDate.setDate(expireDate.getDate() - 1);
-    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
-}
- 
-function getCookie(cookieName) {
-    cookieName = cookieName + '=';
-    var cookieData = document.cookie;
-    var start = cookieData.indexOf(cookieName);
-    var cookieValue = '';
-    if(start != -1){
-        start += cookieName.length;
-        var end = cookieData.indexOf(';', start);
-        if(end == -1)end = cookieData.length;
-        cookieValue = cookieData.substring(start, end);
-    }
-    return unescape(cookieValue);
-}
+		if ($("input[name='memId']").val() != "") { // 그 전에 ID를 저장해서 처음 페이지 로딩
+			// 아이디 저장하기 체크되어있을 시,
+			$("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+		}
+
+		$("#idSaveCheck").change(function() { // 체크박스에 변화가 발생시
+			if ($("#idSaveCheck").is(":checked")) { // ID 저장하기 체크했을 때,
+				var userInputId = $("input[name='memId']").val();
+				setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+			} else { // ID 저장하기 체크 해제 시,
+				deleteCookie("userInputId");
+			}
+		});
+
+		// ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+		$("input[name='memId']").keyup(function() { // ID 입력 칸에 ID를 입력할 때,
+			if ($("#idSaveCheck").is(":checked")) { // ID 저장하기를 체크한 상태라면,
+				var userInputId = $("input[name='memId']").val();
+				setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+			}
+		});
+	});
+
+	function setCookie(cookieName, value, exdays) {
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var cookieValue = escape(value)
+				+ ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+		document.cookie = cookieName + "=" + cookieValue;
+	}
+
+	function deleteCookie(cookieName) {
+		var expireDate = new Date();
+		expireDate.setDate(expireDate.getDate() - 1);
+		document.cookie = cookieName + "= " + "; expires="
+				+ expireDate.toGMTString();
+	}
+
+	function getCookie(cookieName) {
+		cookieName = cookieName + '=';
+		var cookieData = document.cookie;
+		var start = cookieData.indexOf(cookieName);
+		var cookieValue = '';
+		if (start != -1) {
+			start += cookieName.length;
+			var end = cookieData.indexOf(';', start);
+			if (end == -1)
+				end = cookieData.length;
+			cookieValue = cookieData.substring(start, end);
+		}
+		return unescape(cookieValue);
+	}
 	//로그인
 	function Login() {
 
@@ -325,7 +332,6 @@ function getCookie(cookieName) {
 				return false;
 			}
 		}
-	
 
 		if (form.nonMemName.value == "") {
 			alert("주문자명을 입력해주세요!");
@@ -342,22 +348,21 @@ function getCookie(cookieName) {
 
 	}
 </script>
-<!-- 카카오 로그인 --> 
-<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script> 
-<script type="text/javascript"> 
-//초기화 시키기.
+<!-- 카카오 로그인 -->
+<script type="text/javascript"
+	src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+	//초기화 시키기.
 
-	
-	$(document).ready(function(){ 
-		Kakao.init('40acc8a0f94fc942b570f1aebb0094de'); 
-		Kakao.isInitialized(); 
-		});
-	function kakaoLogin() { 
+	$(document).ready(function() {
+		Kakao.init('40acc8a0f94fc942b570f1aebb0094de');
+		Kakao.isInitialized();
+	});
+	function kakaoLogin() {
 		Kakao.Auth.authorize({
-			redirectUri: 'http://localhost:8080/simple/kakaoLogin.do' 
-			}); 
-		}
-
+			redirectUri : 'http://localhost:8080/simple/kakaoLogin.do'
+		});
+	}
 </script>
 
 
@@ -375,7 +380,7 @@ function getCookie(cookieName) {
 		<!-- 최근 본 상품 -->
 
 		<section class="ftco-section testimony-section" id="sect"
-			style="padding-top: 30px; margin-top: 70px;">
+			style="padding-top: 30px; margin-top: 70px; font-size:13px;">
 			<div class="container" style="padding-right: 100px;">
 				<section class="Easy-sgin-in-wrap">
 					<div id="LeftBox">
@@ -390,23 +395,24 @@ function getCookie(cookieName) {
 								<div>
 									<img src="${contextPath}/resources/images/login/login-id.jpg"
 										width="23"><input
-										style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;" onkeypress="if(event.keyCode == 13){Login(); return; }"
+										style="font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"
+										onkeypress="if(event.keyCode == 13){Login(); return; }"
 										type="text" name="memId" placeholder="아이디를 입력하세요">
 								</div>
 								<div>
 									<img src="${contextPath}/resources/images/login/login-pwd.jpg"
 										width="23"><input
-										style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;" onkeypress="if(event.keyCode == 13){Login(); return; }"
+										style="font-size: 13px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"
+										onkeypress="if(event.keyCode == 13){Login(); return; }"
 										type="password" name="memPwd" placeholder="비밀번호를 입력하세요">
 								</div>
 							</div>
 						</form>
 
-						<div class="id_save_find" style="float: left; padding-left:37px">
+						<div class="id_save_find" style="float: left; padding-left: 37px">
 							<input type="checkbox" name="save_id" id="idSaveCheck"
-								style="vertical-align: middle; "> <label
-								style="font-size: 12px;">아이디 저장</label> <span
-								id="find_id_pwd">
+								style="vertical-align: middle;"> <label
+								style="font-size: 12px;">아이디 저장</label> <span id="find_id_pwd">
 								<button onclick="location.href='${contextPath}/login_03.do'"
 									style="border: none; font-size: 13px; margin-left: 110px; color: black; margin-right: 1px; height: 30px;"
 									class="btn_member_id_pwd">아이디/비밀번호 찾기</button>
@@ -414,7 +420,7 @@ function getCookie(cookieName) {
 						</div>
 						<span id="btn_submit_login"> <input type="button"
 							id="submit_login" value="로그인" onclick="Login()"
-							style="background-color: #7e9c8c; font-size:14px; color: white; border: none; border-radius:2px; margin-left: -2px;">
+							style="background-color: #7e9c8c; font-size: 13px; color: white; border: none; border-radius: 2px; margin-left: -2px;">
 
 						</span>
 
@@ -426,9 +432,11 @@ function getCookie(cookieName) {
 											src="${contextPath}/resources/images/login/logo-naver.jpg"
 											width="22"
 											style="margin-right: 5px; margin-bottom: 3px; vertical-align: middle;"><span
-											style="font-size: 14px;" class="fas fa-qrcode">네이버로 로그인</span>
+											style="font-size: 13px;" class="fas fa-qrcode">네이버로
+											로그인</span>
 									</button></li>
-								<li><button onclick="location.href='javascript:kakaoLogin();'"
+								<li><button
+										onclick="location.href='javascript:kakaoLogin();'"
 										style="background-color: #eeeeee; color: black; border: none;">
 
 										<img
@@ -436,7 +444,7 @@ function getCookie(cookieName) {
 											width="22"
 											style="vertical-align: middle; margin-right: 5px; margin-bottom: 3px;">
 										<span class="fab fa-facebook-square"
-											style="font-size: 14px; margin-bottom: 3px;"> 카카오로 로그인</span>
+											style="font-size: 13px; margin-bottom: 3px;"> 카카오로 로그인</span>
 
 									</button></li>
 							</ul>
@@ -452,27 +460,27 @@ function getCookie(cookieName) {
 					<form name="Non_order"
 						action="${contextPath}/nonmember/order_lookup.do" method="post">
 						<div class="order_input">
-							<div style=" padding-top: 10px;">
-								<p style="margin-bottom:10px;">
+							<div style="padding-top: 10px;">
+								<p style="margin-bottom: 10px;">
 									<input type="text" name="nonMemName" class="order_name"
 										size="18"
-										style="border: 1px solid #dcdcdc; font-size: 14px;  margin-top:1px;  height:36px; width:220px; "
+										style="border: 1px solid #dcdcdc; font-size: 13px; margin-top: 1px; height: 36px; width: 220px;"
 										placeholder="주문자명">
 								</p>
-								<p style="margin-bottom:10px;">
+								<p style="margin-bottom: 10px;">
 									<input type="text" name="nonMemOrderNum" class="order_pwd"
 										size="18"
-										style="border: 1px solid #dcdcdc; margin-left:5px; font-size: 14px;  height:36px; width:220px; "
+										style="border: 1px solid #dcdcdc; margin-left: 5px; font-size: 13px; height: 36px; width: 220px;"
 										placeholder="주문번호">
 								</p>
-							
+
 							</div>
 						</div>
 					</form>
 					<input type="submit" id="submit_NonOrderInquiry" value="주문조회"
 						onclick="Non_order_Inquiry()"
-						style="background-color: #7e9c8c; margin-top: 10px; margin-left:20px; color: white; height: 82px; border-radius: 2px; border:none;">
-					<div id="Non_order_content" style="font-size:12px;">
+						style="background-color: #7e9c8c; margin-top: 10px; font-size:13px; margin-left: 20px; color: white; height: 82px; border-radius: 2px; border: none;">
+					<div id="Non_order_content" style="font-size: 12px;">
 						<ul>
 							<li>주문자명, 주문 번호가 일치 하지 않을 경우,조회가 불가능합니다.</li>
 							<li>비회원으로 로그인 하시는 분께서 주문 번호를 잊으신 경우, 고객센터로 연락주시면 신속하게
@@ -490,11 +498,11 @@ function getCookie(cookieName) {
 		<section class="Easy-sgin-in-wrap1" style="margin-bottom: 50px;">
 			<ul class="sign-button-list1">
 				<li><button onclick="location.href='${contextPath}/join_01.do'"
-						style="background-color: #757575; color: white; margin-top: 50px; font-size:14px; border:none;">
+						style="background-color: #757575; color: white; margin-top: 50px; font-size: 13px; border: none;">
 						<i class="sgin-up"></i><span>회원가입</span>
 					</button></li>
 				<li><button onclick="location.href='main.jsp'"
-						style="background-color: white; color: gray;  font-size:14px; border:1px solid #7e9c8c;">
+						style="background-color: white; color: gray; font-size: 13px; border: 1px solid #eeeeee;">
 						<i class="return-main"></i><span>돌아가기</span>
 					</button></li>
 			</ul>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.project.simple.cart.vo.CartVO"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
@@ -47,12 +48,15 @@
 				}
 			}
 			document.getElementById('totalPrice').value=totalPrice;
+			document.getElementById('price1').value=totalPrice;
+			
 			
 		} else {
 			//chk 체크박스가 체크되어 있지 않습니다.
 			$("input:checkbox[name='chk']").prop("checked", false) //체크해제
 			
 			document.getElementById('totalPrice').value=0;
+			document.getElementById('price1').value=0;
 		}
 	}
 
@@ -218,6 +222,7 @@
 		}
 		
 		document.getElementById('totalPrice').value=totalPrice;
+		document.getElementById('price1').value=totalPrice;
 	}
 	
 <!--장바구니 수량체크에 따른 상품금액 계산-->	
@@ -257,16 +262,18 @@
 				}
 
 				document.getElementById('totalPrice').value=totalPrice;
+				document.getElementById('price1').value=totalPrice;
+				
 			} 
 
 
-		
+	
 		}
 	
 	}
-
-
 	
+	 
+
 	
 </script>
 
@@ -533,24 +540,24 @@
 						style="font-size: 25px; font-weight: bold; margin-bottom: 20px;">
 						<a style="color: #7e9c8c;">장바구니</a>
 						<button type="button" onclick="deleteValue01();"
-							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left: 2px;"
 							class="btn-secondary btn-xs">선택삭제</button>
 						<button type="button" onclick="checkAll()"
 							class="btn-secondary btn-xs"
-							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">전체선택</button>
+							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;">전체선택</button>
 
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div
-						style="font-size: 25px; font-weight: bold; margin-bottom: 20px;">
+						style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
 						<a style="color: #7e9c8c;">장바구니</a>
 						<button type="button" onclick="deleteValue02();"
-							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left: 2px;"
 							class="btn-secondary btn-xs">선택삭제</button>
 						<button type="button" onclick="checkAll();"
 							class="btn-secondary btn-xs"
-							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">전체선택</button>
+							style="float: right; border-radius: 2px; margin-bottom: 3px; margin-top: 15px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;">전체선택</button>
 
 					</div>
 
@@ -562,29 +569,7 @@
 			<!-- 장바구니타이틀끝 -->
 
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+
 			<!-- 최근본상품끝 -->
 
 
@@ -596,10 +581,10 @@
 				<c:choose>
 					<c:when test="${isLogOn == true && member != null}">
 						<table class="table"
-							style="margin-top: 0px; font-size: 14px; vertical-align: middle;">
+							style="margin-top: 0px; font-size: 13px; vertical-align: middle;">
 							<thead class="table-dark" align=center>
 								<tr align="center"
-									style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px; color: black;">
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; color: black;">
 									<td scope="col" width="100">선택</td>
 									<td scope="col" width="150"></td>
 									<td scope="col" width="400" align=left>상품명</td>
@@ -613,10 +598,8 @@
 							<c:forEach items="${cartlist}" var="cartlist" varStatus="status">
 								<form name="cart">
 									<tbody>
-										<tr class="tr1" align="center"
-											style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-											<th scope="col"
-												style="vertical-align: middle; align: center;"><input
+										<tr style="font-size: 13px; border-bottom: 1px solid #eeeeee;">
+											<th scope="col" style="align: center;"><input
 												type="checkbox" name="chk" value="${cartlist.memCartId}"
 												onclick="check(this,${status.index})"></th>
 											<td scope="col"><img
@@ -626,15 +609,14 @@
 												: ${cartlist.option1value} <br>${cartlist.option2name}
 												: ${cartlist.option2value}
 											</td>
-											<td scope="col" align=center style="vertical-align: middle;">
-
+											<td scope="col" align="center">
 												<div class="num">
 													<div class="updown">
 														<span
 															onclick="javascript:basket.changePNum(1,'${status.index}');"><i
 															class="fas fa-arrow-alt-circle-up up"></i></span> <input
 															type="text" name="productCnt" id="productCnt" size="2"
-															maxlength="4" class="p_num"
+															maxlength="4" class="p_num" style="border:1px solid #dcdcdc"
 															value="${cartlist.productCnt}"
 															onkeyup="javascript:basket.changePNum(1,'${status.index}');">
 														<span
@@ -646,31 +628,51 @@
 											<td scope="col" align=center style="vertical-align: middle;">${cartlist.deliverycharge}</td>
 											<td scope="col" align=center style="vertical-align: middle;">
 												<input type="hidden" name="p_price" id="p_price2"
-												class="p_price" value="${cartlist.productPrice}">${cartlist.productPrice}
+												class="p_price" value="${cartlist.productPrice}">
+											<fmt:formatNumber pattern="###,###,###"
+													value="${cartlist.productPrice}" />원
 											</td>
 											<td scope="col" align=center style="vertical-align: middle;"><input
 												name="sumPrice" id="sumPrice"
-												style="border: none; color: #666666; background-color: transparent; font-weight: lighter; width: 80px;"
-												value="${cartlist.totalPrice}" disabled /></td>
+												style="border: none; color: #666666; text-align: right; background-color: transparent; font-weight: lighter; width: 80px;"
+												value="${cartlist.totalPrice}" disabled />원</td>
 										</tr>
 
 									</tbody>
 								</form>
 							</c:forEach>
-							<tfoot>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td colspan="4" align=right
-										style="font-size: 18px; color: #7e9c8c; font-weight: bold;">총
-										합계<input type="text" id="totalPrice" name="totalPrice"
-										value="0"
-										style="border: none; width: 100px; text-align: right; font-size: 18px; color: #7e9c8c; font-weight: bold;" />원
-									</td>
-								</tr>
-							</tfoot>
 						</table>
+						<div
+							style="border: 1px solid #e9e9e9; height: 80px; margin-top: 20px;">
+							<div style="display: flow-root; padding-top: 5px;">
+								<h6
+									style="float: right; margin-top: 11px; font-size: 14px; margin-right: 15px;">
+									총 합계</h6>
+								<h6
+									style="float: right; font-size: 14px; margin-top: 12px; margin-right: 70px;">배송비</h6>
+								<h6
+									style="float: right; font-size: 14px; margin-top: 12px; margin-right: 73px;">상품금액</h6>
+
+							</div>
+							<div style="display: block; margin-right: 15px;">
+								<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
+									type="text" id="totalPrice" name="totalPrice" value="0"
+									onkeyup="comma(this)"
+									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+							</div>
+							<img src="${contextPath}/resources/images/equls.jpg"
+								style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
+							<span
+								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 18px;">원</span>
+							<input type="text" id="" name="" value="0" onkeyup="comma(this)"
+								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+							<img src="${contextPath}/resources/images/plus.jpg"
+								style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
+							<span
+								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
+								type="text" id="price1" name="price1" value="0"
+								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+						</div>
 						<div></div>
 						<br>
 						<br>
@@ -678,11 +680,11 @@
 						<div class="container" style="padding-left: 450px;">
 							<button type="button" onclick="memberbuy()" class="btn btn-dark "
 								id="buttonmy"
-								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 14px; margin-left: 40px;">선택상품주문</button>
+								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 40px;">선택상품주문</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="button" onclick="buyall()" id="buttonmy"
 								class="btn btn-dark"
-								style="width: 75px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 14px;">전체상품주문</button>
+								style="width: 75px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 13px;">전체상품주문</button>
 						</div>
 					</c:when>
 
@@ -690,10 +692,10 @@
 
 					<c:otherwise>
 
-						<table class="table">
+						<table class="table" style="font-size: 13px;">
 							<thead class="table-dark" align=center>
 								<tr align="center"
-									style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 									<td scope="col" width="100">선택</td>
 									<td scope="col" width="150"></td>
 									<td scope="col" width="400" align=left>상품명</td>
@@ -706,9 +708,9 @@
 							<c:forEach items="${cartlist}" var="cartlist" varStatus="status">
 								<form name="cart">
 									<tbody>
-										<tr style="font-size: 14px; border-bottom: 1px solid #c6c8ca;">
-											<td scope="col" height="100" align=center><br> <br>
-												<input type="checkbox" name="chk" value="${status.index}"
+										<tr style="font-size: 13px; border-bottom: 1px solid #eeeeee;">
+											<td scope="col" height="100" align=center><br> <input
+												type="checkbox" name="chk" value="${status.index}"
 												onclick="check(this,${status.index})"></td>
 											<td scope="col"><img
 												src="${contextPath}/download_product.do?productNum=${cartlist.productNum}&productImage=${cartlist.productImage}"
@@ -717,15 +719,14 @@
 												: ${cartlist.option1value} <br>${cartlist.option2name}
 												: ${cartlist.option2value}
 											</td>
-											<td scope="col" align=center><br> <br>
-
+											<td scope="col" align=center><br>
 												<div class="num">
 													<div class="updown">
 														<span
 															onclick="javascript:basket.changePNum(1,'${status.index}');"><i
 															class="fas fa-arrow-alt-circle-up up"></i></span> <input
 															type="text" name="productCnt" id="productCnt" size="2"
-															maxlength="4" class="p_num"
+															maxlength="4" class="p_num" style="border:1px solid #dcdcdc"
 															value="${cartlist.productCnt}"
 															onkeyup="javascript:basket.changePNum(1,'${status.index}');">
 														<span
@@ -733,35 +734,51 @@
 															class="fas fa-arrow-alt-circle-down down"></i></span>
 													</div>
 												</div></td>
-											<td scope="col" align=center><br> <br>${cartlist.deliverycharge}</td>
+											<td scope="col" align=center><br>${cartlist.deliverycharge}</td>
 											<td scope="col" align=center><br> <input
 												type="hidden" name="p_price" id="p_price2" class="p_price"
-												value="${cartlist.productPrice}"> <br>${cartlist.productPrice}
-											</td>
-											<td scope="col" align=center><br> <br> <input
-												name="sumPrice" id="sumPrice"
-												style="border: none; color: #666666; background-color: transparent; font-weight: lighter; width: 80px;"
-												value="${cartlist.totalPrice}" disabled /></td>
+												value="${cartlist.productPrice}"> <fmt:formatNumber
+													pattern="###,###,###" value="${cartlist.productPrice}" />원</td>
+											<td scope="col" align=center><br> <input
+												name="sumPrice" id="sumPrice" onkeyup="comma(this)"
+												style="border: none; color: #666666; text-align: right; background-color: transparent; font-weight: lighter; width: 80px;"
+												value="${cartlist.totalPrice}" disabled />원</td>
 										</tr>
 									</tbody>
 								</form>
 							</c:forEach>
-							<tfoot>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td colspan="4" align=right
-										style="font-size: 18px; color: #7e9c8c; font-weight: bold;">총
-										합계<input type="text" id="totalPrice" name="totalPrice"
-										value="0"
-										style="border: none; width: 100px; text-align: right; font-size: 18px; color: #7e9c8c; font-weight: bold;" />원
-									</td>
-								</tr>
-							</tfoot>
 						</table>
+						<div
+							style="border: 1px solid #e9e9e9; height: 80px; margin-top: 20px;">
+							<div style="display: flow-root; padding-top: 5px;">
+								<h6
+									style="float: right; margin-top: 11px; font-size: 14px; margin-right: 15px;">
+									총 합계</h6>
+								<h6
+									style="float: right; font-size: 14px; margin-top: 12px; margin-right: 70px;">배송비</h6>
+								<h6
+									style="float: right; font-size: 14px; margin-top: 12px; margin-right: 73px;">상품금액</h6>
 
-
+							</div>
+							<div style="display: block; margin-right: 15px;">
+								<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
+									type="text" id="totalPrice" name="totalPrice" value="0"
+									onkeyup="comma(this)"
+									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+							</div>
+							<img src="${contextPath}/resources/images/equls.jpg"
+								style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
+							<span
+								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 18px;">원</span>
+							<input type="text" id="" name="" value="0" onkeyup="comma(this)"
+								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+							<img src="${contextPath}/resources/images/plus.jpg"
+								style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
+							<span
+								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
+								type="text" id="price1" name="price1" value="0"
+								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+						</div>
 
 
 
@@ -771,11 +788,11 @@
 						<div class="container" style="padding-left: 450px;">
 							<button type="button" onclick="nonmemberbuy()"
 								class="btn btn-dark " id="buttonmy"
-								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 14px; margin-left: 40px;">선택상품주문</button>
+								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 40px;">선택상품주문</button>
 							&nbsp;&nbsp;&nbsp;
 							<button type="button" onclick="nextt()" id="buttonmy"
 								class="btn btn-dark"
-								style="width: 75px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 14px;">전체상품주문</button>
+								style="width: 75px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 13px;">전체상품주문</button>
 						</div>
 					</c:otherwise>
 				</c:choose>

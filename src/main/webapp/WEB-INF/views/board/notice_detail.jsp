@@ -82,6 +82,7 @@
 	float: left;
 	border-radius: 2px;
 	padding-top: 1.8px;
+	font-size: 13px;
 }
 </style>
 <script>
@@ -101,42 +102,26 @@
 	<section class="ftco-section"
 		style="padding-top: 50px; margin-top: 30px; padding-bottom: 130px;">
 		<div class="container">
-			<c:if test="${AdminisLogOn == true && admin != null}">
-				<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
-					flush="false" />
-			</c:if>
-			<jsp:include page="/WEB-INF/views/common/csMenu.jsp" flush="false" />
+			<c:choose>
+				<c:when test="${AdminisLogOn == true && admin != null}">
+					<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
+						flush="false" />
+				</c:when>
+				<c:otherwise>
+					<jsp:include page="/WEB-INF/views/common/csMenu.jsp" flush="false" />
+				</c:otherwise>
+			</c:choose>
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">공지사항</h2>
+				<h2
+					style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">공지사항</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">SIMPLE의
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">SIMPLE의
 					새로운 소식을 확인해보세요.</h5>
 			</div>
+
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+
 			<!-- 최근 본 상품 끝 -->
 
 			<!-- 내용 -->
@@ -146,11 +131,11 @@
 				<table class="table" style="height: 25px; font-size: 13px;">
 					<thead class="table-dark" align=center>
 						<tr align="center"
-							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca !important;">
+							style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee !important;">
 							<td scope="col" colspan="6"><a style="color: black;">${notice.noticeTitle}</a></td>
 						</tr>
 						<tr
-							style="background-color: #eeeeee; color: black; border-bottom: 1px solid #c6c8ca !important;">
+							style="background-color: #fbfbfb; color: black; border-bottom: 1px solid #eeeeee !important;">
 							<td scope="col" width="150">작성자</td>
 							<td scope="col" width="150"
 								style="background-color: white; color: black;"><a>${notice.noticeWriter }</a></td>
@@ -163,15 +148,14 @@
 								style="background-color: white; color: black;">${notice.noticeHit}</td>
 						</tr>
 						<tr
-							style="border-bottom: 1px solid #c6c8ca !important; background-color: white; color: black;">
-							<td colspan="6" align="left" scope="col" width="500" height="500"><a
-								href="#" style="color: black; padding-left: 30px;">${notice.noticeContent }</a><br>
+							style="border-bottom: 1px solid #eeeeee !important; background-color: white; color: black;">
+							<td colspan="6" align="center" scope="col" width="500">${notice.noticeContent}<br>
 								<c:if
 									test="${!empty notice.noticeImg && notice.noticeImg != null}">
 
 									<input type="hidden" name="OrignNoticeImg"
 										value="${notice.noticeImg}" />
-									<img width="300" height="300"
+									<img width="600" height="800"
 										src="${contextPath}/download_notice.do?noticeNum=${notice.noticeNum}&noticeImg=${notice.noticeImg}"
 										id="preview" />
 
@@ -182,17 +166,17 @@
 					</thead>
 				</table>
 				<c:if test="${AdminisLogOn == true && admin != null}">
-					<button type="submit" class="btn btn-dark " id="buttonmy"
-						style="float: right; margin-top: 30px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; padding-top: 4px; float: left;">수정</button>
-					<button type="button"
-						onclick="removeNotice(this.form)"
+					<button type="button" onclick="removeNotice(this.form)"
 						id="buttonmy" class="btn btn-dark"
-						style="float: right; margin-top: 30px; border-radius: 2px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; padding-top: 4px; float: left;">삭제</button>
+						style="float: right; margin-top: 25px; border-radius: 2px; background-color: white; color: gray; margin-left:4px; border: 1px solid #eeeeee; border-radius: 2px; width: 104px; height: 34px; padding-top: 10px; padding-top: 4px;font-size:13px; ">삭제</button>
+					<button type="submit" class="btn btn-dark " id="buttonmy"
+						style="float: right; margin-top: 25px; border-radius: 2px; background-color: #5f5f5f; color: white; border: none; border-radius: 2px;width: 104px; height: 34px; padding-top: 10px; padding-top: 4px;font-size:13px;">수정</button>
+
 				</c:if>
 				<button type="button"
 					onclick="location.href='${contextPath}/board/listNotice.do'"
 					id="buttonmy" class="btn btn-dark"
-					style="margin-left: 600px; margin-top: 30px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; padding-top: 4px; float: left;">목록</button>
+					style="margin-left: 600px; margin-top: 25px; font-size:13px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px; padding-top: 10px; padding-top: 4px; float: left;">목록</button>
 			</form>
 
 		</div>

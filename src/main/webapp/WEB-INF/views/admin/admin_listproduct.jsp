@@ -79,7 +79,7 @@
 }
 
 #buttonmy {
-	width: 80px;
+
 	height: 30px;
 	float: left;
 	border-radius: 2px;
@@ -115,12 +115,12 @@
 					</select>
 				</div>
 			</form>
-<div style="font-size:25px; font-weight:bold; margin-left:18px; padding-top:13px;"><a style="color:#7e9c8c;">상품조회</a></div>
+<div style="font-size:20px; font-weight:bold; margin-left:18px; padding-top:19px;"><a style="color:#7e9c8c;">상품조회</a></div>
 
 			<table class="table" style="font-size: 13px;">
 				<thead class="table-dark" align=center>
 					<tr
-						style="background-color: #fbfbfb; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; font-size: 14px;">
+						style="background-color: #fbfbfb; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; ">
 						<td scope="col" style="width: 120px;">상품번호</td>
 						<td scope="col" style="width: 120px;">상품이미지</td>
 						<td scope="col" style="width: 200px;">상품이름</td>
@@ -138,7 +138,7 @@
 								<c:when test="${empty productSearchMap.productSearchList}">
 									<tr height="200">
 										<td colspan="5"
-											style="background-color: white; padding-top: 100px;">
+											style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">
 											<p align="center">
 												<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
 											</p>

@@ -62,6 +62,7 @@
 #RightBox {
 	width: 450px;
 	border: 1px solid #eeeeee;
+	height:439px;
 }
 
 h3 {
@@ -69,15 +70,15 @@ h3 {
 }
 </style>
 <script type="text/javascript">
-    var idck = 0;
-    var check = 0;
- 
-    function div_show(selectList) {
-	    var obj1 = document.getElementById("phone_con"); // 핸드폰
-	
-	    if( selectList == "0" ) { // 핸드폰
-	        obj1.style.display = "block";    
-	    } 
+	var idck = 0;
+	var check = 0;
+
+	function div_show(selectList) {
+		var obj1 = document.getElementById("phone_con"); // 핸드폰
+
+		if (selectList == "0") { // 핸드폰
+			obj1.style.display = "block";
+		}
 	}
 	//로그인
 	function Check_Join() {
@@ -250,16 +251,19 @@ h3 {
 			alert("개인정보 수집 및 이용안내 동의를 체크하세요.");
 			agree2.focus();
 			return false;
-		}if(idck==0){
-	            alert("아이디 중복확인을 체크해주세요");
-	            return false;
-	    }if(check==0){
-	            alert("핸드폰인증을 확인해주세요");
-	            return false;
-	    }if(confirm("회원가입을 하시겠습니까?")){
-	       
-	        form.submit();
-	    }
+		}
+		if (idck == 0) {
+			alert("아이디 중복확인을 체크해주세요");
+			return false;
+		}
+		if (check == 0) {
+			alert("핸드폰인증을 확인해주세요");
+			return false;
+		}
+		if (confirm("회원가입을 하시겠습니까?")) {
+
+			form.submit();
+		}
 
 	}
 	function checkAllCheckbox(obj) {
@@ -295,44 +299,47 @@ h3 {
 			});
 		});
 	});
-	
-	function fn_overlapped(){
-		var _id=$("#memId").val();
-	    $.ajax({
-	       type:"post",
-	       async:false,  
-	       url:"${contextPath}/overlapped.do",
-	       dataType:"text",
-	       data: {memId:_id},
-	       success:function (data,textStatus){
-	          if(data=='false'){
-	       	    alert("사용할 수 있는 ID입니다.");
-	       	    idck = 1;
-	       	    $('#btnOverlapped').prop("disabled", true);
-	       	   
-	          }else{
-	        	  idck = 0;
-	        	  alert("사용할 수 없는 ID입니다.");
-	          }
-	       },
-	       error:function(data,textStatus){
-	          alert("에러가 발생했습니다.");ㅣ
-	       },
-	       complete:function(data,textStatus){
-	          //alert("작업을완료 했습니다");
-	       }
-	    });  //end ajax	 
-	 }	
+
+	function fn_overlapped() {
+		var _id = $("#memId").val();
+		$.ajax({
+			type : "post",
+			async : false,
+			url : "${contextPath}/overlapped.do",
+			dataType : "text",
+			data : {
+				memId : _id
+			},
+			success : function(data, textStatus) {
+				if (data == 'false') {
+					alert("사용할 수 있는 ID입니다.");
+					idck = 1;
+					$('#btnOverlapped').prop("disabled", true);
+
+				} else {
+					idck = 0;
+					alert("사용할 수 없는 ID입니다.");
+				}
+			},
+			error : function(data, textStatus) {
+				alert("에러가 발생했습니다.");
+				ㅣ
+			},
+			complete : function(data, textStatus) {
+				//alert("작업을완료 했습니다");
+			}
+		}); //end ajax	 
+	}
 
 	//핸드폰 인증 팝업창
-	$(function(){
-		$("#BtnPhoneConf").click(function(){
+	$(function() {
+		$("#BtnPhoneConf").click(function() {
 			var phone1 = jQuery("#phone1").val();
 			var phone2 = jQuery("#phone2").val();
 			var phone3 = jQuery("#phone3").val();
 			var memPhoneNum4 = "";
-			memPhoneNum4 = phone1 +"-"+ phone2 +"-"+ phone3;
-			
+			memPhoneNum4 = phone1 + "-" + phone2 + "-" + phone3;
+
 			$.ajax({
 				url : "${contextPath}/join/check/sendSMS",
 				type : "POST",
@@ -346,38 +353,35 @@ h3 {
 		});
 	})
 	//비밀번호 찾기_핸드폰_인증번호_확인	
-	$(function(){
-		$("#findBtnPhone").click(function(){
-			var Approval_key=$("#Approval_key").val();
+	$(function() {
+		$("#findBtnPhone").click(function() {
+			var Approval_key = $("#Approval_key").val();
 			$.ajax({
 				url : "${contextPath}/phone_confirm.do",
 				type : "POST",
 				data : {
 					Approval_key : Approval_key
 				},
-				success : function(data,textStatus) {
-					 if(data=='false'){
-				       	    alert("핸드폰 인증이 완료되었습니다.");
-				       	    check = 1;
-				       	   
-				          }else{
-				        	  check = 0;
-				        	  alert("인증번호가 일치하지 않습니다.");
-				          }
+				success : function(data, textStatus) {
+					if (data == 'false') {
+						alert("핸드폰 인증이 완료되었습니다.");
+						check = 1;
+
+					} else {
+						check = 0;
+						alert("인증번호가 일치하지 않습니다.");
+					}
 				},
-				error:function(data,textStatus){
-			          alert("에러가 발생했습니다.");ㅣ
-			       },
-			       complete:function(data,textStatus){
-			         // alert("작업을완료 했습니다");
-			       }
-		    });  //end ajax	 
-		 }
-		)}
-	)
-	
-	
-	 
+				error : function(data, textStatus) {
+					alert("에러가 발생했습니다.");
+					ㅣ
+				},
+				complete : function(data, textStatus) {
+					// alert("작업을완료 했습니다");
+				}
+			}); //end ajax	 
+		})
+	})
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -435,23 +439,22 @@ h3 {
 	<section class="ftco-section testimony-section"
 		style="padding-top: 0px;">
 		<div class="container" style="height: 650px">
-         <input type="hidden" name="check" value="${check}"
-					id="check" />
+			<input type="hidden" name="check" value="${check}" id="check" />
 			<!-- 최근 본 상품 -->
 			<!--  -->
 			<form name="CheckJoin" action="${contextPath}/addMembers.do"
 				method="post">
+
 				<section class="ftco-section testimony-section" id="sect"
 					style="paggin-top: 100px; width: 960px; margin-left: 100px;">
 
 					<div class="container" style="width: 400px; padding-right: 0px;">
-
 						<section class="Easy-sgin-in-wrap">
-							<h3 style="font-size: 20px; color: #7e9c8c;">회원가입</h3>
+							<h3 style="font-size: 20px; color: #7e9c8c; font-weight: bold;">회원가입</h3>
 
 							<div id="MainBox">
 								<table
-									style="wdith: 500px; height: 330px; text-align: left; font-size: 14px;">
+									style="wdith: 500px; height: 330px; text-align: left; font-size: 13px;">
 									<tr>
 										<td class="user_name">
 											<div align="left" style="width: 80px;">
@@ -460,8 +463,9 @@ h3 {
 											</div>
 										</td>
 										<td colspan="3" class="user_name" style="padding-left: 50px;">
-											<input type="text" name="memName" size="20" placeholder="두글자이상"
-											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 326px; color: #b3b3b3; height: 36px; font-size: 12px;">
+											<input type="text" name="memName" size="20"
+											placeholder="두글자이상"
+											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 326px; color: #b3b3b3; height: 36px; font-size: 11px;">
 										</td>
 									</tr>
 									<tr>
@@ -474,10 +478,10 @@ h3 {
 										<td colspan="3" class="user_id" style="padding-left: 50px;">
 											<input type="text" name="memId" id="memId" size="30"
 											placeholder="4~12자/영문,대소문자,숫자만 입력가능"
-											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 250px; color: #b3b3b3; height: 36px; font-size: 12px;">
-											<input type="button" name="btnOverlapped" value="중복확인" id="idck" 
-											onclick="fn_overlapped()"
-											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">
+											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 254px; color: #b3b3b3; height: 36px; font-size: 11px;">
+											<input type="button" name="btnOverlapped" value="중복확인"
+											id="idck" onclick="fn_overlapped()"
+											style="background-color: #c6c6c6; border: none; font-size:13px; color: white; height: 36px; margin-left: 4px;">
 											<input type="hidden" name="idDuplication" value="idUncheck">
 										</td>
 									</tr>
@@ -485,23 +489,23 @@ h3 {
 										<td class="user_password1">
 											<div align="left" align="left">
 												<a
-													style="color: red; padding-right: 5px; margin-bottom: 10px;">*</a>비밀번호
+													style="color: red; padding-right: 5px; margin-bottom: 20px;">*</a>비밀번호
 											</div>
 										</td>
 										<td colspan="3" class="user_password1"
 											style="padding-left: 50px;"><input type="password"
 											style="border: 1px solid #dcdcdc; font-size: 14px; width: 326px; height: 36px;"
 											name="memPwd" size="30" value=""><a
-											style="color: gray; font-size: 10px;">10자이상/영문, 대소문자,
-												숫자만 입력가능</a></td>
+											style="color: gray; font-size: 10px;">10자이상/영문, 대소문자, 숫자만
+												입력가능</a></td>
 
 									</tr>
 									<tr>
 										<td class="user_password2">
 											<div align="left" align="left"
-												style="width: 120px; margin-top: 10px;">
+												style="width: 120px; margin-bottom: 10px;">
 												<a
-													style="color: red; padding-right: 5px; width: 120px; margin-bottom: 10px;">*</a>비밀번호
+													style="color: red; padding-right: 5px; width: 120px;">*</a>비밀번호
 												재확인
 											</div>
 										</td>
@@ -512,17 +516,17 @@ h3 {
 									</tr>
 									<tr>
 										<td class="email">
-											<div align="left" align="left">
+											<div align="left" align="left" style="margin-bottom:10px;">
 												<a
-													style="color: red; padding-right: 5px; margin-bottom: 10px;">*</a>이메일
+													style="color: red; padding-right: 5px;">*</a>이메일
 											</div>
 										</td>
 										<td colspan="3" class="email" style="padding-left: 50px;">
-											<input type="text" name="memEmail" placeholder="영문,대소문자,숫자만 입력가능"
-											size="13"
-											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 170px; height: 36px; color: #b3b3b3; font-size: 12px;">
+											<input type="text" name="memEmail"
+											placeholder="영문,대소문자,숫자만 입력가능" size="13"
+											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 170px; height: 36px; color: #b3b3b3; font-size: 11px;">
 											@ <select name="memEmail1" id="selcet1"
-											style="border: 1px solid #dcdcdc; width: 134px; height: 36px;">
+											style="border: 1px solid #dcdcdc; width: 137px; height: 36px;">
 												<option value="naver.com">naver.com</option>
 												<option value="gmail.com">gmail.com</option>
 												<option value="nate.com">nate.com</option>
@@ -539,9 +543,9 @@ h3 {
 											</div>
 										</td>
 										<td colspan="3" class="phone" style="padding-left: 50px;">
-										<input type="hidden" id="memPhoneNum4" />
-											<select name="memPhoneNum" id="phone1"
-											style="height: 34px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 66px; height: 36px;">
+											<input type="hidden" id="memPhoneNum4" /> <select
+											name="memPhoneNum" id="phone1"
+											style="height: 34px; margin-bottom: 10px; font-size:13px; border: 1px solid #dcdcdc; width: 73px; height: 36px;">
 												<option value="">선택</option>
 												<option value="010">010</option>
 												<option value="011">011</option>
@@ -549,29 +553,32 @@ h3 {
 												<option value="017">017</option>
 												<option value="019">019</option>
 												<option value="010">010</option>
-										</select>- <input type="text" name="memPhoneNum1" value="" size="3"  id="phone2"
+										</select>- <input type="text" name="memPhoneNum1" value="" size="3"
+											id="phone2"
 											style="border: 1px solid #dcdcdc; width: 77px; height: 36px;">-
-											<input type="text" name="memPhoneNum2" value="" size="3"  id="phone3"
+											<input type="text" name="memPhoneNum2" value="" size="3"
+											id="phone3"
 											style="border: 1px solid #dcdcdc; width: 77px; height: 36px;">
-											<button type="button" name="phone_certification" id="BtnPhoneConf" onclick="div_show('0');"
-											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">핸드폰인증</button>
+											<button type="button" name="phone_certification"
+												id="BtnPhoneConf" onclick="div_show('0');"
+												style="background-color: #c6c6c6; border: none; color: white; font-size:13px; height: 36px; margin-left: 4px;">핸드폰인증</button>
 										</td>
 									</tr>
-								
+
 									<tr>
-									    <td>
-									    </td>
-									    
-									    <td>
-									   <div id="phone_con" style="display: none;">
-									    <input type="text" name="Approval_key" id="Approval_key"
-											size="10"  placeholder="인증번호를 입력하세요"
-											style="margin-left:49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
-										<button type="button" id="findBtnPhone"
-											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호 확인</button>
-										</div>
-									    </td>
-									    
+										<td></td>
+
+										<td>
+											<div id="phone_con" style="display: none;">
+												<input type="text" name="Approval_key" id="Approval_key"
+													size="10" placeholder="인증번호를 입력하세요"
+													style="margin-left: 49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
+												<button type="button" id="findBtnPhone"
+													style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호
+													확인</button>
+											</div>
+										</td>
+
 									</tr>
 									<tr>
 										<td class="addr1">
@@ -583,7 +590,7 @@ h3 {
 										<td colspan="3" class="addr" style="padding-left: 50px;">
 											<input type="text" name="memAdr" id="sample6_postcode"
 											readonly size="10"
-											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
+											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 225px; height: 36px;">
 											<input type="button" onclick="sample6_execDaumPostcode()"
 											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;"
 											value="우편번호 찾기">
@@ -612,18 +619,21 @@ h3 {
 					</div>
 					<div class="container"
 						style="width: 350px; margin-top: 9px; margin-left: 10px;">
-						<h3 style="font-size:12px; width:450px; margin-left:290px; color: #7e9c8c;"><span style="color:red;">* </span>표시는 반드시 입력해주세요</h3>
+						<h3
+							style="font-size: 12px; width: 450px; margin-left: 290px; color: #7e9c8c;">
+							<span style="color: red;">* </span>표시는 반드시 입력해주세요
+						</h3>
 						<div id="RightBox">
 
 							<table style="width: 600px; height: 400px;">
 								<tr>
 									<td
-										style="padding-left: 15px; font-size: 14px; padding-top: 10px;"><input
+										style="padding-left: 15px; font-size: 13px; padding-top: 10px;"><input
 										type="checkbox" name="full_agree" id="full_agree"
-										onclick="checkAllCheckbox()" value="on" > 전체 동의</td>
+										onclick="checkAllCheckbox()" value="on"> 전체 동의</td>
 								</tr>
 								<tr>
-									<td style="padding-left: 15px; font-size: 14px;"><input
+									<td style="padding-left: 15px; font-size: 13px;"><input
 										type="checkbox" name="agree" id="agree1" value="on"><a
 										style="color: red; font-size: 14px;">*</a> 이용 약관</td>
 								</tr>
@@ -655,10 +665,10 @@ h3 {
 
 								</tr>
 								<tr>
-									<td style="padding-left: 10px; font-size: 14px;">
+									<td style="padding-left: 10px; font-size: 13px;">
 										<div align="left" style="padding-left: 5px;">
 											<input type="checkbox" name="agree" id="agree2" value="on"><a
-												style="color: red; font-size: 14px;">*</a>개인정보 수집 및 이용안내
+												style="color: red; font-size: 13px;">*</a>개인정보 수집 및 이용안내
 										</div>
 									</td>
 
@@ -674,7 +684,7 @@ h3 {
 
 								</tr>
 								<tr>
-									<td style="padding-left: 15px; font-size: 14px;">
+									<td style="padding-left: 15px; font-size: 13px;">
 										<div align="left">
 											<input type="checkbox" name="agree" id="agree3" value="on">마켓팅
 											수신 동의
@@ -698,12 +708,12 @@ h3 {
 					</div>
 				</section>
 				<div
-					style="text-align: center; padding-bottom: 70px; font-size: 14px; margin-top: 20px; margin-left: 20px;">
+					style="text-align: center; padding-bottom: 70px; font-size: 13px; margin-top: 20px; margin-left: 20px;">
 					<input type="button" name="modify" value="회원가입 "
 						style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;"
 						onclick="Check_Join()"> <input type="reset" name="reset"
 						value="취    소"
-						style="width: 75px; background-color: white; margin-right: 40px; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
+						style="width: 75px; background-color: white; margin-right: 40px; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
 						onclick="location.href='/Main'">
 				</div>
 			</form>

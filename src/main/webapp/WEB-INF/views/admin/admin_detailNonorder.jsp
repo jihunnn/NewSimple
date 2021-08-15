@@ -84,7 +84,7 @@ function deliveryindex(index){
 			<!-- 타이틀 끝 -->
 			<!-- 내용 -->
 			
-					<div style="font-size: 25px; font-weight: bold;">
+					<div style="font-size: 20px; font-weight: bold;">
 					<a style="color: #7e9c8c;">주문리스트</a>
 				</div>
 
@@ -93,15 +93,15 @@ function deliveryindex(index){
 				<table class="table" style="font-size: 13px;">
                   
 					<thead class="table-dark">
-						<tr style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+						<tr style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 						        <th scope="col" width="150"></th>
-								<th scope="col">상품명</th>
-								<th scope="col" width="250">옵션</th>
-								<th scope="col" width="100">수량</th>
-								<th scope="col" width="80">배송비</th>
-								<th scope="col" width="150">가격</th>
-								<th scope="col" width="150">배송상태</th>
-								<th scope="col" width="150">배송수정</th>
+								<th scope="col"style="font-weight: normal;">상품명</th>
+								<th scope="col" width="250" style="font-weight: normal;">옵션</th>
+								<th scope="col" width="100"style="font-weight: normal;">수량</th>
+								<th scope="col" width="80" style="font-weight: normal;">배송비</th>
+								<th scope="col" width="150" style="font-weight: normal;">가격</th>
+								<th scope="col" width="150" style="font-weight: normal;">배송상태</th>
+								<th scope="col" width="150" style="font-weight: normal;">배송수정</th>
 						</tr>
 					</thead>
 					
@@ -173,32 +173,32 @@ function deliveryindex(index){
 					
 				</table>
 				
-					<div style="font-size: 18px; float: right;">
+					<div style="font-size: 15px; float: right;">
 						<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${NonOrderList[0].totalPrice}원</a>
 					</div>
 				
 			</div>
 
           
-			<div style="font-size: 25px; font-weight: bold; margin-top: 70px;">
+			<div style="font-size: 20px; font-weight: bold; margin-top: 70px;">
 					<a style="color: #7e9c8c; margin-top: 40px;">수령인정보</a>
 			</div>
-			<a>주문일자: ${NonOrder.nonMemOrderDate }</a>
+			<a style="font-size:13px;">주문일자: ${NonOrder.nonMemOrderDate }</a>
 		    <div class="order_list">
-				    <table class="table">
+				    <table class="table" style="font-size:13px;">
 				    	<colgroup>
 					    	<col width="20%" />
 					    </colgroup>
 					    <tbody>
 					    	<tr style="border-bottom: 1px solid #eeeeee; border-top: 1px solid rgba(0, 0, 0, 0.1);">
-					    		<th scope="col"><a
+					    		<th scope="col" style="font-weight: normal;"><a
 					    				style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
-					    		<th scope="col">${NonOrder.nonMemSpName }</th>
+					    		<th scope="col" style="font-weight: normal;">${NonOrder.nonMemSpName }</th>
 					    	</tr>
 					    	<tr style="border-bottom: 1px solid #eeeeee;">
-					    	<th ><a
+					    	<th style="font-weight: normal;"><a
 					    				style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
-					    	    <th scope="col"><%=nonMemSpAdr[0]%>
+					    	    <th scope="col" style="font-weight: normal;"><%=nonMemSpAdr[0]%>
 						    			&nbsp;&nbsp;&nbsp;
 						    			<p>
 						    				<br> <%=nonMemSpAdr[1]%>
@@ -209,17 +209,17 @@ function deliveryindex(index){
 							    		</p>
 							    </th>
 						    <tr style="border-bottom: 1px solid #eeeeee;">
-					    			<th scope="col"><a
+					    			<th scope="col" style="font-weight: normal;"><a
 					    				style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처1</th>
-					    			<th scope="col"><%=nonMemSpPhoneNum[0]%> - <%=nonMemSpPhoneNum[1]%>
+					    			<th scope="col" style="font-weight: normal;"><%=nonMemSpPhoneNum[0]%> - <%=nonMemSpPhoneNum[1]%>
 					    				- <%=nonMemSpPhoneNum[2]%></th>
 					    		</tr>
 					    		
 					    		<c:choose>
 								<c:when test="${NonOrder.nonMemSpPhoneNum2 != '--'}">
 				                <tr style="border-bottom: 1px solid #eeeeee;">
-							    	<th scope="col" style="padding-left: 23px;">연락처2</th>
-					    			<th scope="col"><%=nonMemSpPhoneNum2[0]%> - <%=nonMemSpPhoneNum2[1]%>
+							    	<th scope="col" style="padding-left: 23px;font-weight: normal;">연락처2</th>
+					    			<th scope="col" style="font-weight: normal;"><%=nonMemSpPhoneNum2[0]%> - <%=nonMemSpPhoneNum2[1]%>
 					    				- <%=nonMemSpPhoneNum2[2]%></th>
 					    	    </tr>
 					    	    </c:when>
@@ -227,13 +227,13 @@ function deliveryindex(index){
 		
 						    	<tr style="border-bottom: 1px solid #eeeeee;">
 						    		<th scope="col"
-								    	style="padding-bottom: 50px; padding-left: 23px;"><br>주문메시지<br>(100자내외)</th>
-							    	<th scope="col"><input type="text" name="nonMemOrderMsg" disabled value="${NonOrder.nonMemOrderMsg}"
+								    	style="padding-bottom: 50px; font-weight: normal; padding-left: 23px;"><br>주문메시지<br>(100자내외)</th>
+							    	<th scope="col" style="font-weight: normal;"><input type="text" name="nonMemOrderMsg" disabled value="${NonOrder.nonMemOrderMsg}"
 								    	style="width: 327px; height: 175px; border: 1px solid #dcdcdc;"></th>
 							    </tr>
 							    <tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-							    	<th scope="col" style="padding-left: 23px;">무통장 입금자명</th>
-							    	<th scope="col">${NonOrder.nonMemDepositorName}</th>
+							    	<th scope="col" style="padding-left: 23px; font-weight: normal;">무통장 입금자명</th>
+							    	<th scope="col" style="font-weight: normal;">${NonOrder.nonMemDepositorName}</th>
 							    </tr>
 					
 					    </tbody>
@@ -245,11 +245,11 @@ function deliveryindex(index){
 				<div style="text-align: center">
 					<input type="button" class="btn btn-secondary" value="정보수정"
 						onclick="location.href='${contextPath}/admin_listNoOrder/admin_ModVeiwNonMemorder.do?nonMemOrderNum=${NonOrder.nonMemOrderNum}'"
-						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
+						style="padding-left: 10px; font-size:13px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
 					<button type="submit" class="btn btn-secondary"
 						onclick="location.href='${contextPath}/admin_listNoOrder.do'"
-						style="padding-left: 10px; background-color: white; color: #7e9c8c; border: 1px solid #7e9c8c; border-radius: 2px; width: 130px; height: 45px;">뒤로가기</button>
+						style="padding-left: 10px;font-size:13px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 130px; height: 46px;">뒤로가기</button>
 				</div>
 				<br> <br>
 				</div>

@@ -78,72 +78,13 @@
 }
 
 #buttonmy {
-	width: 80px;
+
 	height: 30px;
 	float: left;
 	border-radius: 2px;
 	padding-top: 1.8px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:500);
-
-.snip1284 {
-	font-family: 'Raleway', Arial, sans-serif;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 1px;
-}
-
-.snip1284 * {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-}
-
-.snip1284 li {
-	display: inline-block;
-	list-style: outside none none;
-	margin: 0.5em 1.2em;
-	padding: 0;
-}
-
-.snip1284 a {
-	padding: 0 0.6em;
-	color: rgba(255, 255, 255, 0.5);
-	position: relative;
-	text-decoration: none;
-}
-
-.snip1284 a:before, .snip1284 a:after {
-	width: 3px;
-	height: 0;
-	position: absolute;
-	content: '';
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-	background-color: #7e9c8c;
-}
-
-.snip1284 a:before {
-	top: 0;
-	right: 0;
-}
-
-.snip1284 a:after {
-	bottom: 0;
-	left: 0;
-}
-
-.snip1284 a:hover, .snip1284 .current a {
-	color: #ffffff;
-}
-
-.snip1284 a:hover:before, .snip1284 .current a:before, .snip1284 a:hover:after,
-	.snip1284 .current a:after {
-	height: 100%;
-}
 </style>
 <script> src="http://code.jquery.com/jquery-1.6.4.min.js"</script>
 <script type="text/javascript">
@@ -232,13 +173,13 @@
 			<form name="memberSearch"
 				action="${contextPath}/admin_listmember/memberSearch.do"
 				method="post">
-				<div style="margin-bottom: 10px;">
+				<div style="margin-bottom: 10px; font-size:13px;">
 					<button type="button" id="buttonmy" class="btn btn-dark" onclick="listMemberSearch()"
-						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 14px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
+						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 13px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
 					<input type="text"
-						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 14px; margin-right: 5px;"
+						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px;"
 						name="search"> <select name="searchType"
-						style="font-size: 14px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
+						style="font-size: 13px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
 						<option value="memId">아이디</option>
 						<option value="memName">이름</option>
 						<option value="memEmail">이메일</option>
@@ -247,21 +188,21 @@
 						<option value="logintype">회원유형</option>
 					</select>
 					<div
-						style="font-size: 25px; font-weight: bold; margin-left: 18px; padding-top: 13px; float: left;">
+						style="font-size: 20px; font-weight: bold; margin-left: 18px; padding-top: 19px; float: left;">
 						<a style="color: #7e9c8c;">회원조회</a>
 					</div>
 					<button type="button" 
-						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+						style="float: left; border-radius: 2px; margin-bottom: 3px; margin-right:5px; margin-left:5px; margin-top: 22px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 						class="btn-secondary btn-xs" onclick="deleteValue();">선택삭제</button>
 
 				</div>
 			</form>
 
 
-			<table class="table" style="font-size: 14px;">
+			<table class="table" style="font-size: 13px;">
 				<thead class="table-dark" align=center>
 					<tr align="center"
-						style="background-color: #eeeeee; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+						style="background-color: #fbfbfb; color: black; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee;">
 						<td scope="col" style="width: 80px;">선택</td>
 						<td scope="col" style="width: 100px;">아이디</td>
 						<td scope="col" style="width: 100px;">이름</td>
@@ -289,7 +230,7 @@
 
 									<c:forEach var="memberSearch" items="${memberSearchList}">
 										<tr
-											style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
+											style="border-bottom: 1px solid #eeeeee; background-color: white; color: black;">
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">
 											<input type="checkbox" name="RowCheck" id="memId1" value="${memberSearch.memId}"></td>
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">${memberSearch.memId}</td>
@@ -302,7 +243,7 @@
 											<td scope="col" style="height: 70px; display: table-cell; vertical-align: middle;">
 												<button type="button" class="btn btn-dark"
 													onclick="location.href='${contextPath}/admin/viewMember.do?memId=${memberSearch.memId }'"
-													style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;">수정</button>
+													style="border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;">수정</button>
 												<br>
 										</td>
 										</tr>
