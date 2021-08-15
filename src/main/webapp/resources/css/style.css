@@ -1349,8 +1349,8 @@ pre {
   background-color: transparent; }
   .table th,
   .table td {
-    padding: 0.75rem;
-    vertical-align: top;
+    padding: 0.7rem;
+    vertical-align: middle;
     }
   .table thead th {
     vertical-align: bottom;

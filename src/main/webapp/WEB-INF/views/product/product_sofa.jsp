@@ -144,16 +144,17 @@
 
 
 
-	<section class="ftco-section" style="padding-top: 30px;">
+	<section class="ftco-section" style="padding-top: 0px;">
+
+		<img src="${contextPath}/resources/images/product/selina.jpg"
+			width=100% height=350px style="margin-bottom: 50px;">
 		<div class="container">
 
-				<img src="${contextPath}/resources/images/product/selina.jpg" width=100%
-		height=350px style="margin-bottom:30px;">
 			<!-- 최근 본 상품 -->
 
 			<!-- 최근 본 상품 끝 -->
 
-			<ul class="snip1284" style="margin-bottom: 30px; font-weight:bold;">
+			<ul class="snip1284" style="margin-bottom: 30px; font-weight: bold;">
 				<li class="current"><a
 					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=코너형&filter=x'"
 					data-hover="싱글"
@@ -216,15 +217,15 @@
 									<div class="text d-flex py-1">
 										<div class="desc pl-2">
 											<h3 class="heading">
-												<a style="font-size:15px;"
+												<a style="font-size: 15px;"
 													href="${contextPath}/product/viewProduct.do?productNum=${product.productNum}">${product.productName}</a>
 											</h3>
-											<hr style="margin-top: 15px; margin-bottom:10px;">
-												<h3 class="heading"
-													style="float: right; white-space: nowrap; margin-bottom: 10px;">
-													<a href="#" style="font-size: 16px;"><fmt:formatNumber
-															pattern="###,###,###" value="${product.productPrice}" />원</a>
-												</h3>
+											<hr style="margin-top: 15px; margin-bottom: 10px;">
+											<h3 class="heading"
+												style="float: right; white-space: nowrap; margin-bottom: 10px;">
+												<a href="#" style="font-size: 16px;"><fmt:formatNumber
+														pattern="###,###,###" value="${product.productPrice}" />원</a>
+											</h3>
 										</div>
 									</div>
 								</div>

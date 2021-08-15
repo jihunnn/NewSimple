@@ -148,38 +148,16 @@
 		<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
 						flush="false" />
 			<div>
-				<h2 style="font-size: 25px; margin-top: 15px; float: left;">공지사항</h2>
+				<h2 style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold;color:#7e9c8c;">공지사항</h2>
 				<h5
-					style="color: #828282; float: left; font-size: 15px; margin-left: 20px; margin-top: 25px;">SIMPLE의
+					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">SIMPLE의
 					새로운 소식을 확인해보세요.</h5>
 			</div>
 			<!-- 타이틀 끝 -->
 
 
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+
 			<!-- 최근 본 상품 끝 -->
 
 			<!-- 내용 -->
@@ -188,33 +166,33 @@
 				action="${contextPath}/admin/addNewNotice.do" method="post"
 				enctype="multipart/form-data">
 				<table class=table
-					style="padding-top: 50px; border-top: #212529; height: 25px; font-size: 14px;">
+					style="padding-top: 50px; border-top: #212529; height: 25px; font-size: 13px;">
 					<c:choose>
 						<c:when test="${!empty noticeNum}">
 							<tr style="background-color: #212529; margin-top: 20px;"
 								align="center">
-								<td colspan="6" style="background-color: #eeeeee; border-top:1px solid #7e9c8c;color:black; border-bottom: 1px solid #c6c8ca; font-size:15px;">글수정하기</td>
+								<td colspan="6" style="background-color: #fbfbfb; border-top:1px solid #eeeeee;color:black; border-bottom: 1px solid #c6c8ca;">글수정하기</td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
-									style="padding-left: 95px; font-weight: bold; padding-right: 100px;">작성자</td>
+									style="padding-left: 95px;  padding-right: 100px;">작성자</td>
 								<td colspan="2" style="background-color: white;"><input
 									type=text name="noticeWriter" size=60
 									value="${admin.memName}"
-									style="height: 28px; border: 1px solid #aaaaaa; border-radius: 3px; border: 1px solid #d2d2d2;"></td>
+									style="height: 28px; border: 1px solid #aaaaaa; width:150px; border-radius: 3px; border: 1px solid #d2d2d2;"></td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
-									style="padding-left: 95px; font-weight: bold; padding-top: 17px;">제목</td>
+									style="padding-left: 95px; padding-top: 17px;">제목</td>
 								<td colspan="2"
 									style="padding-top: 17px; background-color: white;"><input
 									type=text name="noticeTitle" size=60
 									value="${noticeNum.noticeTitle}"
 									style="height: 28px; border: 1px solid #aaaaaa; border-radius: 3px; border: 1px solid #d2d2d2;"></td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
-									style="padding-left: 95px; font-weight: bold; padding-top: 20px;">내용</td>
+									style="padding-left: 95px; padding-top: 20px;">내용</td>
 								<td colspan="2"
 									style="padding-top: 17px; background-color: white; height: 300px;"><input
 									type="text" name="noticeContent"
@@ -223,15 +201,15 @@
 							</tr>
 							<tr>
 								<td
-									style="padding-left: 95px; font-weight: bold; padding-top: 17px;">파일첨부</td>
+									style="padding-left: 95px; padding-top: 17px;">파일첨부</td>
 								<td style="background-color: white;">기존파일:
 									${noticeNum.noticeImg}<input type="hidden"
 									name="OrignNoticeImg" value="${noticeNum.noticeImg}" /><br>
-									<input type="file" style="padding-top: 5px; font-size: 14px;"
+									<input type="file" style="padding-top: 5px; font-size: 13px;"
 									name="noticeImg" onchange="readURL(this);">
 								</td>
 								<td><img id="preview"
-									src="${contextPath}/resources/images/simpleLogo.jpg"
+									src="${contextPath}/download_notice.do?noticeNum=${noticeNum.noticeNum}&noticeImg=${noticeNum.noticeImg}"
 									width="150" height="150" /></td>
 							</tr>
 						</c:when>
@@ -239,17 +217,17 @@
 
 							<tr style="background-color: #212529; margin-top: 20px;"
 								align="center">
-								<td colspan="6" style="background-color: #eeeeee; border-top:1px solid #7e9c8c;color:black; border-bottom: 1px solid #c6c8ca; font-size:15px;">글쓰기</td>
+								<td colspan="6" style="background-color: #fbfbfb; border-top:1px solid #7e9c8c;color:black; border-bottom: 1px solid #eeeeee; ">글쓰기</td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
 									style="padding-left: 95px; font-weight: bold; padding-right: 100px;">작성자</td>
 								<td colspan="2" style="background-color: white;"><input
 									type=text name="noticeWriter" size=60
 									value="${admin.memName}"
-									style="height: 28px; border: 1px solid #aaaaaa; border-radius: 3px; border: 1px solid #d2d2d2;"></td>
+									style="height: 28px; border: 1px solid #aaaaaa; width:150px; border-radius: 3px; border: 1px solid #d2d2d2;"></td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
 									style="padding-left: 95px; font-weight: bold; padding-top: 17px;">제목</td>
 								<td colspan="2"
@@ -257,7 +235,7 @@
 									type=text name="noticeTitle" size=60 value=""
 									style="height: 28px; border: 1px solid #d2d2d2; border-radius: 3px;"></td>
 							</tr>
-							<tr style="border-bottom: 1px solid #dcdcdc;">
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
 									style="padding-left: 95px; font-weight: bold; padding-top: 20px;">내용</td>
 								<td colspan="2"
@@ -269,7 +247,7 @@
 								<td
 									style="padding-left: 95px; font-weight: bold; padding-top: 17px;">파일첨부</td>
 								<td style="background-color: white;"><input type="file"
-									style="padding-top: 5px; font-size: 14px;" name="noticeImg"
+									style="padding-top: 5px; font-size: 13px;" name="noticeImg"
 									onchange="readURL(this);"></td>
 								<td><img id="preview"
 									src="${contextPath}/resources/images/simpleLogo.jpg"
@@ -283,23 +261,23 @@
 					<c:when test="${!empty noticeNum}">
 						<button type="button" onClick="modNotice(this.form)"
 							class="btn btn-dark " id="buttonmy"
-							style="margin-left: 540px; margin-top: 30px; border-radius: 2px;  background-color: #7e9c8c; color: white; border:none; border-radius: 2px; width: 120px; height: 40px; padding-top:10px; padding-top: 4px; float:left;">수정하기</button>
+							style="margin-left: 540px; margin-top: 30px; border-radius: 2px;  background-color: #7e9c8c; color: white; border:none; border-radius: 2px; width: 104px; height: 34px; padding-top:10px; padding-top: 4px; float:left; font-size:13px;">수정하기</button>
 						<button type="button"
 							onclick="location.href='${contextPath}/board/listNotice.do'"
 							class="btn btn-dark " id="buttonmy"
-							style="margin-left: 20px;  margin-top:30px; border-radius: 2px;  background-color: white; color: gray;  border:1px solid #7e9c8c; border-radius: 2px; width: 120px; height: 40px; padding-top:10px; padding-top: 4px;  float:left;">목록</button>
+							style="margin-left: 20px;  margin-top:30px; border-radius: 2px;  background-color: white; color: gray;  border:1px solid #7e9c8c; border-radius: 2px; width: 104px; height: 34px; padding-top:10px; padding-top: 4px;  float:left; font-size:13px;">목 록</button>
 
 					</c:when>
 					<c:when test="${empty noticeNum}">
 						<div>
 							<button type="button" onclick="notice_write()"
 								class="btn btn-dark " id="buttonmy"
-								style="margin-left: 540px; margin-top: 30px; border-radius: 2px;  background-color: #7e9c8c; color: white; border:none; border-radius: 2px; width: 120px; height: 40px; padding-top:10px; padding-top: 4px; float:left;">등록</button>
+								style="margin-left: 540px; margin-top: 30px; border-radius: 2px;  background-color: #7e9c8c; color: white; border:none; border-radius: 2px;width: 104px; height: 34px; padding-top:10px; padding-top: 4px; float:left; font-size:13px;">등 록</button>
 
 							<button type="button"
 								onclick="location.href='${contextPath}/board/listNotice.do'"
 								class="btn btn-dark " id="buttonmy"
-								style="margin-left: 20px;  margin-top:30px; border-radius: 2px;  background-color: white; color: gray;  border:1px solid #7e9c8c; border-radius: 2px; width: 120px; height: 40px; padding-top:10px; padding-top: 4px;  float:left;">목록</button>
+								style="margin-left: 20px;  margin-top:30px; border-radius: 2px;  background-color: white; color: gray;  border:1px solid #eeeeee; border-radius: 2px; width: 104px; height: 34px; padding-top:10px; padding-top: 4px;  float:left; font-size:13px;">목 록</button>
 						</div>
 					</c:when>
 				</c:choose>

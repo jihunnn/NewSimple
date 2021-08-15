@@ -130,7 +130,6 @@ textarea {
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-
 .basketdiv {
 	width: 100%;
 	border-top: 1px solid #e0e0e0;
@@ -605,7 +604,7 @@ function optionSelect(option) {
 	 var productPrice =  document.getElementById('productPrice').value
 	
 	 //행추가내용
-	 row.innerHTML = "<td style='width:100px; '><div class='updown'><span onclick='javascript:basket.changePNum(1,i);'><i class='fas fa-arrow-alt-circle-up up'></i></span> <input type='text' name='productCnt' id='productCnt' size='2' maxlength='4' class='p_num' value='1' onkeyup='javascript:basket.changePNum(1,i);''><span onclick='javascript:basket.changePNum(1,i);''><i class='fas fa-arrow-alt-circle-down down'></i></span></div></td><td style='width:200px;'>"+productName+"</td><td style='width:200px; '>"+option1Name+":"+option1ValueName+"<br>"+option2Name+":"+option2ValueName+"</td><td>"+productPrice+"</td>";
+	 row.innerHTML = "<td style='width:100px; '><div class='updown'><span onclick='javascript:basket.changePNum(1,i);'><i class='fas fa-arrow-alt-circle-up up'></i></span> <input type='text' name='productCnt' id='productCnt' size='2' maxlength='4' class='p_num' value='1' style='border:1px solid #dcdcdc;' onkeyup='javascript:basket.changePNum(1,i);''><span onclick='javascript:basket.changePNum(1,i);''><i class='fas fa-arrow-alt-circle-down down'></i></span></div></td><td style='width:200px;'>"+productName+"</td><td style='width:200px; '>"+option1Name+":"+option1ValueName+"<br>"+option2Name+":"+option2ValueName+"</td><td>"+productPrice+"원</td>";
 
 
 
@@ -629,11 +628,13 @@ function optionSelect(option) {
 		<div class="container">
 			<form name="form1" method="post" id="addCartForm">
 				<input type="hidden" name="productNum" value="${product.productNum}"
-					id="productNum" /> <input type="hidden" name="productName" id="productName"
-					value="${product.productName}" /> <input type="hidden"
-					name="option1name" id="option1name" value="${option1[1].option1Name}" /> <input
-					type="hidden" name="option2name" id="option2name" value="${option2[1].option2Name}" />
-				<input type="hidden" name="deliverycharge" value="무료배송" />
+					id="productNum" /> <input type="hidden" name="productName"
+					id="productName" value="${product.productName}" /> <input
+					type="hidden" name="option1name" id="option1name"
+					value="${option1[1].option1Name}" /> <input type="hidden"
+					name="option2name" id="option2name"
+					value="${option2[1].option2Name}" /> <input type="hidden"
+					name="deliverycharge" value="무료배송" />
 
 
 
@@ -646,7 +647,7 @@ function optionSelect(option) {
 							<div class="blog-entry">
 								<a><img
 									src="${contextPath}/download_product.do?productNum=${product.productNum}&productImage=${product.productImage}"
-									style="border: 1px solid gray; width: 600px; height: 409.68px; margin-left: -15px; float: left;">
+									style="border: 1px solid #eeeeee; width: 600px; height: 409.68px; margin-left: -15px; float: left;">
 								</a> <br>
 							</div>
 						</div>
@@ -659,37 +660,38 @@ function optionSelect(option) {
 						<h1
 							style="font-weight: bold; font-size: 20px; color: #7e9c8c; float: left; margin-left: 50px; margin-top: 5px;">${product.productName}</h1>
 						<a href="javascript:add_favorite('${product.productNum }')"
-							style="all: none; font-size: 15px; color: #7e9c8c; float: right; margin-top: 10px; margin-right: 50px;">
+							style="all: none; font-size: 13px; color: #7e9c8c; float: right; margin-top: 10px; margin-right: 45px;">
 							<img src="${contextPath}/resources/images/heart.jpg"
 							id="favoriteHeart"
-							style="width: 17px; height: 17px; display: none; margin-bottom: 3px;" /><span
+							style="width: 17px; height: 17px; display: none; margin-right: 3px; margin-bottom: 3px;" /><span
 							style="padding-top: 7px;">관심상품</span>
 						</a>
 						<hr style="width: 600px; margin-top: 45px;">
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 50px; float: left; font-size: 14px; color: #5f5f5f;">판매가ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 50px; float: left; font-size: 13px; color: #5f5f5f;">판매가ㅤㅤ
 								ㅤ</a><a
-								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 180px; font-size: 14px; color: #5f5f5f;"><fmt:formatNumber
-														pattern="###,###,###" value="${product.productPrice}" />원</a><input
-								type="hidden" name="price" id="price" value="${product.productPrice}" >
+								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 180px; font-size: 13px; color: #5f5f5f;"><fmt:formatNumber
+									pattern="###,###,###" value="${product.productPrice}" />원</a><input
+								type="hidden" name="price" id="price"
+								value="${product.productPrice}">
 						</h3>
 
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f;">제조사ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f;">제조사ㅤㅤ
 								ㅤ</a><a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 180px; font-size: 14px; color: #5f5f5f;">${product.productManufacturer}</a>
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 180px; font-size: 13px; color: #5f5f5f;">${product.productManufacturer}</a>
 						</h3>
 						<br> <br>
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f;">원산지ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f;">원산지ㅤㅤ
 								ㅤ</a>
 						</h3>
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 40px; margin-left: 180px; font-size: 14px; color: #5f5f5f;">${product.productOrigin}</a>
+								style="position: absolute; white-space: nowrap; margin-top: 40px; margin-left: 180px; font-size: 13px; color: #5f5f5f;">${product.productOrigin}</a>
 						</h3>
 						<br>
 
@@ -698,54 +700,58 @@ function optionSelect(option) {
 						<h3 class="heading">
 							<c:forEach items="${option1}" var="name1" begin="0" end="0">
 								<a
-									style="position: absolute; white-space: nowrap; margin-top: 82px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f; font-weight: normal;">${name1.option1Name}ㅤㅤ
+									style="position: absolute; white-space: nowrap; margin-top: 82px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f; font-weight: normal;">${name1.option1Name}ㅤㅤ
 									ㅤ</a>
 							</c:forEach>
 						</h3>
 						<select id="option1" name="option1"
 							onchange="getSelectValue1(this.form);"
-							style="margin-left: 180px; margin-top: 70px; left: 675px; font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
-							<option value="">옵션 선택</option>
+							style="margin-left: 180px; margin-top: 70px; left: 675px; font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
+							<option style="font-size: 13px;" value="">옵션 선택</option>
 							<c:forEach items="${option1}" var="option1">
-								<option value="${option1.option1price}">${option1.option1value}
+								<option style="font-size: 13px;" value="${option1.option1price}">${option1.option1value}
 									+ (${option1.option1price}원)</option>
 							</c:forEach>
 						</select> <input type="hidden" name="option1value"> <br>
 						<h3 class="heading">
 							<c:forEach items="${option2}" var="name2" begin="0" end="0">
 								<a
-									style="position: absolute; white-space: nowrap; margin-top: 35px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f; font-weight: normal;">${name2.option2Name}
+									style="position: absolute; white-space: nowrap; margin-top: 35px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f; font-weight: normal;">${name2.option2Name}
 									ㅤ</a>
 							</c:forEach>
 
 						</h3>
 						<select name="option2" id="option2"
 							onchange="getSelectValue2(this.form); optionSelect(this);"
-							style="margin-left: 180px; margin-top: 20px; float: left !important; font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
-							<option value="">옵션 선택</option>
+							style="margin-left: 180px; margin-top: 20px; float: left !important; font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
+							<option style="font-size: 13px;" value="">옵션 선택</option>
 							<c:forEach items="${option2}" var="option2">
-								<option value="${option2.option2price}">${option2.option2value}
+								<option style="font-size: 13px;" value="${option2.option2price}">${option2.option2value}
 									+ (${option2.option2price}원)</option>
 							</c:forEach>
 						</select> <br> <input type="hidden" name="option2value">
 						<button type="button" class="btn btn-default" onclick="checkbuy()"
-							style="background-color: #7e9c8c; float: left; margin-left: 50px; margin-top: 37px; width: 280px; height: 50px; border-radius: 2px; font-size: 14px; color: white;">바로구매</button>
+							style="background-color: #7e9c8c; float: left; margin-left: 50px; margin-top: 37px; width: 280px; height: 50px; border-radius: 2px; font-size: 13px; color: white;">바로구매</button>
 						<button type="button" class="btn btn-default"
 							onclick="addCartBtn()"
-							style="background-color: #eeeeee; float: left; margin-left: 350px; margin-top: -50px; width: 280px; height: 50px; border-radius: 2px; font-size: 14px;">장바구니</button>
-						
-						<table id="selectTable" style="font-size:14px; margin-top:10px; margin-left:40px; display:inline-table;">
-						
+							style="background-color: #eeeeee; float: left; margin-left: 350px; margin-top: -50px; width: 280px; height: 50px; border-radius: 2px; font-size: 13px;">장바구니</button>
+
+						<table id="selectTable"
+							style="font-size: 13px; margin-top: 10px; margin-left: 40px; display: inline-table;">
+
 						</table>
-						<hr style=" width:600px; display:inline-table; margin-left:40px; margin-bottom:0px;">
-						<input type="hidden" value="0" name="productPrice" id="productPrice"/>
+						<hr
+							style="width: 600px; display: inline-table; margin-left: 40px; margin-bottom: 0px;">
+						<input type="hidden" value="0" name="productPrice"
+							id="productPrice" />
 						<h2
-							style="font-size: 18px; test-align: right; width: 400px; margin-left: 380px;">
-							총 상품 금액ㅤ<input type="text" name="totalPrice" id="totalPrice" value="0"
-								style="border: none; text-align: right; font-size: 20px; width: 98px; margin-left: 18px;"
+							style="font-size: 15px; test-align: right; width: 400px; margin-left: 380px;">
+							총 상품 금액ㅤ<input type="text" name="totalPrice" id="totalPrice"
+								value="0"
+								style="border: none; text-align: right; font-size: 18px; color: #7e9c8c; font-weight: bold; width: 98px; margin-left: 18px;"
 								readonly />원
 						</h2>
-					
+
 					</div>
 
 				</div>
@@ -834,19 +840,22 @@ function optionSelect(option) {
 			<ul class="nav  tabs" style="margin-top: 100px;">
 				<li role="presentation" class="active"
 					style="width: 290px; margin-left: 30px; text-align: center;"><a
-					href="#tab1" style="font-size: 17px; color: black;">상품상세정보</a></li>
+					href="#tab1" style="font-size: 14px; color: black;">상품상세정보</a></li>
 				<li role="presentation" style="width: 290px; text-align: center;"><a
-					href="#tab2" style="font-size: 17px; color: black;" id="tab2Review">고객후기<span
+					href="#tab2" style="font-size: 14px; color: black;" id="tab2Review">고객후기<span
 						style="color: #7e9c8c; font-weight: bold;">
 							(${pageMaker.totalCount})</span></a></li>
 				<li role="presentation" style="width: 290px; text-align: center;"><a
-					href="#tab3" style="font-size: 17px; color: black;">AS/배송/반품안내</a></li>
+					href="#tab3" style="font-size: 14px; color: black;">AS/배송/반품안내</a></li>
 				<li role="presentation" style="width: 290px; text-align: center;"><a
 					href="#tab4"
-					style="font-size: 17px; margin-left: 50px; color: black;">상품문의</a></li>
+					style="font-size: 14px; margin-left: 50px; color: black;">상품문의</a></li>
 
 			</ul>
-			<hr style="margin-right: 30px;">
+			</div>
+			
+			<hr style="margin-right: 30px; width: 100%;">
+			<div class="container">
 			<div id="wrapper">
 				<div class="tab_container">
 
@@ -859,10 +868,10 @@ function optionSelect(option) {
 					<div id="tab2" class="tab_content">
 						<!--Content-->
 						<table class="table"
-							style="margin-top: 60px; text-align: center; width: 1200px; margin-left: 20px; font-size: 14px;">
+							style="margin-top: 60px; text-align: center; width: 1200px; margin-left: 20px; font-size: 13px;">
 
 							<tr
-								style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca;">
+								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee;">
 								<td>번호</td>
 								<td>작성자</td>
 								<td>내용</td>
@@ -874,7 +883,7 @@ function optionSelect(option) {
 								<c:when test="${empty productReviewList}">
 									<tr style="backgroundcolor: white; width: 1000px;">
 
-										<td colspan="4" style="padding-top: 100px;">등록 된 리뷰가
+										<td colspan="4"  style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">등록 된 리뷰가
 											없습니다.</td>
 									</tr>
 								</c:when>
@@ -886,21 +895,21 @@ function optionSelect(option) {
 												<div class="modal-content"
 													style="width: 600px; height: 500px;">
 													<div class="modal-header" style="text-align: center;">
-														<h4 class="modal-title" style="font-size: 17px;">${productReview.productReviewTitle}</h4>
+														<h4 class="modal-title" style="font-size: 13px;">${productReview.productReviewTitle}</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-hidden="true">&times;</button>
 													</div>
-													<div class="modal-body">
+													<div class="modal-body" style="font-size:13px;">
 														<p>${productReview.productContent}</p>
 														<img style="width: 300px; height: 300px;"
 															src="${contextPath}/download_review.do?reviewNum=${productReview.reviewNum}&reviewFile=${productReview.reviewFile}">
 													</div>
 
 													<img src="" />
-													<div class="modal-footer">
+													<div class="modal-footer" style="padding-bottom:5px; padding-top:5px;">
 														<button type="button" class="btn btn-primary"
 															data-dismiss="modal"
-															style="float: right; border-radius: 2px;">Close</button>
+															style="float: right; border-radius: 2px;font-size:13px;">Close</button>
 													</div>
 												</div>
 												<!-- /.modal-content -->
@@ -910,7 +919,7 @@ function optionSelect(option) {
 
 
 										<!-- /.modal -->
-										<tr style="border-bottom: 1px solid #c6c8ca;">
+										<tr style="border-bottom: 1px solid #eeeeee;">
 											<td style="width: 100px;">${num}</td>
 											<td style="width: 200px;">${productReview.memName }</td>
 											<td style="width: 500px; text-align: left;"><a
@@ -942,7 +951,7 @@ function optionSelect(option) {
 									<a
 										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 6px; padding-right: 7px;"
 										href='<c:url value="/product/viewProduct.do?productNum=${product.productNum}&page=${pageNum }"/>'><i
-										class="fa">${pageNum }</i></a>
+										class="fa" style="font-weight:normal !important; font-size:14px;">${pageNum }</i></a>
 
 								</c:forEach>
 								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
@@ -968,26 +977,26 @@ function optionSelect(option) {
 					</div>
 
 					<div id="tab4" class="tab_content"
-						style="margin-left: 0px; margin-right: 170px;">
+						style="margin-left: 0px; margin-right: 70px;">
 						<!--Content-->
 						<c:choose>
 							<c:when test="${isLogOn == true && member != null}">
 								<a id="buttonmy" class="btn btn-dark" data-toggle="modal"
 									href="#tallModal1"
-									style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px; margin-bottom: 5px;">상품문의하기</a>
+									style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px;  padding-top: 10px; font-size: 13px; margin-bottom: 5px;">상품문의하기</a>
 							</c:when>
 							<c:when test="${isLogOn != true && member == null}">
 								<a onclick="questionWrite()" id="buttonmy" class="btn btn-dark"
 									data-toggle="modal"
-									style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px; margin-bottom: 5px;">상품문의하기</a>
+									style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px;  padding-top: 10px; font-size: 13px; margin-bottom: 5px;">상품문의하기</a>
 							</c:when>
 						</c:choose>
 
 						<table class="table"
-							style="margin-top: 60px; text-align: center; width: 1200px;">
+							style="margin-top: 60px; text-align: center; width: 1200px; font-size:13px;">
 
 							<tr
-								style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca;">
+								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee;">
 								<td style="width: 100px;">번호</td>
 								<td style="width: 200px;">작성자</td>
 								<td style="width: 500px;">내용</td>
@@ -1008,38 +1017,38 @@ function optionSelect(option) {
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 700px; height: 600px;">
-													<div class="modal-header" style="text-align: center;">
-														<h4 class="modal-title" style="font-size: 17px;">글쓰기</h4>
+													<div class="modal-header" style="text-align: center; border-bottom:none;">
+														<h4 class="modal-title" style="font-size: 15px; color:#7e9c8c; font-weight:bold;">글쓰기</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-hidden="true">&times;</button>
 													</div>
 													<form
 														action="${contextPath}/addNewQuestion.do?productNum=${product.productNum}"
 														method="post">
-														<div class="modal-body">
-															<p style="float: left;">작성자 :</p>
+														<div class="modal-body" style="font-size:13px;">
+															<p style="float: left;">작성자 </p>
 															<input type="text" name="memName"
 																value="${member.memName}" disabled
-																style="border: 1px solid #dcdcdc;" />
+																style="border: 1px solid #dcdcdc;  margin-left:20px;" />
 															<hr>
-															<p style="float: left;">제 목 :</p>
+															<p style="float: left;">제 목 </p>
 															<input type="text" name="productQuestionTitle"
-																style="border: 1px solid #dcdcdc;" />
+																style="border: 1px solid #dcdcdc;  margin-left:30px;" />
 															<hr>
-															<p style="float: left;">내 용 :</p>
+															<p style="float: left;">내 용 </p>
 															<textarea name="productQuestionContent"
-																style="border: 1px solid #dcdcdc; width: 585px; height: 300px; background-color: white;"></textarea>
+																style="border: 1px solid #dcdcdc; width: 585px; margin-left:30px; height: 300px; background-color: white;"></textarea>
 
 
 														</div>
 
 														<img src="" />
-														<div class="modal-footer">
+														<div class="modal-footer" style="padding-top:10px; padding-bottom:10px;">
 															<button type="button" class="close" data-dismiss="modal"
 																aria-hidden="true"
-																style="width: 56px; height: 38px; border: 1px solid #7e9c8c; font-size: 14px;">취소</button>
+																style="width: 56px; height: 33px; border: 1px solid #7e9c8c; font-size: 13px;">취소</button>
 															<button type="submit" class="btn btn-primary"
-																style="float: right; border-radius: 2px;">등록</button>
+																style="float: right; border-radius: 2px; font-size:13px;">등록</button>
 														</div>
 													</form>
 												</div>
@@ -1053,39 +1062,39 @@ function optionSelect(option) {
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 700px; height: 600px;">
-													<div class="modal-header" style="text-align: center;">
-														<h4 class="modal-title" style="font-size: 17px;">글수정하기</h4>
+													<div class="modal-header" style="text-align: center;border-bottom:none;">
+														<h4 class="modal-title" style="font-size: 15px; color:#7e9c8c; font-weight:bold;">글수정하기</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-hidden="true">&times;</button>
 													</div>
 													<form
 														action="${contextPath}/modNewQuestion.do?productNum=${product.productNum}&productQuestionNum=${questionList.productQuestionNum}"
 														method="post">
-														<div class="modal-body">
+														<div class="modal-body" style="font-size:13px;">
 															<p style="float: left;">작성자 :</p>
 															<input type="text" name="memName"
 																value="${member.memName}" disabled
-																style="border: 1px solid #dcdcdc;" />
+																style="border: 1px solid #dcdcdc; margin-left:20px;" />
 															<hr>
 															<p style="float: left;">제 목 :</p>
 															<input type="text" name="productQuestionTitle"
-																style="border: 1px solid #dcdcdc;"
+																style="border: 1px solid #dcdcdc; margin-left:30px;"
 																value="${questionList.productQuestionTitle}" />
 															<hr>
 															<p style="float: left;">내 용 :</p>
 															<textarea name="productQuestionContent"
-																style="border: 1px solid #dcdcdc; width: 585px; height: 300px; background-color: white;">${questionList.productQuestionContent}</textarea>
+																style="border: 1px solid #dcdcdc; margin-left:30px; width: 585px; height: 300px; background-color: white;">${questionList.productQuestionContent}</textarea>
 
 
 														</div>
 
 														<img src="" />
-														<div class="modal-footer">
+														<div class="modal-footer" style="padding-top:10px; padding-bottom:10px;">
 															<button type="button" class="close" data-dismiss="modal"
 																aria-hidden="true"
-																style="width: 56px; height: 38px; border: 1px solid #7e9c8c; font-size: 14px;">취소</button>
+																style="width: 56px; height: 33px; border: 1px solid #7e9c8c; font-size:13px;">취소</button>
 															<button type="submit" class="btn btn-primary"
-																style="float: right; border-radius: 2px;">수정</button>
+																style="float: right; border-radius: 2px; font-size:13px;">수정</button>
 														</div>
 													</form>
 												</div>
@@ -1094,7 +1103,7 @@ function optionSelect(option) {
 											<!-- /.modal-dialog -->
 										</div>
 
-										<tr style="border-bottom: 1px solid grey;">
+										<tr style="border-bottom: 1px solid #eeeeee;">
 
 											<td style="width: 100px;">${questionList.productQuestionNum}</td>
 											<td style="width: 200px;">${questionList.memName}</td>
@@ -1109,16 +1118,16 @@ function optionSelect(option) {
 															${questionList.productQuestionTitle}</p>
 													</div>
 													<div id="section1b" class="elements">
-														<hr style="margin-bottom: 20px; margin-top: 0px;">
+														<hr style="margin-bottom: 20px; margin-top: 5px;">
 														<p style="text-align: left; margin-bottom: 0px;">
 															${questionList.productQuestionContent}
 															<c:if test="${questionList.memId == member.memId}">
 																<button type="button"
 																	onclick="javascript:fn1();location.href='${contextPath}/removeQuestion.do?productNum=${product.productNum}&productQuestionNum=${questionList.productQuestionNum}'"
-																	style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+																	style="float: right; border-radius: 2px; margin-bottom: 3px; cursor:pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left:2px;"
 																	class="btn-secondary btn-xs">삭제</button>
 																<a data-toggle="modal" href="#tallModal2"
-																	style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+																	style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 																	class="btn-secondary btn-xs">수정</a>
 
 
@@ -1162,7 +1171,7 @@ function optionSelect(option) {
 									<a
 										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 6px; padding-right: 7px;"
 										href='<c:url value="/product/viewProduct.do?productNum=${product.productNum}&page2=${pageNum2}"/>'><i
-										class="fa">${pageNum2}</i></a>
+										class="fa" style="font-weight:normal !important; font-size:14px;">${pageNum2}</i></a>
 
 								</c:forEach>
 								<c:if test="${pageMaker2.next2 && pageMaker2.endPage2 >0 }">
