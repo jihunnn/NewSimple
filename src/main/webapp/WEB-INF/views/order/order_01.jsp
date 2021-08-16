@@ -252,12 +252,13 @@ h4 {
 					url : "verifyIamport.do",
 					type : "POST",	
 					data : {
+						
 						imp_uid : rsp.imp_uid,
 						merchant_uid: rsp.merchant_uid
 					}
 				}).done(function(data){			
 					console.log(data);
-					if(rsp.paid_amount != data.response.amount) {		
+					if(rsp.paid_amount == data.response.amount) {		
 						var msg = '결제가 완료되었습니다.';	
 						alert(msg);
 						$.ajax({
