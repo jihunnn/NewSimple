@@ -112,39 +112,31 @@ h3 {
 
 
 	<!-- 타이틀 -->
-	<section class="ftco-section testimony-section"
-		style="padding-top: 50px;">
-		<div class="container" style="margin-bottom:500px;">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">회원가입</h2>
-				</div>
-			</div>
+	<div
+		style="padding-top: 50px; margin-top: 50px; margin-bottoem: 200px;">
+			
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
-
-			<section class="ftco-section testimony-section" id="sect"
-				style="padding-top: 50px;">
-				<div class="container" style="text-align: center;">
+			
+			<div
+			style="padding-top: 120px; border: 1px solid #eeeeee; width: 600px; height: 400px; margin-bottom: 200px; margin-left: 620px;">
+			<div class="container" style="text-align: center;">
 					<div style="padding-bottom: 40px">
-						<h4 style="font-size: 22px;">회원정보가 성공적으로 수정되었습니다. 다시 로그인 해주세요!</h4>
+						<h4 style="font-size: 20px; color: gray; font-weight: bold;">회원정보가 성공적으로 수정되었습니다. 다시 로그인 해주세요!</h4>
 					</div>
 					<div>
 						<div style="padding-right: 15px">
 							<button onclick="location.href='${contextPath}/login_01.do'"
-								style="width: 262px; background-color: #212529; color: white;">
-								<i class="go_login-06"></i><span>로그인으로 돌아가기</span>
+							style="width: 262px; margin-right:20px;background-color: white; color: gray; border: none; border-radius: 2px; width: 130px; height: 45px; border: 1px solid #eeeeee;">
+								<i class="go_login-06"></i><span>로그인</span>
 							</button>
 						</div>
 					</div>
 
 				</div>
-			</section>
 		</div>
-	</section>
+		</div>
 </body>
 </html>
 
