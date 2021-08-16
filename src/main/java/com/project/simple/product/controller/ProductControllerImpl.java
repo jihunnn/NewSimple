@@ -173,8 +173,11 @@ public class ProductControllerImpl implements ProductController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		List<String> optionName = productService.selectOptionName();
+		String productNum = productService.addProductNum();
 
 		mav.addObject("optionName", optionName);
+		mav.addObject("productNum",productNum);
+		System.out.println(productNum);
 
 		return mav;
 	}
@@ -616,10 +619,11 @@ public class ProductControllerImpl implements ProductController {
 			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		productVO = productService.viewProduct(productNum);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		mav.addObject("product", productVO);
 
+		Map<String, Object> option = (Map<String, Object>) productService.viewOptionvalue(productNum);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("option", option);
+		mav.addObject("product", productVO);
 		return mav;
 	}
 
