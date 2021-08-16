@@ -633,7 +633,7 @@ button {
 						<label style="margin-right: 50px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품번호</label>
 						<input type="text" name="productNum"
-							value="${productNum.productNum}"
+							value="${productNum.productNum}" readonly
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 					</div>
 					<div style="padding-left: 70px;">
@@ -712,7 +712,7 @@ button {
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 57px;">상품번호</label> <input type="text"
 							name="productNum" id="productNum"
-							value="${productNum.productNum}"
+							value="${productNum.productNum}" readonly
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" />
 						<br> <label style="margin-right: 43px;">옵션1 이름</label> <select
 							onchange="option1Select(this.value)" name="option1Name"
