@@ -27,13 +27,17 @@ h4 {
 	font-weight: bold;
 }
 </style>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script type="text/javascript">
 	//유효성검사 후 주문결제진행
 	//PG사 연동(결제시스템 IMPORT)
 	function iamport() {
 		var IMP = window.IMP;
 		var form = document.CheckOrder;
-		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
 
 		if (form.nonMemName.value == "") {
 			alert("주문자정보의 이름을 입력하지 않았습니다.")
@@ -145,30 +149,68 @@ h4 {
 		}
 
 		//가맹점 식별코드
+	
+		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
+		var paymentMethod = $("label[for='"+payType+"']").text();
+		//var name :  document.querySelector("input[name=nonMemName]").value;
+		//var phone : $('input[name=nonmemPhoneNum]').val();
+		//var phone1 : $('input[name=nonmemPhoneNum1]').val();
+		//var phone2 : $('input[name=nonmemPhoneNum2]').val();
+		//var addr0 : $('input[name=nonmemAdr0]').val();
+		//var addr1 : $('input[name=nonmemAdr1]').val();
+		//var addr2 : $('input[name=nonmemAdr2]').val();
+		
+		
+		var param = $("form[name=CheckOrder]").serialize();
+		var merchant_uid = ${orderNum};		
+		
+		
 		IMP.init('imp44341689');
 		IMP.request_pay({
 			pg : 'inicis',
 			pay_method : payType,
-			merchant_uid : 'merchant_' + new Date().getTime(),
+			merchant_uid : merchant_uid,
 			name : '(주)SIMPLE', //결제창에서 보여질 이름
-			amount : 100
-		//실제 결제되는 가격
-
+			amount : ${totalPrice},
+			buyer_email : 'Enter your Email',
+			buyer_name : name
 		}, function(rsp) {
-			console.log(rsp);
-			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.';
-				msg += '고유ID : ' + rsp.imp_uid;
-				msg += '상점 거래ID : ' + rsp.merchant_uid;
-				msg += '결제 금액 : ' + rsp.paid_amount;
-				msg += '카드 승인번호 : ' + rsp.apply_num;
-				var param = $("form[name=CheckOrder]").serialize();
+			if (rsp.success) {		
+				console.log(rsp);
 				$.ajax({
-					url : "addorderlist.do",
-					type : "POST",
-					data : param
-				}).done(function(data) {
-				})
+					url : "verifyIamport.do",
+					type : "POST",	
+					data : {
+						imp_uid : rsp.imp_uid,
+						merchant_uid: rsp.merchant_uid
+					}
+				}).done(function(data){			
+					console.log(data);
+					if(rsp.paid_amount == data.response.amount) {		
+						alert("결제 및 결제검증완료");
+						var msg = '결제가 완료되었습니다.';
+						msg += '고유ID : ' + rsp.imp_uid;
+						msg += '상점 거래ID : ' + rsp.merchant_uid;
+						msg += '결제 금액 : ' + rsp.paid_amount;
+						msg += '카드 승인번호 : ' + rsp.apply_num;
+						alert(msg);
+						$.ajax({
+							url : "${contextPath}/nonmemaddorderlist.do",
+							type : "POST",
+							data :	param, paymentMethod,  	
+							success: function (data) {				                   
+				                    alert("주문내용테이블입력완료");	
+				                    location.href="${contextPath}/nonMemberOrderResult.do?Price=${totalPrice}&nonMemOrderNum=${orderNum}&paymentMethod="+paymentMethod;
+				                }
+						})					
+					}else{
+						alert("결제 실패")
+						//아직제대로 결제가 되지 않았습니다.
+						//결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+					}		
+				});
+				
+				
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
@@ -301,8 +343,8 @@ h4 {
 
 		<div class="container">
 
-			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
-				method="post">
+			<form name="CheckOrder" action="" method="post">
+				<input type="hidden" name="nonMemOrderNum" value="${orderNum}" />
 
 				<!-- 타이틀 끝 -->
 
@@ -361,54 +403,54 @@ h4 {
 								<th scope="col" width="100">합계</th>
 							</tr>
 						</thead>
-						<c:choose>
-							<c:when test="${nonMemOrder == null}">
-								<c:forEach items="${orderlist}" var="orderlist"
-									varStatus="status">
-									<tbody>
-										<tr class="tr1"
-											style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-											<th scope="col" style="vertical-align: middle;"><img
-												src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
-												width=80 height=80></th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productName}</th>
-											<th scope="col"
-												style="text-align: left; vertical-align: middle;">${orderlist.option1name}
-												: ${orderlist.option1value}<br>${orderlist.option2name}
-												: ${orderlist.option2value}
-											</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
-										</tr>
-									</tbody>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
+
+						<c:if test="${orderlist != null && orderNow ==false}">
+							<c:forEach items="${orderlist}" var="orderlist"
+								varStatus="status">
 								<tbody>
 									<tr class="tr1"
 										style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 										<th scope="col" style="vertical-align: middle;"><img
-											src="${contextPath}/download_product.do?productNum=${nonMemOrder.productNum}&productImage=${nonMemOrder.productImage}"
+											src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
 											width=80 height=80></th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productName}</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productName}</th>
 										<th scope="col"
-											style="text-align: left; vertical-align: middle;">${nonMemOrder.option1name}
-											: ${nonMemOrder.option1value}<br>${nonMemOrder.option2name}
-											: ${nonMemOrder.option2value}
+											style="text-align: left; vertical-align: middle;">${orderlist.option1name}
+											: ${orderlist.option1value}<br>${orderlist.option2name}
+											: ${orderlist.option2value}
 										</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productCnt}개</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.deliverycharge}</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productPrice}원</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.totalPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
 									</tr>
 								</tbody>
-							</c:otherwise>
-						</c:choose>
+							</c:forEach>
+						</c:if>
+						<c:if test="${nonMemOrder != null && orderNow == true}">
+							<tbody>
+								<tr class="tr1"
+									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+									<th scope="col" style="vertical-align: middle;"><img
+										src="${contextPath}/download_product.do?productNum=${nonMemOrder.productNum}&productImage=${nonMemOrder.productImage}"
+										width=80 height=80></th>
+									<th scope="col" style="vertical-align: middle;">${nonMemOrder.productName}</th>
+									<th scope="col"
+										style="text-align: left; vertical-align: middle;">${nonMemOrder.option1name}
+										: ${nonMemOrder.option1value}<br>${nonMemOrder.option2name}
+										: ${nonMemOrder.option2value}
+									</th>
+									<th scope="col" style="vertical-align: middle;">${nonMemOrder.productCnt}개</th>
+									<th scope="col" style="vertical-align: middle;">${nonMemOrder.deliverycharge}</th>
+									<th scope="col" style="vertical-align: middle;">${nonMemOrder.productPrice}원</th>
+									<th scope="col" style="vertical-align: middle;">${nonMemOrder.totalPrice}원</th>
+								</tr>
+							</tbody>
+						</c:if>
+
 					</table>
 					<c:choose>
-						<c:when test="${nonMemOrder == null}">
+						<c:when test="${orderlist != null && orderNow == false}">
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${totalPrice}원</a>
 								<input type="hidden" name="totalPrice" value="${totalPrice}" />
@@ -582,20 +624,23 @@ h4 {
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
 								<th scope="col"><input type="radio" checked="checked"
-									name="nonMemPaymentMethod" value="card">신용/체크카드&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="trnas">계좌이체&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="phone">휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="nonMemPaymentMethod" value="무통장입금">무통장입금</th>
+									name="nonMemPaymentMethod" value="card" /><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="nonMemPaymentMethod" value="trans"><label
+									for="trans">계좌이체</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="radio" name="nonMemPaymentMethod" value="phone"><label
+									for="phone">휴대폰결제</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="radio" name="nonMemPaymentMethod" value="vbank"><label
+									for="vbank">가상계좌/무통장입금</label></th>
 							</tr>
-							
+
 						</tbody>
 					</table>
 				</div>
 				<br> <br>
 
 				<div style="text-align: center">
-					<input type="button" class="btn btn-secondary"
-						onclick="iamport()" value="결제하기"
+					<input type="button" class="btn btn-secondary" onclick="iamport()"
+						value="결제하기"
 						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
 					<button type="button" class="btn btn-secondary"
