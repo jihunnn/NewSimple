@@ -894,15 +894,18 @@ function optionSelect(option) {
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 600px; height: 500px;">
-													<div class="modal-header" style="text-align: center;">
+													<div class="modal-header" style="text-align: center; padding-top:10px; padding-bottom:10px;">
 														<h4 class="modal-title" style="font-size: 13px;">${productReview.productReviewTitle}</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-hidden="true">&times;</button>
 													</div>
 													<div class="modal-body" style="font-size:13px;">
+													
 														<p>${productReview.productContent}</p>
+														<c:if test="${productReview.reviewFile !=null}">
 														<img style="width: 300px; height: 300px;"
-															src="${contextPath}/download_review.do?reviewNum=${productReview.reviewNum}&reviewFile=${productReview.reviewFile}"/>
+															src="${contextPath}/download_review.do?reviewNum=${productReview.reviewNum}&reviewFile=${productReview.reviewFile}"/></c:if>
+														
 													</div>
 
 													<img src="" />
@@ -916,8 +919,6 @@ function optionSelect(option) {
 											</div>
 											<!-- /.modal-dialog -->
 										</div>
-
-
 										<!-- /.modal -->
 										<tr style="border-bottom: 1px solid #eeeeee;">
 											<td style="width: 100px;">${num}</td>
@@ -1033,7 +1034,7 @@ function optionSelect(option) {
 															<hr>
 															<p style="float: left;">제 목 </p>
 															<input type="text" name="productQuestionTitle"
-																style="border: 1px solid #dcdcdc;  margin-left:30px;" />
+																style="border: 1px solid #dcdcdc;  margin-left:30px;  width:200px;" />
 															<hr>
 															<p style="float: left;">내 용 </p>
 															<textarea name="productQuestionContent"
@@ -1078,7 +1079,7 @@ function optionSelect(option) {
 															<hr>
 															<p style="float: left;">제 목 :</p>
 															<input type="text" name="productQuestionTitle"
-																style="border: 1px solid #dcdcdc; margin-left:30px;"
+																style="border: 1px solid #dcdcdc; margin-left:30px; width:200px;"
 																value="${questionList.productQuestionTitle}" />
 															<hr>
 															<p style="float: left;">내 용 :</p>
