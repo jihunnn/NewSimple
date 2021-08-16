@@ -43,6 +43,7 @@ public interface ProductService {
 	
 	public List<OptionVO> addNewOption(OptionVO option) throws Exception;
 	public List<OptionVO> removeSelectOption(OptionVO option) throws Exception;
+	public String addProductNum() throws Exception ;
 
 
 

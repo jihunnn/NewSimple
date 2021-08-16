@@ -258,7 +258,11 @@
 	]]>
 	</select>
 
-
+  <select id ="addProductNum" resultType="String">
+   <![CDATA[
+		SELECT CONCAT('P', (SELECT LPAD(COUNT(*)+1,4,'0') FROM simple.product )) as productNum;
+	]]>
+   </select>
 
 	<!-- 상품추가 -->
 	<insert id="insertProduct" parameterType="java.util.Map">
@@ -353,7 +357,7 @@
 		resultMap="productReviewResult">
 	<![CDATA[
 			
-			select reviewNum, productNum, memOrderSeqNum , productReviewTitle, reviewDate, productContent, m.memName from simple.member as m right join simple.productReview as a on m.memId=a.memId 
+			select reviewNum,reviewFile, productNum, memOrderSeqNum , productReviewTitle, reviewDate, productContent, m.memName from simple.member as m right join simple.productReview as a on m.memId=a.memId 
 			where productNum = #{productNum} order by reviewNum desc
 			limit #{pageStart}, #{perPageNum};
 			

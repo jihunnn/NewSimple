@@ -169,7 +169,7 @@ function getSelectValue2(frm)
 						<div class="col-md-4 ftco-animate">
 							<div class="blog-entry">
 								<a><img src="${contextPath}/download_product.do?productNum=${product.productNum}&productImage=${product.productImage}"
-									style="width: 600px; padding-top: 10px; padding-top: 10px; margin-left: -15px; float: left;">
+									style=" width: 600px; height: 409.68px; padding-top: 10px; padding-top: 10px; margin-left: -15px; float: left;">
 								</a> <br>
 							</div>
 						</div>
@@ -177,32 +177,33 @@ function getSelectValue2(frm)
 
 
 					<div style="width: 685px; height: 480px;">
-						<h3
-							style="font-size: 20px; color: #7e9c8c; margin-left: 50px; margin-top: 5px;">${product.productName}</h3>
-						<hr style="width: 600px;">
+						<h1
+							style="font-weight: bold; font-size: 20px; color: #7e9c8c; float: left; margin-left: 50px; margin-top: 5px;">${product.productName}</h1>
+						<hr style="width: 600px; margin-top: 45px;">
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 50px; float: left; font-size: 14px; color: #5f5f5f;">판매가ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 50px; float: left; font-size: 13px; color: #5f5f5f;">판매가ㅤㅤ
 								ㅤ</a><a
-								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 180px; font-size: 14px; color: #5f5f5f;">${product.productPrice}원</a><input
+								style="position: absolute; white-space: nowrap; margin-top: 5px; margin-left: 180px; font-size: 13px; color: #5f5f5f;"><fmt:formatNumber
+									pattern="###,###,###" value="${product.productPrice}" />원</a><input
 								type="hidden" name="price" value="${product.productPrice}">
 						</h3>
 
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f;">제조사ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f;">제조사ㅤㅤ
 								ㅤ</a><a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 180px; font-size: 14px; color: #5f5f5f;">${product.productManufacturer}</a>
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 180px; font-size: 13px; color: #5f5f5f;">${product.productManufacturer}</a>
 						</h3>
 						<br> <br>
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f;">원산지ㅤㅤ
+								style="position: absolute; white-space: nowrap; margin-top: 50px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f;">원산지ㅤㅤ
 								ㅤ</a>
 						</h3>
 						<h3 class="heading">
 							<a
-								style="position: absolute; white-space: nowrap; margin-top: 40px; margin-left: 180px; font-size: 14px; color: #5f5f5f;">${product.productOrigin}</a>
+								style="position: absolute; white-space: nowrap; margin-top: 40px; margin-left: 180px; font-size: 13px; color: #5f5f5f;">${product.productOrigin}</a>
 						</h3>
 						<br>
 
@@ -216,28 +217,28 @@ function getSelectValue2(frm)
 							</c:forEach>
 						</h3>
 						<select id="option1" name="option1"
-							onchange="checkPrice();getSelectValue1(this.form);"
-							style="margin-left: 180px; margin-top: 70px; left: 675px; font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
-							<option value="">옵션 선택</option>
+							onchange="getSelectValue1(this.form);"
+							style="margin-left: 180px; margin-top: 70px; left: 675px; font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
+							<option style="font-size: 13px;" value="">옵션 선택</option>
 							<c:forEach items="${option1}" var="option1" >
-								<option value="${option1.option1price}">${option1.option1value}
+								<option style="font-size: 13px;" value="${option1.option1price}">${option1.option1value}
 									+ (${option1.option1price}원)</option>
 							</c:forEach>
 						</select> <input type="hidden" name="option1value"> <br>
 						<h3 class="heading">
 							<c:forEach items="${option2}" var="name2"  begin="0" end="0">
 								<a
-									style="position: absolute; white-space: nowrap; margin-top: 35px; margin-left: 51px; float: left; font-size: 14px; color: #5f5f5f; font-weight: normal;">${name2.option2Name}
+									style="position: absolute; white-space: nowrap; margin-top: 35px; margin-left: 51px; float: left; font-size: 13px; color: #5f5f5f; font-weight: normal;">${name2.option2Name}
 									ㅤ</a>
 							</c:forEach>
 
 						</h3>
 						<select name="option2" id="option2"
-							onchange="checkPrice();getSelectValue2(this.form);"
-							style="margin-left: 180px; margin-top: 20px; float: left !important; font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
-							<option value="">옵션 선택</option>
+							onchange="getSelectValue2(this.form);"
+							style="margin-left: 180px; margin-top: 20px; float: left !important; font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 32px;">
+							<option style="font-size: 13px;" value="">옵션 선택</option>
 							<c:forEach items="${option2}" var="option2">
-								<option value="${option2.option2price}">${option2.option2value}
+								<option style="font-size: 13px;" value="${option2.option2price}">${option2.option2value}
 									+ (${option2.option2price}원)</option>
 							</c:forEach>
 						</select> <br> <input type="hidden" name="option2value">
@@ -245,18 +246,19 @@ function getSelectValue2(frm)
 					
 					
 
-					</div>
+					
 
-				</div>
+				
 				<div style="float: right;">
-					<input type="button" onclick="removeProduct(this.form)"
+					<input type="button" onclick="removeProduct(this.form)"  class="btn btn-default"
 						value="삭    제"
-						style="float: right; margin-top: 25px; border-radius: 2px;margin-right:40px; background-color: #5f5f5f; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px;">
-					<input type="submit" name="modify" value="수    정"
-						style="float: right; margin-top: 25px; border-radius: 2px; margin-right:20px; background-color: #5f5f5f; color: white; border: none; border-radius: 2px; width: 120px; height: 40px; padding-top: 10px; font-size: 14px;">
+						style="background-color: #7e9c8c; float: left; margin-left: 50px; margin-top: 37px; width: 280px; height: 50px; border-radius: 2px; font-size: 13px; color: white;">
+					<input type="submit" name="modify" value="수    정"  class="btn btn-default"
+					style="background-color: #eeeeee; float: left; margin-left: 350px; margin-top: -50px; width: 280px; height: 50px; border-radius: 2px; font-size: 13px;">
 
 				</div>
-
+           </div>
+           </div>
 
 
 				<ul class="nav  tabs" style="margin-top: 100px;">

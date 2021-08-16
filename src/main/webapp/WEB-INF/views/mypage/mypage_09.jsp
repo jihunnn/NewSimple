@@ -8,154 +8,254 @@
 <head>
 
 <style>
-#main_box { /*아이디 선택자*/
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 10px;
+.basketdiv {
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+	float: left;
+	font-size: 0.9375em;
+	margin-bottom: 20px;
 }
-#Mypage { /*아이디 선택자*/
-	display: flex;
-	flex-direction: column;
-	width: 1300px;
-	height: 100px;
-	align-items: center;
-	padding-top: 10px;
-	padding-right: 20px;
-	font-size: 10px;
+
+.basketdiv .row.head {
+	border-bottom: 2px solid #888;
+	box-sizing: border-box;
+	background-color: #f4f4f4;
+	font-weight: 500;
 }
-.my_row {
-	flex-direction: row;
+
+.basketdiv .data {
+	border-bottom: 1px dashed #888;
+	box-sizing: border-box;
+	cursor: pointer;
+	float: left;
+	width: 100%;
 }
-.container1 {
-	width: 250px;
-}
-.container2 {
-	width: 800px;
-}
-#sect {
-	display: flex;
-	flex-direction: row;
-	padding-bottom: 10px;
-}
-.nav_MyPage {
-	width: 120px;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	font-size: 14px;
-}
-#MyPage_center1 {
-	border: 1px solid rgb(140, 140, 140);
-}
-.nav_MyPage li a {
-	display: block;
-	color: #000000;
-	padding: 8px;
+
+.basketdiv .data .empty {
 	text-align: center;
+	padding: 12px 0;
+}
+
+.basketdiv .row.head .subdiv {
+	background-color: #f4f4f4;
+}
+
+.basketdiv .row>.subdiv {
+	display: block;
+	float: left;
+}
+
+.basketdiv .row>.subdiv:nth-child(1) {
+	width: 50%;
+}
+
+.basketdiv .row>.subdiv:nth-child(2) {
+	width: 40%;
+}
+
+.basketdiv .row>.subdiv:nth-child(3) {
+	width: 10%;
+}
+
+.basketdiv2 .row>.subdiv:nth-child(1) {
+	width: 60%;
+}
+
+.basketdiv2 .row>.subdiv:nth-child(2) {
+	width: 40%;
+}
+
+.basketdiv .row>div>div {
+	display: block;
+	float: left;
+	text-align: center;
+	margin: 0;
+	padding: 12px 0;
+}
+
+.basketdiv .row.data>div>div {
+	height: 60px;
+	line-height: 60px;
+}
+
+.basketdiv .data .num .updown {
+	color: #0075ff;
+	font-size: 2em;
+	letter-spacing: -5px;
+}
+
+.basketdiv .check {
+	width: 10%;
+}
+
+.basketdiv .check input[type=checkbox] {
+	transform: scale(1.5);
+}
+
+.basketdiv .img {
+	width: 20%;
+}
+
+.basketdiv .pname {
+	width: 70%;
+}
+
+.basketdiv2 .pname {
+	width: 80%;
+}
+
+.basketdiv .basketprice {
+	width: 33%;
+}
+
+.basketdiv .num {
+	width: 33%;
+	min-width: 105px;
+}
+
+.basketdiv .sum {
+	width: 34%;
+	max-width: 80px;
+	color: #0000aa;
+}
+
+.basketdiv .point {
+	width: 50%;
+}
+
+.basketdiv2 .basketprice {
+	width: 25%;
+}
+
+.basketdiv2 .num {
+	width: 25%;
+}
+
+.basketdiv2 .sum {
+	width: 25%;
+	color: #0000aa;
+}
+
+.basketdiv2 .point {
+	width: 25%;
+}
+
+.basketdiv .basketcmd {
+	width: 100%;
+}
+
+.basketdiv .data .pname {
+	text-align: left !important;
+	line-height: 1.2 !important;
+}
+
+.basketdiv .data .price, .basketdiv .data .sum, .basketdiv .data .point
+	{
+	text-align: right;
+}
+
+.baseform>tbody>tr>td:first-child {
+	width: 100px;
+}
+
+.buttongroup {
+	padding: 11px 0;
+	margin: 50px 0;
+}
+
+.narrowbuttongroup {
+	margin: 15px 0;
+}
+
+.buttongroup.center {
+	text-align: center;
+}
+
+.buttongroup input[type=text], .buttongroup input[type=password] {
+	height: 30px;
+}
+
+.buttongroup button, .buttongroup a {
+	margin-right: 5px;
+}
+
+.buttongroup button:last-child, .buttongroup a:last-child {
+	margin-right: 0;
+}
+
+.abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button]
+	{
+	background-color: #383838;
+	border: 1px solid #888888;
+	color: #ffffff;
+	cursor: pointer;
+	letter-spacing: -1px;
+	padding: 3px 5px;
+	margin: 2px 3px;
+	width: auto;
+	word-break: keep-all;
+	border-radius: 5px;
 	text-decoration: none;
+	font-size: 0.9375em;
+}
+
+.abutton-alt {
+	background-color: #d3e2c6;
+}
+
+.red {
+	color: #b00;
+}
+
+.blue {
+	color: #0075ff;
+}
+
+.basketrowcmd, .sumcount, .summoney {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.sumcount, .summoney {
+	font-size: 1.25em;
 	font-weight: bold;
 }
-.nav_MyPage li a.current {
-	background-color: rgb(200, 200, 200);
-	color: block;
-}
-.nav_MyPage li a: hover:not(.current) {
-	background-color: #CD853F;
-	color: white;
-}
-#MyPage_top {
-	padding-top: 50px;
-	align-items: center;
-	width: 700px;
-	height: 100px;
-}
-#MyPage_top1 {
-	padding-top: 50px;
-	align-items: center;
-	padding-left: 330px;
-	width: 700px;
-	height: 100px;
-}
-#MyPage_top2 {
-	padding-top: 50px;
-	align-items: center;
-	padding-left: 200px;
-	width: 700px;
-	height: 100px;
-}
-.PASSWORD_confirm_text {
-	position: relative;
-	left: 15px;
-}
-#MyPage_top3 {
-	align-items: center;
-	padding-left: 300px;
-	width: 700px;
-	height: 100px;
-}
-.btn_PASSWORD_confirm {
-	position: relative;
-	font-size: 15px;
-	width: 80px;
-}
-.btn_main_back {
-	position: relative;
-	left: 14px;
-	font-size: 15px;
-	width: 80px;
-}
-#Mypage_nav {
-	width: 400px;
-}
-#Mypage-center {
-	display: flex;
-	flex-direction: row;
-}
-#Mypage_nav {
-	display: flex;
-	flex-direction: column;
-	width: 120px;
-}
-.Easy-sgin-in-wrap {
-	display: flex;
-	flex-direction: column; /*column으로 정렬 */
-	float: right;
-}
-.Easy-sgin-in-wrap .sign-button-list {
-	list-style: none;
-	width: 350px;
-	display: flex;
-	flex-direction: column;
-}
-.Easy-sgin-in-wrap .sign-button-list li {
-	padding-top: 10px;
-}
-.Easy-sgin-in-wrap .sign-button-list li button {
-	width: 350px;
-	height: 40px;
-	border: 1px solid rgb(0, 0, 0);
+
+.buttongroup {
 	text-align: center;
-	background: rgb(255, 255, 255);
 }
-.Easy-sgin-in-wrap .sign-button-list li button i {
-	font-size: 10px;
+
+.buttongroup a {
+	text-decoration: none;
+}
+
+.cmd a, .cmd span {
+	padding: 12px 30px;
+	box-sizing: border-box;
+	margin-top: 10px;
+	font-size: 1.2em;
+	color: #000;
+	background-color: #f4f4f4;
+	border: 1px solid #e0e0e0;
+	text-align: center;
+}
+
+.cmd.small a, .cmd.small span {
+	padding: 6px 20px;
+	font-size: 0.8125em;
+}
+
+.orderform .p_num {
+	text-align: right;
+	width: 40px;
+	font-size: 1em;
 }
 </style>
 </head>
 <title>최근 본 상품창</title>
 <body>
-	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; margin-bottom:500px;">
-		<div class="container" style="margin-bottom: 100px;">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">최근
-						본 상품</h2>
-				</div>
-			</div>
+	<section class="ftco-section" style="padding-top: 100px;">
+		<div class="container">
 
 			<!-- 최근 본 상품 -->
 		<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -164,14 +264,19 @@
 
 
 			<div class="order_list">
+			
+			<div
+						style="font-size: 25px; font-weight: bold; margin-bottom: 20px;">
+						<a style="color: #7e9c8c;">최근 본 상품</a>
+			</div>
 
-				<table class="table" style="width: 1400px;">
+				<table class="table" style="margin-top: 0px; font-size: 14px; vertical-align: middle;">
 					<thead class="table-dark" align=center>
 						<tr align="center"
-							style="background-color: #212529; color: white;">
+							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px; color: black;">
 							<td scope="col" width="300"></td>
-							<td scope="col" width="800" align="center">상품</td>
-							<td scope="col" width="300">금액</td>
+							<td scope="col" width="800" align="left">상품명</td>
+							<td scope="col" width="300">가격</td>
 				
 						</tr>
 					</thead>
@@ -179,7 +284,7 @@
 					<c:choose>
 						<c:when test="${empty quickListAll}">
 						<tr height="200">
-							<td colspan="5" style="background-color:white; padding-top:100px;">
+							<td colspan="10" style="background-color:white; padding-top:100px;">
 								<p align="center">
 									<b><span style="color:black;">최근 본 상품이 없습니다.</span></b>
 								</p>
@@ -190,13 +295,11 @@
 					<c:forEach var="item" items="${quickListAll}">
 						<tr>
 							
-							<td scope="col" align="center">
-							<img  class="block-20" style="width: 130px; height:130px;"src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productImage}" id="preview" /></td>
-							<td scope="col" align="center" style="padding-top: 0px;"><br>
-							<br>
+							<td scope="col" align=center>
+							<img width=80 height=80 src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productImage}" id="preview" /></td>
+							<td scope="col" align=left>
 							<br><a href="${contextPath}/product/viewProduct.do?productNum=${item.productNum}">${item.productName}</a></td>
-							<td scope="col" align="center" style="padding-top: 0px;"><br>
-							<br>
+							<td scope="col" align="center" style="padding-top: 0px;">
 							<br><fmt:formatNumber pattern="###,###,###" value="${item.productPrice}"/></td>
 						</tr>
 

@@ -197,4 +197,10 @@ public class ProductServiceImpl implements ProductService {
 		return optionList;
 	}
 
+	@Override
+	public String addProductNum() throws Exception {
+		String productNum = productDAO.addProductNum();
+		return productNum;
+	}
+
 }
