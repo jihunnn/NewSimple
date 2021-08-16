@@ -310,11 +310,11 @@ style
 												<c:if test="${AdminisLogOn== true &&admin !=null}">
 													<button type="button"
 														onclick="javascript:location.href='${contextPath}/admin/removeQuestion.do?questionNum=${question.questionNum}'"
-														style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+														style="float: right; border-radius: 2px; margin-bottom: 3px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 														class="btn-secondary btn-xs">삭제</button>
 													<a
 														onclick="location.href='${contextPath}/admin/modQuestion.do?questionNum=${question.questionNum}'"
-														style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 14px;"
+														style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 														class="btn-secondary btn-xs">수정</a>
 												</c:if>
 											</p>

@@ -169,15 +169,8 @@
 <body>
 	<!-- 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -195,7 +188,7 @@
 				action="${contextPath}/mypage/addNewReview.do" method="post"
 				enctype="multipart/form-data">
 				<div class="container2"
-					style="padding-left: 300px; padding-top: 30px;">
+					style="padding-left: 300px;">
 					<c:choose>
 						<c:when test="${!empty reviewNum}">
 							<div id="MyPage_top">
@@ -204,31 +197,31 @@
 									<tbody id="MyPage_center3">
 										<tr>
 											<th
-												style="font-size: 18px; font-weight: bold; padding-bottom: 30px;"
+												style="font-size: 15px; font-weight: bold; color:#7e9c8c; padding-bottom: 10px;"
 												colspan="4">상품리뷰 수정하기</th>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div id="MyPage_top">
-								<table border="1"
-									style="width: 980px; height: 180px; align: center;">
+								<table
+									style="width: 980px; height: 180px; align: center; font-size:13px; ">
 									<tbody id="MyPage_center2">
-										<tr height="30%"
-											style="background-color: #212529; color: white;">
+										<tr 
+											style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; border-left: 0;"
+												style="font-size: 13px; text-align: center; border-left: 0;"
 												width="100" height="40"
 												style="background-color: #212529; color: white;">주문일자</th>
-											<th style="font-size: 15px; text-align: center;" width="250"
+											<th style="font-size: 13px; text-align: center;" width="250"
 												style="background-color: #212529; color: white;">상품명</th>
-											<th style="font-size: 15px; text-align: center;" width="70"
+											<th style="font-size: 13px; text-align: center;" width="70"
 												style="background-color: #212529; color: white;">수량</th>
-											<th style="font-size: 15px; text-align: center;" width="110"
+											<th style="font-size: 13px; text-align: center;" width="110"
 												style="background-color: #212529; color: white;">금액</th>
 										</tr>
-										<tr height="80%">
-											<th style="text-align: center;"><fmt:formatDate
+										<tr height="80%" style="border-bottom:1px solid #eeeeee;">
+											<th style="text-align: center; font-weight:normal;"><fmt:formatDate
 													value="${reviewNum.memOrderDate}" /></th>
 											<th style="padding: 10px; text-align: left;"
 												onClick="location.href='Product-02'">
@@ -236,64 +229,65 @@
 
 													<img
 														src="${contextPath}/download_product.do?productNum=${reviewNum.productNum}&productImage=${reviewNum.productImage}"
-														width="110" height="110" style="float: left;"> <a
-														style="margin-left: 30px;">${reviewNum.productName}</a>
+														width="90" height="90" style="float: left;"> <a
+														style="margin-left: 50px; color:#7e9c8c;">${reviewNum.productName}</a>
 													<c:if test="${reviewNum.option1value !=null}">
-														<p style="margin-left: 140px; font-size: 13px;">${reviewNum.option1Name} :
+														<p style="margin-left: 140px; font-size: 11px; margin-bottom:5px;">${reviewNum.option1Name} :
 															${reviewNum.option1value}</p>
 													</c:if>
 													<c:if test="${reviewNum.option2value !=null}">
-														<p style="margin-left: 140px; font-size: 13px;">${reviewNum.option2Name} :
+														<p style="margin-left: 140px; font-size: 11px;">${reviewNum.option2Name} :
 															${reviewNum.option2value}</p>
 													</c:if>
 												</div>
 
 											</th>
-											<th style="text-align: center;">${reviewNum.productCnt}</th>
-											<th style="text-align: center;">${reviewNum.productPrice}</th>
+											<th style="text-align: center; font-weight:normal;">${reviewNum.productCnt}</th>
+											<th style="text-align: center; font-weight:normal;"><fmt:formatNumber
+														pattern="###,###,###" value="${reviewNum.productPrice}" />원</th>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<br>
 							<div id="MyPage_top">
-								<table border="1"
-									style="width: 980px; height: 200px; align: center;">
+								<table 
+									style="width: 980px; height: 200px; align: center; font-size:13px; ">
 									<tbody id="MyPage_center2">
-										<tr height="20%">
+										<tr height="20%" style="border-bottom:1px solid #eeeeee; border-top:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black;"
 												width="100">작성자</th>
-											<th style="padding: 10px"><input type="text"
+											<th style="padding: 10px; font-size:13px; "><input type="text"
 												value="${reviewNum.memName}" disabled /></th>
 										</tr>
-										<tr>
+										<tr style="border-bottom:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black;"
 												width="100">제목</th>
-											<th style="padding: 10px"><input type="text"
+											<th style="padding: 10px;  "><input type="text"
 												value="${reviewNum.productReviewTitle}"
-												style="width: 300px;" name="productReviewTitle" /></th>
+												style="width: 300px; border:1px solid #dcdcdc;" name="productReviewTitle" /></th>
 										</tr>
-										<tr height="90%">
+										<tr height="90%" style="border-bottom:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px;background-color: #fbfbfb; color: black;text-align: center; height: 300px;"
 												width="100">내용</th>
 											<th><input type="text" name="productContent"
 												value="${reviewNum.productContent}"
 												style="padding: 10px; width: 900px; height: 300px; border: none;">
 											</th>
 										</tr>
-										<tr>
+										<tr style="border-bottom:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px; background-color: #fbfbfb; color: black; text-align: center; height: 300px;"
 												width="100">파일첨부</th>
 											<td style="background-color: white; height: 50px;"><a
-												style="float: left;">기존파일:${reviewNum.reviewFile}</a> <input
+												style="float: left; margin-left:20px;">기존파일:${reviewNum.reviewFile}</a> <input
 												type="hidden" name="OrignReviewFile"
 												value="${reviewNum.reviewFile}" /> <br> <input
-												type="file" style="float: left;" onchange="readURL(this);"
-												name="reviewFile" style="padding-top: 25px; float: left;"><img
+												type="file" style="float: left; margin-left:20px; " onchange="readURL(this);"
+												name="reviewFile"><img
 												id="preview" style="float: right;"
 												src="${contextPath}/download_review.do?reviewNum=${reviewNum.reviewNum}&reviewFile=${reviewNum.reviewFile}"
 												width="150" height="150" /></td>
@@ -305,12 +299,12 @@
 
 								<div align="center" id="btn_modify_reset"
 									style="padding-top: 30px; float: left; width: 900px; padding-left: 90px;">
-									<input type="button" value="등록"
+									<input type="button" value="수정"
 										onclick="Review_modify(this.form)"
-										style="width: 80px; background-color: #212529; color: white; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
+										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button" name="return_MyPage_07" value="취소"
 										onclick="location.href='/MyPage-07'"
-										style="width: 80px; background-color: #212529; color: white; float: left; cursor: pointer;">
+										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 
 							</div>
@@ -322,53 +316,54 @@
 									<tbody id="MyPage_center3">
 										<tr>
 											<th
-												style="font-size: 18px; font-weight: bold; padding-bottom: 30px;"
+												style="font-size: 15px; font-weight: bold; color:#7e9c8c; padding-bottom: 10px;"
 												colspan="4">상품리뷰 글쓰기</th>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div id="MyPage_top">
-								<table border="1"
-									style="width: 980px; height: 180px; align: center;">
+								<table 
+									style="width: 980px; height: 180px; align: center; font-size:13px;">
 									<tbody id="MyPage_center2">
-										<tr height="30%"
-											style="background-color: #212529; color: white;">
+										<tr 
+											style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; border-left: 0;"
+												style="font-size: 13px; text-align: center; border-left: 0;"
 												width="100" height="40"
 												style="background-color: #212529; color: white;">주문일자</th>
-											<th style="font-size: 15px; text-align: center;" width="250"
+											<th style="font-size: 13px; text-align: center;" width="250"
 												style="background-color: #212529; color: white;">상품명</th>
-											<th style="font-size: 15px; text-align: center;" width="70"
+											<th style="font-size: 13px; text-align: center;" width="70"
 												style="background-color: #212529; color: white;">수량</th>
-											<th style="font-size: 15px; text-align: center;" width="110"
+											<th style="font-size: 13px; text-align: center;" width="110"
 												style="background-color: #212529; color: white;">금액</th>
 										</tr>
-										<tr height="80%">
-											<th style="text-align: center;"><fmt:formatDate
+										<tr height="80%" style="border-bottom:1px solid #eeeeee;">
+											<th style="text-align: center; font-weight:normal;"><fmt:formatDate
 													value="${mypageVO.memOrderDate}" /></th>
-											<th style="padding: 10px; text-align: left;"
+											<th style="padding: 10px; text-align: left; font-weight:normal;"
 												onClick="location.href='${contextPath}/product/viewProduct.do?productNum=${mypageVO.productNum}'">
 												<div>
 
 													<img
 														src="${contextPath}/download_product.do?productNum=${mypageVO.productNum}&productImage=${mypageVO.productImage}"
-														width="110" height="110" style="float: left;"> <a
-														style="margin-left: 30px;">${mypageVO.productName}</a>
+														width="90" height="90" style="float: left;"> <a
+														style="margin-left: 50px; font-weight:bold; color:#7e9c8c; ">${mypageVO.productName}</a>
 													<c:if test="${mypageVO.option1value !=null}">
-														<p style="margin-left: 140px; font-size: 13px;">${mypageVO.option1Name} :
+														<p style="margin-left: 140px; font-size: 11px; margin-bottom:5px;">${mypageVO.option1Name} :
 															${mypageVO.option1value}</p>
 													</c:if>
 													<c:if test="${mypageVO.option2value !=null}">
-														<p style="margin-left: 140px; font-size: 13px;">${mypageVO.option2Name} :
+														<p style="margin-left: 140px; font-size: 11px; margin-bottom:5px;">${mypageVO.option2Name} :
 															${mypageVO.option2value}</p>
 													</c:if>
 												</div>
 
 											</th>
-											<th style="text-align: center;">${mypageVO.productCnt}</th>
-											<th style="text-align: center;">${mypageVO.productPrice}</th>
+											<th style="text-align: center; font-weight:normal;">${mypageVO.productCnt}</th>
+											<th style="text-align: center; font-weight:normal;"><fmt:formatNumber
+														pattern="###,###,###" value="${mypageVO.productPrice}" />원</th>
 										</tr>
 									</tbody>
 								</table>
@@ -376,38 +371,38 @@
 							<br>
 
 							<div id="MyPage_top">
-								<table border="1"
+								<table 
 									style="width: 980px; height: 200px; align: center;">
 									<tbody id="MyPage_center2">
 										<tr height="20%">
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black; border-top:1px solid #eeeeee;"
 												width="100">작성자</th>
-											<th style="padding: 10px"><input type="text"
+											<th style="padding: 10px;  font-size:13px; border-top:1px solid #eeeeee;"><input type="text"
 												value="${memName}" disabled /></th>
 										</tr>
 										<tr>
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black; border-top:1px solid #eeeeee;"
 												width="100">제목</th>
-											<th style="padding: 10px"><input type="text"
-												style="width: 300px;" name="productReviewTitle" /></th>
+											<th style="padding: 10px;  border-top:1px solid #eeeeee;"><input type="text"
+												style="width: 300px; border:1px solid #dcdcdc;" name="productReviewTitle" /></th>
 										</tr>
 										<tr height="90%">
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px; background-color: #fbfbfb; color: black; text-align: center; height: 300px; border-top:1px solid #eeeeee;"
 												width="100">내용</th>
 											<th><input type="text" name="productContent"
-												style="padding: 10px; width: 900px; height: 300px; border: none;">
+												style="padding: 10px; width: 900px; height: 300px; border: none;  border-top:1px solid #eeeeee;">
 											</th>
 										</tr>
 										<tr>
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px; background-color: #fbfbfb; color: black; text-align: center; height: 300px; border-top:1px solid #eeeeee; border-bottom: 1px solid #eeeeee; "
 												width="100">파일첨부</th>
-											<td style="background-color: white; height: 50px;"><input
+											<td style="background-color: white; height: 50px; border-top:1px solid #eeeeee;  border-bottom:1px solid #eeeeee;"><input
 												type="file" onchange="readURL(this);" name="reviewFile"
-												style="padding-top: 25px; float: left;"><img
+												style="padding-top: 25px; margin-left:20px; margin-top:35px; float: left; font-size:13px;"><img
 												id="preview" style="float: right;"
 												src="${contextPath}/resources/images/simpleLogo.jpg"
 												width="150" height="150" /></td>
@@ -420,10 +415,10 @@
 								<div align="center" id="btn_modify_reset"
 									style="padding-top: 30px; float: left; width: 900px; padding-left: 90px;">
 									<input type="submit" value="등록" onclick="Review_write()"
-										style="width: 80px; background-color: #212529; color: white; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
+										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button" value="취소"
 										onclick="location.href='${contextPath}/mypage_04.do'"
-										style="width: 80px; background-color: #212529; color: white; float: left; cursor: pointer;">
+										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 
 							</div>

@@ -127,9 +127,9 @@
 	<![CDATA[
 			
 			select memOrderNum, memOrderDate, purchaseConfirm, reviewConfirm, returnConfirm,  o.memOrderSeqNum, productCnt, option1value, option2value, p.productImage,p.productPrice, p.productName, p.productNum, d.deliveryStatus 
-			from  simple.memberOrder as o left  simple.join product as p on o.productNum=p.productNum 
+			from  simple.memberOrder as o left join product as p on o.productNum=p.productNum 
 			join  simple.memdelivery as d on o.memOrderSeqNum=d.memOrderSeqNum  
-			where memId=#{memId} and memOrderDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by memOrderSeqNum desc
+			where o.memId=#{memId} and memOrderDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by memOrderSeqNum desc
 			limit #{pageStart}, #{perPageNum};
 			;
 			
@@ -256,7 +256,7 @@
 	<update id="updateReviewOrder" parameterType="java.util.Map">
 		update
 		 simple.memberOrder
-		set reviewConfirm = '리뷰' where
+		set reviewConfirm = '리뷰작성(미)' where
 		memOrderSeqNum =
 		#{memOrderSeqNum};
 	</update>

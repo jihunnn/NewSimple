@@ -19,10 +19,14 @@
 	});
 
 	$(document).on('click', '#returnBtn', function() {
+		
 		document.getElementById("returnContent1").disabled = false;
 		document.getElementById("returnType1").disabled = false;
 		document.getElementById("tr_btn_modify").style.display = "block";
 		document.getElementById("tr_btn").style.display = "none";
+		
+		
+
 	});
 	
     function returnNewModify(obj){
@@ -158,15 +162,9 @@
 <body>
 	<!-- 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
+
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
 	       <jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -181,19 +179,18 @@
 
 
 			<!-- 내용 -->
-			<div class="container2"
-				style="padding-left: 300px; padding-top: 30px;">
+
 				<form name="returnForm"
 					action="${contextPath}/mypage/addNewReturn.do" method="post">
 					<c:choose>
 						<c:when test="${!empty returnNum}">
 							<div id="MyPage_top">
 								<table
-									style="width: 660px; height: 40px; align: center; padding-top: 10px;">
+									style="width: 660px; height: 40px; align: center; padding-top: 10px; ">
 									<tbody id="MyPage_center3">
 										<tr>
 											<th
-												style="font-size: 18px; font-weight: bold; padding-bottom: 30px;"
+												style="font-size: 15px; font-weight: bold; padding-bottom: 0px; color:#7e9c8c;"
 												colspan="4">취소/반품신청 상세보기</th>
 										</tr>
 									</tbody>
@@ -201,15 +198,15 @@
 							</div>
 
 							<div id="MyPage_top">
-								<table border="1"
-									style="width: 980px; height: 200px; align: center;">
+								<table 
+									style="width: 980px; height: 200px; align: center; border:1px solid #eeeeee; ">
 									<tbody id="MyPage_center2">
-										<tr height="20%">
+										<tr height="20%" style="bordoer-top:1px solid #eeeeee; border-bottom:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black; "
 												width="100">사유</th>
-											<th style="padding: 10px"><select id="returnType1" name="returnType"
-												style="color: black; border: 1px solid black;" disabled>
+											<th style="padding: 10px"><select id="returnType1" name="returnType" 
+												style="color: black; border: 1px solid black; font-size:13px; border:1px solid #dcdcdc; height:30px; width:150px;" disabled>
 
 													<option value="">선택</option>
 													<option value="단순변심">단순변심</option>
@@ -223,12 +220,12 @@
 										</tr>
 										<tr height="90%">
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px; background-color: #fbfbfb; color: black; text-align: center; height: 300px;"
 												width="100">내용</th>
-											<th><input type="text" id="returnContent1" name="returnContent"
+											<th ><input type="text" id="returnContent1" name="returnContent"
 												value="${returnNum.returnContent}" disabled
-												style="padding: 10px; width: 900px; height: 300px; border: none;">
-												<input type="hidden" id="memOrderSeqNum1" name="memOrderSeqNum" value="${returnNum.memOrderSeqNum}"  />
+												style="padding: 10px; width: 900px; height: 300px; border: none; background-color: white; color: black; font-size:13px;">
+												<input type="hidden" id="memOrderSeqNum1" name="memOrderSeqNum"  value="${returnNum.memOrderSeqNum}"  />
 												
 											</th>
 										</tr>
@@ -240,19 +237,19 @@
 									style="padding-top: 30px; float: left; width: 900px; padding-left: 90px;">
 									<input type="button" value="수정"
 										onclick="returnModify(this.form)" id="returnBtn"
-										style="width: 80px; background-color: #212529; color: white; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
+										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button"  value="삭제"
 										onclick="returnRemove(this.form)"
-										style="width: 80px; background-color: #212529; color: white; float: left; cursor: pointer;">
+										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 								<div align="center" id="tr_btn_modify"  style="display:none;
 									padding-top: 30px; float: left; width: 900px; padding-left: 90px;">
 									<input type="button" value="확인"
 										onclick="returnNewModify(this.form)" id="returnBtn"
-										style="width: 80px; background-color: #212529; color: white; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
+										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button"  value="취소"
 										onclick="location.href='${contextPath}/mypage_07.do'"
-										style="width: 80px; background-color: #212529; color: white; float: left; cursor: pointer;">
+										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 
 
@@ -263,9 +260,9 @@
 								<table
 									style="width: 660px; height: 40px; align: center; padding-top: 10px;">
 									<tbody id="MyPage_center3">
-										<tr>
+										<tr >
 											<th
-												style="font-size: 18px; font-weight: bold; padding-bottom: 30px;"
+												style="font-size: 15px; font-weight: bold; padding-bottom: 0px; color:#7e9c8c;"
 												colspan="4">취소/반품신청</th>
 										</tr>
 									</tbody>
@@ -273,14 +270,14 @@
 							</div>
 
 							<div id="MyPage_top">
-								<table border="1"
-									style="width: 980px; height: 200px; align: center;">
+								<table 
+									style="width: 980px; height: 200px; align: center; border:1px solid #eeeeee;">
 									<tbody id="MyPage_center2">
-										<tr height="20%">
+										<tr height="20%" style="border-bottom:1px solid #eeeeee;">
 											<th
-												style="font-size: 15px; text-align: center; background-color: #212529; color: white;"
+												style="font-size: 13px; text-align: center; background-color: #fbfbfb; color: black;"
 												width="100">사유</th>
-											<th style="padding: 10px"><select name="returnType"
+											<th style="padding: 10px"><select name="returnType" style="font-size:13px;  border:1px solid #dcdcdc;  height:30px; width:150px;"
 												id="selcet1">
 													<option value="">선택</option>
 													<option value="단순변심">단순변심</option>
@@ -293,10 +290,10 @@
 										</tr>
 										<tr height="90%">
 											<th
-												style="font-size: 15px; background-color: #212529; color: white; text-align: center; height: 300px;"
+												style="font-size: 13px; background-color: #fbfbfbfb; color: black; text-align: center; height: 300px; font-size:13px;"
 												width="100">내용</th>
 											<th><input type="text" name="returnContent"
-												style="padding: 10px; width: 900px; height: 300px; border: none;">
+												style="padding: 10px; width: 900px; height: 300px; border: none; background-color: white; color: black; font-size:13px;">
 											</th>
 										</tr>
 
@@ -306,10 +303,10 @@
 								<div align="center" id="btn_modify_reset"
 									style="padding-top: 30px; float: left; width: 900px; padding-left: 90px;">
 									<input type="submit" value="신청" onclick=""
-										style="width: 80px; background-color: #212529; color: white; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
+										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button" name="return_MyPage_07" value="취소"
 										onclick="location.href='${contextPath}/mypage_07.do'"
-										style="width: 80px; background-color: #212529; color: white; float: left; cursor: pointer;">
+										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 
 							</div>
@@ -319,9 +316,6 @@
 
 			</div>
 			<!-- 내용 끝 -->
-
-
-		</div>
 	</section>
 
 
