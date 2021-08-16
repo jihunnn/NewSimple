@@ -79,6 +79,7 @@ public class OrderControllerImpl implements OrderController {
 				list.add(vo);
 			}
 			session.setAttribute("totalPrice", totalPrice);
+			session.setAttribute("orderNow", false);
 			session.setAttribute("orderlist", list);
 			mav.setViewName("nonorder_01");
 		}
@@ -100,7 +101,7 @@ public class OrderControllerImpl implements OrderController {
 			
 			session.setAttribute("memCartId", ajaxMsg);
 			session.setAttribute("totalPrice", totalPrice);
-			session.setAttribute("orderCart", true);
+			session.setAttribute("orderNow", false);
 			session.setAttribute("orderlist", orderlist);
 			mav.setViewName("order_01");
 		}
@@ -121,12 +122,16 @@ public class OrderControllerImpl implements OrderController {
 
 		}
 
-		// 주문페이지 이동(회원)
+		// 주문페이지 이동(비회원)
 		@RequestMapping(value = "/nonorder_01.do", method = RequestMethod.GET)
 		private ModelAndView nonorder_01(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
 
 			ModelAndView mav = new ModelAndView();
+			
+			String randomnumber = numberGen(9, 1);
+			int orderNum = Integer.parseInt(randomnumber);
+			mav.addObject("orderNum",orderNum);
 			return mav;
 
 		}
@@ -141,10 +146,12 @@ public class OrderControllerImpl implements OrderController {
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		MemberVO membervo = (MemberVO) session.getAttribute("member");
 		String memId = membervo.getmemId();
-		
+		Boolean orderNow = (Boolean) session.getAttribute("orderNow");
+
 
 		if (isLogOn == true) {
-			if (session.getAttribute("orderlist") != null) {
+			
+			if ( orderNow ==  false) {
 				ArrayList<OrderVO> orderlist = (ArrayList) session.getAttribute("orderlist");
 				int size = orderlist.size();
 				for (int i = 0; i < size; i++) {
@@ -183,7 +190,7 @@ public class OrderControllerImpl implements OrderController {
 				session.removeAttribute("memCartId");
 				
 				mav.setViewName("order_03");
-			} else {
+			} else if( orderNow == true) {
 
 				OrderVO order = (OrderVO) session.getAttribute("memOrder");
 				String productNum = order.getProductNum();
@@ -226,17 +233,14 @@ public class OrderControllerImpl implements OrderController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("totalPrice");
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		Boolean orderNow = (Boolean) session.getAttribute("orderNow");
 
 		if (isLogOn == null) {
-			if (session.getAttribute("orderlist") != null) {
+			
+			if ( orderNow ==  false ) {
+				
 				ArrayList<CartVO> orderlist = (ArrayList) session.getAttribute("orderlist");
 				int size = orderlist.size();
-
-				String randomnumber = numberGen(9, 1);
-				int nonMemOrderNum = Integer.parseInt(randomnumber);
-				String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
-				String Price = orderVO.getTotalPrice();
-
 				for (int i = 0; i < size; i++) {
 					CartVO vo = orderlist.get(i);
 					String productNum = vo.getProductNum();
@@ -257,7 +261,6 @@ public class OrderControllerImpl implements OrderController {
 					orderVO.setOption2name(option2name);
 					orderVO.setOption2value(option2value);
 					orderVO.setDeliverycharge(deliverycharge);
-					orderVO.setNonMemOrderNum(nonMemOrderNum);
 					orderVO.setProductCnt(productCnt);
 					orderVO.setProductPrice(productPrice);
 					orderVO.setTotalPrice(totalPrice);
@@ -268,13 +271,10 @@ public class OrderControllerImpl implements OrderController {
 
 				session.removeAttribute("cartlist");
 
-				mav.addObject("Price", Price);
-				mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
-				mav.addObject("nonMemOrderNum", randomnumber);
 				mav.setViewName("order_03");
 			}
 
-			else {
+			else if( orderNow ==  true) {
 				OrderVO order = (OrderVO) session.getAttribute("nonMemOrder");
 
 				String productNum = order.getProductNum();
@@ -300,16 +300,9 @@ public class OrderControllerImpl implements OrderController {
 				orderVO.setTotalPrice(totalPrice);
 				orderVO.setProductImage(productImage);
 
-				String randomnumber = numberGen(9, 1);
-				int nonMemOrderNum = Integer.parseInt(randomnumber);
-				orderVO.setNonMemOrderNum(nonMemOrderNum);
-				String nonMemPaymentMethod = orderVO.getNonMemPaymentMethod();
-				String Price = orderVO.getTotalPrice();
+
 				orderService.addNewOrder(orderVO);
-				mav.addObject("orderVO", orderVO);
-				mav.addObject("nonMemOrderNum", randomnumber);
-				mav.addObject("nonMemPaymentMethod", nonMemPaymentMethod);
-				mav.addObject("Price", Price);
+	
 				mav.setViewName("order_03");
 			}
 		}
@@ -339,7 +332,7 @@ public class OrderControllerImpl implements OrderController {
 
 	// 주문결과페이지이동(회원)
 	@RequestMapping(value = "/memberOrderResult.do", method = RequestMethod.GET)
-	private ModelAndView order_03(@RequestParam("Price") int price,
+	private ModelAndView memberOrderResult(@RequestParam("Price") int price,
 			String memPaymentMethod, @RequestParam("memOrderNum") String memOrderNum, @RequestParam("paymentMethod") String paymentMethod, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -354,6 +347,22 @@ public class OrderControllerImpl implements OrderController {
 		return mav;
 
 	}
+	
+	// 주문결과페이지이동(비회원)
+		@RequestMapping(value = "/nonMemberOrderResult.do", method = RequestMethod.GET)
+		private ModelAndView nonMemberOrderResult(@RequestParam("Price") int price,
+				String memPaymentMethod, @RequestParam("nonMemOrderNum") String nonMemOrderNum, @RequestParam("paymentMethod") String paymentMethod, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("Price", price);
+			mav.addObject("nonMemOrderNum", nonMemOrderNum);
+			mav.addObject("nonMemPaymentMethod", paymentMethod);
+			mav.setViewName("order_03");
+			return mav;
+
+		}
 
 	// 관리자 주문조회
 	@Override
@@ -586,7 +595,9 @@ public class OrderControllerImpl implements OrderController {
 			int orderNum = Integer.parseInt(randomnumber);
 
 			mav.addObject("orderNum", orderNum);
+			session.setAttribute("orderNow", true);
 			session.setAttribute("nonMemOrder", orderVO);
+			session.setAttribute("totalPrice",orderVO.getTotalPrice());
 			mav.setViewName("nonorder_01");
 		}
 

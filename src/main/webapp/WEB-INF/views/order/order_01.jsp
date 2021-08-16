@@ -42,6 +42,7 @@ h4 {
 		$("form").submit();
 	})
 </script>
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
@@ -256,25 +257,21 @@ h4 {
 					}
 				}).done(function(data){			
 					console.log(data);
-					if(rsp.paid_amount == data.response.amount) {		
-						alert("결제 및 결제검증완료");
-						var msg = '결제가 완료되었습니다.';
-						msg += '고유ID : ' + rsp.imp_uid;
-						msg += '상점 거래ID : ' + rsp.merchant_uid;
-						msg += '결제 금액 : ' + rsp.paid_amount;
-						msg += '카드 승인번호 : ' + rsp.apply_num;
+					if(rsp.paid_amount != data.response.amount) {		
+						var msg = '결제가 완료되었습니다.';	
 						alert(msg);
 						$.ajax({
 							url : "${contextPath}/memaddorderlist.do",
 							type : "POST",
 							data :	param, paymentMethod,  	
-							success: function (data) {				                   
-				                    alert("주문내용테이블입력완료");	
+							success: function (data) {				                   	
 				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&memOrderNum=${orderNum}&paymentMethod="+paymentMethod;
 				                }
 						})					
 					}else{
-						alert("결제 실패")
+						alert("결제 실패");
+						
+						
 						//아직제대로 결제가 되지 않았습니다.
 						//결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 					}		
@@ -298,8 +295,8 @@ h4 {
 
 		<div class="container">
 			<form name="CheckOrder" action="" method="post">
-				<input type="hidden" name="memOrderNum" value="${orderNum}"/>		
-			
+				<input type="hidden" name="memOrderNum" value="${orderNum}" />
+
 				<!-- 타이틀 끝 -->
 
 
@@ -359,55 +356,55 @@ h4 {
 								<th scope="col" width="100">합계</th>
 							</tr>
 						</thead>
-						<c:choose>
-							<c:when test="${orderCart == true}">
-								<c:forEach items="${orderlist}" var="orderlist"
-									varStatus="status">
-									<tbody>
-										<tr class="tr1"
-											style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-											<th scope="col" style="vertical-align: middle;"><img
-												src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
-												width=80 height=80></th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productName}</th>
-											<th scope="col"
-												style="text-align: left; vertical-align: middle;">${orderlist.option1name}
-												: ${orderlist.option1value}<br>${orderlist.option2name}
-												: ${orderlist.option2value}
-											</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
-										</tr>
-									</tbody>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
+
+						<c:if test="${orderlist != null && orderNow == false}">
+							<c:forEach items="${orderlist}" var="orderlist"
+								varStatus="status">
 								<tbody>
 									<tr class="tr1"
 										style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 										<th scope="col" style="vertical-align: middle;"><img
-											src="${contextPath}/download_product.do?productNum=${memOrder.productNum}&productImage=${memOrder.productImage}"
+											src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
 											width=80 height=80></th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.productName}</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productName}</th>
 										<th scope="col"
-											style="text-align: left; vertical-align: middle;">${memOrder.option1name}
-											: ${memOrder.option1value}<br>${memOrder.option2name} :
-											${memOrder.option2value}
+											style="text-align: left; vertical-align: middle;">${orderlist.option1name}
+											: ${orderlist.option1value}<br>${orderlist.option2name}
+											: ${orderlist.option2value}
 										</th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.productCnt}개</th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.deliverycharge}</th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.productPrice}원</th>
-										<th scope="col" style="vertical-align: middle;">${memOrder.totalPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
+										<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
 									</tr>
 								</tbody>
-							</c:otherwise>
+							</c:forEach>
+						</c:if>
+						<c:if test="${memOrder != null && orderNow == true}">
+							<tbody>
+								<tr class="tr1"
+									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+									<th scope="col" style="vertical-align: middle;"><img
+										src="${contextPath}/download_product.do?productNum=${memOrder.productNum}&productImage=${memOrder.productImage}"
+										width=80 height=80></th>
+									<th scope="col" style="vertical-align: middle;">${memOrder.productName}</th>
+									<th scope="col"
+										style="text-align: left; vertical-align: middle;">${memOrder.option1name}
+										: ${memOrder.option1value}<br>${memOrder.option2name} :
+										${memOrder.option2value}
+									</th>
+									<th scope="col" style="vertical-align: middle;">${memOrder.productCnt}개</th>
+									<th scope="col" style="vertical-align: middle;">${memOrder.deliverycharge}</th>
+									<th scope="col" style="vertical-align: middle;">${memOrder.productPrice}원</th>
+									<th scope="col" style="vertical-align: middle;">${memOrder.totalPrice}원</th>
+								</tr>
+							</tbody>
+						</c:if>
 
-						</c:choose>
+
 					</table>
 					<c:choose>
-						<c:when test="${memOrder == null}">
+						<c:when test="${orderlist != null && orderNow == false}">
 							<div style="font-size: 18px; float: right;">
 								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${totalPrice}원</a>
 								<input type="hidden" name="totalPrice" value="${totalPrice}" />
@@ -593,10 +590,13 @@ h4 {
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>결제방법</th>
 								<th scope="col"><input type="radio" checked="checked"
-									name="memPaymentMethod" value="card"/><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="memPaymentMethod" value="trans"><label for="trans">계좌이체</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="memPaymentMethod" value="phone"><label for="phone">휴대폰결제</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="memPaymentMethod" value="vbank"><label for="vbank">가상계좌/무통장입금</label></th>
+									name="memPaymentMethod" value="card" /><label for="card">신용/체크카드</label>&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="memPaymentMethod" value="trans"><label
+									for="trans">계좌이체</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="radio" name="memPaymentMethod" value="phone"><label
+									for="phone">휴대폰결제</label>&nbsp;&nbsp;&nbsp;&nbsp; <input
+									type="radio" name="memPaymentMethod" value="vbank"><label
+									for="vbank">가상계좌/무통장입금</label></th>
 							</tr>
 
 						</tbody>
@@ -618,10 +618,7 @@ h4 {
 		</div>
 	</section>
 
-<%
-session.removeAttribute("orderNow");
-session.removeAttribute("orderCart");
-%>
+
 </body>
 </html>
 
