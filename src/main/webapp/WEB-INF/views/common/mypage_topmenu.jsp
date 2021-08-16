@@ -10,7 +10,7 @@
 </script>
 </head>
 <body>
-	<div id="MyPage_top">
+	<div>
 		<table style="width: 1000px; height: 80px; margin-left: 80px;">
 			<tbody id="MyPage_center1">
 				<tr height="45px;" style="border: 1px solid #eeeeee; background-color:#fbfbfb !important;">

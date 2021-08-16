@@ -589,7 +589,7 @@ function div_show(selectList) {
 									<a style="color: red; padding-right: 5px;">*</a>핸드폰
 								</div>
 							</td>
-							<td colspan="3" class="phone" style="padding-left: 10px; background-color: #fbfbfb; border-bottom: 1px solid #eeeeee;">
+							<td colspan="3" class="phone" style="padding-left: 10px;  border-bottom: 1px solid #eeeeee;">
 							<input type="hidden" id="memPhoneNum4"  style="border:1px solid #dcdcdc; height:37px"/>
 							<select name="memPhoneNum" id="phone1"
 								style="height: 35px; width: 80px; border:1px solid #dcdcdc; height:37px;">
