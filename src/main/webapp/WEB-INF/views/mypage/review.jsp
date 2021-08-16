@@ -294,7 +294,7 @@
 					<c:when test="${!empty reviewSearchMap.search1}">
 						<div style="padding-left: 262px;">
 							<table
-								style="width: 900px; height: 300px; align: center; font-size: 13px;">
+								style="width: 1000px; height: 80px; align: center; border-right: none; border-left: none;">
 								<tbody>
 									<c:choose>
 										<c:when test="${empty reviewSearchMap.reviewSearchList}">
@@ -409,8 +409,7 @@
 
 					<c:when test="${empty reviewSearchMap.search1}">
 						<div style="padding-left: 262px;">
-							<table class="table"
-								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee; font-size: 13px; width: 800px;">
+							<table style="width: 1000px; height: 80px; align: center; border-right: none; border-left: none;">
 								<tbody>
 									<c:choose>
 										<c:when test="${empty mypageReviewMap.mypageReviewList}">
@@ -440,14 +439,14 @@
 
 												<tr style="height: 120px; background-color: white;">
 													<th
-														style="width: 130px; text-align: left; padding: 10px; flex-direction: row;">
+														style="text-align: left; padding: 10px; flex-direction: row;">
 														<a
 														href="${contextPath}/product/viewProduct.do?productNum=${mypageReviewList.productNum}"><img
 															src="${contextPath}/download_product.do?productNum=${mypageReviewList.productNum}&productImage=${mypageReviewList.productImage}"
 															width="90" height="90"></a>
 													</th>
 													<th style="padding: 10px; border-left: hidden;">
-														<div style="width: 300px;">
+														<div>
 															<div>
 																<a
 																	href="${contextPath}/product/viewProduct.do?productNum=${mypageReviewList.productNum}">${mypageReviewList.productName}</a>
@@ -468,15 +467,15 @@
 													<th colspan="2"
 														style="padding-left: 5px; float: right; padding-right: 0px;">
 														<div
-															style="border: 1px solid #eeeeee; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;">${mypageReviewList.productContent}<br>
+															style="border: 1px solid #eeeeee; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px;">${mypageReviewList.productContent}<br>
 															<img id="preview"
 																src="${contextPath}/download_review.do?reviewNum=${mypageReviewList.reviewNum}&reviewFile=${mypageReviewList.reviewFile}"
-																width="120" height="120" /> <br> <input
+																height="120" /> <br> <input
 																type="button" name="modify" value="수정 "
 																style="margin-top: 15px; margin-left: 435px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 																onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${mypageReviewList.reviewNum}'">
 															<input type="reset" name="reset" value="삭제"
-																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px;margin-right: 5px; width: 70px; height: 30px; font-size: 13px;"
 																onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${mypageReviewList.reviewNum}&memOrderSeqNum=${mypageReviewList.memOrderSeqNum}'">
 														</div>
 													</th>
