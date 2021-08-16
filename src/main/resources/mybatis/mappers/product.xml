@@ -357,7 +357,7 @@
 		resultMap="productReviewResult">
 	<![CDATA[
 			
-			select reviewNum, productNum, memOrderSeqNum , productReviewTitle, reviewDate, productContent, m.memName from simple.member as m right join simple.productReview as a on m.memId=a.memId 
+			select reviewNum,reviewFile, productNum, memOrderSeqNum , productReviewTitle, reviewDate, productContent, m.memName from simple.member as m right join simple.productReview as a on m.memId=a.memId 
 			where productNum = #{productNum} order by reviewNum desc
 			limit #{pageStart}, #{perPageNum};
 			

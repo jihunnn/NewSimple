@@ -902,7 +902,7 @@ function optionSelect(option) {
 													<div class="modal-body" style="font-size:13px;">
 														<p>${productReview.productContent}</p>
 														<img style="width: 300px; height: 300px;"
-															src="${contextPath}/download_review.do?reviewNum=${productReview.reviewNum}&reviewFile=${productReview.reviewFile}">
+															src="${contextPath}/download_review.do?reviewNum=${productReview.reviewNum}&reviewFile=${productReview.reviewFile}"/>
 													</div>
 
 													<img src="" />
@@ -1007,7 +1007,7 @@ function optionSelect(option) {
 								<c:when test="${empty productQuestionList}">
 									<tr style="backgroundcolor: white; width: 1000px;">
 
-										<td colspan="4" style="padding-top: 100px;">등록 된 상품 문의가
+										<td  colspan="5"  style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">등록 된 상품 문의가
 											없습니다.</td>
 									</tr>
 								</c:when>
