@@ -146,55 +146,43 @@
 
 	<section class="ftco-section" style="padding-top: 0px;">
 
-		<img src="${contextPath}/resources/images/product/selina.jpg"
-			width=100% height=350px style="margin-bottom: 50px;">
+
 		<div class="container">
-
 			<!-- 최근 본 상품 -->
-
+			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 			<!-- 최근 본 상품 끝 -->
+					<img src="${contextPath}/resources/images/product/table.jpg"
+			width=100% height=350px style="margin-bottom: 50px;">
+			<table
+				style="width: 100%; height: 60px; border-bottom: 1px solid #7e9c8c; font-size: 13px; margin-bottom: 60px;">
+				<tr
+					style="font-weight: bold; font-size: 15px; height: 19px; color: black; text-align: center;">
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=2인이상&filter=x'"
+						style="cursor: pointer;">ㆍ2<span style="font-size: 12px;">(2인이상)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=4인이상&filter=x'"
+						style="cursor: pointer;">ㆍ4<span style="font-size: 12px;">(4인이상)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=8인이상&filter=x'"
+						style="cursor: pointer;">ㆍ8<span style="font-size: 12px;">(8인이상)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=식탁의자&filter=x'"
+						style="cursor: pointer;">ㆍDESK/CHAIR<span style="font-size: 12px;">(식탁의자)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=테이블의자&filter=x'"
+						style="cursor: pointer;">ㆍTABLE/CHAIR<span style="font-size: 12px;">(테이블의자)</span></a></td>
+				</tr>
+			</table>
 
-			<ul class="snip1284" style="margin-bottom: 30px; font-weight: bold;">
-				<li class="current"><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=2인이상&filter=x'"
-					data-hover="싱글"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 130px; cursor: pointer; background-color: white; padding-bottom: 0px;">2인이상</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=4인이상&filter=x'"
-					data-hover="킹"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 130px; cursor: pointer; background-color: white; padding-bottom: 0px;">4인이상</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=8인이상&filter=x'"
-					data-hover="이층침대"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 150px; cursor: pointer; background-color: white; padding-bottom: 0px;">8인이상</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=식탁의자&filter=x'"
-					data-hover="패밀리"
-					style="font-size: 17px; border: none; color: #5a5a5a; background-color: white; cursor: pointer; padding-bottom: 0px; margin-right: 150px;">식탁의자</a></li>
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=테이블의자&filter=x'"
-					data-hover="패밀리"
-					style="font-size: 17px; border: none; color: #5a5a5a; background-color: white; cursor: pointer; padding-bottom: 0px;">테이블의자</a></li>
-			</ul>
-			<hr style="margin-bottom: 0px;">
 			<jsp:include page="/WEB-INF/views/common/productfilter.jsp"
 				flush="false" />
-			<hr style="margin-top: -15px; margin-bottom: 30px;">
-
-
-
-
+			<hr style="margin-top: -20px; margin-bottom: 30px;">
 
 			<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b><span style="color: black; font-size:13px; padding-left:25px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"

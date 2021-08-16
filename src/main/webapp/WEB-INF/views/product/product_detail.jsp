@@ -927,7 +927,8 @@ function optionSelect(option) {
 												style="color: black; cursor: pointer;" data-toggle="modal"
 												href="#tallModal"> ${productReview.productReviewTitle}</a> <!-- 팝업시킬 태그 -->
 											</td>
-											<td style="width: 200px;">2021-06-12</td>
+											<td style="width: 200px;"><fmt:formatDate
+													value="${productReview.reviewDate}" /></td>
 										</tr>
 										<c:set var="num" value="${num-1}"></c:set>
 									</c:forEach>

@@ -196,5 +196,18 @@ public class AdminDAOImpl implements AdminDAO {
 		sqlSession.update("mapper.admin.deleteProductAnswer", productQuestionNum);
 	}
 	
+	//상품문의 검색
+	@Override
+	public List<ProductVO> questionSearchList(Map<String, Object> questionSearchMap) throws DataAccessException {
+		List<ProductVO> questionSearchList =sqlSession.selectList("mapper.admin.questionSearchList",questionSearchMap);		
+		return questionSearchList;
+	}
+	
+	@Override
+	public int questionSearchCount(Map<String, Object> search) throws DataAccessException {
+		int questionSearchCount = sqlSession.selectOne("mapper.admin.questionSearchCount",search);
+		return questionSearchCount;
+	}
+	
 
 }

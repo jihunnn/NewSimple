@@ -846,5 +846,39 @@ public class AdminControllerImpl implements AdminController {
 		return resEnt;
 
 	}
+	
+	
+	// 상품문의 검색
+	@Override
+	@RequestMapping(value = "/admin/questionSearch.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView questionSearch(@RequestParam("search") String search,
+			@RequestParam("searchType") String searchType, Criteria cri, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+
+		Map<String, Object> questionSearchMap = new HashMap<String, Object>();
+		int pageStart = cri.getPageStart();
+		int perPageNum = cri.getPerPageNum();
+		questionSearchMap.put("pageStart", pageStart);
+		questionSearchMap.put("perPageNum", perPageNum);
+		questionSearchMap.put("search", search);
+
+		questionSearchMap.put("searchType", searchType);
+
+		questionSearchMap = adminService.questionSearch(questionSearchMap);
+		int questionSearchCount = adminService.questionSearchCount(questionSearchMap);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		int pageNum = pageMaker.getCri().getPage();
+		questionSearchMap.put("pageNum", pageNum);
+		pageMaker.setTotalCount(questionSearchCount);
+		mav.addObject("questionSearchMap", questionSearchMap);
+		mav.addObject("pageMaker", pageMaker);
+		mav.addObject("pageNum", pageNum);
+
+		return mav;
+
+	}
 
 }

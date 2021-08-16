@@ -42,6 +42,20 @@
         	
       
     }
+	function productQuestionSearch() {
+		var form = document.questionSearch;
+
+		if (form.search.value == "") {
+			alert("검색 단어를 입력해주세요")
+			form.search.focus();
+			return false;
+		}else{
+			form.submit();
+		}
+
+
+	}
+    
 </script>
 
 
@@ -115,7 +129,6 @@
 }
 
 #buttonmy {
-	width: 80px;
 	height: 30px;
 	float: left;
 	border-radius: 2px;
@@ -135,21 +148,35 @@
 			<jsp:include page="/WEB-INF/views/common/admin_topmenu.jsp"
 				flush="false" />
 
-
-			<div>
-				<h2
-					style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">상품문의</h2>
-
-			</div>
 			<!-- 타이틀 끝 -->
 
 			<!-- 최근 본 상품 -->
 
 			<!-- 최근 본 상품 끝 -->
 			<!-- 내용 -->
-			<form name="inquirySearch"
-				action="${contextPath}/board/inquirySearch.do" method="post"
-				style="height: 50px;"></form>
+
+			<form name="questionSearch"
+				action="${contextPath}/admin/questionSearch.do"
+				method="post">
+				<div style="margin-bottom: 10px; font-size: 13px;">
+					<button type="button" id="buttonmy" class="btn btn-dark"
+						onclick="productQuestionSearch()"
+						style="margin-top: 21px; float: right; padding-top: 4px; height: 34px; font-size: 13px; padding-top: 4px; background-color: #7e9c8c; border: none;">조회</button>
+					<input type="text"
+						style="margin-top: 21px; float: right; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px;"
+						name="search"> <select name="searchType"
+						style="font-size: 13px; margin-bottom: 10px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 21px;">
+						<option value="productNum">상품번호</option>
+						<option value="memId">아이디</option>
+						<option value="memName">이름</option>
+
+					</select>
+					<div
+						style="font-size: 20px; font-weight: bold; margin-left: 18px; padding-top: 19px; float: left;">
+						<a style="color: #7e9c8c;">상품문의</a>
+					</div>
+				</div>
+			</form>
 			<table class="table"
 				style="height: 30px; height: 25px; font-size: 13px;">
 				<thead class="table-dark" align=center>
@@ -158,7 +185,8 @@
 						<td scope="col" width="100">글번호</td>
 						<td scope="col" width="200">상품번호</td>
 						<td scope="col" width="300"><p style="margin-bottom: 0px;">제목</p></td>
-						<td scope="col" width="200">작성일</td>
+						<td scope="col" width="100">작성자</td>
+						<td scope="col" width="100">작성일</td>
 						<td scope="col" width="100">답변여부</td>
 					</tr>
 					<c:choose>
@@ -301,13 +329,14 @@
 															style="float: right; border-radius: 2px; margin-bottom: 3px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left: 2px;"
 															class="btn-secondary btn-xs">삭제</button>
 														<a data-toggle="modal" href="#tallModal1"
-															style="float: right; border-radius: 2px; margin-bottom: 3px; padding-top:3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+															style="float: right; border-radius: 2px; margin-bottom: 3px; padding-top: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 															class="btn-secondary btn-xs">수정</a>
 													</p>
 												</c:if>
 											</div>
 										</div>
 									</td>
+									<td scope="col" width="50" style="padding-top: 12px;">${question.memName}</td>
 									<td scope="col" width="50" style="padding-top: 12px;"><fmt:formatDate
 											value="${question.productQuestionDate}" /></td>
 									<td scope="col" width="50" style="padding-top: 12px;">${question.answerWhether}</td>

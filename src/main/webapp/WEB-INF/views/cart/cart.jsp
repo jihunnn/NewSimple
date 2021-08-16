@@ -584,14 +584,14 @@
 							style="margin-top: 0px; font-size: 13px; vertical-align: middle;">
 							<thead class="table-dark" align=center>
 								<tr align="center"
-									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; color: black;">
-									<td scope="col" width="100">선택</td>
-									<td scope="col" width="150"></td>
-									<td scope="col" width="400" align=left>상품명</td>
-									<td scope="col" width="80">수량</td>
-									<td scope="col" width="80">배송비</td>
-									<td scope="col" width="80">가격</td>
-									<td scope="col" width="100">합계</td>
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; color: black; ">
+									<td scope="col" width="100" style="font-size:13px;">선택</td>
+									<td scope="col" width="150" style="font-size:13px;"></td>
+									<td scope="col" width="400" align=left style="font-size:13px;">상품명</td>
+									<td scope="col" width="80" style="font-size:13px;">수량</td>
+									<td scope="col" width="80" style="font-size:13px;">배송비</td>
+									<td scope="col" width="80" style="font-size:13px;">가격</td>
+									<td scope="col" width="100" style="font-size:13px;">합계</td>
 								</tr>
 							</thead>
 
@@ -695,14 +695,15 @@
 						<table class="table" style="font-size: 13px;">
 							<thead class="table-dark" align=center>
 								<tr align="center"
-									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
-									<td scope="col" width="100">선택</td>
-									<td scope="col" width="150"></td>
-									<td scope="col" width="400" align=left>상품명</td>
-									<td scope="col" width="80">수량</td>
-									<td scope="col" width="80">배송비</td>
-									<td scope="col" width="80">가격</td>
-									<td scope="col" width="100">합계</td>
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9.
+									c8c; color: black; border-bottom: 1px solid #eeeeee;">
+									<td scope="col" width="100" style="font-size:13px;">선택</td>
+									<td scope="col" width="150" style="font-size:13px;"></td>
+									<td scope="col" width="400" align=left style="font-size:13px;">상품명</td>
+									<td scope="col" width="80" style="font-size:13px;">수량</td>
+									<td scope="col" width="80" style="font-size:13px;">배송비</td>
+									<td scope="col" width="80" style="font-size:13px;">가격</td>
+									<td scope="col" width="100" style="font-size:13px;">합계</td>
 								</tr>
 							</thead>
 							<c:forEach items="${cartlist}" var="cartlist" varStatus="status">

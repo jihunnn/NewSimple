@@ -254,7 +254,7 @@
 </head>
 <title>최근 본 상품창</title>
 <body>
-	<section class="ftco-section" style="padding-top: 100px;">
+	<section class="ftco-section" style="padding-top: 100px; height:500px;">
 		<div class="container">
 
 			<!-- 최근 본 상품 -->
@@ -266,14 +266,14 @@
 			<div class="order_list">
 			
 			<div
-						style="font-size: 25px; font-weight: bold; margin-bottom: 20px;">
+						style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
 						<a style="color: #7e9c8c;">최근 본 상품</a>
 			</div>
 
-				<table class="table" style="margin-top: 0px; font-size: 14px; vertical-align: middle;">
+				<table class="table" style="margin-top: 0px; font-size: 13px; vertical-align: middle;">
 					<thead class="table-dark" align=center>
 						<tr align="center"
-							style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px; color: black;">
+							style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee; color: black;">
 							<td scope="col" width="300"></td>
 							<td scope="col" width="800" align="left">상품명</td>
 							<td scope="col" width="300">가격</td>
@@ -283,17 +283,17 @@
 					<tbody>
 					<c:choose>
 						<c:when test="${empty quickListAll}">
-						<tr height="200">
+						<tr height="200" style=" border-bottom: 1px solid #eeeeee;">
 							<td colspan="10" style="background-color:white; padding-top:100px;">
 								<p align="center">
-									<b><span style="color:black;">최근 본 상품이 없습니다.</span></b>
+									<b><span style="background-color: white; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f; border-bottom:1px solid #eeeeee;">최근 본 상품이 없습니다.</span></b>
 								</p>
 							</td>
 						</tr>	
 					</c:when>
 					<c:when test="${!empty quickListAll }">
 					<c:forEach var="item" items="${quickListAll}">
-						<tr>
+						<tr style=" border-bottom: 1px solid #eeeeee;">
 							
 							<td scope="col" align=center>
 							<img width=80 height=80 src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productImage}" id="preview" /></td>

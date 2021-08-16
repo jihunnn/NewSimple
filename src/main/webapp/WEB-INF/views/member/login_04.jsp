@@ -65,68 +65,45 @@ h3 {
 
 	<!-- 타이틀 -->
 	<section class="ftco-section testimony-section"
-		style="padding-top: 50px;">
+		style="padding-top: 140px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">아이디
-						찾기</h2>
-				</div>
-			</div>
+
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
+	
 
-
-			<section class="ftco-section testimony-section" id="sect"
-				style="padding-top: 60px; padding-bottom: 50px;">
-				<div class="container" style="text-align: center;">
-					<div>
-						<h3>아이디 확인</h3>
-					</div>
-					<div>
-						<c:if  test="${findId == true && member != null}">
-		                        <a>${member.memName}</a> <a>님의 아이디는</a> <a>${member.memId}</a> <a>입니다.</a>
-		                </c:if>
-					</div>
-
+				<section class="ftco-section testimony-section" id="sect"
+					style="padding-top: 10px; padding-bottom: 20px; border: 1px solid #eeeeee; width: 500px; left: 380px;">
+					<div class="container" style="text-align: center;">
+				<div style="margin-bottom: 10px;">
+					<h3 style="color: #7e9c8c;  font-size: 20px; font-weight: bold; text-align: left;">아이디
+						확인</h3>
 				</div>
-			</section>
+						<div style="font-size: 13px; margin-top:20px; background-color:#fbfbfb; border: 1px solid #eeeeee; height:80px; padding-top:25px;">
+							<c:if test="${findId == true && member != null}">
+								<a style="color: #7e9c8c; font-weight: bold;">${member.memName}</a>
+								<a>님의 아이디는</a>
+								<a style="color: #7e9c8c; font-weight: bold;">${member.memId}</a>
+								<a>입니다.</a>
+							</c:if>
+						</div>
+
+					</div>
+				</section>
 		</div>
 	</section>
 
 	<div class="container">
 		<section class="Easy-sgin-in-wrap5">
 			<ul class="sign-button-list5">
-				<li><button style="background-color: #212529; color: white;"
+				<li><button
+						style="background-color: #7e9c8c; color: white; font-size: 13px; cursor: pointer; border: none;"
 						onclick="location.href='${contextPath}/login_01.do'">
 						<i class="back_login-01"></i><span>로그인으로 돌아가기</span>
 					</button></li>
-				<li><button style="background-color: #212529; color: white;"
+				<li><button
+						style="background-color: white; color: gray; font-size: 13px; cursor: pointer; border: 1px solid #eeeeee;"
 						onclick="location.href='${contextPath}/login_03.do'">
 						<i class="go_Login-03"></i><span>비밀번호 찾기</span>
 					</button></li>

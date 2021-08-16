@@ -33,7 +33,8 @@ h4 {
 	function iamport() {
 		var IMP = window.IMP;
 		var form = document.CheckOrder;
-		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
+		var payType = document
+				.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
 
 		if (form.nonMemName.value == "") {
 			alert("주문자정보의 이름을 입력하지 않았습니다.")
@@ -176,7 +177,7 @@ h4 {
 			alert(msg);
 		});
 	}
-	
+
 	function sameInfo(f) {
 		f.nonMemSpName.value = f.nonMemName.value;
 		f.nonMemSpAdr.value = f.nonmemAdr.value;
@@ -308,41 +309,13 @@ h4 {
 
 
 
-				<div style="font-size: 25px; font-weight: bold;">
+				<div style="font-size: 20px; font-weight: bold;">
 					<a style="color: #7e9c8c;">주문리스트</a>
 				</div>
 
 				<!-- 최근 본 상품 -->
-				<div id="recentlyProduct"
-					style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: 0px;">
-					<ul
-						style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-						<li><a href="#"
-							style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-					</ul>
-					<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-					<ul style="list-style: none; padding-top: 5px;">
-						<li><a href="#"><img
-								src="${contextPath}/resources/images/image_1.jpg"
-								style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-						<li><a href="#"><img
-								src="${contextPath}/resources/images/image_2.jpg"
-								style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-					</ul>
-					<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-					<ul
-						style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-						<li><a href="#"
-							style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-					</ul>
-				</div>
+				<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 				<!-- 최근본상품끝 -->
-
-
-
-
-
-
 
 				<div class="order_list text-center">
 					<table class="table" style="font-size: 13px;">
@@ -350,15 +323,15 @@ h4 {
 
 						<thead class="table-dark">
 							<tr
-								style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #c6c8ca; font-size: 15px;">
+								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 
 								<th scope="col" width="150"></th>
-								<th scope="col">상품명</th>
-								<th scope="col" width="250">옵션</th>
-								<th scope="col" width="100">수량</th>
-								<th scope="col" width="80">배송비</th>
-								<th scope="col" width="150">가격</th>
-								<th scope="col" width="100">합계</th>
+								<th scope="col" style="font-weight: normal;">상품명</th>
+								<th scope="col" width="250" style="font-weight: normal;">옵션</th>
+								<th scope="col" width="100" style="font-weight: normal;">수량</th>
+								<th scope="col" width="80" style="font-weight: normal;">배송비</th>
+								<th scope="col" width="150" style="font-weight: normal;">가격</th>
+								<th scope="col" width="100" style="font-weight: normal;">합계</th>
 							</tr>
 						</thead>
 						<c:choose>
@@ -368,19 +341,25 @@ h4 {
 									<tbody>
 										<tr class="tr1"
 											style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-											<th scope="col" style="vertical-align: middle;"><img
+											<th scope="col"
+												style="vertical-align: middle; font-weight: normal;"><img
 												src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
 												width=80 height=80></th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productName}</th>
 											<th scope="col"
-												style="text-align: left; vertical-align: middle;">${orderlist.option1name}
+												style="vertical-align: middle; font-weight: normal;">${orderlist.productName}</th>
+											<th scope="col"
+												style="text-align: left; vertical-align: middle; font-weight: normal;">${orderlist.option1name}
 												: ${orderlist.option1value}<br>${orderlist.option2name}
 												: ${orderlist.option2value}
 											</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productCnt}개</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.deliverycharge}</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.productPrice}원</th>
-											<th scope="col" style="vertical-align: middle;">${orderlist.totalPrice}원</th>
+											<th scope="col"
+												style="vertical-align: middle; font-weight: normal;">${orderlist.productCnt}개</th>
+											<th scope="col"
+												style="vertical-align: middle; font-weight: normal;">${orderlist.deliverycharge}</th>
+											<th scope="col"
+												style="vertical-align: middle; font-weight: normal;">${orderlist.productPrice}원</th>
+											<th scope="col"
+												style="vertical-align: middle; font-weight: normal;">${orderlist.totalPrice}원</th>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -389,19 +368,25 @@ h4 {
 								<tbody>
 									<tr class="tr1"
 										style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-										<th scope="col" style="vertical-align: middle;"><img
+										<th scope="col"
+											style="vertical-align: middle; font-weight: normal;"><img
 											src="${contextPath}/download_product.do?productNum=${nonMemOrder.productNum}&productImage=${nonMemOrder.productImage}"
 											width=80 height=80></th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productName}</th>
 										<th scope="col"
-											style="text-align: left; vertical-align: middle;">${nonMemOrder.option1name}
+											style="vertical-align: middle; font-weight: normal;">${nonMemOrder.productName}</th>
+										<th scope="col"
+											style="text-align: left; vertical-align: middle; font-weight: normal;">${nonMemOrder.option1name}
 											: ${nonMemOrder.option1value}<br>${nonMemOrder.option2name}
 											: ${nonMemOrder.option2value}
 										</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productCnt}개</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.deliverycharge}</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.productPrice}원</th>
-										<th scope="col" style="vertical-align: middle;">${nonMemOrder.totalPrice}원</th>
+										<th scope="col"
+											style="vertical-align: middle; font-weight: normal;">${nonMemOrder.productCnt}개</th>
+										<th scope="col"
+											style="vertical-align: middle; font-weight: normal;">${nonMemOrder.deliverycharge}</th>
+										<th scope="col"
+											style="vertical-align: middle; font-weight: normal;">${nonMemOrder.productPrice}원</th>
+										<th scope="col"
+											style="vertical-align: middle; font-weight: normal;">${nonMemOrder.totalPrice}원</th>
 									</tr>
 								</tbody>
 							</c:otherwise>
@@ -409,18 +394,71 @@ h4 {
 					</table>
 					<c:choose>
 						<c:when test="${nonMemOrder == null}">
-							<div style="font-size: 18px; float: right;">
-								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${totalPrice}원</a>
-								<input type="hidden" name="totalPrice" value="${totalPrice}" />
+							<div
+								style="border: 1px solid #e9e9e9; height: 80px; margin-top: 20px;">
+								<div style="display: flow-root; padding-top: 5px;">
+									<h6
+										style="float: right; margin-top: 11px; font-size: 14px; margin-right: 15px;">
+										총 합계</h6>
+									<h6
+										style="float: right; font-size: 14px; margin-top: 12px; margin-right: 70px;">배송비</h6>
+									<h6
+										style="float: right; font-size: 14px; margin-top: 12px; margin-right: 73px;">상품금액</h6>
+
+								</div>
+								<div style="display: block; margin-right: 15px;">
+									<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
+										type="text" id="totalPrice" name="totalPrice"
+										value="${totalPrice}"
+										style="border: none; width: 75px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								</div>
+								<img src="${contextPath}/resources/images/equls.jpg"
+									style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
+								<span
+									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 13px;">원</span>
+								<input type="text" id="" name="" value="0"
+									style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								<img src="${contextPath}/resources/images/plus.jpg"
+									style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
+								<span
+									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
+									type="text" id="price1" name="price1" value="${totalPrice}"
+									style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
 							</div>
 						</c:when>
 						<c:otherwise>
-							<div style="font-size: 18px; float: right;">
-								<span>총금액ㅤ</span><a style="color: #7e9c8c; font-weight: bold;">${nonMemOrder.totalPrice}원</a>
-								<input type="hidden" name="totalPrice"
-									value="${nonMemOrder.totalPrice}" />
 
+							<div
+								style="border: 1px solid #e9e9e9; height: 80px; margin-top: 20px;">
+								<div style="display: flow-root; padding-top: 5px;">
+									<h6
+										style="float: right; margin-top: 11px; font-size: 14px; margin-right: 15px;">
+										총 합계</h6>
+									<h6
+										style="float: right; font-size: 14px; margin-top: 12px; margin-right: 70px;">배송비</h6>
+									<h6
+										style="float: right; font-size: 14px; margin-top: 12px; margin-right: 73px;">상품금액</h6>
 
+								</div>
+								<div style="display: block; margin-right: 15px;">
+									<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
+										type="text" id="totalPrice" name="totalPrice"
+										value="${nonMemOrder.totalPrice}"
+										style="border: none; width: 75px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								</div>
+								<img src="${contextPath}/resources/images/equls.jpg"
+									style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
+								<span
+									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 13px;">원</span>
+								<input type="text" id="" name="" value="0"
+									style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								<img src="${contextPath}/resources/images/plus.jpg"
+									style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
+								<span
+									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
+									type="text" id="price1" name="price1"
+									value="${nonMemOrder.totalPrice}"
+									style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -428,11 +466,11 @@ h4 {
 
 
 
-				<div style="font-size: 25px; font-weight: bold; margin-top: 70px;">
+				<div style="font-size: 20px; font-weight: bold; margin-top: 70px;">
 					<a style="color: #7e9c8c; margin-top: 40px;">주문자정보</a>
 				</div>
 				<div class="order_list">
-					<table class="table">
+					<table class="table" style="font-size: 13px;">
 						<colgroup>
 							<col width="20%" />
 						</colgroup>
@@ -443,35 +481,35 @@ h4 {
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>이름</th>
 								<th scope="col"><input type="text" name="nonMemName"
 									value=""
-									style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></th>
+									style="font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
 								<th scope="col"><input type="text" name="nonmemAdr"
 									value="" id="sample6_postcode_nonmember"
-									style="font-size: 14px; border: 1px solid #dcdcdc; width: 211px; height: 36px;">&nbsp;&nbsp;&nbsp;&nbsp;<input
+									style="font-size: 13px; border: 1px solid #dcdcdc; width: 211px; height: 36px;">&nbsp;&nbsp;&nbsp;&nbsp;<input
 									type="button" onclick="sample6_execDaumPostcode()"
 									value="우편번호 찾기"
-									style="font-size: 14px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
+									style="font-size: 13px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
 									&nbsp;&nbsp;&nbsp;
 
 									<p>
 										<br> <input type="text" name="nonmemAdr1" value=""
 											id="sample6_address_nonmember"
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+											style="font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 									</p>
 									<p>
 										<input type="text" name="nonmemAdr2"
 											id="sample6_address2_nonmember" value=""
-											style="font-size: 14px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
+											style="font-size: 13px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 									</p></th>
 							</tr>
 							<tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처</th>
 								<th scope="col"><select name="nonmemPhoneNum"
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 84px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value="">선택</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -479,20 +517,20 @@ h4 {
 										<option value="019">019</option>
 										<option value="010">010</option>
 								</select> - <input type="text" name="nonmemPhoneNum1" value=""
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 									- <input type="text" name="nonmemPhoneNum2" value=""
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div style="font-size: 25px; margin-top: 40px; font-weight: bold;">
+				<div style="font-size: 20px; margin-top: 40px; font-weight: bold;">
 					<a style="color: #7e9c8c;">배송정보</a>
 				</div>
-				<a style="font-size: 14px;">주문자 정보와 동일</a><input type="checkbox"
+				<a style="font-size: 13px;">주문자 정보와 동일</a><input type="checkbox"
 					name="same" onclick="sameInfo(document.CheckOrder)">
 				<div class="order_list">
-					<table class="table">
+					<table class="table" style="font-size: 13px;">
 						<colgroup>
 							<col width="20%" />
 						</colgroup>
@@ -510,14 +548,14 @@ h4 {
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>주소</th>
 								<th scope="col"><input type="text" name="nonMemSpAdr"
 									value="" id="sample6_postcode1" readonly
-									style="font-size: 14px; width: 211px; border: 1px solid #dcdcdc; height: 36px;">&nbsp;&nbsp;&nbsp;
+									style="font-size: 13px; width: 211px; border: 1px solid #dcdcdc; height: 36px;">&nbsp;&nbsp;&nbsp;
 									<input type="button" onclick="sample6_execDaumPostcode2()"
 									value="우편번호 찾기"
-									style="font-size: 14px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
+									style="font-size: 13px; border: none; background-color: #c6c6c6; color: white; width: 100px; height: 37px;">
 									<p>
 										<br> <input type="text" name="nonMemSpAdr1" value=""
 											id="sample6_address_1" readonly
-											style="width: 325px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+											style="width: 325px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 
 									</p>
 									<p>
@@ -531,7 +569,7 @@ h4 {
 								<th scope="col"><a
 									style="color: red; padding-right: 5px; write-space: nowrap;">*</a>연락처1</th>
 								<th scope="col"><select name="nonMemSpPhoneNum1_0"
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 84px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value=""></option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -539,14 +577,14 @@ h4 {
 										<option value="019">019</option>
 										<option value="010">010</option>
 								</select> - <input type="text" name="nonMemSpPhoneNum1_1" value=""
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 									- <input type="text" name="nonMemSpPhoneNum1_2" value=""
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col" style="padding-left: 23px;">연락처2</th>
 								<th scope="col"><select name="nonMemSpPhoneNum2_0"
-									style="width: 80px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 84px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 										<option value="">선택</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -554,9 +592,9 @@ h4 {
 										<option value="019">019</option>
 										<option value="010">010</option>
 								</select> - <input type="text" name="nonMemSpPhoneNum2_1"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;">
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;">
 									- <input type="text" name="nonMemSpPhoneNum2_2"
-									style="width: 109px; font-size: 14px; border: 1px solid #dcdcdc; height: 36px;"></th>
+									style="width: 109px; font-size: 13px; border: 1px solid #dcdcdc; height: 36px;"></th>
 							</tr>
 							<tr style="border-bottom: 1px solid #eeeeee;">
 								<th scope="col"
@@ -568,11 +606,11 @@ h4 {
 					</table>
 				</div>
 
-				<div style="font-size: 25px; font-weight: bold;">
+				<div style="font-size: 20px; font-weight: bold;">
 					<a style="color: #7e9c8c; margin-top: 40px;">결제정보</a>
 				</div>
 				<div class="order_list">
-					<table class="table" style="font-size: 14px;">
+					<table class="table" style="font-size: 13px;">
 						<colgroup>
 							<col width="20%" />
 						</colgroup>
@@ -587,20 +625,20 @@ h4 {
 									<input type="radio" name="nonMemPaymentMethod" value="phone">휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="nonMemPaymentMethod" value="무통장입금">무통장입금</th>
 							</tr>
-							
+
 						</tbody>
 					</table>
 				</div>
 				<br> <br>
 
 				<div style="text-align: center">
-					<input type="button" class="btn btn-secondary"
-						onclick="iamport()" value="결제하기"
-						style="padding-left: 10px; margin-left: 40px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
+					<input type="button" class="btn btn-secondary" onclick="iamport()"
+						value="결제하기"
+						style="padding-left: 10px; margin-left: 40px; font-size: 13px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
 					&nbsp;&nbsp;
 					<button type="button" class="btn btn-secondary"
 						onclick="location.href='/cart'"
-						style="padding-left: 10px; background-color: white; color: #7e9c8c; border: 1px solid #7e9c8c; border-radius: 2px; width: 130px; height: 45px;">취소하기</button>
+						style="padding-left: 10px; background-color: white; font-size: 13px; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 130px; height: 45px;">취소하기</button>
 				</div>
 				<br> <br>
 			</form>

@@ -53,5 +53,7 @@ public interface AdminDAO {
 	public void modNewProductAnswer(ProductVO productQuestion) throws DataAccessException;
 	public void deleteProductQuestion(int productQuestionNum) throws DataAccessException;
 	public void deleteProductAnswer(int productQuestionNum) throws DataAccessException;
+	public List<ProductVO> questionSearchList(Map<String, Object> questionSearchMap) throws DataAccessException;
+	public int questionSearchCount(Map<String, Object> search) throws DataAccessException;
 
 }

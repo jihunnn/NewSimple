@@ -51,5 +51,7 @@ public interface AdminService {
 	public void modNewProductAnswer(ProductVO productQuestion) throws Exception;
 	public void removeProductQuestion(int productQuestionNum) throws Exception ;
 	public void removeProductAnswer(int productQuestionNum) throws Exception;
+	public Map<String, Object> questionSearch(Map<String, Object> questionSearchMap) throws Exception;
+	public int questionSearchCount(Map<String, Object> search) throws Exception;
 
 }

@@ -12,65 +12,7 @@
 
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Raleway:500);
 
-.snip1284 {
-	font-family: 'Raleway', Arial, sans-serif;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 1px;
-}
-
-.snip1284 * {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-}
-
-.snip1284 li {
-	display: inline-block;
-	list-style: outside none none;
-	margin: 0.5em 1.2em;
-	padding: 0;
-}
-
-.snip1284 a {
-	padding: 0 0.6em;
-	color: rgba(255, 255, 255, 0.5);
-	position: relative;
-	text-decoration: none;
-}
-
-.snip1284 a:before, .snip1284 a:after {
-	width: 3px;
-	height: 0;
-	position: absolute;
-	content: '';
-	-webkit-transition: all 0.35s ease;
-	transition: all 0.35s ease;
-	background-color: #7e9c8c;
-}
-
-.snip1284 a:before {
-	top: 0;
-	right: 0;
-}
-
-.snip1284 a:after {
-	bottom: 0;
-	left: 0;
-}
-
-.snip1284 a:hover, .snip1284 .current a {
-	color: #ffffff;
-}
-
-.snip1284 a:hover:before, .snip1284 .current a:before, .snip1284 a:hover:after,
-	.snip1284 .current a:after {
-	height: 100%;
-}
 
 .page_wrap {
 	text-align: center;
@@ -148,11 +90,11 @@
 
 
 		<div class="container">
-			<img src="${contextPath}/resources/images/product/bed.jpg" width=100%
-				height=350px style="margin-bottom: 100px;">
+
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
-
+			<img src="${contextPath}/resources/images/product/bed.jpg" width=100%
+				height=350px style="margin-bottom: 50px;">
 			<!-- 최근 본 상품 끝 -->
 			<table
 				style="width: 100%; height: 60px; border-bottom: 1px solid #7e9c8c; font-size: 13px; margin-bottom: 60px;">

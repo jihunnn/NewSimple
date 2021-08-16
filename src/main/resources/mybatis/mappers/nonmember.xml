@@ -32,7 +32,7 @@
 	<![CDATA[ 
 		    select * 
 	    from nonmemberorder right join product on nonmemberorder.productNum=product.productNum
-	    where nonMemOrderNum = #{nonMemOrderNum} and nonMemName = #{nonMemName} and nonMemPwd = #{nonMemPwd};
+	    where nonMemOrderNum = #{nonMemOrderNum} and nonMemName = #{nonMemName};
 
 	]]>
 	</select>

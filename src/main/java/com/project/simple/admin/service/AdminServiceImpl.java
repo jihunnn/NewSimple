@@ -194,6 +194,20 @@ public class AdminServiceImpl implements AdminService {
 	public void removeProductAnswer(int productQuestionNum) throws Exception {
 		adminDAO.deleteProductAnswer(productQuestionNum);
 	}
+	
+	//상품문의 검색
+	@Override
+	public Map<String, Object> questionSearch(Map<String, Object> questionSearchMap) throws Exception {
+		List<ProductVO> questionSearchList=adminDAO.questionSearchList(questionSearchMap);
+		questionSearchMap.put("productQuestionList", questionSearchList);
+		return questionSearchMap;
+	}
+	
+	@Override
+	public int questionSearchCount(Map<String, Object> search) throws Exception {
+		int questionSearchCount = adminDAO.questionSearchCount(search);
+		return questionSearchCount;
+	}
 
 
 }
