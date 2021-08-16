@@ -231,7 +231,7 @@
 							<tr height="30%">
 								<th
 									style="font-size: 15px; color: !importent; font-weight: bold; margin-left: 18px; padding-top: 20px;"
-									colspan="4">주문/배송조회(최근 1개월)</th>
+									colspan="4">주문/배송조회</th>
 								<th width="80"
 									style="text-align: right; font-size: 11px; padding-top: 40px;"><a
 									href="${contextPath}/mypage_04.do"

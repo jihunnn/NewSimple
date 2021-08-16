@@ -199,117 +199,80 @@
 <body>
 
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
 
 			<!-- 최근 본 상품 -->
-            <jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
+			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 
 			<!-- Left Menu -->
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
 				flush="false" />
 			<!-- left Menu 끝-->
+			<div
+				style="font-size: 15px; font-weight: bold; margin-left: 18px; padding-bottom: 7px; color: #7e9c8c;">주문/배송조회(상세보기)</div>
+			<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp"
+				flush="false" />
 
-			<div class="table_01"
-				style="padding-top: 30px; margin-top: 20px; margin-left: 50px;">
-				<div>
-					<table style="width: 1000px; height: 80px; margin-left: 80px;">
-						<tbody id="MyPage_center1">
-							<tr height="60px;">
-								<th
-									style="font-size: 16px; background-color: #212529; color: white;"
-									colspan="3"><a
-									style="font-size: 16px; padding-left: 10px; font-size: 17px;">홍길동</a>
-									<a>님 환영합니다.</a></th>
-							</tr>
-							<tr align="center"
-								style="padding-left: 10px; font-size: 16px; height: 60px;"
-								height="45%">
-								<th width="220" style="text-align: center">주문/배송<a
-									href="/MyPage-04" style="color: red;">4</a><a>건</a></th>
-								<th width="220" style="text-align: center">취소/반품<a
-									href="/MyPage-06" style="color: red;">2</a><a>건</a></th>
-								<th width="220" style="text-align: center">장바구니<a
-									href="/Cart" style="color: red;">1</a><a>건</a></th>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="table_01" style="padding-top: 30px; height: 100px;">
+
 
 				<!-- 내용 -->
 
-				<div class="container2"
-					style="padding-left: 220px; padding-top: 0px;">
+					<div >
 
-					<div style="width: 20px;">
 						<table
-							style="wdith: 800px; height: 40px; align: center; padding-top: 10px;">
+							style="width: 1000px; height: 80px; align: center; border-right: none; border-left: none;">
 							<tbody id="MyPage_center3">
-								<tr>
-									<th
-										style="font-size: 18px; font-weight: bold; padding-top: 30px; white-space: nowrap;"
-										colspan="4">주문/배송조회(최근 1개월)</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div id="MyPage_top" style="padding-top: 20px; width: 600px;">
-
-						<table border="1"
-							style="width: 980px; height: 180px; align: center;">
-							<tbody id="MyPage_center2">
 								<tr height="50%"
-									style="background-color: #212529; color: white;">
-									<th style="font-size: 15px; text-align: center; height: 40px;"
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+									<th style="font-size: 13px; text-align: center; height: 40px;"
 										width="100">주문일자</th>
-									<th style="font-size: 12px; text-align: center;" width="230">상품명</th>
-									<th style="font-size: 12px; text-align: center;" width="70">수량</th>
-									<th style="font-size: 12px; text-align: center;" width="120">금액</th>
-									<th style="font-size: 12px; text-align: center;" width="140">현재상태</th>
+									<th style="font-size: 13px; text-align: center;" width="230">상품명</th>
+									<th style="font-size: 13px; text-align: center;" width="70">수량</th>
+									<th style="font-size: 13px; text-align: center;" width="120">금액</th>
+									<th style="font-size: 13px; text-align: center;" width="140">현재상태</th>
 								</tr>
 								<c:forEach var="memOrderNum" items="${memOrderNum}">
 									<tr height="80%">
-										<th style="text-align: center;"><fmt:formatDate
+										<th
+											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; border-left: none !important; font-weight: normal;"><fmt:formatDate
 												value="${memOrderNum.memOrderDate}" /></th>
-										<th style="padding: 10px; text-align: center;"
+										<th
+											style="padding: 10px; text-align: left; height: 120px; border: 1px solid #eeeeee; font-weight: normal;"
 											onClick="location.href='Product-02'">
 											<div>
 												<img src="${contextPath}/resources/images/image_1.jpg"
-													width="110" height="110" style="float: left;"> <a
-													style="margin-left: 0px;">${memOrderNum.productName}</a>
+													width="90" height="90" style="float: left;"> <a
+													style="margin-left: 40px; font-size: 13px; font-weight: bold;">${memOrderNum.productName}</a>
 												<c:if test="${memOrderNum.option1value !=null}">
 													<p
-														style="margin-left: 130px; font-size: 13px; width: 100px;">${memOrderNum.option1Name}
+														style="margin-left: 130px; font-size: 11px; width: 200px; margin-bottom: 5px;">${memOrderNum.option1Name}
 														: ${memOrderNum.option1value}</p>
 												</c:if>
 												<c:if test="${memOrderNum.option2value !=null}">
 													<p
-														style="margin-left: 130px; font-size: 13px; width: 100px;">${memOrderNum.option2Name}
+														style="margin-left: 130px; font-size: 11px; width: 200px; margin-bottom: 5px;">${memOrderNum.option2Name}
 														: ${memOrderNum.option2value}</p>
 												</c:if>
 
 											</div>
 										</th>
-										<th style="text-align: center;">${memOrderNum.productCnt}</th>
-										<th style="text-align: center;">${memOrderNum.productPrice}</th>
-										<th style="text-align: center;"><ins
+										<th
+											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight: normal;">${memOrderNum.productCnt}</th>
+										<th
+											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight: normal;">${memOrderNum.productPrice}</th>
+										<th
+											style="text-align: center; height: 120px; font-size: 12px; border-bottom: 1px solid #eeeeee;"><ins
 												onclick="location='#'" id="now-state"
-												style="color: red; font-size: 14px;">
+												style="color: red; font-size: 12px;">
 												${memOrderNum.deliveryStatus}<br>
 											</ins> <c:choose>
 												<c:when test="${memOrderNum.purchaseConfirm =='구매확정(미)'}">
 
 													<form>
 														<input type="button" name="purchaseConfirm"
-															style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+															style="font-size: 12px; width: 110px; border: none; cursor: pointer; background-color: #7e9c8c; margin-bottom: 5px; color: white;"
 															class="confirmation"
 															onclick="confirmOrderConfirm(this.form)" value="구매확정">
 														<input type="hidden" id="memOrderSeqNum"
@@ -319,13 +282,13 @@
 													<c:choose>
 														<c:when test="${memOrderNum.returnConfirm == '반품신청(미)'}">
 															<input type="button"
-																style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+																style="font-size: 12px; width: 110px; background-color: white; border: 1px solid #eeeeee; cursor: pointer; margin-bottom: 5px; color: gray;"
 																onclick="location.href='${contextPath}/mypage/returnWrite.do?&productNum=${memOrderNum.productNum}&memOrderSeqNum=${memOrderNum.memOrderSeqNum}'"
 																value="반품신청">
 														</c:when>
 														<c:when test="${memOrderNum.returnConfirm == '반품신청(완)'}">
 															<input type="button"
-																style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+																style="font-size: 12px; width: 110px; background-color: white; border: 1px solid #eeeeee; cursor: pointer; margin-bottom: 5px; color: gray;"
 																onclick="returnConfirmResult()" value="반품신청">
 														</c:when>
 													</c:choose>
@@ -336,14 +299,14 @@
 													<c:choose>
 														<c:when test="${memOrderNum.reviewConfirm == '리뷰작성(미)'}">
 															<input type="button" name="reviewConfirm"
-																style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+																style="font-size: 12px; width: 110px; border: none; background-color: #7e9c8c; margin-bottom: 5px; cursor: pointer; color: white;"
 																id="pressbtn1" class="confirmation"
 																onclick="location.href='${contextPath}/mypage/reviewWrite.do?productNum=${memOrderNum.productNum}&memOrderSeqNum=${memOrderNum.memOrderSeqNum}'"
 																value="리뷰작성">
 														</c:when>
 														<c:when test="${memOrderNum.reviewConfirm == '리뷰작성(완)'}">
 															<input type="button" name="reviewConfirm"
-																style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+																style="font-size: 12px; width: 110px; border: none; background-color: #7e9c8c; margin-bottom: 5px; cursor: pointer; color: white;"
 																id="pressbtn1" class="confirmation"
 																onclick="reviewConfirmResult()" value="리뷰작성">
 														</c:when>
@@ -352,11 +315,11 @@
 											</c:choose>
 									</tr>
 								</c:forEach>
-								<tr height="100">
+								<tr height="100" style="border-bottom:1px solid #eeeeee;">
 									<th colspan="2"
 										style="padding-left: 10px; padding-bottom: 15px;">
-										<div style="font-size: 12px;">주문자 정보</div>
-										<div style="font-size: 10px;">
+										<div style="font-size: 14px;">주문자 정보</div>
+										<div style="font-size: 11px;">
 											<a>이름 :</a> <a>${memOrderSeqNum.memName}</a>
 										</div>
 										<div style="font-size: 11px;">
@@ -366,8 +329,8 @@
 											<a>연락처 :</a> <a>${memOrderSeqNum.memPhoneNum}</a>
 										</div>
 									</th>
-									<th colspan="4" style="padding-left: 10px;">
-										<div style="font-size: 15px;">배송 정보</div>
+									<th colspan="4" style="padding-left: 10px; border-left:1px solid #eeeeee;">
+										<div style="font-size: 14px;">배송 정보</div>
 										<div style="font-size: 11px;">
 											<a>수령인 :</a> <a>${memOrderSeqNum.memSpName}</a>
 										</div>
@@ -387,25 +350,26 @@
 										<div style="font-size: 11px;">
 											<a>결제방법 :</a> <a>${memOrderSeqNum.memPaymentMethod}</a>
 										</div>
-										<div style="font-size: 11px; float: right; font-size: 20px;">
-											<a>총결제금액 :</a> <a>${memOrderSeqNum.totalPrice}원</a>
-										</div>
+
 									</th>
 								</tr>
 							</tbody>
 						</table>
-
+										<div style=" float: right; font-size: 15px; color:#7e9c8c; font-weight:bold;">
+											<a>총결제금액 :</a> <a style="margin-right:5px;"><fmt:formatNumber
+														pattern="###,###,###" value="${memOrderSeqNum.totalPrice}" />원</a>
+										</div>
 						<div align="center" id="btn_modify_reset"
 							style="padding-top: 10px">
 							<input type="button" value="목 록"
 								onclick="location.href='${contextPath}/mypage_04.do'"
-								style="width: 80px; background-color: #212529; color: white; margin-left: 400px; margin-top: 30px;">
+								style=" width: 104px; height: 34px;  background-color: #7e9c8c; font-size:13px; border:none; border-redius:2px; color: white; margin-left: 400px; margin-top: 30px;">
 						</div>
 					</div>
 				</div>
 				<!-- 내용 -->
 			</div>
-		</div>
+	
 	</section>
 	<br>
 	<br>

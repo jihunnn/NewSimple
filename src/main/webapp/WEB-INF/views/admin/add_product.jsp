@@ -160,12 +160,6 @@ button {
 	function new_Product() {
 		var form = document.newProduct;
 
-		if (form.productNum.value == "") {
-			alert("상품번호을 입력하지 않았습니다.")
-			form.productNum.focus();
-			return false;
-		}
-
 		if (form.productName.value == "") {
 			alert("상품이름을 입력하지 않았습니다.")
 			form.productName.focus();
@@ -594,7 +588,7 @@ button {
 					<div style="padding-left: 70px;">
 						<label style="margin-right: 50px;"><a
 							style="color: red; padding-right: 5px; write-space: nowrap;">*</a>상품번호</label>
-						<input type="text" name="productNum" value=""
+						<input type="text" name="productNum" value="${productNum}" readonly
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;">
 					</div>
 					<div style="padding-left: 70px;">
@@ -654,7 +648,7 @@ button {
 				<form name="addOptionValue" action="" method="post">
 					<div style="padding-left: 77px;">
 						<label style="margin-right: 57px;">상품번호</label> <input type="text"
-							name="productNum" id="productNum"
+							name="productNum" id="productNum" value="${productNum}" readonly
 							style="font-size: 14px; margin-top: 10px; border: 1px solid #dcdcdc; width: 250px; height: 36px;" />
 						<br> <label style="margin-right: 43px;">옵션1 이름</label> <select
 							onchange="option1Select(this.value)" name="option1Name"

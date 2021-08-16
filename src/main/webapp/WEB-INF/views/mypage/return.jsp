@@ -189,15 +189,9 @@
 
 	<!-- 타이틀 끝 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
+
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
             <jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -210,105 +204,101 @@
 
 			<!-- 내용 -->
 			<div
-				style="font-size: 20px; font-weight: bold; margin-left: 18px; padding-bottom: 7px;">취소/반품내역</div>
+				style="font-size: 15px; font-weight: bold; margin-left: 18px; color: #7e9c8c; padding-bottom: 7px;">취소/반품내역</div>
 			<div class="table_01" >
 				<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp" />
-				<div id="MyPage_top" style="padding-top: 40px;">
+				<div id="MyPage_top" style="padding-top: 30px;">
 					<form name="returnSearch"
 						action="${contextPath}/mypage/returnSearch.do" method="post">
-						<table
-							style="width: 980px; height: 80px; align: center; padding-top: 10px;">
-							<tbody id="MyPage_center3">
-								<tr height="50%">
-									<th style="font-size: 18px; font-weight: bold;" colspan="4">취소/반품내역(최근
-										1개월)</th>
-								</tr>
-								<tr align="center"
-									style="padding-top: 10px; padding-left: 10px; font-size: 14px;"
-									height="35%">
-
-									<th>
-										<div style="display: inline !important;">
-											<p style="float: left; width: 80px;">구매기간</p>
-
-											<input type="text" id="datepicker1" name="search1"
-												autocomplete='off'
-												style="width: 120px; margin-right: 50px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
-
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"
-												style="margin-left: -35px;"> </span> ~ <input type="text"
-												name="search2" id="datepicker2" autocomplete='off'
-												style="width: 120px; margin-right: 50px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
-
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"
-												style="margin-left: -35px;"> </span>
-
-											<button type="submit" class="btn btn-default"
-												style="background-color: #dcdcdc; fmargin-left: 380px; margin-top: 0px; width: 80px; height: 28px; display: inline !important; background-color: #212529; color: white; border-radius: 2px; height: 30px; margin-right: 500px; padding-bottom: 5px;">조회</button>
-										</div>
+					<table
+						style="width: 1000px; height: 80px; align: center; border-right: none; border-left: none;">
+						<tbody id="MyPage_center3">
 
 
+							<tr align="center"
+								style="padding-top: 10px; padding-left: 10px; font-size: 13px;"
+								height="35%">
+								<th style="text-align: left;">
 
+									<div style="display: inline !important;">
+										<p
+											style="float: left; width: 60px; margin-top: 13px; margin-bottom: 5px; font-weight: normal;">반품기간</p>
 
-									</th>
-								</tr>
+										<input type="text" id="datepicker1" name="search1"
+											autocomplete='off'
+											style="margin-right: 35px; width: 90px; margin-top: 10px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
 
-							</tbody>
-						</table>
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"
+											style="margin-left: -35px;"> </span> ~ㅤ<input type="text"
+											autocomplete='off' name="search2" id="datepicker2"
+											style="width: 90px; margin-right: 35px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
+
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"
+											style="margin-left: -35px;"> </span>
+
+										<button type="submit" class="btn btn-default"
+											style="background-color: #7e9c8c; fmargin-left: 380px; margin-top: 0px; height: 28px; display: inline !important; color: white; border-radius: 2px; height: 30px; margin-right: 500px; padding-top: 4px; font-size: 13px; margin-bottom: 2px;">조회</button>
+									</div>
+
+								</th>
+							</tr>
+						</tbody>
+					</table>
+						
 					</form>
 				</div>
 				<c:choose>
 					<c:when test="${!empty returnSearchMap.search1}">
 						<div id="MyPage_top">
-							<table border="1"
+							<table 
 								style="width: 995px; height: 180px; align: center;">
 								<tbody id="MyPage_center2">
-									<tr style="background-color: #212529; color: white;">
-										<th style="font-size: 15px; text-align: center; height: 40px;"
+									<tr style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+										<th style="font-size: 13px; text-align: center; height: 40px;"
 											width="100">반품일자</th>
-										<th style="font-size: 15px; text-align: center;" width="250">상품명</th>
-										<th style="font-size: 15px; text-align: center;" width="70">수량</th>
-										<th style="font-size: 15px; text-align: center;" width="110">금액</th>
-										<th style="font-size: 15px; text-align: center;" width="130">현재상태</th>
+										<th style="font-size: 13px; text-align: center;" width="250">상품명</th>
+										<th style="font-size: 13px; text-align: center;" width="70">수량</th>
+										<th style="font-size: 13px; text-align: center;" width="110">금액</th>
+										<th style="font-size: 13px; text-align: center;" width="130">현재상태</th>
 									</tr>
 									<c:choose>
 										<c:when test="${empty returnSearchList}">
 											<tr style="background-color: white;">
 												<td colspan="5"
-													style="color: black; height: 300px; text-align: center;">조회
+													style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">조회
 													된 반품 내역이 없습니다.</td>
 											</tr>
 
 										</c:when>
 										<c:when test="${!empty returnSearchList}">
 											<c:forEach var="returnSearchList" items="${returnSearchList}">
-												<tr height="80%">
-													<th style="text-align: center;"><fmt:formatDate
+												<tr height="80%" style="border-bottom:1px solid #eeeeee;">
+													<th style="text-align: center; font-size:13px; font-weight:normal; border-right:1px solid #eeeeee;"><fmt:formatDate
 															value="${returnSearchList.returnDate}" /></th>
-													<th style="padding: 10px; text-align: center;"
+													<th style="padding: 10px; text-align: left; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"
 														onClick="location.href='Product-02'">
 														<div>
 														<a href="${contextPath}/product/viewProduct.do?productNum=${returnSearchList.productNum}">
 															<img src="${contextPath}/resources/images/image_1.jpg"
-																width="110" height="110" style="float: left;"></a> <a
-																style="margin-left: 0px; padding-right: 10px;"
+																width="90" height="90" style="float: left;"></a> <a
+																style="margin-left: 0px; padding-right: 10px; margin-left:50px; font-weight:bold;"
 																href="${contextPath}/product/viewProduct.do?productNum=${returnSearchList.productNum}">${returnSearchList.productName}</a>
 															<c:if test="${returnSearchList.option1value != null}">
 																<p
-																	style="margin-left: 140px; font-size: 13px; width: 100px;">${returnSearchList.option1value}</p>
+																	style="margin-left: 140px; font-size: 11px; width: 200px;">${returnSearchList.option1value}</p>
 															</c:if>
 															<c:if test="${returnSearchList.option1value != null}">
 																<p
-																	style="margin-left: 140px; font-size: 13px; width: 100px;">${returnSearchList.option2value}</p>
+																	style="margin-left: 140px; font-size: 11px; width: 200px;">${returnSearchList.option2value}</p>
 															</c:if>
 														</div>
 													</th>
-													<th style="text-align: center;"><a>${returnSearchList.productCnt}</a></th>
-													<th style="text-align: center;"><a>${returnSearchList.productPrice}</a></th>
-													<th style="text-align: center;"><a id="now-state"
-														style="color: red; font-size: 14px;">${returnSearchList.currentStatus}</a><br>
+													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"><a>${returnSearchList.productCnt}</a></th>
+													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"><a>${returnSearchList.productPrice}</a></th>
+													<th style="text-align: center; font-size:13px; font-weight:normal;"><a id="now-state"
+														style="color: red; font-size: 12px;">${returnSearchList.currentStatus}</a><br>
 														<input type="button"
-														style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+														style="font-size: 12px; width: 110px; border: none; cursor:pointer;background-color: #7e9c8c; margin-bottom: 5px; color: white;"
 														onclick="location.href='${contextPath}/mypage/viewReturn.do?returnNum=${returnSearchList.returnNum}'"
 														value="반품상세보기"></th>
 												</tr>
@@ -325,7 +315,7 @@
 
 								<c:if test="${pageMaker.prev}">
 
-									<a class="arrow prev"
+									<a class="arrow prev" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 										href='<c:url value="/mypage/returnSearch.do?page=${pageMaker.startPage-1 }"/>'><i
 										class="fa fa-chevron-left"></i></a>
 
@@ -333,14 +323,14 @@
 								<c:forEach begin="${pageMaker.startPage }"
 									end="${pageMaker.endPage }" var="pageNum">
 
-									<a
+									<a style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 										href='<c:url value="/mypage/returnSearch.do?page=${pageNum }"/>'><i
 										class="fa">${pageNum }</i></a>
 
 								</c:forEach>
 								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
-									<a class="arrow next"
+									<a class="arrow next" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 										href='<c:url value="/mypage/returnSearch.do?page=${pageMaker.endPage+1 }"/>'><i
 										class="fa fa-chevron-right"></i></a>
 
@@ -351,16 +341,16 @@
 					</c:when>
 					<c:when test="${empty returnSearchMap.search1}">
 						<div id="MyPage_top">
-							<table border="1"
+							<table 
 								style="width: 995px; height: 180px; align: center;">
 								<tbody id="MyPage_center2">
-									<tr style="background-color: #212529; color: white;">
-										<th style="font-size: 15px; text-align: center; height: 40px;"
+									<tr style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+										<th style="font-size: 13px; text-align: center; height: 40px;"
 											width="100">반품일자</th>
-										<th style="font-size: 15px; text-align: center;" width="250">상품명</th>
-										<th style="font-size: 15px; text-align: center;" width="70">수량</th>
-										<th style="font-size: 15px; text-align: center;" width="110">금액</th>
-										<th style="font-size: 15px; text-align: center;" width="130">현재상태</th>
+										<th style="font-size: 13px; text-align: center;" width="250">상품명</th>
+										<th style="font-size: 13px; text-align: center;" width="70">수량</th>
+										<th style="font-size: 13px; text-align: center;" width="110">금액</th>
+										<th style="font-size: 13px; text-align: center;" width="130">현재상태</th>
 									</tr>
 
 
@@ -368,40 +358,40 @@
 										<c:when test="${empty mypageReturnList}">
 											<tr style="background-color: white;">
 												<td colspan="5"
-													style="color: black; height: 300px; text-align: center;">반품
+													style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">반품
 													내역이 없습니다.</td>
 											</tr>
 
 										</c:when>
 										<c:when test="${!empty mypageReturnList}">
 											<c:forEach var="mypageReturnList" items="${mypageReturnList}">
-												<tr height="80%">
-													<th style="text-align: center;"><fmt:formatDate
+												<tr height="80%"  style="border-bottom:1px solid #eeeeee;">
+													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"><fmt:formatDate
 															value="${mypageReturnList.returnDate}" /></th>
-													<th style="padding: 10px; text-align: center;"
+													<th style="padding: 10px; text-align: left; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"
 														onClick="location.href='Product-02'">
 														<div>
 														<a href="${contextPath}/product/viewProduct.do?productNum=${mypageReturnList.productNum}">
 															<img src="${contextPath}/resources/images/image_1.jpg"
-																width="110" height="110" style="float: left;"></a> <a
-																style="margin-left: 0px; padding-right: 10px;"
+																width="90" height="90" style="float: left;"></a> <a
+																style="margin-left: 0px; padding-right: 10px; margin-left:50px; font-weight:bold;"
 																href="${contextPath}/product/viewProduct.do?productNum=${mypageReturnList.productNum}">${mypageReturnList.productName}</a>
 															<c:if test="${mypageReturnList.option1value != null}">
 																<p
-																	style="margin-left: 140px; font-size: 13px; width: 100px;">${mypageReturnList.option1value}</p>
+																	style="margin-left: 140px; font-size: 11px; width: 200px; margin-bottom:5px;">${mypageReturnList.option1value}</p>
 															</c:if>
 															<c:if test="${mypageReturnList.option2value != null}">
 																<p
-																	style="margin-left: 140px; font-size: 13px; width: 100px;">${mypageReturnList.option2value}</p>
+																	style="margin-left: 140px; font-size: 11px; width: 200px; margin-bottom:5px;">${mypageReturnList.option2value}</p>
 															</c:if>
 														</div>
 													</th>
-													<th style="text-align: center;">${mypageReturnList.productCnt}</th>
-													<th style="text-align: center;">${mypageReturnList.productPrice}</th>
-													<th style="text-align: center;"><a id="now-state"
-														style="color: red; font-size: 14px;">${mypageReturnList.currentStatus}</a><br>
+													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;">${mypageReturnList.productCnt}</th>
+													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;">${mypageReturnList.productPrice}</th>
+													<th style="text-align: center; font-size:13px; font-weight:normal;"><a id="now-state"
+														style="color: red; font-size: 12px;">${mypageReturnList.currentStatus}</a><br>
 														<input type="button"
-														style="font-size: 14px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white;"
+														style="font-size: 12px; width: 110px; border: none; cursor:pointer;background-color: #7e9c8c; margin-bottom: 5px; color: white;"
 														onclick="location.href='${contextPath}/mypage/viewReturn.do?returnNum=${mypageReturnList.returnNum}'"
 														value="반품상세보기"></th>
 												</tr>
@@ -418,7 +408,7 @@
 
 								<c:if test="${pageMaker.prev}">
 
-									<a class="arrow prev"
+									<a class="arrow prev" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 										href='<c:url value="/mypage_07.do?page=${pageMaker.startPage-1 }"/>'><i
 										class="fa fa-chevron-left"></i></a>
 
@@ -426,13 +416,13 @@
 								<c:forEach begin="${pageMaker.startPage }"
 									end="${pageMaker.endPage }" var="pageNum">
 
-									<a href='<c:url value="/mypage_07.do?page=${pageNum }"/>'><i
+									<a style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;" href='<c:url value="/mypage_07.do?page=${pageNum }"/>'><i
 										class="fa">${pageNum }</i></a>
 
 								</c:forEach>
 								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
-									<a class="arrow next"
+									<a class="arrow next" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 										href='<c:url value="/mypage_07.do?page=${pageMaker.endPage+1 }"/>'><i
 										class="fa fa-chevron-right"></i></a>
 

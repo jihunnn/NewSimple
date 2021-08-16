@@ -233,159 +233,136 @@
 <body>
 	<!-- 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
 			<!-- 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
-			
+
 
 			<!-- Left Menu -->
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
 				flush="false" />
 
+			<div
+				style="font-size: 15px; font-weight: bold; margin-left: 18px; padding-bottom: 7px; color: #7e9c8c;">상품리뷰</div>
+			<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp"
+				flush="false" />
 			<!-- left Menu -->
 
-			<div 
-				style="padding-top: 30px; margin-top: 20px; margin-left: 50px;">
+			<div style="padding-top: 30px;">
 				<div>
-					<table style="width: 1000px; height: 80px; margin-left: 80px;">
-						<tbody id="MyPage_center1">
-							<tr height="60px;">
-								<th
-									style="font-size: 17px; background-color: #212529; color: white;"
-									colspan="3"><a
-									style="font-size: 16px; padding-left: 10px; font-size: 17px;">홍길동</a>
-									<a>님 환영합니다.</a></th>
-							</tr>
-							<tr align="center"
-								style="padding-left: 10px; font-size: 17px; height: 60px;"
-								height="45%">
-								<th width="220" style="text-align: center">주문/배송<a
-									href="${contextPath}/mypage_04.do" style="color: red;">${myInfo.order}</a><a>건</a></th>
-								<th width="220" style="text-align: center">취소/반품<a
-									href="${contextPath}/mypage_07.do" style="color: red;">${myInfo.orderReturn}</a><a>건</a></th>
-								<th width="220" style="text-align: center">장바구니<a
-									href="${contextPath}/memcart.do" style="color: red;">${myInfo.cart}</a><a>건</a></th>
-							</tr>
-						</tbody>
-					</table>
 					<form name="reviewSearch"
 						action="${contextPath}/mypage/reviewSearch.do" method="post">
 						<table
-							style="width: 1000px; height: 80px; align: center; padding-top: 10px;">
+							style="width: 1000px; height: 80px; align: center; border-right: none; border-left: none;">
 							<tbody id="MyPage_center3">
-								<tr height="50%">
-									<th style="font-size: 20px; font-weight: bold;" colspan="4">상품
-										리뷰</th>
-								</tr>
+
+
 								<tr align="center"
-									style="padding-top: 10px; padding-left: 10px; font-size: 14px;"
+									style="padding-top: 10px; padding-left: 10px; font-size: 13px;"
 									height="35%">
 									<th style="text-align: left;">
+
 										<div style="display: inline !important;">
-											<p style="float: left; width: 80px; margin-top: 30px;">작성기간</p>
+											<p
+												style="float: left; width: 60px; margin-top: 13px; margin-bottom: 5px; font-weight: normal;">작성기간</p>
 
 											<input type="text" id="datepicker1" name="search1"
 												autocomplete='off'
-												style="width: 120px; margin-right: 50px; margin-top: 30px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+												style="margin-right: 35px; width: 90px; margin-top: 10px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
 
 											<span class="glyphicon glyphicon-calendar" aria-hidden="true"
-												style="margin-left: -35px;"> </span> ~ <input type="text"
-												name="search2" id="datepicker2" autocomplete='off'
-												style="width: 120px; margin-right: 50px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+												style="margin-left: -35px;"> </span> ~ㅤ<input type="text"
+												autocomplete='off' name="search2" id="datepicker2"
+												style="width: 90px; margin-right: 35px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
 
 											<span class="glyphicon glyphicon-calendar" aria-hidden="true"
 												style="margin-left: -35px;"> </span>
 
 											<button type="submit" class="btn btn-default"
-												style="background-color: #dcdcdc; fmargin-left: 380px; margin-top: 0px; width: 80px; height: 28px; display: inline !important; background-color: #212529; color: white; border-radius: 2px; height: 30px; margin-right: 500px;">조회</button>
+												style="background-color: #7e9c8c; fmargin-left: 380px; margin-top: 0px; height: 28px; display: inline !important; color: white; border-radius: 2px; height: 30px; margin-right: 500px; padding-top: 4px; font-size: 13px; margin-bottom: 2px;">조회</button>
 										</div>
+
 									</th>
 								</tr>
 							</tbody>
 						</table>
 					</form>
-					<div  style="padding-top: 20px; height: 0px">
-					</div>
 				</div>
 				<c:choose>
 					<c:when test="${!empty reviewSearchMap.search1}">
-						<div  style="padding-left: 220px;">
-							<table border="1" class="table"
-								style="width: 980px; height: 300px; align: center;">
-								<tbody >
+						<div style="padding-left: 262px;">
+							<table
+								style="width: 900px; height: 300px; align: center; font-size: 13px;">
+								<tbody>
 									<c:choose>
 										<c:when test="${empty reviewSearchMap.reviewSearchList}">
 											<tr style="background-color: white;">
-												<td colspan="5" style="color: black; height: 300px;">작성한
-													리뷰가 없습니다.</td>
+												<td colspan="5"
+													style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">해당기간
+													조회된 리뷰가 없습니다.</td>
 											</tr>
 										</c:when>
 										<c:when test="${!empty reviewSearchMap.reviewSearchList}">
 											<c:forEach var="reviewSearchList" items="${reviewSearchList}">
 												<tr
-													style="height: 30px; background-color: #212529; color: white;">
-													<th colspan="2">
+													style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee; border-left:none;">
+													<th colspan="3"
+														style="padding-top: 5px; padding-bottom: 5px;">
 														<div
-															style="text-align: center; font-size: 15px; padding: 5px">
+															style="text-align: center; font-size: 13px; padding: 5px">
 															<a>${reviewSearchList.productReviewTitle}</a> <a
-																style="float: right"><fmt:formatDate
+																style="float: right; font-weight: normal; font-size: 13px;"><fmt:formatDate
 																	value="${reviewSearchList.reviewDate}" /></a><a
-																style="float: right">작성 날짜 :</a>
+																style="float: right; font-weight: normal; font-size: 13px;">작성
+																날짜 :</a>
 														</div>
 													</th>
 												</tr>
 
-												<tr style="height: 120px">
+												<tr style="height: 120px; background-color: white;">
 													<th
-														style="width: 130px; text-align: left; padding: 10px; flex-direction: row;"
-														onClick="location.href='Product-02'"><img src=""
-														width="110" height="110"></th>
-													<th style="padding: 10px; border-left: hidden;">
-														<div>
+														style="width: 130px; text-align: left; padding: 10px; flex-direction: row;">
+														<a
+														href="${contextPath}/product/viewProduct.do?productNum=${reviewSearchList.productNum}"><img
+															src="${contextPath}/download_product.do?productNum=${reviewSearchList.productNum}&productImage=${reviewSearchList.productImage}"
+															width="90" height="90"></a>
+													</th>
+													<th style="padding: 10px; border-left: hidden; height:233px; ">
+
+														<div style="width: 300px; margin-top:10px; ">
 															<div>
 																<a
 																	href="${contextPath}/product/viewProduct.do?productNum=${reviewSearchList.productNum}">${reviewSearchList.productName}</a>
 															</div>
 															<c:if test="${reviewSearchList.option1value !=null}">
-																<p style="margin-left: 140px; font-size: 13px;">${reviewSearchList.option1Name}
+																<p
+																	style="font-size: 11px; margin-bottom: 5px; font-weight: normal;">${reviewSearchList.option1Name}
 																	: ${reviewSearchList.option1value}</p>
 															</c:if>
 															<c:if test="${reviewSearchList.option2value !=null}">
-																<p style="margin-left: 140px; font-size: 13px;">${reviewSearchList.option2Name}
+																<p
+																	style="font-size: 11px; margin-bottom: 5px; font-weight: normal;">${reviewSearchList.option2Name}
 																	: ${reviewSearchList.option2value}</p>
 															</c:if>
 														</div>
 													</th>
-												</tr>
-												<tr style="height: 100px">
-													<th colspan="2" style="padding-left: 5px;"><input
-														type="text" disabled
-														style="width: 970px; margin-top: 10px; height: 80px; cols: 78px; rows: 4px;"
-														name="contents" value="${reviewSearchList.productContent}">
-													</th>
-												</tr>
-												<tr style="height: 30px; border-top: hidden;">
-													<th style="width: 500px; padding-left: 5px"><a>파일이름:
-															${reviewSearchList.reviewFile}</a> <img id="preview"
-														src="${contextPath}/download_review.do?reviewNum=${reviewSearchList.reviewNum}&reviewFile=${reviewSearchList.reviewFile}"
-														width="50" height="50" /></th>
-													<th
-														style="text-align: right; padding: 5px; border-left: hidden; margin-top: 15px;">
-														<input type="button" name="modify" value="수정 "
-														style="margin-top: 15px;"
-														onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${reviewSearchList.reviewNum}'">
-														<input type="reset" name="reset" value="삭제"
-														onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${reviewSearchList.reviewNum}&memOrderSeqNum=${reviewSearchList.memOrderSeqNum}'">
 
+													<th colspan="2"
+														style="padding-left: 5px; float: right; padding-right: 0px; border-right:none;">
+														<div
+															style="border: 1px solid #eeeeee;  margin-top:10px; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;">${reviewSearchList.productContent}<br>
+															<img id="preview"
+																src="${contextPath}/download_review.do?reviewNum=${reviewSearchList.reviewNum}&reviewFile=${reviewSearchList.reviewFile}"
+																width="120" height="120" /> <br> <input
+																type="button" name="modify" value="수정 "
+																style="margin-top: 15px; margin-left: 435px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${reviewSearchList.reviewNum}'">
+															<input type="reset" name="reset" value="삭제"
+																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${reviewSearchList.reviewNum}&memOrderSeqNum=${reviewSearchList.memOrderSeqNum}'">
+														</div>
 													</th>
 												</tr>
 											</c:forEach>
@@ -403,6 +380,7 @@
 								<c:if test="${pageMaker.prev}">
 
 									<a class="arrow prev"
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage/reviewSearch.do?search1=${reviewSearchMap.search1}&search2=${reviewSearchMap.search2}&page=${pageMaker.startPage-1 }"/>'><i
 										class="fa fa-chevron-left"></i></a>
 
@@ -411,6 +389,7 @@
 									end="${pageMaker.endPage }" var="pageNum">
 
 									<a
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage/reviewSearch.do?search1=${reviewSearchMap.search1}&search2=${reviewSearchMap.search2}&page=${pageNum }"/>'><i
 										class="fa">${pageNum }</i></a>
 
@@ -418,6 +397,7 @@
 								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
 									<a class="arrow next"
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage/reviewSearch.do?search1=${reviewSearchMap.search1}&search2=${reviewSearchMap.search2}&page=${pageMaker.endPage+1 }"/>'><i
 										class="fa fa-chevron-right"></i></a>
 
@@ -428,14 +408,15 @@
 					</c:when>
 
 					<c:when test="${empty reviewSearchMap.search1}">
-						<div  style="padding-left: 220px;">
-							<table border="1" class="table"
-								style="width: 980px; height: 300px; align: center;">
-								<tbody >
+						<div style="padding-left: 262px;">
+							<table class="table"
+								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee; font-size: 13px; width: 800px;">
+								<tbody>
 									<c:choose>
 										<c:when test="${empty mypageReviewMap.mypageReviewList}">
 											<tr style="background-color: white;">
-												<td colspan="5" style="color: black; height: 300px;">작성한
+												<td colspan="5"
+													style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">작성한
 													리뷰가 없습니다.</td>
 											</tr>
 										</c:when>
@@ -443,63 +424,64 @@
 
 											<c:forEach var="mypageReviewList" items="${mypageReviewList}">
 												<tr
-													style="height: 30px; background-color: #212529; color: white;">
-													<th colspan="2">
+													style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
+													<th colspan="3"
+														style="padding-top: 5px; padding-bottom: 5px;">
 														<div
-															style="text-align: center; font-size: 15px; padding: 5px">
+															style="text-align: center; font-size: 13px; padding: 5px">
 															<a>${mypageReviewList.productReviewTitle}</a> <a
-																style="float: right"><fmt:formatDate
+																style="float: right; font-size: 13px; font-weight: normal;"><fmt:formatDate
 																	value="${mypageReviewList.reviewDate}" /></a><a
-																style="float: right">작성 날짜 :</a>
+																style="float: right; font-size: 13px; font-weight: normal;">작성
+																날짜 :</a>
 														</div>
 													</th>
 												</tr>
 
-												<tr style="height: 120px">
+												<tr style="height: 120px; background-color: white;">
 													<th
 														style="width: 130px; text-align: left; padding: 10px; flex-direction: row;">
 														<a
 														href="${contextPath}/product/viewProduct.do?productNum=${mypageReviewList.productNum}"><img
-															src="${contextPath}/download_product.do?productNum=${mypageReviewList.productNum}&productImage=${mypageReviewList.productImage}" width="110" height="110"></a>
+															src="${contextPath}/download_product.do?productNum=${mypageReviewList.productNum}&productImage=${mypageReviewList.productImage}"
+															width="90" height="90"></a>
 													</th>
 													<th style="padding: 10px; border-left: hidden;">
-														<div>
+														<div style="width: 300px;">
 															<div>
 																<a
 																	href="${contextPath}/product/viewProduct.do?productNum=${mypageReviewList.productNum}">${mypageReviewList.productName}</a>
 															</div>
 															<c:if test="${mypageReviewList.option1value !=null}">
-																<p style="margin-left: 140px; font-size: 13px;">${mypageReviewList.option1Name}
+																<p
+																	style="font-size: 11px; margin-bottom: 5px; font-weight: normal;">${mypageReviewList.option1Name}
 																	: ${mypageReviewList.option1value}</p>
 															</c:if>
 															<c:if test="${mypageReviewList.option2value !=null}">
-																<p style="margin-left: 140px; font-size: 13px;">${mypageReviewList.option2Name}
+																<p
+																	style="font-size: 11px; margin-bottom: 5px; font-weight: normal;">${mypageReviewList.option2Name}
 																	: ${mypageReviewList.option2value}</p>
 															</c:if>
 														</div>
 													</th>
-												</tr>
-												<tr style="height: 100px">
-													<th colspan="2" style="padding-left: 5px;"><input
-														type="text" disabled
-														style="width: 970px; margin-top: 10px; height: 80px; cols: 78px; rows: 4px;"
-														name="contents" value="${mypageReviewList.productContent}">
-													</th>
-												</tr>
-												<tr style="height: 30px; border-top: hidden;">
-													<th style="width: 500px; padding-left: 5px"><a>파일이름:
-															${mypageReviewList.reviewFile}</a> <img id="preview"
-														src="${contextPath}/download_review.do?reviewNum=${mypageReviewList.reviewNum}&reviewFile=${mypageReviewList.reviewFile}"
-														width="50" height="50" /></th>
-													<th
-														style="text-align: right; padding: 5px; border-left: hidden; margin-top: 15px;">
-														<input type="button" name="modify" value="수정 "
-														style="margin-top: 15px;"
-														onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${mypageReviewList.reviewNum}'">
-														<input type="reset" name="reset" value="삭제"
-														onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${mypageReviewList.reviewNum}&memOrderSeqNum=${mypageReviewList.memOrderSeqNum}'">
 
+													<th colspan="2"
+														style="padding-left: 5px; float: right; padding-right: 0px;">
+														<div
+															style="border: 1px solid #eeeeee; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;">${mypageReviewList.productContent}<br>
+															<img id="preview"
+																src="${contextPath}/download_review.do?reviewNum=${mypageReviewList.reviewNum}&reviewFile=${mypageReviewList.reviewFile}"
+																width="120" height="120" /> <br> <input
+																type="button" name="modify" value="수정 "
+																style="margin-top: 15px; margin-left: 435px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${mypageReviewList.reviewNum}'">
+															<input type="reset" name="reset" value="삭제"
+																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${mypageReviewList.reviewNum}&memOrderSeqNum=${mypageReviewList.memOrderSeqNum}'">
+														</div>
 													</th>
+
+
 												</tr>
 											</c:forEach>
 
@@ -516,6 +498,7 @@
 								<c:if test="${pageMaker.prev}">
 
 									<a class="arrow prev"
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage_14.do?search1=${mypageReviewMap.search1}&search2=${mypageReviewMap.search2}&page=${pageMaker.startPage-1 }"/>'><i
 										class="fa fa-chevron-left"></i></a>
 
@@ -524,6 +507,7 @@
 									end="${pageMaker.endPage }" var="pageNum">
 
 									<a
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage_14.do?search1=${mypageReviewMap.search1}&search2=${mypageReviewMap.search2}&page=${pageNum }"/>'><i
 										class="fa">${pageNum }</i></a>
 
@@ -531,6 +515,7 @@
 								<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
 									<a class="arrow next"
+										style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px; padding-left: 4px; padding-right: 5px;"
 										href='<c:url value="/mypage_14.do?search1=${mypageReviewMap.search1}&search2=${mypageReviewMap.search2}&page=${pageMaker.endPage+1 }"/>'><i
 										class="fa fa-chevron-right"></i></a>
 

@@ -212,12 +212,12 @@
 
 	<!-- 마이페이지 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
 		<div class="container">
 
 			<!-- 마이페이지 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
-		    <jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
+			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 			<!-- 최근 본 상품 끝 -->
 			<!-- Left Menu -->
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
@@ -225,13 +225,12 @@
 			<!-- left Menu 끝-->
 			<!-- 마이페이지 상단 공통 ui -->
 			<div
-				style="font-size: 20px; font-weight: bold; margin-left: 18px; padding-bottom: 7px;">주문/배송조회</div>
-			
-			<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp"/>
+				style="font-size: 15px; font-weight: bold; margin-left: 18px; padding-bottom: 7px; color: #7e9c8c;">주문/배송조회</div>
+
+			<jsp:include page="/WEB-INF/views/common/mypage_topmenu.jsp" />
 			<!-- 마이페이지 상단 공통 ui 끝-->
 
 			<div class="table_01" style="padding-top: 30px; height: 100px;">
-
 
 				<form name="myOrderInfoSearch"
 					action="${contextPath}/mypage/myOrderInfoSearch.do" method="post">
@@ -241,27 +240,28 @@
 
 
 							<tr align="center"
-								style="padding-top: 10px; padding-left: 10px; font-size: 15px;"
+								style="padding-top: 10px; padding-left: 10px; font-size: 13px;"
 								height="35%">
 								<th style="text-align: left;">
 
 									<div style="display: inline !important;">
-										<p style="float: left; width: 70px; margin-top: 10px;">구매기간</p>
+										<p
+											style="float: left; width: 60px; margin-top: 13px; margin-bottom: 5px; font-weight: normal;">구매기간</p>
 
 										<input type="text" id="datepicker1" name="search1"
 											autocomplete='off'
-											style="width: 120px; margin-right: 50px; margin-top: 10px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+											style="margin-right: 35px; width: 90px; margin-top: 10px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
 
 										<span class="glyphicon glyphicon-calendar" aria-hidden="true"
 											style="margin-left: -35px;"> </span> ~ㅤ<input type="text"
 											autocomplete='off' name="search2" id="datepicker2"
-											style="width: 120px; margin-right: 50px; height: 30px; flaot: left; border: 1px solid #bebebe; border-radius: 2px; display: inline !important;">
+											style="width: 90px; margin-right: 35px; height: 30px; flaot: left; border: 1px solid #dcdcdc; border-radius: 2px; display: inline !important;">
 
 										<span class="glyphicon glyphicon-calendar" aria-hidden="true"
 											style="margin-left: -35px;"> </span>
 
 										<button type="submit" class="btn btn-default"
-											style="background-color: #dcdcdc; fmargin-left: 380px; margin-top: 0px; width: 80px; height: 28px; display: inline !important; background-color: #212529; color: white; border-radius: 2px; height: 30px; margin-right: 500px; padding-top: 4px; font-size: 14px;">조회</button>
+											style="background-color: #7e9c8c; fmargin-left: 380px; margin-top: 0px; height: 28px; display: inline !important; color: white; border-radius: 2px; height: 30px; margin-right: 500px; padding-top: 4px; font-size: 13px; margin-bottom: 2px;">조회</button>
 									</div>
 
 								</th>
@@ -273,29 +273,25 @@
 			<c:choose>
 				<c:when test="${!empty myOrderInfoSearchMap.search1}">
 					<div id="MyPage_top">
-						<table border="1"
+						<table 
 							style="width: 1000px; height: 180px; align: center;">
 							<tbody id="MyPage_center2">
 								<tr height="30%"
-									style="background-color: #212529; color: white;">
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 									<th
-										style="font-size: 14px; text-align: center; border-left: 0;"
-										width="100" height="40"
-										style="background-color: #212529; color: white;">주문일자</th>
-									<th style="font-size: 15px; text-align: center;" width="250"
-										style="background-color: #212529; color: white;">상품명</th>
-									<th style="font-size: 15px; text-align: center;" width="70"
-										style="background-color: #212529; color: white;">수량</th>
-									<th style="font-size: 15px; text-align: center;" width="110"
-										style="background-color: #212529; color: white;">금액</th>
+										style="font-size: 13px; text-align: center; border-left: none;"
+										width="100" height="40">주문일자</th>
+									<th style="font-size: 13px; text-align: center;" width="250">상품명</th>
+									<th style="font-size: 13px; text-align: center;" width="70">수량</th>
+									<th style="font-size: 13px; text-align: center;" width="110">금액</th>
 									<th
-										style="font-size: 14px; text-align: center; border-right: 0;"
+										style="font-size: 13px; text-align: center; border-right: none;"
 										width="130">현재상태</th>
 								</tr>
 								<c:choose>
 									<c:when
 										test="${empty myOrderInfoSearchMap.myOrderInfoSearchList}">
-										<tr style="backgroundcolor: white; width: 1000px;">
+										<tr style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">
 											<td colspan="5">찾으시는 결과가 없습니다.</td>
 										</tr>
 									</c:when>
@@ -305,36 +301,38 @@
 											items="${myOrderInfoSearchList}">
 											<tr height="70%">
 												<th
-													style="text-align: center; font-size: 14px; border-right: 1px solid #c6c8ca;"><fmt:formatDate
+													style="text-align: center; font-size: 13px; border:1px solid #eeeeee; border-bottom:1px solid #eeeeee; border-left:none !important; font-weight:normal;"><fmt:formatDate
 														value="${myOrderInfoSearchList.memOrderDate}" /></th>
 												<th
-													style="padding: 10px; text-align: left; height: 120px; border: 1px solid #c6c8ca;">
-													<div>
-															<a href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoSearchList.productNum}">
-														<img
+													style="padding: 10px; text-align: left; height: 120px; border: 1px solid #eeeeee; font-weight:normal;">
+													<div style="height:90px; ">
+														<a
+															href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoSearchList.productNum}">
+															<img
 															src="${contextPath}/download_product.do?productNum=${myOrderInfoSearchList.productNum}&productImage=${myOrderInfoSearchList.productImage}"
-															width="90" height="90" style="float: left;"></a> <a
-															style="margin-left: 30px; font-size: 14px;"
+															width="90" height="90" style="float: left;">
+														</a> <a style="margin-left: 30px; font-size: 13px; font-weight:bold;"
 															href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoSearchList.productNum}">${myOrderInfoSearchList.productName}</a>
 														<c:if test="${myOrderInfoSearchList.option1value !=null}">
-															<p style="margin-left: 121px; font-size: 12px;">${myOrderInfoSearchList.option1Name}
+															<p style="margin-left: 121px; text-align:left; font-size: 11px; margin-bottom:5px;">${myOrderInfoSearchList.option1Name}
 																: ${myOrderInfoSearchList.option1value}</p>
 														</c:if>
 														<c:if test="${myOrderInfoSearchList.option2value !=null}">
-															<p style="margin-left: 121px; font-size: 12px;">${myOrderInfoSearchList.option2Name}
+															<p style="margin-left: 121px;background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle;  height:80px; color:#5f5f5f; font-size: 11px;  margin-bottom:5px;">${myOrderInfoSearchList.option2Name}
 																: ${myOrderInfoSearchList.option2value}</p>
 														</c:if>
 													</div>
 
 												</th>
 												<th
-													style="text-align: center; font-size: 14px; border: 1px solid #c6c8ca;">${myOrderInfoSearchList.productCnt}</th>
+													style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight:normal;">${myOrderInfoSearchList.productCnt}</th>
 												<th
-													style="text-align: center; font-size: 14px; border: 1px solid #c6c8ca;">${myOrderInfoSearchList.productPrice}</th>
+													style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight:normal;"><fmt:formatNumber
+														pattern="###,###,###" value="${myOrderInfoSearchList.productPrice}" />원</th>
 												<th
-													style="text-align: center; height: 120px; font-size: 14px;"><ins
+													style="text-align: center; height: 120px; font-size: 12px; border-bottom:1px solid #eeeeee;"><ins
 														onclick="location='#'" id="now-state"
-														style="color: red; font-size: 12px; border-left: 1px solid #c6c8ca;"">
+														style="color: red; font-size: 12px; border-left: 1px solid #eeeeee; border-bottom:1px solid #eeeeee; font-weight:normal;">
 														${myOrderInfoSearchList.deliveryStatus}<br>
 													</ins> <c:choose>
 														<c:when
@@ -342,7 +340,7 @@
 
 															<form>
 																<input type="button" name="purchaseConfirm"
-																	style="font-size: 12px; width: 110px; border: none; background-color: #212529; margin-bottom: 5px; color: white; font-size: 14px;"
+																	style="font-size: 12px; width: 110px; border: none; cursor:pointer;background-color: #7e9c8c; margin-bottom: 5px; color: white; "
 																	class="confirmation"
 																	onclick="confirmOrderConfirm(this.form)" value="구매확정">
 																<input type="hidden" id="memOrderSeqNum"
@@ -353,14 +351,14 @@
 																<c:when
 																	test="${myOrderInfoSearchList.returnConfirm == '반품신청(미)'}">
 																	<input type="button"
-																		style="font-size: 12px; width: 110px; background-color: #212529; border: none; margin-bottom: 5px; color: white; font-size: 14px;"
+																		style="font-size: 12px; width: 110px; background-color: white; border: 1px solid #eeeeee; cursor:pointer;margin-bottom: 5px; color: gray;"
 																		onclick="location.href='${contextPath}/mypage/returnWrite.do?&productNum=${myOrderInfoSearchList.productNum}&memOrderSeqNum=${myOrderInfoSearchList.memOrderSeqNum}'"
 																		value="반품신청">
 																</c:when>
 																<c:when
 																	test="${myOrderInfoSearchList.returnConfirm == '반품신청(완)'}">
 																	<input type="button"
-																		style="font-size: 12px; width: 110px; background-color: #212529; border: none; margin-bottom: 5px; color: white; font-size: 14px;"
+																		style="font-size: 12px; width: 110px; background-color: white; border:1px solid #eeeeee; cursor:pointer;margin-bottom: 5px;  color: gray;"
 																		onclick="returnConfirmResult()" value="반품신청">
 																</c:when>
 															</c:choose>
@@ -374,7 +372,7 @@
 																<c:when
 																	test="${myOrderInfoSearchList.reviewConfirm == '리뷰작성(미)'}">
 																	<input type="button" name="reviewConfirm"
-																		style="font-size: 12px; width: 110px; border: none; background-color: #212529; margin-bottom: 5px; font-size: 14px; color: white;"
+																		style="font-size: 12px; width: 110px; border: none; background-color: #7e9c8c; margin-bottom: 5px;cursor:pointer; color: white;"
 																		id="pressbtn1" class="confirmation"
 																		onclick="location.href='${contextPath}/mypage/reviewWrite.do?productNum=${myOrderInfoSearchList.productNum}&memOrderSeqNum=${myOrderInfoSearchList.memOrderSeqNum}'"
 																		value="리뷰작성">
@@ -382,7 +380,7 @@
 																<c:when
 																	test="${myOrderInfoSearchList.reviewConfirm == '리뷰작성(완)'}">
 																	<input type="button" name="reviewConfirm"
-																		style="font-size: 12px; width: 110px; border: none; background-color: #212529; margin-bottom: 5px; color: white; font-size: 14px;"
+																		style="font-size: 12px; width: 110px; border: none; background-color: #7e9c8c; margin-bottom: 5px; cursor:pointer;color: white;"
 																		id="pressbtn1" class="confirmation"
 																		onclick="reviewConfirmResult()" value="리뷰작성">
 																</c:when>
@@ -390,7 +388,7 @@
 														</c:when>
 													</c:choose>
 													<button
-														style="font-size: 12px; width: 110px; background-color: #212529; border: none; color: white; font-size: 14px;"
+														style="font-size: 12px; width: 110px; background-color: #5f5f5f; border: none; color: white; font-size: 12px; cursor:pointer;"
 														onclick="location.href='${contextPath}/mypage/viewMyOrderInfo.do?memOrderNum=${myOrderInfoSearchList.memOrderNum}&memOrderSeqNum=${myOrderInfoSearchList.memOrderSeqNum}'">주문
 														상세보기</button></th>
 											</tr>
@@ -407,7 +405,7 @@
 							<c:if test="${pageMaker.prev}">
 
 								<a class="arrow prev"
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+									style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 									href='<c:url value="/mypage/myOrderInfoSearch.do?search1=${myOrderInfoSearchMap.search1}&search2=${myOrderInfoSearchMap.search2}&page=${pageMaker.startPage-1 }"/>'><i
 									class="fa fa-chevron-left"></i></a>
 
@@ -416,7 +414,7 @@
 								end="${pageMaker.endPage }" var="pageNum">
 
 								<a
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+									style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 									href='<c:url value="/mypage/myOrderInfoSearch.do?search1=${myOrderInfoSearchMap.search1}&search2=${myOrderInfoSearchMap.search2}&page=${pageNum }"/>'><i
 									class="fa">${pageNum }</i></a>
 
@@ -424,7 +422,7 @@
 							<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
 								<a class="arrow next"
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+									style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 									href='<c:url value="/mypage/myOrderInfoSearch.do?search1=${myOrderInfoSearchMap.search1}&search2=${myOrderInfoSearchMap.search2}&page=${pageMaker.endPage+1 }"/>'><i
 									class="fa fa-chevron-right"></i></a>
 
@@ -439,59 +437,57 @@
 						<table style="width: 1000px; height: 180px; align: center;">
 							<tbody id="MyPage_center2">
 								<tr height="30%"
-									style="background-color: #212529; color: white;">
+									style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 									<th
-										style="font-size: 15px; text-align: center; border-left: 0;"
-										width="100" height="40"
-										style="background-color: #212529; color: white;">주문일자</th>
-									<th style="font-size: 15px; text-align: center;" width="250"
-										style="background-color: #212529; color: white;">상품명</th>
-									<th style="font-size: 15px; text-align: center;" width="70"
-										style="background-color: #212529; color: white;">수량</th>
-									<th style="font-size: 15px; text-align: center;" width="110"
-										style="background-color: #212529; color: white;">금액</th>
+										style="font-size: 13px; text-align: center; border-left: 0;"
+										width="100" height="40">주문일자</th>
+									<th style="font-size: 13px; text-align: center;" width="250">상품명</th>
+									<th style="font-size: 13px; text-align: center;" width="70">수량</th>
+									<th style="font-size: 13px; text-align: center;" width="110">금액</th>
 									<th
-										style="font-size: 14px; text-align: center; border-right: 0;"
+										style="font-size: 13px; text-align: center; border-right: 0;"
 										width="130">현재상태</th>
 								</tr>
 								<c:choose>
 									<c:when test="${empty myOrderInfoMap.myOrderInfoList}">
-										<tr style="backgroundcolor: white; width: 1000px;">
+										<tr style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; height:80px; color:#5f5f5f; font-size:13px; text-align:center;">
 											<td colspan="5">주문/배송조회 내역이 없습니다.</td>
 										</tr>
 									</c:when>
 									<c:when test="${!empty myOrderInfoMap.myOrderInfoList}">
 										<c:forEach var="myOrderInfoList" items="${myOrderInfoList}">
-											<tr height="70%" style="border-bottom: 1px solid #c6c8ca;">
+											<tr height="70%" style="border-bottom: 1px solid #eeeeee; ">
 												<th
-													style="text-align: center; font-size: 14px; border-right: 1px solid #c6c8ca;"><fmt:formatDate
+													style="text-align: center; font-size: 13px; border-right: none; font-weight:normal;"><fmt:formatDate
 														value="${myOrderInfoList.memOrderDate}" /></th>
 												<th
-													style="padding: 10px; text-align: left; height: 120px; border: 1px solid #c6c8ca;">
-													<div>
-														<a href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoList.productNum}">
-														<img
+													style="padding: 10px; text-align: left; height: 120px; border: 1px solid #eeeeee; font-weight:normal;">
+													<div style="height:90px;">
+														<a
+															href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoList.productNum}">
+															<img
 															src="${contextPath}/download_product.do?productNum=${myOrderInfoList.productNum}&productImage=${myOrderInfoList.productImage}"
-															width="90" height="90" style="float: left;"> </a><a
-															style="margin-left: 30px; font-size: 14px;"
+															width="90" height="90" style="float: left;">
+														</a><a style="margin-left: 30px; font-size: 13px; font-weight:bold;"
 															href="${contextPath}/product/viewProduct.do?productNum=${myOrderInfoList.productNum}">${myOrderInfoList.productName}</a>
 														<c:if test="${myOrderInfoList.option1value !=null}">
-															<p style="margin-left: 121px; font-size: 11px;">${myOrderInfoList.option1Name}
+															<p style="margin-left: 121px; font-size: 11px; margin-bottom:5px;">${myOrderInfoList.option1Name}
 																: ${myOrderInfoList.option1value}</p>
 														</c:if>
 														<c:if test="${myOrderInfoList.option2value !=null}">
-															<p style="margin-left: 121px; font-size: 11px;">${myOrderInfoList.option2Name}
+															<p style="margin-left: 121px; font-size: 11px;  margin-bottom:5px;">${myOrderInfoList.option2Name}
 																: ${myOrderInfoList.option2value}</p>
 														</c:if>
 													</div>
 
 												</th>
 												<th
-													style="text-align: center; font-size: 14px; border: 1px solid #c6c8ca;">${myOrderInfoList.productCnt}</th>
+													style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight:normal;">${myOrderInfoList.productCnt}</th>
 												<th
-													style="text-align: center; font-size: 14px; border: 1px solid #c6c8ca;">${myOrderInfoList.productPrice}</th>
+													style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight:normal;"><fmt:formatNumber
+														pattern="###,###,###" value="${myOrderInfoList.productPrice}" />원</th>
 												<th
-													style="text-align: center; height: 120px; font-size: 14px;"><ins
+													style="text-align: center; height: 120px; font-size: 12px; border-bottom:1px solid #eeeeee;"><ins
 														onclick="location='#'" id="now-state"
 														style="color: red; font-size: 12px;">
 														${myOrderInfoList.deliveryStatus}<br>
@@ -501,7 +497,7 @@
 
 															<form>
 																<input type="button" name="purchaseConfirm"
-																	style="font-size: 12px; width: 110px; background-color: #212529; border: none; margin-bottom: 5px; color: white;"
+																	style="font-size: 12px; width: 110px; background-color: #7e9c8c; border: none; margin-bottom: 5px; color: white; cursor:pointer;"
 																	class="confirmation"
 																	onclick="confirmOrderConfirm(this.form)" value="구매확정">
 																<input type="hidden" id="memOrderSeqNum"
@@ -512,15 +508,15 @@
 																<c:when
 																	test="${myOrderInfoList.returnConfirm == '반품신청(미)'}">
 																	<input type="button"
-																		style="font-size: 12px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white; border: none;"
+																		style="font-size: 12px; width: 110px; background-color: white; margin-bottom: 5px; color: gry; border: 1px solid #eeeeee; cursor:pointer;"
 																		onclick="location.href='${contextPath}/mypage/returnWrite.do?&productNum=${myOrderInfoList.productNum}&memOrderSeqNum=${myOrderInfoList.memOrderSeqNum}'"
 																		value="반품신청">
 																</c:when>
 																<c:when
 																	test="${myOrderInfoList.returnConfirm == '반품신청(완)'}">
 																	<input type="button"
-																		style="font-size: 12px; width: 110px; background-color: #212529; margin-bottom: 5px; color: white; border: none;"
-																		onclick="returnConfirmResult()" value="반품신청">
+																		style="font-size: 12px; width: 110px; background-color: #white; margin-bottom: 5px; color: gray; border: 1px solid #eeeeee; cursor:pointer;"
+																		onclick="returnConfirmResult()" value="반품신청완료">
 																</c:when>
 															</c:choose>
 														</c:when>
@@ -532,7 +528,7 @@
 																<c:when
 																	test="${myOrderInfoList.reviewConfirm == '리뷰작성(미)'}">
 																	<input type="button" name="reviewConfirm"
-																		style="font-size: 12px; width: 110px; background-color: #28a745; margin-bottom: 5px; color: white; border: none;"
+																		style="font-size: 12px; width: 110px; background-color: #7e9c8c; margin-bottom: 5px; color: white; border: none; cursor:pointer;"
 																		id="pressbtn1" class="confirmation"
 																		onclick="location.href='${contextPath}/mypage/reviewWrite.do?productNum=${myOrderInfoList.productNum}&memOrderSeqNum=${myOrderInfoList.memOrderSeqNum}'"
 																		value="리뷰작성">
@@ -540,16 +536,16 @@
 																<c:when
 																	test="${myOrderInfoList.reviewConfirm == '리뷰작성(완)'}">
 																	<input type="button" name="reviewConfirm"
-																		style="font-size: 12px; width: 110px; background-color: #28a745; border: none; margin-bottom: 5px; color: white;"
+																		style="font-size: 12px; width: 110px; background-color: #7e9c8c; border: none; margin-bottom: 5px; color: white; cursor:pointer;"
 																		id="pressbtn1" class="confirmation"
-																		onclick="reviewConfirmResult()" value="리뷰작성">
+																		onclick="reviewConfirmResult()" value="리뷰작성완료">
 																</c:when>
 															</c:choose>
 														</c:when>
 													</c:choose>
 
 													<button
-														style="font-size: 12px; width: 110px; background-color: #212529; color: white; border-radius: 2px; border: none;"
+														style="font-size: 12px; width: 110px; background-color: #5f5f5f; color: white; border-radius: 2px; border: none; cursor:pointer;"
 														onclick="location.href='${contextPath}/mypage/viewMyOrderInfo.do?memOrderNum=${myOrderInfoList.memOrderNum}&memOrderSeqNum=${myOrderInfoList.memOrderSeqNum}'">주문
 														상세보기</button></th>
 											</tr>
@@ -565,8 +561,8 @@
 
 							<c:if test="${pageMaker.prev}">
 
-								<a class="arrow prev"
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+								<a class="arrow prev" style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
+									
 									href='<c:url value="/mypage_04.do?&page=${pageMaker.startPage-1 }"/>'><i
 									class="fa fa-chevron-left"></i></a>
 
@@ -574,8 +570,8 @@
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="pageNum">
 
-								<a
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+								<a 
+									style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 									href='<c:url value="/mypage_04.do?&page=${pageNum }"/>'><i
 									class="fa">${pageNum }</i></a>
 
@@ -583,7 +579,7 @@
 							<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 
 								<a class="arrow next"
-									style="border: none; color: black; margin-right: 0px; margin-left: 0px;"
+									style="border: 1px solid #7e9c8c; color: #7e9c8c; margin-right: 0px; margin-left: 2px;  padding-left:4px; padding-right:5px;"
 									href='<c:url value="/mypage_04.do?&page=${pageMaker.endPage+1 }"/>'><i
 									class="fa fa-chevron-right"></i></a>
 

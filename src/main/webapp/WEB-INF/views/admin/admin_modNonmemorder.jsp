@@ -145,7 +145,7 @@ function Check_order() {
 						<tbody>
 						<tr class="tr1"
 									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-							<th scope="col" style="vertical-align: middle;"><img src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productImage}" width=80 height=80>
+							<th scope="col" style="vertical-align: middle;"><img src="${contextPath}/download_product.do?productNum=${item.productNum}&productImage=${item.productimage}" width=80 height=80>
 							</th>
 							<th scope="col" style="vertical-align: middle;">${item.productName}
 							<th scope="col" style="text-align: left; vertical-align: middle;">${item.option1name}
