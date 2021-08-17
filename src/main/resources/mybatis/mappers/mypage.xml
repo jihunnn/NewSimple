@@ -238,9 +238,9 @@
 		update  simple.productReview
 		set productReviewTitle = #{productReviewTitle},
 		productContent =
-		#{productContent},
+		#{productContent}
 		<if test="reviewFile!='' and reviewFile!=null">
-			reviewFile=#{reviewFile}
+			,reviewFile=#{reviewFile}
 		</if>
 		where reviewNum=#{reviewNum}
 	</update>

@@ -175,9 +175,11 @@
 	<select id="adminInquirySearchList" resultMap="inquiryResult">
 	<![CDATA[
 			
-			select * from simple.inquiry where inquiryDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by inquiryNum desc
+			select i.* ,memName
+			 from simple.inquiry as i left join simple.member as m on i.memId=m.memId
+		where inquiryDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day)
+		 order by inquiryNum desc
 			limit #{pageStart}, #{perPageNum};
-			;
 			
 
 	]]>
@@ -186,8 +188,10 @@
 	<select id="adminInquirySearchCount" resultType="int"
 		parameterType="java.util.Map">
 	<![CDATA[
-			
-			select count(*) from simple.inquiry where inquiryDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+			select count(*)
+		from simple.inquiry as i left join simple.member as m on i.memId=m.memId
+		where inquiryDate between #{search1} and  DATE_ADD(#{search2}, interval 1 day);
+
 			
 
 	]]>

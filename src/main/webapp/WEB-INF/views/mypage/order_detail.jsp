@@ -261,7 +261,8 @@
 										<th
 											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight: normal;">${memOrderNum.productCnt}</th>
 										<th
-											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight: normal;">${memOrderNum.productPrice}</th>
+											style="text-align: center; font-size: 13px; border: 1px solid #eeeeee; font-weight: normal;"><fmt:formatNumber
+														pattern="###,###,###" value="${memOrderNum.productPrice}"/>원</th>
 										<th
 											style="text-align: center; height: 120px; font-size: 12px; border-bottom: 1px solid #eeeeee;"><ins
 												onclick="location='#'" id="now-state"
@@ -363,7 +364,7 @@
 							style="padding-top: 10px">
 							<input type="button" value="목 록"
 								onclick="location.href='${contextPath}/mypage_04.do'"
-								style=" width: 104px; height: 34px;  background-color: #7e9c8c; font-size:13px; border:none; border-redius:2px; color: white; margin-left: 400px; margin-top: 30px;">
+								style=" width: 104px; height: 34px;  background-color: #7e9c8c; font-size:13px; border:none; border-redius:2px; color: white; margin-left: 200px; margin-top: 30px;">
 						</div>
 					</div>
 				</div>

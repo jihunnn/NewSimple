@@ -244,7 +244,9 @@
 						<td scope="col" width="100">번호</td>
 						<td scope="col" width="150">문의유형</td>
 						<td scope="col" width="500"><p style="margin-bottom: 0px;">제목</p></td>
+												<c:if test="${AdminisLogOn == true && admin != null}" ><td scope="col" width="150">이름</td></c:if>
 						<td scope="col" width="150">작성일</td>
+
 					</tr>
 					<c:choose>
 						<c:when test="${!empty inquirySearchMap.search1}">
@@ -267,6 +269,9 @@
 											<td align="left" scope="col" width="500"><a
 												href="${contextPath}/board/viewInquiry.do?search1=${inquirySearchMap.search1}&search2=${inquirySearchMap.search2}&inquiryNum=${inquirySearch.inquiryNum}"
 												style="color: black; padding-left: 30px; margin-bottom: 0px;">${inquirySearch.inquiryTitle}</a></td>
+												<c:if test="${AdminisLogOn == true && admin != null}" >
+												<td scope="col" width="150">${inquirySearch.memName}</td>
+													</c:if>
 											<td scope="col" width="150"><fmt:formatDate
 													value="${inquirySearch.inquiryDate}" /></td>
 										</tr>
@@ -307,6 +312,9 @@
 											<td align="left" scope="col" width="500"><a
 												href="${contextPath}/board/viewInquiry.do?inquiryNum=${inquiry.inquiryNum}"
 												style="color: black; padding-left: 30px; margin-bottom: 0px;">${inquiry.inquiryTitle}</a></td>
+												<c:if test="${AdminisLogOn == true && admin != null}" >
+												<td scope="col" width="150">${inquiry.memName}</td>
+													</c:if>
 											<td scope="col" width="150"><fmt:formatDate
 													value="${inquiry.inquiryDate}" /></td>
 										</tr>

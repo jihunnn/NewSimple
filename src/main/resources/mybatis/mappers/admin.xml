@@ -94,9 +94,10 @@
 		parameterType="java.util.HashMap" resultMap="inquiryResult">
 	<![CDATA[
 			
-			select * from simple.inquiry  order by inquiryNum desc
-			limit #{pageStart}, #{perPageNum};
-			
+			select i.*, m.memName
+		from simple.inquiry as i left join simple.member as m on i.memId=m.memId
+		order by inquiryNum desc
+		limit #{pageStart}, #{perPageNum};
 
 	]]>
 	</select>
