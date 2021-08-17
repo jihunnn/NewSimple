@@ -153,6 +153,7 @@ public class MemberControllerImpl implements MemberController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/main.do");
+		
 		return mav;
 	}
 
@@ -370,6 +371,14 @@ public class MemberControllerImpl implements MemberController {
 
 	@RequestMapping(value = "/join_03.do", method = RequestMethod.GET)
 	private ModelAndView join_03(HttpServletRequest request, HttpServletResponse response) {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/join_04.do", method = RequestMethod.GET)
+	private ModelAndView join_04(HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
@@ -650,18 +659,18 @@ public class MemberControllerImpl implements MemberController {
 		String Id = userInfo.path("id").asText();
 
 		String Name = null;
-		String Email = null;
+
 
 		// 유저정보 카카오에서 가져오기 Get properties
 		JsonNode properties = userInfo.path("properties");
 		JsonNode kakao_account = userInfo.path("kakao_account");
 
 		Name = properties.path("nickname").asText();
-		Email = kakao_account.path("email").asText();
+
 
 		System.out.println("memId : " + Id);
 		System.out.println("memName : " + Name);
-		System.out.println("memEmail : " + Email);
+
 
 		MemberVO member = new MemberVO();
 		member.setmemId(Id);
@@ -679,24 +688,15 @@ public class MemberControllerImpl implements MemberController {
 
 			// 4.파싱 세션으로 저장//세션 생성
 			model.addAttribute("Id", Id);
-			model.addAttribute("Email", Email);
+
 			model.addAttribute("Name", Name);
 			model.addAttribute("result", userInfo);
 			System.out.println(userInfo);
 
-			String FullmemEmail = Email;
 
-			String e1 = "@";
 
-			String[] memEmail = FullmemEmail.split(e1);
 
-			for (int i = 0; i < memEmail.length; i++) {
-			}
-
-			model.addAttribute("Email0", memEmail[0]);
-			model.addAttribute("Email1", memEmail[1]);
-
-			return "join_03";
+			return "join_04";
 		}
 
 	}

@@ -32,6 +32,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/join_03.jsp" />
 	</definition>
+	<definition name="join_04" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/join_04.jsp" />
+	</definition>
 
 	<definition name="login_01" extends="baseLayout">
 		<put-attribute name="body"
