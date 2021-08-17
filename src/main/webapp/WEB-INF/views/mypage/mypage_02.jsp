@@ -194,8 +194,8 @@
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
 				flush="false" />
 			<!-- left Menu 끝-->
-
-			<form action="${contextPath}/mypage_03.do" method="post">
+			
+			<form action="${contextPath}/modPwdCheck01.do" method="post">
 				<div class="container02"
 					style="padding-left: 300px; padding-top: 30px;">
 					<div id="MyPage_top" style="margin-bottom:50px;">
@@ -204,7 +204,6 @@
 													<h6
 							style="text-align: center; padding-left: 60px; font-size: 14px;">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</h6>
 					</div>
-
 					<div id="MyPage_top2" style="padding-top: 10px; height: 50px; padding-left:220px;">
 						<p style="font-size:13px;">
 							PASSWORD<input type="password" name="memPwd"
@@ -221,6 +220,8 @@
 					</div>
 				</div>
 			</form>
+		
+			
 		</div>
 	</section>
 	<br>
