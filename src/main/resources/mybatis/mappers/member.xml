@@ -98,7 +98,7 @@
 		<![CDATA[ 
 
 			insert into simple.member(memId, memName, memPwd, memEmail, memPhoneNum, memAdr, logintype) 
-			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"카카오");
+			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"네이버");
 		]]>
 	</insert>
 
@@ -111,7 +111,7 @@
 		]]>
 	</select>
 
-     <!--DB에있는 네이버아이디정보로로그인(네이버로그인) -->
+     <!--DB에있는 카카오아이디정보로로그인(카카오로그인) -->
 	<select id="loginBykakao" resultType="memberVO" parameterType="memberVO">
 		<![CDATA[ 
 
@@ -119,12 +119,12 @@
 		where memId = #{memId};
 		]]>
 	</select>
-	<!-- 네이버아이디로로그인 후 추가정보기입 -->
+	<!-- 카카오아이디로로그인 후 추가정보기입 -->
 	<insert id="insertMember_kakao" parameterType="memberVO">
 		<![CDATA[ 
 
 			insert into simple.member(memId, memName, memPwd, memEmail, memPhoneNum, memAdr, logintype) 
-			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"네이버");
+			values(#{memId},#{memName},#{memPwd},(select concat_ws('@',#{memEmail},#{memEmail1})),(select concat_ws('-',#{memPhoneNum},#{memPhoneNum1},#{memPhoneNum2})),(select concat_ws('-',#{memAdr},#{memAdr1},#{memAdr2})),"카카오");
 		]]>
 	</insert>
 

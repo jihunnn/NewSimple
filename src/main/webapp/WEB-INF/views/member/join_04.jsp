@@ -80,7 +80,7 @@ function div_show(selectList) {
 	//로그인
 	function Check_Join() {
 		var form = document.CheckJoin;
-
+		
 		
 		if (form.memEmail.value == "") {
 			alert("이메일을 입력하지 않았습니다.")
@@ -137,7 +137,8 @@ function div_show(selectList) {
 			alert("주소를 입력하지 않았습니다.")
 			form.memAdr.focus();
 			return false;
-		}if (form.memAdr2.value == "") {
+		}
+		if (form.memAdr2.value == "") {
 			alert("상세주소를 입력하지 않았습니다.")
 			form.memAdr2.focus();
 			return false;
@@ -161,6 +162,7 @@ function div_show(selectList) {
        
             form.submit();
         }
+
 	}
 	function checkAllCheckbox(obj) {
 		$("input[name='agree']").prop('checked', true);
@@ -195,7 +197,6 @@ function div_show(selectList) {
 			});
 		});
 	});
-
 	//핸드폰 인증 팝업창
 	$(function(){
 		$("#BtnPhoneConf").click(function(){
@@ -248,6 +249,8 @@ function div_show(selectList) {
 		)}
 	)
 	
+	
+
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -303,12 +306,10 @@ function div_show(selectList) {
 	<section class="ftco-section testimony-section"
 		style="padding-top: 0px;">
 		<div class="container" style="height: 650px">
-		
-			
-
+	
 			<form name="CheckJoin" action="${contextPath}/addMembers_kakao.do"
 				method="post">
-					<section class="ftco-section testimony-section" id="sect"
+				<section class="ftco-section testimony-section" id="sect"
 					style="paggin-top: 100px; width: 960px; margin-left: 100px;">
 
 					<div class="container" style="width: 400px; padding-right: 0px;">
@@ -318,12 +319,12 @@ function div_show(selectList) {
 								<table style="wdith: 500px; height: 330px; text-align: left; font-size: 14px;">
 									<tr>
 										<td class="user_name">
-											<div align="right" style="width: 80px;">
+											<div align="left" style="width: 80px;">
 												<a
 													style="color: red; padding-right: 5px; write-space: nowrap; margin-bottom: 10px;"></a>
 											</div>
 										</td>
-										<td colspan="3" class="user_name" style="padding-left: 10px;">
+										<td colspan="3" class="user_name" style="padding-left: 50px;">
 											<input type="hidden" name="memName" readonly size="20" value="${Name}"
 											style="margin-bottom: 10px;">
 										</td>
@@ -352,9 +353,8 @@ function div_show(selectList) {
 										</td>
 										<td colspan="3" class="email" style="padding-left: 50px;">
 											<input type="text" name="memEmail" placeholder="영문,대소문자,숫자만 입력가능" value="${Email0}" size="13"
-												style="margin-bottom: 10px;border: 1px solid #dcdcdc; width: 170px; height: 36px; color: #b3b3b3; font-size: 12px;"> @ <select
+											style="margin-bottom: 10px;border: 1px solid #dcdcdc; width: 170px; height: 36px; color: #b3b3b3; font-size: 12px;"> @ <select
 											name="memEmail1" id="selcet1" style="border: 1px solid #dcdcdc; width: 134px; height: 36px;">
-												<option value="${Email1}">${Email1}</option>
 												<option value="naver.com">naver.com</option>
 												<option value="gmail.com">gmail.com</option>
 												<option value="nate.com">nate.com</option>
@@ -382,8 +382,8 @@ function div_show(selectList) {
 												<option value="010">010</option>
 										</select>- <input type="text" name="memPhoneNum1" value="${Mobile1}" size="3" id="phone2"
 										style="border: 1px solid #dcdcdc; width: 77px; height: 36px;">-
-											<input type="text" name="memPhoneNum2" value="${Mobile2}"id="phone3"
-											style="border: 1px solid #dcdcdc; width: 77px; height: 36px;" size="3">
+											<input type="text" name="memPhoneNum2" value="${Mobile2}" size="3" id="phone3"
+											style="border: 1px solid #dcdcdc; width: 77px; height: 36px;">
 											<button type="button" name="phone_certification" id="BtnPhoneConf" onclick="div_show('0');"
 											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">핸드폰인증</button>
 										</td>
@@ -419,7 +419,7 @@ function div_show(selectList) {
 									</tr>
 									<tr>
 										<td class="addr2">
-											<div align="right"></div>
+											<div align="left"></div>
 										</td>
 										<td colspan="3" class="addr1" style="padding-left: 50px;">
 											<input type="text" style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"
