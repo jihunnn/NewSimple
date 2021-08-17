@@ -192,9 +192,8 @@
 					<c:choose>
 						<c:when test="${empty productQuestionList}">
 							<tr style="background-color: white;">
-								<td colspan="5"
-									style="background-color: white; border-bottom: 1px solid #eeeeee; vertical-align: middle; width: 300px; height: 80px; color: #5f5f5f;">등록된
-									글이 없습니다.</td>
+								<td colspan="6"
+									style="background-color: white; border-bottom: 1px solid #eeeeee; vertical-align: middle; width: 300px; height: 80px; color: #5f5f5f;">글이 없습니다.</td>
 							</tr>
 
 						</c:when>

@@ -30,11 +30,7 @@ public class MypageServiceImpl implements MypageService{
 	@Autowired
 	MypageDAO mypageDAO;
 	
-	
 
-	
-
-	
 	//마이페이지 주문조회
 	public Map<String ,Object> listMyOrderInfo (Map<String ,Object> myOrderInfoMap) throws Exception{
 		List<MypageVO> myOrderInfoList=mypageDAO.selectMyOrderInfoList(myOrderInfoMap);

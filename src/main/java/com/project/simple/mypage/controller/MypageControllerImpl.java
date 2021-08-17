@@ -512,7 +512,10 @@ public class MypageControllerImpl implements MypageController {
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		String memId = memberVO.getmemId();
 		productVO.setMemId(memId);
-		System.out.println(memId);
+		
+		Map<String,Object> myInfo = (Map<String, Object>) session.getAttribute("myInfo");
+		myInfo.put("orderReturn",mypageService.returnCount(memId));
+		session.setAttribute("myInfo",myInfo);
 
 		Map<String, Object> mypageReturnMap = new HashMap<String, Object>();
 		int pageStart = cri.getPageStart();
