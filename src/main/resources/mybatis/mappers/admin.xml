@@ -320,18 +320,19 @@
 		resultMap="productQuestionResult">
 
 		select o.*, m.memName
-		from simple.productQuestion as o left join simple.member as m on o.memId=m.memId
+		from simple.productQuestion as o left join
+		simple.member as m on o.memId=m.memId
 		where
 		<if test="searchType=='memId' and search != null and search != '' ">
 
-			memId like CONCAT('%', #{search}, '%')
+			o.memId like CONCAT('%', #{search}, '%')
 
 
 		</if>
 		<if
 			test="searchType=='memName' and search != null and search != '' ">
 
-			memName like CONCAT('%', #{search}, '%')
+			m.memName like CONCAT('%', #{search}, '%')
 
 
 		</if>
@@ -339,7 +340,7 @@
 		<if
 			test="searchType=='productNum' and search != null and search != '' ">
 
-			productNum like CONCAT('%', #{search}, '%')
+			o.productNum like CONCAT('%', #{search}, '%')
 
 		</if>
 
@@ -352,25 +353,26 @@
 
 
 		select count(*)
-		from simple.productQuestion
+		from simple.productQuestion as o left join
+		simple.member as m on o.memId=m.memId
 		where
 		<if test="searchType=='memId' and search != null and search != '' ">
 
-			memId like CONCAT('%', #{search}, '%')
+			o.memId like CONCAT('%', #{search}, '%')
 
 
 		</if>
 		<if
 			test="searchType=='memName' and search != null and search != '' ">
 
-			memName like CONCAT('%', #{search}, '%')
+			m.memName like CONCAT('%', #{search}, '%')
 
 
 		</if>
 		<if
 			test="searchType=='productNum' and search != null and search != '' ">
 
-			productNum like CONCAT('%', #{search}, '%')
+			o.productNum like CONCAT('%', #{search}, '%')
 
 
 		</if>
