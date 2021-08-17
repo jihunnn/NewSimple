@@ -889,8 +889,8 @@ function optionSelect(option) {
 								</c:when>
 
 								<c:when test="${!empty productReviewList}">
-									<c:forEach var="productReview" items="${productReviewList}">
-										<div id="tallModal" class="modal modal-wide fade">
+									<c:forEach var="productReview" items="${productReviewList}" varStatus="status">
+										<div id="tallModal${status.index }" class="modal modal-wide fade">
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 600px; height: 500px;">
@@ -925,7 +925,7 @@ function optionSelect(option) {
 											<td style="width: 200px;">${productReview.memName }</td>
 											<td style="width: 500px; text-align: left;"><a
 												style="color: black; cursor: pointer;" data-toggle="modal"
-												href="#tallModal"> ${productReview.productReviewTitle}</a> <!-- 팝업시킬 태그 -->
+												href="#tallModal${status.index }"> ${productReview.productReviewTitle}</a> <!-- 팝업시킬 태그 -->
 											</td>
 											<td style="width: 200px;"><fmt:formatDate
 													value="${productReview.reviewDate}" /></td>
@@ -984,7 +984,7 @@ function optionSelect(option) {
 						<c:choose>
 							<c:when test="${isLogOn == true && member != null}">
 								<a id="buttonmy" class="btn btn-dark" data-toggle="modal"
-									href="#tallModal1"
+									href="#tallModal1${status.index }"
 									style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px;  padding-top: 10px; font-size: 13px; margin-bottom: 5px;">상품문의하기</a>
 							</c:when>
 							<c:when test="${isLogOn != true && member == null}">
@@ -1014,8 +1014,8 @@ function optionSelect(option) {
 									</tr>
 								</c:when>
 								<c:when test="${!empty productQuestionList}">
-									<c:forEach var="questionList" items="${productQuestionList}">
-										<div id="tallModal1" class="modal modal-wide fade">
+									<c:forEach var="questionList" items="${productQuestionList}" varStatus="status">
+										<div id="tallModal1${status.index }" class="modal modal-wide fade">
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 700px; height: 600px;">
@@ -1060,7 +1060,7 @@ function optionSelect(option) {
 										</div>
 
 										<!-- 상품문의 수정하기 -->
-										<div id="tallModal2" class="modal modal-wide fade">
+										<div id="tallModal2${status.index }" class="modal modal-wide fade">
 											<div class="modal-dialog">
 												<div class="modal-content"
 													style="width: 700px; height: 600px;">
@@ -1121,14 +1121,14 @@ function optionSelect(option) {
 													</div>
 													<div id="section1b" class="elements">
 														<hr style="margin-bottom: 20px; margin-top: 5px;">
-														<p style="text-align: left; margin-bottom: 0px;">
+														<p style="text-align: left; margin-bottom: 20px;">
 															${questionList.productQuestionContent}
 															<c:if test="${questionList.memId == member.memId}">
 																<button type="button"
 																	onclick="javascript:fn1();location.href='${contextPath}/removeQuestion.do?productNum=${product.productNum}&productQuestionNum=${questionList.productQuestionNum}'"
 																	style="float: right; border-radius: 2px; margin-bottom: 3px; cursor:pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left:2px;"
 																	class="btn-secondary btn-xs">삭제</button>
-																<a data-toggle="modal" href="#tallModal2"
+																<a data-toggle="modal" href="#tallModal2${status.index }"
 																	style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 																	class="btn-secondary btn-xs">수정</a>
 

@@ -680,11 +680,8 @@
 						<div class="container" style="padding-left: 450px;">
 							<button type="button" onclick="memberbuy()" class="btn btn-dark "
 								id="buttonmy"
-								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 40px;">선택상품주문</button>
+								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 120px;">주문하기</button>
 							&nbsp;&nbsp;&nbsp;
-							<button type="button" onclick="buyall()" id="buttonmy"
-								class="btn btn-dark"
-								style="width: 75px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 13px;">전체상품주문</button>
 						</div>
 					</c:when>
 
@@ -789,11 +786,8 @@
 						<div class="container" style="padding-left: 450px;">
 							<button type="button" onclick="nonmemberbuy()"
 								class="btn btn-dark " id="buttonmy"
-								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 40px;">선택상품주문</button>
+								style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px; font-size: 13px; margin-left: 120px;">주문하기</button>
 							&nbsp;&nbsp;&nbsp;
-							<button type="button" onclick="nextt()" id="buttonmy"
-								class="btn btn-dark"
-								style="width: 75px; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px; font-size: 13px;">전체상품주문</button>
 						</div>
 					</c:otherwise>
 				</c:choose>
