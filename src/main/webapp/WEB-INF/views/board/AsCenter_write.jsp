@@ -234,7 +234,7 @@ request.setCharacterEncoding("UTF-8");
 									type="password" name="asCenterPwd" size=60
 									style="height: 28px; border: 1px solid #d2d2d2; border-radius: 3px; width: 150px;"></td>
 							</tr>
-							<tr>
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
 									style="padding-left: 95px; padding-top: 17px;">파일첨부</td>
 								<td style="background-color: white;">기존파일:
@@ -285,7 +285,7 @@ request.setCharacterEncoding("UTF-8");
 									type="password" name="asCenterPwd" size=60
 									style="height: 28px; border: 1px solid #d2d2d2; border-radius: 3px; width: 150px;"></td>
 							</tr>
-							<tr>
+							<tr style="border-bottom: 1px solid #eeeeee;">
 								<td
 									style="padding-left: 95px;padding-top: 17px;">파일첨부</td>
 								<td style="background-color: white;"><input type="file"

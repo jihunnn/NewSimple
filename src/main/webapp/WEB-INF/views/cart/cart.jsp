@@ -725,10 +725,10 @@
 													<div class="updown">
 														<span
 															onclick="javascript:basket.changePNum(1,'${status.index}');"><i
-															class="fas fa-arrow-alt-circle-up up"></i></span> <input
-															type="text" name="productCnt" id="productCnt" size="2"
+															class="fas fa-arrow-alt-circle-up up"></i></span> <input 
+															type="text" name="productCnt" id="productCnt" size="2" 
 															maxlength="4" class="p_num" style="border:1px solid #dcdcdc"
-															value="${cartlist.productCnt}"
+															value="${cartlist.productCnt}" readonly
 															onkeyup="javascript:basket.changePNum(1,'${status.index}');">
 														<span
 															onclick="javascript:basket.changePNum(1,'${status.index}');"><i

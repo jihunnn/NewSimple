@@ -279,7 +279,7 @@
 														onClick="location.href='Product-02'">
 														<div>
 														<a href="${contextPath}/product/viewProduct.do?productNum=${returnSearchList.productNum}">
-															<img src="${contextPath}/resources/images/image_1.jpg"
+															<img src="${contextPath}/download_product.do?productNum=${returnSearchList.productNum}&productImage=${returnSearchList.productImage}"
 																width="90" height="90" style="float: left;"></a> <a
 																style="margin-left: 0px; padding-right: 10px; margin-left:50px; font-weight:bold;"
 																href="${contextPath}/product/viewProduct.do?productNum=${returnSearchList.productNum}">${returnSearchList.productName}</a>
@@ -369,10 +369,10 @@
 													<th style="text-align: center; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"><fmt:formatDate
 															value="${mypageReturnList.returnDate}" /></th>
 													<th style="padding: 10px; text-align: left; font-size:13px; font-weight:normal;  border-right:1px solid #eeeeee;"
-														onClick="location.href='Product-02'">
+														>
 														<div>
 														<a href="${contextPath}/product/viewProduct.do?productNum=${mypageReturnList.productNum}">
-															<img src="${contextPath}/resources/images/image_1.jpg"
+															<img src="${contextPath}/download_product.do?productNum=${mypageReturnList.productNum}&productImage=${mypageReturnList.productImage}"
 																width="90" height="90" style="float: left;"></a> <a
 																style="margin-left: 0px; padding-right: 10px; margin-left:50px; font-weight:bold;"
 																href="${contextPath}/product/viewProduct.do?productNum=${mypageReturnList.productNum}">${mypageReturnList.productName}</a>

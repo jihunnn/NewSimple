@@ -242,7 +242,7 @@
 											style="padding: 10px; text-align: left; height: 120px; border: 1px solid #eeeeee; font-weight: normal;"
 											onClick="location.href='Product-02'">
 											<div>
-												<img src="${contextPath}/resources/images/image_1.jpg"
+												<img src="${contextPath}/download_product.do?productNum=${memOrderNum.productNum}&productImage=${memOrderNum.productImage}"
 													width="90" height="90" style="float: left;"> <a
 													style="margin-left: 40px; font-size: 13px; font-weight: bold;">${memOrderNum.productName}</a>
 												<c:if test="${memOrderNum.option1value !=null}">

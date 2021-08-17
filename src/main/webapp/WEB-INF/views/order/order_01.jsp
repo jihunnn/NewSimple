@@ -42,6 +42,7 @@ h4 {
 		$("form").submit();
 	})
 </script>
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
@@ -251,30 +252,27 @@ h4 {
 					url : "verifyIamport.do",
 					type : "POST",	
 					data : {
+						
 						imp_uid : rsp.imp_uid,
 						merchant_uid: rsp.merchant_uid
 					}
 				}).done(function(data){			
 					console.log(data);
 					if(rsp.paid_amount == data.response.amount) {		
-						alert("결제 및 결제검증완료");
-						var msg = '결제가 완료되었습니다.';
-						msg += '고유ID : ' + rsp.imp_uid;
-						msg += '상점 거래ID : ' + rsp.merchant_uid;
-						msg += '결제 금액 : ' + rsp.paid_amount;
-						msg += '카드 승인번호 : ' + rsp.apply_num;
+						var msg = '결제가 완료되었습니다.';	
 						alert(msg);
 						$.ajax({
 							url : "${contextPath}/memaddorderlist.do",
 							type : "POST",
 							data :	param, paymentMethod,  	
-							success: function (data) {				                   
-				                    alert("주문내용테이블입력완료");	
+							success: function (data) {				                   	
 				                    location.href="${contextPath}/memberOrderResult.do?Price=${totalPrice}&memOrderNum=${orderNum}&paymentMethod="+paymentMethod;
 				                }
 						})					
 					}else{
-						alert("결제 실패")
+						alert("결제 실패");
+						
+						
 						//아직제대로 결제가 되지 않았습니다.
 						//결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 					}		
@@ -331,67 +329,66 @@ h4 {
 								<th scope="col" width="100">합계</th>
 							</tr>
 						</thead>
-						<c:choose>
-							<c:when test="${orderCart == true}">
-								<c:forEach items="${orderlist}" var="orderlist"
-									varStatus="status">
-									<tbody>
-										<tr class="tr1"
-											style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;"><img
-												src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
-												width=80 height=80></th>
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;">${orderlist.productName}</th>
-											<th scope="col"
-												style="text-align: left; vertical-align: middle; font-weight: normal;">${orderlist.option1name}
-												: ${orderlist.option1value}<br>${orderlist.option2name}
-												: ${orderlist.option2value}
-											</th>
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;">${orderlist.productCnt}개</th>
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;">${orderlist.deliverycharge}</th>
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;">${orderlist.productPrice}원</th>
-											<th scope="col"
-												style="vertical-align: middle; font-weight: normal;">${orderlist.totalPrice}원</th>
-										</tr>
-									</tbody>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
+
+						<c:if test="${orderlist != null && orderNow == false}">
+							<c:forEach items="${orderlist}" var="orderlist"
+								varStatus="status">
 								<tbody>
 									<tr class="tr1"
 										style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
 										<th scope="col"
 											style="vertical-align: middle; font-weight: normal;"><img
-											src="${contextPath}/download_product.do?productNum=${memOrder.productNum}&productImage=${memOrder.productImage}"
+											src="${contextPath}/download_product.do?productNum=${orderlist.productNum}&productImage=${orderlist.productImage}"
 											width=80 height=80></th>
 										<th scope="col"
-											style="vertical-align: middle; font-weight: normal;">${memOrder.productName}</th>
+											style="vertical-align: middle; font-weight: normal;">${orderlist.productName}</th>
 										<th scope="col"
-											style="text-align: left; vertical-align: middle; font-weight: normal;">${memOrder.option1name}
-											: ${memOrder.option1value}<br>${memOrder.option2name} :
-											${memOrder.option2value}
+											style="text-align: left; vertical-align: middle; font-weight: normal;">${orderlist.option1name}
+											: ${orderlist.option1value}<br>${orderlist.option2name}
+											: ${orderlist.option2value}
 										</th>
 										<th scope="col"
-											style="vertical-align: middle; font-weight: normal;">${memOrder.productCnt}개</th>
+											style="vertical-align: middle; font-weight: normal;">${orderlist.productCnt}개</th>
 										<th scope="col"
-											style="vertical-align: middle; font-weight: normal;">${memOrder.deliverycharge}</th>
+											style="vertical-align: middle; font-weight: normal;">${orderlist.deliverycharge}</th>
 										<th scope="col"
-											style="vertical-align: middle; font-weight: normal;">${memOrder.productPrice}원</th>
+											style="vertical-align: middle; font-weight: normal;">${orderlist.productPrice}원</th>
 										<th scope="col"
-											style="vertical-align: middle; font-weight: normal;">${memOrder.totalPrice}원</th>
+											style="vertical-align: middle; font-weight: normal;">${orderlist.totalPrice}원</th>
 									</tr>
 								</tbody>
-							</c:otherwise>
+							</c:forEach>
+						</c:if>
+						<c:if test="${memOrder != null && orderNow == true}">
+							<tbody>
+								<tr class="tr1"
+									style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;"><img
+										src="${contextPath}/download_product.do?productNum=${memOrder.productNum}&productImage=${memOrder.productImage}"
+										width=80 height=80></th>
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;">${memOrder.productName}</th>
+									<th scope="col"
+										style="text-align: left; vertical-align: middle; font-weight: normal;">${memOrder.option1name}
+										: ${memOrder.option1value}<br>${memOrder.option2name} :
+										${memOrder.option2value}
+									</th>
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;">${memOrder.productCnt}개</th>
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;">${memOrder.deliverycharge}</th>
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;">${memOrder.productPrice}원</th>
+									<th scope="col"
+										style="vertical-align: middle; font-weight: normal;">${memOrder.totalPrice}원</th>
+								</tr>
+							</tbody>
+						</c:if>
 
-						</c:choose>
 					</table>
 					<c:choose>
-						<c:when test="${memOrder == null}">
+						<c:when test="${orderlist != null && orderNow == false}">
 							<div
 								style="border: 1px solid #e9e9e9; height: 80px; margin-top: 20px;">
 								<div style="display: flow-root; padding-top: 5px;">
@@ -406,7 +403,8 @@ h4 {
 								</div>
 								<div style="display: block; margin-right: 15px;">
 									<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
-										type="text" id="totalPrice" name="totalPrice" value="${totalPrice}"
+										type="text" id="totalPrice" name="totalPrice"
+										value="${totalPrice}"
 										style="border: none; width: 75px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
 								</div>
 								<img src="${contextPath}/resources/images/equls.jpg"
@@ -438,23 +436,25 @@ h4 {
 								</div>
 								<div style="display: block; margin-right: 15px;">
 									<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
-										type="text" id="totalPrice" name="totalPrice" value="${memOrder.totalPrice}"
+										type="text" id="totalPrice" name="totalPrice"
+										value="${memOrder.totalPrice}"
 										style="border: none; width: 75px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
 								</div>
 								<img src="${contextPath}/resources/images/equls.jpg"
 									style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
 								<span
 									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 13px;">원</span>
-								<input type="text" id="" name="" 
+								<input type="text" id="" name=""
 									style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
 								<img src="${contextPath}/resources/images/plus.jpg"
-									style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px; " />
+									style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
 								<span
 									style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
-									type="text" id="price1" name="price1" value="${memOrder.totalPrice}"
+									type="text" id="price1" name="price1"
+									value="${memOrder.totalPrice}"
 									style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
-									<input type="hidden"
-									name="productNum" value="${memOrder.productNum}" />
+								<input type="hidden" name="productNum"
+									value="${memOrder.productNum}" />
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -654,15 +654,8 @@ h4 {
 		</div>
 	</section>
 
-	<%
-	session.removeAttribute("orderNow");
-	session.removeAttribute("orderCart");
-	%>
 </body>
 </html>
-
-
-
 
 
 
