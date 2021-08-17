@@ -251,13 +251,11 @@ public class MemberControllerImpl implements MemberController {
 		String loginType = member.getlogintype();
 		String sns = removemember.getSNS();
 		String memId = member.getmemId();
-		String memPwd = member.getmemPwd();
-		if (!sns.equals("지금삭제")) {
+		if (!sns.equals("지금탈퇴")) {
 			rAttr.addAttribute("result", false);
 			mav.setViewName("redirect:/deletemember.do");
-		} else if (sns.equals("지금삭제") && !loginType.equals("일반")) {
-			removemember.setmemId(memId);
-			removemember.setmemPwd(memPwd);
+		} else if (sns.equals("지금탈퇴") && !loginType.equals("일반")) {
+			removemember.setmemId(memId);	
 			int result = memberService.removeMember(removemember);
 			session.removeAttribute("member");
 			session.removeAttribute("isLogOn");
@@ -344,6 +342,10 @@ public class MemberControllerImpl implements MemberController {
 	private ModelAndView deletemember(HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("member");
+		String loginType = vo.getlogintype();
+		mav.addObject("loginType", loginType);
 		mav.setViewName(viewName);
 		return mav;
 	}
