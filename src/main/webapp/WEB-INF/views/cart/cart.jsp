@@ -693,7 +693,7 @@
 							<thead class="table-dark" align=center>
 								<tr align="center"
 									style="background-color: #fbfbfb; border-top: 1px solid #7e9.
-									c8c; color: black; border-bottom: 1px solid #eeeeee;">
+									c8c; color: black; border-bottom: 1px solid #eeeeee; border-top: 1px solid #7e9c8c;">
 									<td scope="col" width="100" style="font-size:13px;">선택</td>
 									<td scope="col" width="150" style="font-size:13px;"></td>
 									<td scope="col" width="400" align=left style="font-size:13px;">상품명</td>

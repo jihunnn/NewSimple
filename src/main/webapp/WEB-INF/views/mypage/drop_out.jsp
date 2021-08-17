@@ -43,27 +43,27 @@
 
 
 	<!-- 타이틀(음영X) -->
-	<section class="ftco-section testimony-section">
+	<section class="ftco-section testimony-section" style="margin-top:100px;">
 		<div class="container">
 			<div id=main_box>
 				<div id="Drop out">
-					<h1 class="mb-4">회원탈퇴</h1>
+					<h1 class="mb-4" style="font-size:20px; color:#7e9c8c; font-weight:bold;">회원탈퇴</h1>
 				</div>
 				<!-- 타이틀 끝 -->
 				<!-- 내용 -->
-				<section class="ftco-section testimony-section">
+				<section class="ftco-section testimony-section" style="padding-top:20px;">
 					<div class="container">
-						<div class="order_text">
-							<h4>회원 탈퇴가 완료되었습니다.</h4>
-							<h4>그동안 Simple서비스를 아끼고 사랑해주셔서 고맙습니다.</h4>
-							<h4>더욱 더 노력하고 발전하는 Simple이 되겠습니다.</h4>
+						<div class="order_text" >
+							<h4 style="font-size:13px;">회원 탈퇴가 완료되었습니다.</h4>
+							<h4 style="font-size:13px;">그동안 Simple서비스를 아끼고 사랑해주셔서 고맙습니다.</h4>
+							<h4 style="font-size:13px;">더욱 더 노력하고 발전하는 Simple이 되겠습니다.</h4>
 						</div>
 					</div>
 
 					<div class="container">
 						<div id="main-back">
 							<button onclick="location.href='${contextPath}/main.do'"
-								style="height: 40px; width: 210px; font-size: 17px; background-color: #212529; color: white;">Simple
+								style="height: 40px; width: 210px; font-size: 13px; cursor:pointer; background-color: #7e9c8c; color: white; border:none;">Simple
 								홈 바로가기</button>
 						</div>
 					</div>
