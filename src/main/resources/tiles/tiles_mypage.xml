@@ -92,9 +92,9 @@
 			value="/WEB-INF/views/mypage/mypage_03.jsp" />
 	</definition>
 	
-	<definition name="mypage_04" extends="baseLayout">
+	<definition name="mypage_05" extends="baseLayout">
 		<put-attribute name="body"
-			value="/WEB-INF/views/mypage/mypage_04.jsp" />
+			value="/WEB-INF/views/mypage/mypage_05.jsp" />
 	</definition>
 
 

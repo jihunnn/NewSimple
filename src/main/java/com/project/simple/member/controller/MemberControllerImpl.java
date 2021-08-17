@@ -363,7 +363,7 @@ public class MemberControllerImpl implements MemberController {
 			mav.setViewName(viewName);
 		} else {
 
-			mav.setViewName("mypage_04");
+			mav.setViewName("mypage_05");
 
 		}
 
