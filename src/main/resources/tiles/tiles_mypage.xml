@@ -71,12 +71,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/order_search.jsp" />
 	</definition>
-	<definition name="mypage/viewMyOrderInfo" extends="baseLayout">
+	<definition name="mypage/viewMyOrderInfo"
+		extends="baseLayout">
 		<put-attribute name="title" value="마이페이지 주문 상세보기" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/order_detail.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_01" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/mypage_01.jsp" />
@@ -91,12 +92,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/mypage_03.jsp" />
 	</definition>
-	
+
 	<definition name="mypage_04" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/order_search.jsp" />
 	</definition>
-
+	<definition name="mypage_05" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/mypage/mypage_05.jsp" />
+	</definition>
 
 	<definition name="mypage_08" extends="baseLayout">
 		<put-attribute name="body"
@@ -117,17 +121,17 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/mypage_13.jsp" />
 	</definition>
-	
+
 	<definition name="drop_out" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/drop_out.jsp" />
 	</definition>
-	
-		<definition name="deletemember" extends="baseLayout">
+
+	<definition name="deletemember" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/deletemember.jsp" />
 	</definition>
-	
+
 
 
 </tiles-definitions>	
