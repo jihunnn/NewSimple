@@ -150,11 +150,16 @@
 
 	<!-- 회원탈퇴 -->
 	<delete id="deleteMember" parameterType="MemberVO">
-	<![CDATA[
+	<if test="SNS==null">
 	   delete from  simple.member
 	   where
 	   memId=#{memId} and memPwd=#{memPwd}
-	]]>
+	</if>
+	<if test="SNS=='지금탈퇴'">
+	 delete from  simple.member
+	   where
+	   memId=#{memId} 
+	</if>
 	</delete>
 	
 	<!-- 회원삭제 -->

@@ -19,15 +19,39 @@
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
 				flush="false" />
 			<!-- left Menu 끝-->
-			<div style="text-align:center; font-size:13px;">
-			<h3 style="font-size:20px; font-weight:bold; padding-bottom:50px; color:#7e9c8c; padding-top:100px; ">아이디와 비밀번호를 입력해주세요</h3>
-			<form action="${contextPath}/removeMember.do" method="POST">
-				아이디 <input type="text" name="memId" style="border:1px solid #dcdcdc; margin-bottom:10px; height:29px; "><br>
-				비밀번호 <input type="password" style="border:1px solid #dcdcdc; height:29px;  margin-bottom:10px; margin-right:13px;"name="memPwd"> <br>
-				<input style="background-color:#5f5f5f; cursor:pointer; margin-left:42px; width:145px; height:30px; color:white; font-size:13px; border:none; border-radius:2px; "
-					type="submit" value="탈퇴하기">
-			</form>
-			</div>
+			<c:choose>
+				<c:when test="${loginType eq '일반'}">
+					<div style="text-align: center; font-size: 13px;">
+						<h3
+							style="font-size: 20px; font-weight: bold; padding-bottom: 50px; color: #7e9c8c; padding-top: 100px;">아이디와
+							비밀번호를 입력해주세요</h3>
+						<form action="${contextPath}/removeMember.do" method="POST">
+							아이디 <input type="text" name="memId"
+								style="border: 1px solid #dcdcdc; margin-bottom: 10px; height: 29px;"><br>
+							비밀번호 <input type="password"
+								style="border: 1px solid #dcdcdc; height: 29px; margin-bottom: 10px; margin-right: 13px;"
+								name="memPwd"> <br> <input
+								style="background-color: #5f5f5f; cursor: pointer; margin-left: 42px; width: 145px; height: 30px; color: white; font-size: 13px; border: none; border-radius: 2px;"
+								type="submit" value="탈퇴하기">
+						</form>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div style="text-align: center; font-size: 13px;">
+						<h3
+							style="font-size: 20px; font-weight: bold; padding-bottom: 50px; color: #7e9c8c; padding-top: 100px;">회원탈퇴를
+							원하시면 "지금탈퇴"를 입력해주세요</h3>
+						<form action="${contextPath}/removeMember_SNSmember.do"
+							method="POST">
+							<input type="text" name="SNS"
+								style="border: 1px solid #dcdcdc; margin-bottom: 10px; height: 29px;"><br>
+							<input
+								style="background-color: #5f5f5f; cursor: pointer; margin-left: 0px; width: 145px; height: 30px; color: white; font-size: 13px; border: none; border-radius: 2px;"
+								type="submit" value="탈퇴하기">
+						</form>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</section>
 
