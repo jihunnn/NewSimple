@@ -857,23 +857,23 @@ public class AdminControllerImpl implements AdminController {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 
-		Map<String, Object> questionSearchMap = new HashMap<String, Object>();
+		Map<String, Object> questionMap = new HashMap<String, Object>();
 		int pageStart = cri.getPageStart();
 		int perPageNum = cri.getPerPageNum();
-		questionSearchMap.put("pageStart", pageStart);
-		questionSearchMap.put("perPageNum", perPageNum);
-		questionSearchMap.put("search", search);
+		questionMap.put("pageStart", pageStart);
+		questionMap.put("perPageNum", perPageNum);
+		questionMap.put("search", search);
 
-		questionSearchMap.put("searchType", searchType);
+		questionMap.put("searchType", searchType);
 
-		questionSearchMap = adminService.questionSearch(questionSearchMap);
-		int questionSearchCount = adminService.questionSearchCount(questionSearchMap);
+		questionMap = adminService.questionSearch(questionMap);
+		int questionSearchCount = adminService.questionSearchCount(questionMap);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		int pageNum = pageMaker.getCri().getPage();
-		questionSearchMap.put("pageNum", pageNum);
+		questionMap.put("pageNum", pageNum);
 		pageMaker.setTotalCount(questionSearchCount);
-		mav.addObject("questionSearchMap", questionSearchMap);
+		mav.addObject("questionMap", questionMap);
 		mav.addObject("pageMaker", pageMaker);
 		mav.addObject("pageNum", pageNum);
 
