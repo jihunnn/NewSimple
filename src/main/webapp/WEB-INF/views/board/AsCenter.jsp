@@ -39,7 +39,6 @@
 </script>
 
 <style>
-
 .page_wrap {
 	text-align: center;
 	font-size: 0;
@@ -105,7 +104,6 @@
 }
 
 #buttonmy {
-
 	height: 30px;
 	float: left;
 	border-radius: 2px;
@@ -141,7 +139,8 @@ function InquiryList() {
 			</c:choose>
 
 			<div>
-				<h2 style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">A/S센터</h2>
+				<h2
+					style="font-size: 20px; margin-top: 15px; float: left; font-weight: bold; color: #7e9c8c;">A/S센터</h2>
 				<h5
 					style="color: #828282; float: left; font-size: 13px; margin-left: 10px; margin-top: 23px;">빠르게
 					접수 도와드리겠습니다.</h5>
@@ -161,7 +160,7 @@ function InquiryList() {
 						class="btn btn-dark"
 						style="margin-top: 15px; float: right; padding-top: 4px; height: 34px; font-size: 13px; padding-top: 4px; background-color: #7e9c8c; border: none;">검색</button>
 					<input type="text"
-						style="margin-top: 15px; float: right; width:130px; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px;"
+						style="margin-top: 15px; float: right; width: 130px; height: 34px; border: 1px solid #dcdcdc; font-size: 13px; margin-right: 5px;"
 						name="search"> <select name="searchType"
 						style="font-size: 13px; margin-right: 5px; float: right; width: 80px; height: 34px; border: 1px solid #dcdcdc; margin-top: 15px;">
 						<option value="asCenterTitle">제목</option>
@@ -187,7 +186,8 @@ function InquiryList() {
 							<c:choose>
 								<c:when test="${empty asCenterSearchMap.asCenterSearchList}">
 									<tr style="background-color: white;">
-										<td colspan="5" style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">검색된
+										<td colspan="5"
+											style="background-color: white; border-bottom: 1px solid #eeeeee; vertical-align: middle; width: 300px; height: 80px; color: #5f5f5f;">검색된
 											글이 없습니다.</td>
 									</tr>
 								</c:when>
@@ -216,7 +216,8 @@ function InquiryList() {
 							<c:choose>
 								<c:when test="${empty asCenterList}">
 									<tr style="background-color: white;">
-										<td colspan="5" style="background-color: white; border-bottom:1px solid #eeeeee; vertical-align:middle; width: 300px; height:80px; color:#5f5f5f;">등록된
+										<td colspan="5"
+											style="background-color: white; border-bottom: 1px solid #eeeeee; vertical-align: middle; width: 300px; height: 80px; color: #5f5f5f;">등록된
 											글이 없습니다.</td>
 									</tr>
 								</c:when>
@@ -246,8 +247,15 @@ function InquiryList() {
 
 				</thead>
 			</table>
-			<a id="buttonmy" class="btn btn-dark" onClick="asCenterForm()"
-				style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px;  width: 104px; height: 34px; font-size: 13px; padding-top:7px;">글쓰기</a>
+			<c:choose>
+				<c:when test="${AdminisLogOn == true && admin != null}">
+
+				</c:when>
+				<c:otherwise>
+					<a id="buttonmy" class="btn btn-dark" onClick="asCenterForm()"
+						style="float: right; margin-top: 25px; border-radius: 2px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 104px; height: 34px; font-size: 13px; padding-top: 7px;">글쓰기</a>
+				</c:otherwise>
+			</c:choose>
 			<!-- 페이징 글번호 -->
 			<div class="page_wrap" style="margin-left: 80px; margin-top: 50px;">
 				<div class="page_nation">

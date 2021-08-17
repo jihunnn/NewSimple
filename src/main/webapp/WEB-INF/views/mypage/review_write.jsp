@@ -224,7 +224,7 @@
 											<th style="text-align: center; font-weight:normal;"><fmt:formatDate
 													value="${reviewNum.memOrderDate}" /></th>
 											<th style="padding: 10px; text-align: left;"
-												onClick="location.href='Product-02'">
+												onClick="location.href='${contextPath}/product/viewProduct.do?productNum=${reviewNum.productNum}'">
 												<div>
 
 													<img
@@ -303,7 +303,7 @@
 										onclick="Review_modify(this.form)"
 										style="width: 104px; height: 34px; background-color: #7e9c8c; color: white; border:none; font-size:13px; margin-left: 300px; float: left; margin-right: 10px; cursor: pointer;">
 									<input type="button" name="return_MyPage_07" value="취소"
-										onclick="location.href='/MyPage-07'"
+										onclick="location.href='${contextPath}/mypage_14.do'"
 										style="width: 104px; height: 36px; background-color: white; color: gray; border:1px solid #eeeeee; font-size:13px; float: left; cursor: pointer;">
 								</div>
 
