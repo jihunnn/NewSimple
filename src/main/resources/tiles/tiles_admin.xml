@@ -141,9 +141,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/admin_modNonmemorder.jsp" />
 	</definition>
-	<definition
-		name="admin/listProductQuestion" extends="baseLayout">
+	<definition name="admin/listProductQuestion"
+		extends="baseLayout">
 		<put-attribute name="title" value="상품문의리스트" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/productQuestion.jsp" />
+	</definition>
+	<definition name="admin/questionSearch"
+		extends="baseLayout">
+		<put-attribute name="title" value="상품문의검색" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/productQuestion.jsp" />
 	</definition>

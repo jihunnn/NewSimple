@@ -332,17 +332,17 @@
 
 			<div class="order_list">
 			<div
-						style="font-size: 25px; font-weight: bold; margin-bottom: 20px;">
-						<a style="color: #7e9c8c;">관심목록창</a>
+						style="font-size: 20px; font-weight: bold; margin-bottom: 20px;">
+						<a style="color: #7e9c8c;">관심상품</a>
 			</div>
 				<div class="container" style="padding-left: 0px;">
-					<input type="checkBox" class="btn-secondary btn-xs " id="allCheck" name="allCheck"><a>전체선택</a>
+					<input type="checkBox" class="btn-secondary btn-xs " id="allCheck" name="allCheck"><a style="font-size:13px; padding-left:5px;">전체선택</a>
 				</div>
-				<br>
-				<table class="table" style="margin-top: 0px; font-size: 14px; vertical-align: middle;">
+			
+				<table class="table" style="margin-top: 0px; font-size: 13px; vertical-align: middle;">
 					<thead class="table-dark" align=center>
 						<tr align="center"
-								style="background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca; font-size: 15px; color: black;">
+								style="background-color: #fbfbfb; border-top: 1px solid #7e9c8c; color: black; border-bottom: 1px solid #eeeeee;">
 							<td scope="col" width="100">선택</td>
 							<td scope="col" width="300"></td>
 							<td scope="col" width="800"  align="left">상품명</td>
@@ -363,7 +363,7 @@
 					</c:when>
 					<c:when test="${!empty favoriteMap.myFavoriteList }">
 					<c:forEach var="item" items="${favoriteMap.myProductList}">
-						<tr>
+						<tr style="border-bottom: 1px solid #eeeeee;">
 							<td scope="col" align=center>
 							<input type="checkbox" name="RowCheck"  value="${item.productNum}"></td>
 							<td scope="col"> 
@@ -371,7 +371,7 @@
 							<td scope="col" align=left>
 							<br><a href="${contextPath}/product/viewProduct.do?productNum=${item.productNum}">${item.productName}</a></td>
 							<td scope="col" align=center  style="padding-top: 0px;">
-							<br><fmt:formatNumber pattern="###,###,###" value="${item.productPrice}"/><br></td>
+							<br><fmt:formatNumber pattern="###,###,###" value="${item.productPrice}"/>원<br></td>
 
 						</tr>
                      </c:forEach>

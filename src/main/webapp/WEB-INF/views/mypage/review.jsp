@@ -352,7 +352,7 @@
 													<th colspan="2"
 														style="padding-left: 5px; float: right; padding-right: 0px; border-right:none;">
 														<div
-															style="border: 1px solid #eeeeee;  margin-top:10px; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;">${reviewSearchList.productContent}<br>
+															style="border: 1px solid #eeeeee;  margin-top:10px; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;  font-weight:normal;">${reviewSearchList.productContent}<br>
 															<img id="preview"
 																src="${contextPath}/download_review.do?reviewNum=${reviewSearchList.reviewNum}&reviewFile=${reviewSearchList.reviewFile}"
 																width="120" height="120" /> <br> <input
@@ -448,7 +448,7 @@
 													<th style="padding: 10px; border-left: hidden;">
 														<div>
 															<div>
-																<a
+																<a style="font-size:13px;"
 																	href="${contextPath}/product/viewProduct.do?productNum=${mypageReviewList.productNum}">${mypageReviewList.productName}</a>
 															</div>
 															<c:if test="${mypageReviewList.option1value !=null}">
@@ -466,16 +466,17 @@
 
 													<th colspan="2"
 														style="padding-left: 5px; float: right; padding-right: 0px;">
-														<div
-															style="border: 1px solid #eeeeee; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px;">${mypageReviewList.productContent}<br>
+														<div 
+															style="border: 1px solid #eeeeee; padding-left: 10px; font-size:13px;background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px; font-weight:normal;">${mypageReviewList.productContent}<br>
+
 															<img id="preview"
 																src="${contextPath}/download_review.do?reviewNum=${mypageReviewList.reviewNum}&reviewFile=${mypageReviewList.reviewFile}"
 																height="120" /> <br> <input
 																type="button" name="modify" value="수정 "
-																style="margin-top: 15px; margin-left: 435px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
+																style="margin-top: 15px; margin-left: 435px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 12px;"
 																onclick="location.href='${contextPath}/mypage/modReview.do?reviewNum=${mypageReviewList.reviewNum}'">
 															<input type="reset" name="reset" value="삭제"
-																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px;margin-right: 5px; width: 70px; height: 30px; font-size: 13px;"
+																style="background-color: white; color: gray; cursor: pointer; border: 1px solid #eeeeee; border-radius: 2px;margin-right: 5px; width: 70px; height: 30px; font-size: 12px;"
 																onclick="location.href='${contextPath}/mypage/removeReview.do?reviewNum=${mypageReviewList.reviewNum}&memOrderSeqNum=${mypageReviewList.memOrderSeqNum}'">
 														</div>
 													</th>

@@ -54,4 +54,8 @@ public interface AdminController {
 	public ResponseEntity removeProductAnswer(
 			@RequestParam("productQuestionNum") int productQuestionNum, HttpServletRequest request,
 			HttpServletResponse response) throws Exception ;
+	
+	public ModelAndView questionSearch(@RequestParam("search") String search,
+			@RequestParam("searchType") String searchType, Criteria cri, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
 }

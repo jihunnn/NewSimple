@@ -11,7 +11,7 @@
 </head>
 <body>
 		<div id="recentlyProduct"
-				style="position: absolute; font-size:13px; left:80px;width: 120px; height: 310px; margin-left: 1650px; border: 1px solid #d2d2d2; margin-top: 80px;">
+				style="position: absolute; font-size:13px; left:80px;width: 120px; height: 287px; margin-left: 1650px; border: 1px solid #d2d2d2; margin-top: 80px;">
 				
 
 				<ul
@@ -46,7 +46,7 @@
 				<c:when test="${!empty quickList }">
 				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
 				<ul
-					style="list-style: none; padding-left: 32px; margin-bottom: 5px; margin-top: 5px;">
+					style="list-style: none; padding-left: 38px; margin-bottom: 5px; margin-top: 5px;">
 					<li><a href="${contextPath}/mypage_09.do"
 						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
 				</ul>

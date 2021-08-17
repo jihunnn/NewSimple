@@ -414,20 +414,20 @@
 								style="vertical-align: middle;"> <label
 								style="font-size: 12px;">아이디 저장</label> <span id="find_id_pwd">
 								<button onclick="location.href='${contextPath}/login_03.do'"
-									style="border: none; font-size: 13px; margin-left: 110px; color: black; margin-right: 1px; height: 30px;"
+									style="border: none; font-size: 13px; margin-left: 110px; cursor:pointer; color: black; margin-right: 1px; height: 30px;"
 									class="btn_member_id_pwd">아이디/비밀번호 찾기</button>
 							</span>
 						</div>
 						<span id="btn_submit_login"> <input type="button"
 							id="submit_login" value="로그인" onclick="Login()"
-							style="background-color: #7e9c8c; font-size: 13px; color: white; border: none; border-radius: 2px; margin-left: -2px;">
+							style="background-color: #7e9c8c; font-size: 13px; color: white; border: none; cursor:pointer; border-radius: 2px; margin-left: -2px;">
 
 						</span>
 
 						<section class="Easy-sgin-in-wrap3">
 							<ul class="sign-button-list3">
 								<li><button onclick="location.href='${url}'"
-										style="background-color: #eeeeee; color: black; border: none;">
+										style="background-color: #eeeeee; color: black; border: none; cursor:pointer;">
 										<img
 											src="${contextPath}/resources/images/login/logo-naver.jpg"
 											width="22"
@@ -437,7 +437,7 @@
 									</button></li>
 								<li><button
 										onclick="location.href='javascript:kakaoLogin();'"
-										style="background-color: #eeeeee; color: black; border: none;">
+										style="background-color: #eeeeee; color: black; border: none;  cursor:pointer;">
 
 										<img
 											src="${contextPath}/resources/images/login/logo-cacao.jpg"
@@ -479,7 +479,7 @@
 					</form>
 					<input type="submit" id="submit_NonOrderInquiry" value="주문조회"
 						onclick="Non_order_Inquiry()"
-						style="background-color: #7e9c8c; margin-top: 10px; font-size:13px; margin-left: 20px; color: white; height: 82px; border-radius: 2px; border: none;">
+						style="background-color: #7e9c8c; margin-top: 10px; cursor:pointer; font-size:13px; margin-left: 20px; color: white; height: 82px; border-radius: 2px; border: none;">
 					<div id="Non_order_content" style="font-size: 12px;">
 						<ul>
 							<li>주문자명, 주문 번호가 일치 하지 않을 경우,조회가 불가능합니다.</li>
@@ -498,11 +498,11 @@
 		<section class="Easy-sgin-in-wrap1" style="margin-bottom: 50px;">
 			<ul class="sign-button-list1">
 				<li><button onclick="location.href='${contextPath}/join_01.do'"
-						style="background-color: #757575; color: white; margin-top: 50px; font-size: 13px; border: none;">
+						style="background-color: #757575; color: white; margin-top: 50px;cursor:pointer;  font-size: 13px; border: none;">
 						<i class="sgin-up"></i><span>회원가입</span>
 					</button></li>
 				<li><button onclick="location.href='main.jsp'"
-						style="background-color: white; color: gray; font-size: 13px; border: 1px solid #eeeeee;">
+						style="background-color: white; color: gray; font-size: 13px;cursor:pointer;  border: 1px solid #eeeeee;">
 						<i class="return-main"></i><span>돌아가기</span>
 					</button></li>
 			</ul>

@@ -146,46 +146,41 @@
 
 	<section class="ftco-section" style="padding-top: 0px;">
 
-		<img src="${contextPath}/resources/images/product/selina.jpg"
-			width=100% height=350px style="margin-bottom: 50px;">
+
 		<div class="container">
 
 			<!-- 최근 본 상품 -->
-
+			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 			<!-- 최근 본 상품 끝 -->
+			<img src="${contextPath}/resources/images/product/sopa.jpg"
+				width=100% height=350px style="margin-bottom: 50px;">
+			<table
+				style="width: 100%; height: 60px; border-bottom: 1px solid #7e9c8c; font-size: 13px; margin-bottom: 60px;">
+				<tr
+					style="font-weight: bold; font-size: 15px; height: 19px; color: black; text-align: center;">
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=코너형&filter=x'"
+						style="cursor: pointer;">ㆍCORNER<span style="font-size: 12px;">(코너형)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=1인/웜체어&filter=x'"
+						style="cursor: pointer;">ㆍSINGLE/WARMCHAIR<span
+							style="font-size: 12px;">(1인/웜체어)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=4/6인&filter=x'"
+						style="cursor: pointer;">ㆍ4/6<span style="font-size: 12px;">(4/6인)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=패브릭&filter=x'"
+						style="cursor: pointer;">ㆍFABRIC<span style="font-size: 12px;">(패브릭)</span></a></td>
+					<td style="vertical-align: middle;"><a
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=리클라이너&filter=x'"
+						style="cursor: pointer;">ㆍRECLINER<span
+							style="font-size: 12px;">(리클라이너)</span></a></td>
+				</tr>
+			</table>
 
-			<ul class="snip1284" style="margin-bottom: 30px; font-weight: bold;">
-				<li class="current"><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=코너형&filter=x'"
-					data-hover="싱글"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 130px; cursor: pointer; background-color: white; padding-bottom: 0px;">코너형</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=1인/웜체어&filter=x'"
-					data-hover="킹"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 130px; cursor: pointer; background-color: white; padding-bottom: 0px;">1인/웜체어</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=4/6인&filter=x'"
-					data-hover="이층침대"
-					style="font-size: 17px; border: none; color: #5a5a5a; margin-right: 150px; cursor: pointer; background-color: white; padding-bottom: 0px;">4/6인</a></li>
-
-
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=패브릭&filter=x'"
-					data-hover="패밀리"
-					style="font-size: 17px; border: none; color: #5a5a5a; background-color: white; cursor: pointer; padding-bottom: 0px; margin-right: 150px;">패브릭</a></li>
-				<li><a
-					onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=리클라이너&filter=x'"
-					data-hover="패밀리"
-					style="font-size: 17px; border: none; color: #5a5a5a; background-color: white; cursor: pointer; padding-bottom: 0px;">리클라이너</a></li>
-			</ul>
-			<hr style="margin-bottom: 0px;">
 			<jsp:include page="/WEB-INF/views/common/productfilter.jsp"
 				flush="false" />
-			<hr style="margin-top: -15px; margin-bottom: 30px;">
+			<hr style="margin-top: -20px; margin-bottom: 30px;">
 
 
 
@@ -194,7 +189,9 @@
 			<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b><span
+							style="color: black; font-size: 13px; padding-left: 25px;">등록된
+								상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"
@@ -217,7 +214,7 @@
 									<div class="text d-flex py-1">
 										<div class="desc pl-2">
 											<h3 class="heading">
-												<a style="font-size: 15px;"
+												<a style="font-size: 13px;"
 													href="${contextPath}/product/viewProduct.do?productNum=${product.productNum}">${product.productName}</a>
 											</h3>
 											<hr style="margin-top: 15px; margin-bottom: 10px;">
