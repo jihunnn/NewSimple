@@ -94,7 +94,7 @@
 	
 	<definition name="mypage_04" extends="baseLayout">
 		<put-attribute name="body"
-			value="/WEB-INF/views/mypage/mypage_04.jsp" />
+			value="/WEB-INF/views/mypage/order_search.jsp" />
 	</definition>
 
 

@@ -156,9 +156,7 @@
 			
 			select * from simple.inquiry where memId=#{memId} and inquiryDate between #{search1} and DATE_ADD(#{search2}, interval 1 day) order by inquiryNum desc
 			limit #{pageStart}, #{perPageNum};
-			;
-			
-
+						
 	]]>
 	</select>
 

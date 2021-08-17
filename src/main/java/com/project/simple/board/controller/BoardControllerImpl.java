@@ -178,9 +178,12 @@ public class BoardControllerImpl implements BoardController {
 
 		if (session.getAttribute("member") != null) {
 			MemberVO memberVO = (MemberVO) session.getAttribute("member");
+			String memId = memberVO.getmemId();
+			articleVO.setmemId(memId);
+
 		}
-		String memId = memberVO.getmemId();
-		articleVO.setmemId(memId);
+		String memId = articleVO.getmemId();
+
 
 		Map<String, Object> inquirySearchMap = new HashMap<String, Object>();
 		int pageStart = cri.getPageStart();
