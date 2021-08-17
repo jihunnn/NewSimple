@@ -36,5 +36,6 @@ public interface OrderService {
 
 	public int deliveryModify(OrderVO orderVO) throws Exception;
 	public int deliveryModifyNon(OrderVO orderVO) throws Exception;
+	public List selectSeqNum(int orderNum) throws Exception;
 	
 }

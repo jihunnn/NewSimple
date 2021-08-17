@@ -147,6 +147,8 @@ public class OrderControllerImpl implements OrderController {
 		MemberVO membervo = (MemberVO) session.getAttribute("member");
 		String memId = membervo.getmemId();
 		Boolean orderNow = (Boolean) session.getAttribute("orderNow");
+		List list = new ArrayList<Integer>(); 
+
 
 
 		if (isLogOn == true) {
@@ -186,7 +188,10 @@ public class OrderControllerImpl implements OrderController {
 				for (int i = 0; i < size; i++) {
 					cartService.removeCompleteCartlist(memCartId[i]);
 				}
-
+				
+				int orderNum = orderVO.getMemOrderNum();
+				list = orderService.selectSeqNum(orderNum);
+				
 				session.removeAttribute("memCartId");
 				
 				mav.setViewName("order_03");

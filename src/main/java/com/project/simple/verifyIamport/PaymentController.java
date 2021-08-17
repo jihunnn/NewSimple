@@ -38,9 +38,38 @@ public class PaymentController {
 				"rVuYmko5yfO9IzrEfeKSSqylUUL2BDZ3yt1UOq0mGOwooX3DbNv3e3o9YabzNbClEEgs5gPM5latje7v");
 
 	}
-
 	
+	
+
+	@ResponseBody
 	@RequestMapping(value="/verifyIamport.do", method = RequestMethod.POST)
+	public IamportResponse<Payment> paymentByImpUid(Model model, HttpServletRequest request, HttpSession session, @RequestParam("imp_uid") String imp_uid ) throws IamportResponseException, IOException{			
+		IamportResponse<Payment> payment = client.paymentByImpUid(imp_uid);
+		Payment paymentData = payment.getResponse();
+		BigDecimal amount = paymentData.getAmount();
+		int int_Amount = amount.intValue();
+
+		HttpSession session1 = request.getSession();
+		String totalPrice =  (String) session1.getAttribute("totalPrice");
+		int int_totalPrice = Integer.parseInt(totalPrice);
+		
+
+		if(int_Amount == int_totalPrice) {
+			
+		
+			return client.paymentByImpUid(imp_uid);
+		}
+		
+		
+
+
+
+
+
+		return client.paymentByImpUid(imp_uid);
+	}
+	
+	/*@RequestMapping(value="/verifyIamport.do", method = RequestMethod.POST)
 	public ResponseEntity paymentByImpUid(Model model,  HttpServletRequest request, @RequestParam("imp_uid") String imp_uid ) throws IamportResponseException, IOException{			
 			
 		HashMap<String, Object> data = new HashMap();
@@ -49,8 +78,6 @@ public class PaymentController {
 		IamportResponse<Payment> payment = client.paymentByImpUid(imp_uid);
 		Payment paymentData = payment.getResponse();
 		BigDecimal amount = paymentData.getAmount();
-		paymentData.getCardNumber();
-		
 		int int_Amount = amount.intValue();
 		
 		HttpSession session1 = request.getSession();
@@ -77,4 +104,5 @@ public class PaymentController {
 		return resEntity;
 	}
 
+*/
 }

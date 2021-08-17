@@ -36,4 +36,6 @@ public interface OrderDAO {
 	
 	public int updateAdmindeliveryModify(OrderVO orderVO) throws DataAccessException;
 	public int updateAdmindeliveryModifyNon(OrderVO orderVO) throws DataAccessException;
+	
+	public List<Integer> selectSeqNum(int orderNum) throws DataAccessException;
 }

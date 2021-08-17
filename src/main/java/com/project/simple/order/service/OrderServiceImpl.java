@@ -53,6 +53,11 @@ public class OrderServiceImpl implements OrderService {
 		return orderSearchCount;
 	}
 	
+	public List<Integer> selectSeqNum(int orderNum) throws Exception{
+		List<Integer> list = orderDAO.selectSeqNum(orderNum);
+		return list;
+	}
+	
 	public List<OrderVO> listMyOrderGoods(OrderVO orderVO) throws Exception{
 		List<OrderVO> orderGoodsList;
 		orderGoodsList=orderDAO.listMyOrderGoods(orderVO);
