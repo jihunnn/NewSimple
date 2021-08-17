@@ -547,7 +547,7 @@ public class MemberControllerImpl implements MemberController {
 			// 인증번호 메일 발송
 			System.out.println("수신자 번호 : " + memPhoneNum);
 			System.out.println("인증번호 : " + Approval_key);
-			// memberService.certifiedPhoneNumber(memPhoneNum,Approval_key);
+			//memberService.certifiedPhoneNumber(memPhoneNum,Approval_key);
 			HttpSession session = request.getSession();
 			session.setAttribute("memberPwd", memberVO);
 

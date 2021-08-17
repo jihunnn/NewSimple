@@ -61,7 +61,7 @@ public class PaymentController {
 			
 			data.put("status", "success");
 			data.put("payInfo", payment);
-			resEntity = new ResponseEntity(data,HttpStatus.SC_OK);
+			//resEntity = new ResponseEntity(data,HttpStatus.SC_OK);
 		}
 		
 		else if(int_Amount != int_totalPrice) {
@@ -72,7 +72,7 @@ public class PaymentController {
 			
 			data.put("status", "failed");
 			data.put("payInfo", payment);
-			resEntity = new ResponseEntity(data,HttpStatus.SC_BAD_REQUEST);
+			//resEntity = new ResponseEntity(data,HttpStatus.SC_BAD_REQUEST);
 		}
 		return resEntity;
 	}
