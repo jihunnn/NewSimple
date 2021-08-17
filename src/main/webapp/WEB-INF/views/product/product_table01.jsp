@@ -179,10 +179,10 @@
 				flush="false" />
 			<hr style="margin-top: -20px; margin-bottom: 30px;">
 
-			<div class="row">
+		<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black; font-size:13px; padding-left:25px;">등록된 상품이 없습니다.</span></b>
+						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"
@@ -203,15 +203,23 @@
 										</c:when>
 									</c:choose>
 									<div class="text d-flex py-1">
-										<div class="desc pl-2">
+										<div class="desc">
 											<h3 class="heading">
-												<a style="font-size: 15px;"
+												<a style="font-size: 13px;"
 													href="${contextPath}/product/viewProduct.do?productNum=${product.productNum}">${product.productName}</a>
+												<a style="fontsize: 10px; margin-top: 7px;"><span
+													class="favoriteText"
+													style="color: #7e9c8c; margin-top: 5px; font-size: 13px; float: right; margin-right: 1px;">
+														${product.favoriteCount}</span><img
+													src="${contextPath}/resources/images/heartfull.jpg"
+													id="favoritHeart"
+													style="width: 13px; height: 13px; margin-top: 9px; margin-bottom: 3px; margin-right:3px; float: right;" /></a>
 											</h3>
-											<hr style="margin-top: 15px; margin-bottom: 10px;">
-											<h3 class="heading"
-												style="float: right; white-space: nowrap; margin-bottom: 10px;">
-												<a href="#" style="font-size: 16px;"><fmt:formatNumber
+
+											<hr style="margin-top: 10px; margin-bottom: 10px;">
+											<h3 class="heading" 
+												style="float: right;font-size:13px; white-space: nowrap; margin-bottom: 10px;">
+												<a href="#" style="font-size: 14px;"><fmt:formatNumber
 														pattern="###,###,###" value="${product.productPrice}" />원</a>
 											</h3>
 										</div>

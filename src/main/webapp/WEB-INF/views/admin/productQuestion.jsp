@@ -200,8 +200,8 @@
 						<c:when test="${!empty productQuestionList}">
 							<c:set var="num"
 								value="${pageMaker.totalCount - ((pageNum-1) * 10) }" />
-							<c:forEach var="question" items="${productQuestionList}">
-								<div id="tallModal2" class="modal modal-wide fade">
+							<c:forEach var="question" items="${productQuestionList}" varStatus="status">
+								<div id="tallModal2${status.index}" class="modal modal-wide fade">
 									<div class="modal-dialog">
 										<div class="modal-content"
 											style="width: 700px; height: 510px;">
@@ -244,7 +244,7 @@
 									<!-- /.modal-dialog -->
 								</div>
 								<!-- 답변수정하기 -->
-								<div id="tallModal1" class="modal modal-wide fade">
+								<div id="tallModal1${status.index}" class="modal modal-wide fade">
 									<div class="modal-dialog">
 										<div class="modal-content"
 											style="width: 700px; height: 510px;">
@@ -311,7 +311,7 @@
 														style="float: right; border-radius: 2px; margin-bottom: 3px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left: 2px;"
 														class="btn-secondary btn-xs">삭제</button>
 													<c:if test="${question.answerWhether == '미답변'}">
-														<a data-toggle="modal" href="#tallModal2"
+														<a data-toggle="modal" href="#tallModal2${status.index}"
 															style="float: right; border-radius: 2px; margin-bottom: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 															class="btn-secondary btn-xs">답변</a>
 													</c:if>
@@ -327,7 +327,7 @@
 															onclick="javascript:fn1();location.href='${contextPath}/admin/removeProductAnswer.do?productQuestionNum=${question.productQuestionNum}'"
 															style="float: right; border-radius: 2px; margin-bottom: 3px; cursor: pointer; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px; margin-left: 2px;"
 															class="btn-secondary btn-xs">삭제</button>
-														<a data-toggle="modal" href="#tallModal1"
+														<a data-toggle="modal" href="#tallModal1${status.index}"
 															style="float: right; border-radius: 2px; margin-bottom: 3px; padding-top: 3px; text-align: center; background-color: white; color: gray; border: 1px solid #eeeeee; border-radius: 2px; width: 70px; height: 30px; font-size: 13px;"
 															class="btn-secondary btn-xs">수정</a>
 													</p>

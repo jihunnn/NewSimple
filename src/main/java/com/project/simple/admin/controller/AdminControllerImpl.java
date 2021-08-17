@@ -579,8 +579,7 @@ public class AdminControllerImpl implements AdminController {
 		} catch (Exception e) {
 			message = "<script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해주세요');";
-			message += "  location.href='" + request.getContextPath() + "/board/viewAsCenter.do?asCenterNum="
-					+ asCenterNum + "';";
+			message += "  location.href='" + request.getContextPath() + "/board/listAsCenter.do';";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();

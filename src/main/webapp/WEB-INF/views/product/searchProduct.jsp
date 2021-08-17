@@ -142,23 +142,24 @@
 <body>
 
 
-	<section class="ftco-section" style="padding-top: 0px;">
-		<img src="${contextPath}/resources/images/product/bed.jpg"
-			width=100% height=400px style="margin-bottom: 50px;">
+	<section class="ftco-section" style="padding-top: 200px; ">
+
 		<div class="container">
 
 
 
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
-			<hr style="margin-top: -15px; margin-bottom: 30px;">
+				<h6 style="font-size:20px; color:#7e9c8c; font-weight:bold;">검색상품목록</h6>
+			<hr style=" margin-bottom: 30px;">
 
 
-
+		
 			<div class="row">
+			
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b><span style="color: black; margin-left:20px;  font-size:13px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"

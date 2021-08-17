@@ -113,62 +113,34 @@
 <body>
 
 	<section class="ftco-section testimony-section"
-		style="padding-top: 50px;">
+		style="padding-top: 200px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">로그인</h2>
-				</div>
-			</div>
+
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 
 			<section class="ftco-section testimony-section" id="sect"
 				style="padding-top: 50px;">
 				<div class="container" style="text-align: center;">
 					<div>
-						<h4 style="margin-bottom: 40px; font-size: 22px;">새로운 비밀번호를
+						<h4 style="margin-bottom: 40px; font-size: 20px; color:#7e9c8c; font-weight:bold;">새로운 비밀번호를
 							입력해주세요.</h4>
 					</div>
 					<div class="pass_input_confirm">
 						<form name="NewPassWord" action="${contextPath}/newPassWord.do" method="post">
-							<div id="user_password1" style="padding-bottom: 10px">
-								<input type="password" name="memPwd" size="37" value=""
+							<div id="user_password1" style="padding-bottom: 10px; ">
+								<input type="password" name="memPwd" size="37" value="" style="border:1px solid #dcdcdc; font-size:13px; width: 325px;"
 									placeholder="비밀번호를 입력해주세요">
 							</div>
-							<div id="user_password2" style="padding-bottom: 20px">
-								<input type="password" name="memPwd1" size="37" value=""
+							<div id="user_password2" style="padding-bottom: 20px"> 
+								<input type="password" name="memPwd1" size="37" value="" style="border:1px solid #dcdcdc; font-size:13px; width: 325px;"
 									placeholder="비밀번호 확인">
 							</div>
 						</form>
 						
 						<div>
 								<button onclick="new_password()"
-									style="width: 310px; background-color: #212529; color: white;">
+									style="width: 325px; background-color: #7e9c8c; color: white; border:none;cursor:pointer; height:40px; font-size:13px;">
 									<i class="go_login-06"></i><span>확인</span>
 								</button>
 						</div>

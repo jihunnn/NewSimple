@@ -35,53 +35,24 @@
 	
 
 	<section class="ftco-section testimony-section"
-		style="padding-top: 50px;">
+		style="padding-top: 200px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">아이디/비밀번호
-						찾기</h2>
-				</div>
-			</div>
+
 			<!-- 최근 본 상품 -->
-			<div id="recentlyProduct"
-				style="position: absolute; width: 120px; height: 310px; margin-left: 1370px; border: 1px solid #d2d2d2; margin-top: -100px;">
-				<ul
-					style="list-style: none; margin-top: 10px; padding-left: 20px; margin-bottom: 10px;">
-					<li><a href="#"
-						style="padding-left: -10px; padding-bottom: 1px; color: black;">최근본상품</a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul style="list-style: none; padding-top: 5px;">
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_1.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; margin-left: -30px;"></a></li>
-					<li><a href="#"><img
-							src="${contextPath}/resources/images/image_2.jpg"
-							style="width: 100px; height: 100px; padding-top: 10px; padding-top: 10px; margin-left: -30px;"></a></li>
-				</ul>
-				<hr style="margin-top: 0px; margin-bottom: 0px; color: #d2d2d2;">
-				<ul
-					style="list-style: none; padding-left: 30px; margin-bottom: 10px; margin-top: 8px;">
-					<li><a href="#"
-						style="color: black; text-align: center; margin-top: 8px; padding-top: 30px;">더보기▼</a></li>
-				</ul>
-			</div>
+<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
 
 
 			<section class="ftco-section testimony-section" id="sect">
 				<div class="container" style="text-align: center;">
 					<div style="padding-bottom: 40px">
 						<h4
-							style="margin-top: 20px; margin-bottom: 30px; font-size: 20px;">비밀번호가
+							style="margin-top: 20px; margin-bottom: 30px; font-size: 20px; color:#5f5f5f; font-weight:bold;">비밀번호가
 							정상적으로 변경되었습니다.</h4>
 					</div>
 					<div class="pass_input_confirm">
 						<div>
 							<button onclick="location.href='${contextPath}/login_01.do'"
-								style="width: 262px; background-color: #212529; color: white;">
+								style="width: 262px; background-color: #7e9c8c; color: white; border:none; font-size:13px; height:40px;">
 								<i class="go_login-06"></i><span>로그인으로 돌아가기</span>
 							</button>
 						</div>

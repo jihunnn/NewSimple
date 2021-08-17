@@ -352,7 +352,7 @@
 													<th colspan="2"
 														style="padding-left: 5px; float: right; padding-right: 0px; border-right:none;">
 														<div
-															style="border: 1px solid #eeeeee;  margin-top:10px; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;  font-weight:normal;">${reviewSearchList.productContent}<br>
+															style="border: 1px solid #eeeeee;  margin-top:5px; margin-bottom:5px; padding-left: 10px; background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px;  font-weight:normal;">${reviewSearchList.productContent}<br>
 															<img id="preview"
 																src="${contextPath}/download_review.do?reviewNum=${reviewSearchList.reviewNum}&reviewFile=${reviewSearchList.reviewFile}"
 																width="120" height="120" /> <br> <input
@@ -467,7 +467,7 @@
 													<th colspan="2"
 														style="padding-left: 5px; float: right; padding-right: 0px;">
 														<div 
-															style="border: 1px solid #eeeeee; margin-top:5px; padding-left: 10px; font-size:13px;background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px; font-weight:normal;">${mypageReviewList.productContent}<br>
+															style="border: 1px solid #eeeeee; margin-top:5px; margin-bottom:5px; padding-left: 10px; font-size:13px;background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px; font-weight:normal;">${mypageReviewList.productContent}<br>
 
 															<img id="preview"
 																src="${contextPath}/download_review.do?reviewNum=${mypageReviewList.reviewNum}&reviewFile=${mypageReviewList.reviewFile}"

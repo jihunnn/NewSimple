@@ -397,7 +397,7 @@ function div_show(selectList) {
 									   <div id="phone_con" style="display: none;">
 									    <input type="text" name="Approval_key" id="Approval_key"
 											size="10"  placeholder="인증번호를 입력하세요"
-											style="margin-left:49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
+											style="margin-left:49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 216px; height: 36px;">
 										<button type="button" id="findBtnPhone"
 											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호 확인</button>
 										</div>

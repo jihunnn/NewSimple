@@ -128,6 +128,7 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void updateAsCenterConfirm(int asCenterNum) throws DataAccessException {
 		sqlSession.update("mapper.admin.updateAsCenterConfirm", asCenterNum);
+		System.out.println(asCenterNum);
 	}
 
 
