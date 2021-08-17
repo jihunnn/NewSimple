@@ -193,7 +193,7 @@ h3 {
 			form.memPhoneNum1.focus();
 			return false;
 		}
-		if (form.memPhoneNum1.value.length < 5) {
+		if (form.memPhoneNum1.value.length < 4) {
 			alert("핸드폰번호를 4자이하 입력해주세요.")
 			form.memPhoneNum1.focus();
 			form.memPhoneNum1.select();
@@ -214,7 +214,7 @@ h3 {
 			form.memPhoneNum2.focus();
 			return false;
 		}
-		if (form.memPhoneNum2.value.length < 5) {
+		if (form.memPhoneNum2.value.length < 4) {
 			alert("핸드폰번호를 4자이하 입력해주세요.")
 			form.memPhoneNum2.focus();
 			form.memPhoneNum2.select();
@@ -478,10 +478,10 @@ h3 {
 										<td colspan="3" class="user_id" style="padding-left: 50px;">
 											<input type="text" name="memId" id="memId" size="30"
 											placeholder="4~12자/영문,대소문자,숫자만 입력가능"
-											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 254px; color: #b3b3b3; height: 36px; font-size: 11px;">
+											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 254px;  color: #b3b3b3; height: 36px; font-size: 11px;">
 											<input type="button" name="btnOverlapped" value="중복확인"
 											id="idck" onclick="fn_overlapped()"
-											style="background-color: #c6c6c6; border: none; font-size:13px; color: white; height: 36px; margin-left: 4px;">
+											style="background-color: #c6c6c6; border: none; cursor:pointer; font-size:13px; color: white; height: 36px; margin-left: 4px;">
 											<input type="hidden" name="idDuplication" value="idUncheck">
 										</td>
 									</tr>
@@ -561,7 +561,7 @@ h3 {
 											style="border: 1px solid #dcdcdc; width: 77px; height: 36px;">
 											<button type="button" name="phone_certification"
 												id="BtnPhoneConf" onclick="div_show('0');"
-												style="background-color: #c6c6c6; border: none; color: white; font-size:13px; height: 36px; margin-left: 4px;">핸드폰인증</button>
+												style="background-color: #c6c6c6; border: none;cursor:pointer; color: white; font-size:13px; height: 36px; margin-left: 4px;">핸드폰인증</button>
 										</td>
 									</tr>
 
@@ -574,7 +574,7 @@ h3 {
 													size="10" placeholder="인증번호를 입력하세요"
 													style="margin-left: 49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;">
 												<button type="button" id="findBtnPhone"
-													style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호
+													style="background-color: #c6c6c6; border: none; width:100px; color: white; height: 36px; margin-left: 4px;">인증번호
 													확인</button>
 											</div>
 										</td>
@@ -592,7 +592,7 @@ h3 {
 											readonly size="10"
 											style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 225px; height: 36px;">
 											<input type="button" onclick="sample6_execDaumPostcode()"
-											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;"
+											style="background-color: #c6c6c6;cursor:pointer; border: none; color: white; height: 36px; margin-left: 4px;"
 											value="우편번호 찾기">
 										</td>
 									</tr>
@@ -710,10 +710,10 @@ h3 {
 				<div
 					style="text-align: center; padding-bottom: 70px; font-size: 13px; margin-top: 20px; margin-left: 20px;">
 					<input type="button" name="modify" value="회원가입 "
-						style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;"
+						style="padding-left: 10px; background-color: #7e9c8c; color: white;cursor:pointer; border: none; border-radius: 2px; width: 130px; height: 45px;"
 						onclick="Check_Join()"> <input type="reset" name="reset"
 						value="취    소"
-						style="width: 75px; background-color: white; margin-right: 40px; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
+						style="width: 75px; background-color: white; margin-right: 40px; color: gray;cursor:pointer; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
 						onclick="location.href='/Main'">
 				</div>
 			</form>

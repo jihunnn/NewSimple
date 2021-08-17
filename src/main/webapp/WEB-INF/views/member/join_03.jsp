@@ -314,9 +314,9 @@ function div_show(selectList) {
 
 					<div class="container" style="width: 400px; padding-right: 0px;">
 						<section class="Easy-sgin-in-wrap">
-						<h3 style="font-size: 20px; color: #7e9c8c;">네이버 회원가입</h3>
+						<h3 style="font-size: 20px; color: #7e9c8c; font-weight:bold;">네이버 회원가입</h3>
 							<div id="MainBox">
-								<table style="wdith: 500px; height: 330px; text-align: left; font-size: 14px;">
+								<table style="wdith: 500px; height: 330px; text-align: left; font-size: 13px;">
 									<tr>
 										<td class="user_name">
 											<div align="left" style="width: 80px;">
@@ -353,7 +353,7 @@ function div_show(selectList) {
 										</td>
 										<td colspan="3" class="email" style="padding-left: 50px;">
 											<input type="text" name="memEmail" placeholder="영문,대소문자,숫자만 입력가능" value="${Email0}" size="13"
-											style="margin-bottom: 10px;border: 1px solid #dcdcdc; width: 170px; height: 36px; color: #b3b3b3; font-size: 12px;"> @ <select
+											style="margin-bottom: 10px;border: 1px solid #dcdcdc; width: 165px; height: 36px; color: #b3b3b3; font-size: 12px;"> @ <select
 											name="memEmail1" id="selcet1" style="border: 1px solid #dcdcdc; width: 134px; height: 36px;">
 												<option value="${Email1}">${Email1}</option>
 												<option value="naver.com">naver.com</option>
@@ -412,9 +412,9 @@ function div_show(selectList) {
 										</td>
 										<td colspan="3" class="addr" style="padding-left: 50px;">
 											<input type="text" name="memAdr" id="sample6_postcode"
-											readonly size="10" style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 218px; height: 36px;"> 
+											readonly size="10" style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 216px; height: 36px;"> 
 											<input type="button" onclick="sample6_execDaumPostcode()"
-												style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;"
+												style="background-color: #c6c6c6; font-size:13px;border: none; color: white; height: 36px; margin-left: 4px;"
 											value="우편번호 찾기">
 										</td>
 									</tr>
@@ -423,10 +423,10 @@ function div_show(selectList) {
 											<div align="left"></div>
 										</td>
 										<td colspan="3" class="addr1" style="padding-left: 50px;">
-											<input type="text" style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 326px; height: 36px;"
+											<input type="text" style="margin-bottom: 10px; border: 1px solid #dcdcdc; width: 318px; height: 36px;"
 											name="memAdr1" id="sample6_address" size="30" value=""><input
 											type="text" name="memAdr2" id="sample6_address2" size="30"
-											style="border: 1px solid #dcdcdc; width: 326px; height: 36px;"
+											style="border: 1px solid #dcdcdc; width: 318px; height: 36px;"
 											value="">
 										</td>
 									</tr>
@@ -442,12 +442,12 @@ function div_show(selectList) {
 							<table style="width: 600px; height: 400px;">
 								<tr>
 									<td
-										style="padding-left: 15px; font-size: 14px; padding-top: 10px;"><input
+										style="padding-left: 15px; font-size: 13px; padding-top: 10px;"><input
 										type="checkbox" name="full_agree" id="full_agree"
 										onclick="checkAllCheckbox()" value="on" > 전체 동의</td>
 								</tr>
 								<tr>
-									<td style="padding-left: 15px; font-size: 14px;"><input
+									<td style="padding-left: 15px; font-size: 13px;"><input
 										type="checkbox" name="agree" id="agree1" value="on"><a
 										style="color: red; font-size: 14px;">*</a> 이용 약관</td>
 								</tr>
@@ -479,10 +479,10 @@ function div_show(selectList) {
 
 								</tr>
 								<tr>
-									<td style="padding-left: 10px; font-size: 14px;">
+									<td style="padding-left: 10px; font-size: 13px;">
 										<div align="left" style="padding-left: 5px;">
 											<input type="checkbox" name="agree" id="agree2" value="on"><a
-												style="color: red; font-size: 14px;">*</a>개인정보 수집 및 이용안내
+												style="color: red; font-size: 13px;">*</a>개인정보 수집 및 이용안내
 										</div>
 									</td>
 
@@ -498,7 +498,7 @@ function div_show(selectList) {
 
 								</tr>
 								<tr>
-									<td style="padding-left: 15px; font-size: 14px;">
+									<td style="padding-left: 15px; font-size: 13px;">
 										<div align="left">
 											<input type="checkbox" name="agree" id="agree3" value="on">마켓팅
 											수신 동의
@@ -521,12 +521,12 @@ function div_show(selectList) {
 						</div>
 					</div>
 				</section>
-				<div style="text-align: center; padding-bottom: 70px; font-size: 14px; margin-top: 20px; margin-left: 20px;">
+				<div style="text-align: center; padding-bottom: 70px; font-size: 13px; margin-top: 20px; margin-left: 20px;">
 					<input type="button" name="modify" value="회원가입 "
 						style="padding-left: 10px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;"
 						onclick="Check_Join()"> <input type="reset" name="reset"
 						value="취    소"
-						style="width: 75px; background-color: white; margin-right: 40px; color: gray; border: 1px solid #7e9c8c; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
+						style="width: 75px; background-color: white; margin-right: 40px; color: gray; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
 						onclick="location.href='/Main'">
 				</div>
 			</form>

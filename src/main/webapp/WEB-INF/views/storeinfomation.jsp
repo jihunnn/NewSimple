@@ -38,20 +38,20 @@
 
 	<section class="ftco-section"
 		style="padding-top: 10px; margin-bottom: 50px; padding-bottom: 0px; margin-bottom: 400px;">
-		<img src="${contextPath}/resources/images/store.jpg" width=100%
-			height=350px>
+
 		<div class="container">
 
-
+		<img src="${contextPath}/resources/images/store.jpg" width=100%
+			height=350px>
 
 			<!-- 탭메뉴 영역 -->
 
-			<ul class="nav  tabs " style="margin-top: 100px; margin-left: 0px;">
+			<ul class="nav  tabs " style="margin-top: 100px; margin-left: 0px; ">
 				<li role="presentation" class="active"
 					style="width: 500px; margin-lift: 300px;"><a href="#tab1"
-					style="text-align: center; font-size: 20px; color: black; padding-left: 300px; font-weight:bold;">회사소개</a></li>
+					style="text-align: center; font-size: 14px; color: black; padding-left: 300px; ">ㆍ회사소개ㆍ</a></li>
 				<li role="presentation" style="width: 500px;"><a href="#tab2"
-					style="text-align: center; font-size: 20px; color: black; padding-left: 300px; font-weight:bold;">매장안내</a></li>
+					style="text-align: center; font-size: 14px; color: black; padding-left: 300px; ">ㆍ매장안내ㆍ</a></li>
 			</ul>
 			<hr>
 			<div id="wrapper">
@@ -70,13 +70,13 @@
 						<table style="margin-top: 50px; width: 1000px; font-size: 13px;">
 							<thead class="table-dark" align=center>
 								<tr align="center"
-									style="height: 41px; color: black; background-color: #eeeeee; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #c6c8ca;">
+									style="height: 41px; color: black; background-color: #fbfbfb; border-top: 1px solid #7e9c8c; border-bottom: 1px solid #eeeeee;">
 									<td scope="col" width="100">대전 본사</td>
 									<td scope="col" width="100">천안 칙영</td>
 
 								</tr>
 								<tr
-									style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
+									style="border-bottom: 1px solid #eeeeee; background-color: white; color: black;">
 									<td scope="col" width="500" height="150"
 										style="border-top: none !important;">주소: 대전 서구 탄방동 83-13<br>전화번호:
 										042-527-3038<br> 영업시간: AM9:00 ~ PM07:00<br>매주 <span
@@ -89,7 +89,7 @@
 									</td>
 								</tr>
 								<tr
-									style="border-bottom: 1px solid #c6c8ca; background-color: white; color: black;">
+									style="border-bottom: 1px solid #eeeeee; background-color: white; color: black;">
 
 									<td scope="col" width="100" height="400" Style="float: left;">
 										<br> <br>

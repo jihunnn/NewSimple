@@ -8,15 +8,9 @@
 <body>
 	<!-- 마이페이지 타이틀 -->
 	<section class="ftco-section"
-		style="padding-top: 50px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
+		style="padding-top: 100px; margin-bottom: 50px; padding-bottom: 0px; height: 700px;">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3"
-				style="background-color: #f5f5f5; border: 1px solid #e7e7e7; margin-top: 50px;">
-				<div class="col-md-20 heading-section ftco-animate"
-					style="height: 60px;">
-					<h2 class="mb-4" style="font-size: 35px; margin-top: 15px;">마이페이지</h2>
-				</div>
-			</div>
+
 			<!-- 마이페이지 타이틀 끝 -->
 			<!-- 최근 본 상품 -->
 			<jsp:include page="/WEB-INF/views/common/quick.jsp" flush="false" />
@@ -25,12 +19,15 @@
 			<jsp:include page="/WEB-INF/views/common/mypage_sidemenu.jsp"
 				flush="false" />
 			<!-- left Menu 끝-->
-
-
+			<div style="text-align:center; font-size:13px;">
+			<h3 style="font-size:20px; font-weight:bold; padding-bottom:50px; color:#7e9c8c; padding-top:100px; ">아이디와 비밀번호를 입력해주세요</h3>
 			<form action="${contextPath}/removeMember.do" method="POST">
-				아이디 :<input type="text" name="memId">비밀번호 :<input type="password" name="memPwd"> <input
+				아이디 <input type="text" name="memId" style="border:1px solid #dcdcdc; margin-bottom:10px; height:29px; "><br>
+				비밀번호 <input type="password" style="border:1px solid #dcdcdc; height:29px;  margin-bottom:10px; margin-right:13px;"name="memPwd"> <br>
+				<input style="background-color:#5f5f5f; cursor:pointer; margin-left:42px; width:145px; height:30px; color:white; font-size:13px; border:none; border-radius:2px; "
 					type="submit" value="탈퇴하기">
 			</form>
+			</div>
 		</div>
 	</section>
 

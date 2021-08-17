@@ -310,7 +310,7 @@ hr {
 			<div class="dropdown" style="width: 0px;">
 				<button id="dropdownMenu1" data-toggle="dropdown"
 					aria-expanded="true" class="category"
-					style="right:55px; position: relative;  cursor: pointer; font-size: 17px; margin-top:47px;
+					style="right:55px; position: relative;  cursor: pointer; font-size: 14px; margin-top:47px;
 					background-image:url(${contextPath}/resources/images/header-02.png); cusor:pointer;  border:none; background-size:38px 40px; width:45px; height:38px; background-repeat:no-repeat; margin-left:20px; border-radius:2px; background-position:center; background-color: transparent !important; cursor:pointer; margin-bottom:27px;"></button>
 
 
@@ -321,150 +321,150 @@ hr {
 
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c;">침대</a></li>
+						style="float: left; margin-left: -1200px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">침대</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c;">소파</a></li>
+						style="float: left; margin-left: -980px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">소파</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c;">화장대/옷장/수납</a></li>
+						style="float: left; margin-left: -755px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">화장대/옷장/수납</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c;">식탁/의자</a></li>
+						style="float: left; margin-left: -530px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">식탁/의자</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c;">테이블/책상/책장</a></li>
+						style="float: left; margin-left: -300px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">테이블/책상/책장</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; padding-top: 60px; color: #000000;">싱글</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">싱글</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 60px; color: #000000;">코너형</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">코너형</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 60px; color: #000000;">거실장</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">거실장</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; width: 180px; text-align: center; padding-top: 60px; color: #000000;">2인이상</a></li>
+						style="float: left; margin-left: -530px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">2인이상</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 60px; color: #000000;">소파
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">소파
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 95px;">킹</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">킹</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 95px;">1인/웜체어</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">1인/웜체어</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 95px;">장식장</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">장식장</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 95px;">4인
+						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">4인
 							이상</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 95px;">좌식
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">좌식
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 125px;">이층
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">이층
 							침대</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 125px; color: #000000;">패브릭</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 125px; color: #000000; font-size:14px;">패브릭</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 125px;">화장대/콘솔</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">화장대/콘솔</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 125px;">원목테이블</a></li>
+						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">원목테이블</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 125px;">책상/책장</a></li>
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">책상/책장</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 155px;">패밀리</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 155px;font-size:14px;">패밀리</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 155px;">리클라이너</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 155px; font-size:14px;">리클라이너</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 155px;">옷장</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 155px; font-size:14px;">옷장</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 155px;">식탁
+						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 155px; font-size:14px;">식탁
 							의자</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 155px;">다용도
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 155px; font-size:14px;">다용도
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 185px; color: #000000;">퀸</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 185px; color: #000000; font-size:14px;">퀸</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 185px; color: #000000;">4/6인
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 185px; color: #000000; font-size:14px;">4/6인
 							일자형</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 185px; color: #000000;">서랍장</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 185px; color: #000000; font-size:14px;">서랍장</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -530px; width: 180px; text-align: center; padding-top: 185px; color: #000000;">테이블의자</a></li>
+						style="float: left; margin-left: -530px; width: 180px; text-align: center; padding-top: 185px; color: #000000; font-size:14px;">테이블의자</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 185px; color: #000000;">책상/책장</a></li>
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 185px; color: #000000; font-size:14px;">책상/책장</a></li>
 
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c;">매장
+						style="float: left; margin-left: -1200px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c; font-size:16px;">매장
 							안내</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c;">마이
+						style="float: left; margin-left: -980px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c; font-size:16px;">마이
 							페이지</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c;">고객센터</a></li>
+						style="float: left; margin-left: -755px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; margin-top: 230px; color: #7e9c8c; font-size:16px;">고객센터</a></li>
 
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; padding-top: 270px; color: #000000;">회사
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; padding-top: 270px; color: #000000; font-size:14px;">회사
 							소개</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 270px; color: #000000;">주문/배송조회</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; padding-top: 270px; color: #000000; font-size:14px;">주문/배송조회</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 270px; color: #000000;">공지사항</a></li>
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; padding-top: 270px; color: #000000; font-size:14px;">공지사항</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 300px;">매장안내</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 300px; font-size:14px;">매장안내</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 300px;">취소/반품내역</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 300px; font-size:14px;">취소/반품내역</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 300px;">자주
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 300px; font-size:14px;">자주
 							묻는 질문</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="" id="categorydetile"
-						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 330px;">ㅤ</a></li>
+						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 330px; font-size:14px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 330px;">장바구니</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 330px; font-size:14px;">장바구니</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 330px;">1:1
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 330px; font-size:14px;">1:1
 							문의</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -472,10 +472,10 @@ hr {
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 360px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 360px;">관심상품</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 360px; font-size:14px;">관심상품</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 360px;">A/S
+						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 360px; font-size:14px;">A/S
 							접수 센터</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -483,7 +483,8 @@ hr {
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 390px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 390px;">적립금</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 390px; font-size:14px;">상품
+							리뷰</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 390px;">ㅤ</a></li>
@@ -493,7 +494,7 @@ hr {
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 420px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 420px;">쿠폰</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 420px; font-size:14px;"></a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 420px;">ㅤ</a></li>
@@ -503,8 +504,8 @@ hr {
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 450px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 450px;">회원
-							등급 안내</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 450px; font-size:14px;">
+							</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 450px;">ㅤ</a></li>
@@ -514,8 +515,7 @@ hr {
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 480px;">ㅤ</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 480px;">상품
-							리뷰</a></li>
+						style="float: left; margin-left: -980px; width: 180px; text-align: center; color: #000000; padding-top: 480px; font-size:14px;"></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -755px; width: 180px; text-align: center; color: #000000; padding-top: 480px;">ㅤ</a></li>

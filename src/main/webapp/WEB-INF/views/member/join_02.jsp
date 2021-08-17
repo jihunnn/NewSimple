@@ -126,17 +126,17 @@ h3 {
 				<div style="padding-bottom: 40px">
 					<h4 style="font-size: 20px; color: gray; font-weight: bold;">축하합니다!
 						회원가입이 성공적으로 완료되었습니다.</h4>
-					<h4 style="font-size: 18px; color: gray;">알차고 실속있는 서비스로
+					<h4 style="font-size: 15px; color: gray;">알차고 실속있는 서비스로
 						찾아뵙겠습니다.</h4>
 				</div>
 				<div>
 					<div style="padding-right: 15px">
 						<button onclick="location.href='${contextPath}/main.do'"
-							style="width: 262px; margin-right:20px;background-color: white; color: gray; border: none; border-radius: 2px; width: 130px; height: 45px; border: 1px solid #eeeeee;">
+							style="width: 262px; margin-right:20px;background-color: white; cursor:pointer; font-size:13px; color: gray; border: none; border-radius: 2px; width: 130px; height: 45px; border: 1px solid #eeeeee;">
 							<i class="go_login-06"></i><span>홈으로</span>
 						</button>
 						<button onclick="location.href='${contextPath}/login_01.do'"
-							style="width: 262px; background-color: #7e9c8c; color: white; border: none; border-radius: 2px; width: 130px; height: 45px;">
+							style="width: 262px; background-color: #7e9c8c; color: white; cursor:pointer;  font-size:13px;  border: none; border-radius: 2px; width: 130px; height: 45px;">
 							<i class="go_login-06"></i><span>로그인</span>
 						</button>
 
