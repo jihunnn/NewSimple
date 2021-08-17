@@ -153,7 +153,7 @@ public class MemberControllerImpl implements MemberController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/main.do");
-		
+
 		return mav;
 	}
 
@@ -272,46 +272,57 @@ public class MemberControllerImpl implements MemberController {
 	public ModelAndView modMember(@ModelAttribute("modmember") MemberVO modmember, HttpServletRequest request,
 			HttpServletResponse response, RedirectAttributes rAttr) throws Exception {
 		HttpSession session = request.getSession();
+		ModelAndView mav = new ModelAndView();
 		request.setCharacterEncoding("utf-8");
 		String pwd = modmember.getmemPwd();
-		String memPwd = pwdEncoder.encode(pwd);
-		modmember.setmemPwd(memPwd);
-		int result = 0;
-		result = memberService.modMember(modmember);
-		session.removeAttribute("member");
-		session.removeAttribute("isLogOn");
-		ModelAndView mav = new ModelAndView("redirect:/mypage_10.do");
+
+		if (pwd != null) {
+			String memPwd = pwdEncoder.encode(pwd);
+			modmember.setmemPwd(memPwd);
+			int result = 0;
+			result = memberService.modMember(modmember);
+			session.removeAttribute("member");
+			session.removeAttribute("isLogOn");
+			mav.setViewName("redirect:/mypage_10.do");
+		} else if (pwd == null) { //SNS로 로그인한 회원은 비밀번호가 null값 이므로 pwd==null 이다.
+			int result = 0;
+			result = memberService.modMember(modmember);
+			session.removeAttribute("member");
+			session.removeAttribute("isLogOn");
+			mav.setViewName("redirect:/mypage_10.do");
+		}
 		return mav;
 	}
 
-	// 회원수정 비밀번호확인
-		@RequestMapping(value = "/mypage_03.do", method = RequestMethod.POST)
-		public ModelAndView mypage_03(@ModelAttribute("confirmPwd") MemberVO confirmPwd, HttpServletRequest request,
-				HttpServletResponse response, RedirectAttributes rAttr) throws Exception {
-			ModelAndView mav = new ModelAndView();
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			request.setCharacterEncoding("utf-8");
-			HttpSession session = request.getSession();
-			MemberVO member = (MemberVO) session.getAttribute("member");
-			
-			boolean pwdMatch = pwdEncoder.matches( confirmPwd.getmemPwd(), member.getmemPwd());
-			
-			//String sessionmemPwd = member.getmemPwd();
-			//String memPwd = confirmPwd.getmemPwd();
+	// 일반회원수정 비밀번호확인
+	@RequestMapping(value = "/modPwdCheck01.do", method = RequestMethod.POST)
+	public ModelAndView mypage_03(@ModelAttribute("confirmPwd") MemberVO confirmPwd, HttpServletRequest request,
+			HttpServletResponse response, RedirectAttributes rAttr) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
 
-			if (pwdMatch !=true) {
-				rAttr.addAttribute("result", false);
-				out.println("<script>");
-				out.println("alert('비밀번호가 일치하지 않습니다.');");
-				out.println("history.go(-1);");
-				out.println("</script>");
-				out.close();	
-			}else{
+		boolean pwdMatch = pwdEncoder.matches(confirmPwd.getmemPwd(), member.getmemPwd());
+
+		// String sessionmemPwd = member.getmemPwd();
+		// String memPwd = confirmPwd.getmemPwd();
+
+		if (pwdMatch != true) {
+			rAttr.addAttribute("result", false);
+			out.println("<script>");
+			out.println("alert('비밀번호가 일치하지 않습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			mav.setViewName("redirect:/mypage_02.do");
+		} else {
 			mav.setViewName("redirect:/mypage_03.do");
-			}
-			return mav;
 		}
+		return mav;
+	}
 
 	@RequestMapping(value = "/mypage_03.do", method = RequestMethod.GET)
 	private ModelAndView mypage_03(HttpServletRequest request, HttpServletResponse response) {
@@ -341,7 +352,19 @@ public class MemberControllerImpl implements MemberController {
 	private ModelAndView mypage_02(HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+		String loginType = vo.getlogintype();
+
+		if (loginType.equals("일반")) {
+			mav.addObject("loginType", loginType);
+			mav.setViewName(viewName);
+		} else {
+
+			mav.setViewName("mypage_04");
+
+		}
+
 		return mav;
 	}
 
@@ -376,7 +399,7 @@ public class MemberControllerImpl implements MemberController {
 		mav.setViewName(viewName);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/join_04.do", method = RequestMethod.GET)
 	private ModelAndView join_04(HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String) request.getAttribute("viewName");
@@ -660,17 +683,14 @@ public class MemberControllerImpl implements MemberController {
 
 		String Name = null;
 
-
 		// 유저정보 카카오에서 가져오기 Get properties
 		JsonNode properties = userInfo.path("properties");
 		JsonNode kakao_account = userInfo.path("kakao_account");
 
 		Name = properties.path("nickname").asText();
 
-
 		System.out.println("memId : " + Id);
 		System.out.println("memName : " + Name);
-
 
 		MemberVO member = new MemberVO();
 		member.setmemId(Id);
@@ -692,9 +712,6 @@ public class MemberControllerImpl implements MemberController {
 			model.addAttribute("Name", Name);
 			model.addAttribute("result", userInfo);
 			System.out.println(userInfo);
-
-
-
 
 			return "join_04";
 		}
