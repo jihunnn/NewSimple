@@ -166,7 +166,7 @@
 						style="cursor: pointer;">ㆍSINGLE/WARMCHAIR<span
 							style="font-size: 12px;">(1인/웜체어)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=4/6인&filter=x'"
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=4/6인 일자형&filter=x'"
 						style="cursor: pointer;">ㆍ4/6<span style="font-size: 12px;">(4/6인)</span></a></td>
 					<td style="vertical-align: middle;"><a
 						onclick="location.href ='${contextPath}/product/listProduct.do?sort=소파&subsort=패브릭&filter=x'"
@@ -189,7 +189,8 @@
 		<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b style="margin-top: 150px; margin-bottom: 100px;">
+						<span style="color: black; margin-left: 550px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"

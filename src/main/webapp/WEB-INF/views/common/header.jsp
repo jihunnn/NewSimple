@@ -166,19 +166,19 @@ hr {
 					aria-labelledby="dropdownMenu1"
 					style="margin-left: -1010px; text-align: center; top:70px;">
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=침대&subsort=싱글&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">싱글</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=침대&subsort=킹&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">킹</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=침대&subsort=이층침대&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">이층침대</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=침대&subsort=패밀리&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">패밀리</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=침대&subsort=퀸&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">퀸</a></li>
 				</ul>
 			</div>
@@ -195,20 +195,20 @@ hr {
 					aria-labelledby="dropdownMenu1"
 					style="margin-left: -910px; text-align: center; top:70px;">
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=소파&subsort=코너형&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">코너형</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=소파&subsort=1인/웜체어&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">1인/웜체어</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=소파&subsort=4/6인 일자형&filter=x" id="categorydetile"
+						style="color: #000000; font-size: 14px;">4/6인 일자형</a></li>
+					<li role="presentation" style="margin-top: 11px;"><a
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=소파&subsort=패브릭&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">패브릭</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=소파&subsort=리클라이너&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">리클라이너</a></li>
-					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
-						style="color: #000000; font-size: 14px;">4/6인 일자형</a></li>
 				</ul>
 			</div>
 
@@ -222,19 +222,19 @@ hr {
 					aria-labelledby="dropdownMenu1"
 					style="margin-left: -770px; text-align: center; top:70px;">
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=화장대/옷장/수납&subsort=거실장&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">거실장</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=화장대/옷장/수납&subsort=장식장&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">장식장</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=화장대/옷장/수납&subsort=화장대/콘솔&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">화장대/콘솔</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=화장대/옷장/수납&subsort=옷장&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">옷장</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=화장대/옷장/수납&subsort=서랍장&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">서랍장</a></li>
 				</ul>
 			</div>
@@ -248,19 +248,19 @@ hr {
 					aria-labelledby="dropdownMenu1"
 					style="margin-left: -610px; text-align: center; top:70px;">
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=2인 이상&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">2인 이상</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=4인 이상&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">4인 이상</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=8인 이상&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">8인 이상</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=식탁의자&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">식탁 의자</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=테이블의자&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">테이블의자</a></li>
 				</ul>
 			</div>
@@ -275,19 +275,19 @@ hr {
 					aria-labelledby="dropdownMenu1"
 					style="margin-left: -445px; text-align: center; top:70px;">
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=소파 테이블&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">소파 테이블</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=좌식 테이블&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">좌식 테이블</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=원목 테이블&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">원목 테이블</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=다용도 테이블&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">다용도 테이블</a></li>
 					<li role="presentation" style="margin-top: 11px;"><a
-						role="menuitem" tabindex="-1" href="" id="categorydetile"
+						role="menuitem" tabindex="-1" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=책상/책장&filter=x" id="categorydetile"
 						style="color: #000000; font-size: 14px;">책상/책장</a></li>
 				</ul>
 
@@ -335,7 +335,7 @@ hr {
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -300px; font-weight: bold; border-bottom: 1px solid #7e9c8c; width: 180px; margin-top: 20px; color: #7e9c8c; font-size:16px;">테이블/책상/책장</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="" id="categorydetile"
+						href="${contextPath}/product/listProduct.do?sort=침대&subsort=싱글&filter=x" id="categorydetile"
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">싱글</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
@@ -352,7 +352,7 @@ hr {
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="" id="categorydetile"
+						href="${contextPath}/product/listProduct.do?sort=침대&subsort=킹&filter=x" id="categorydetile"
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">킹</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"
@@ -370,7 +370,7 @@ hr {
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="" id="categorydetile"
+						href="{contextPath}/product/listProduct.do?sort=침대&subsort=이층침대&filter=x" id="categorydetile"
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">이층
 							침대</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
@@ -387,7 +387,7 @@ hr {
 						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 125px; font-size:14px;">책상/책장</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="" id="categorydetile"
+						href="${contextPath}/product/listProduct.do?sort=침대&subsort=패밀리&filter=x" id="categorydetile"
 						style="float: left; margin-left: -1200px; width: 180px; text-align: center; color: #000000; padding-top: 155px;font-size:14px;">패밀리</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
 						tabindex="-1" href="" id="categorydetile"

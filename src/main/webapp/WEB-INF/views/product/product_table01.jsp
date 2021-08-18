@@ -158,13 +158,13 @@
 				<tr
 					style="font-weight: bold; font-size: 15px; height: 19px; color: black; text-align: center;">
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=2인이상&filter=x'"
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=2인 이상&filter=x'"
 						style="cursor: pointer;">ㆍ2<span style="font-size: 12px;">(2인이상)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=4인이상&filter=x'"
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=4인 이상&filter=x'"
 						style="cursor: pointer;">ㆍ4<span style="font-size: 12px;">(4인이상)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=8인이상&filter=x'"
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=8인 이상&filter=x'"
 						style="cursor: pointer;">ㆍ8<span style="font-size: 12px;">(8인이상)</span></a></td>
 					<td style="vertical-align: middle;"><a
 						onclick="location.href ='${contextPath}/product/listProduct.do?sort=식탁/의자&subsort=식탁의자&filter=x'"
@@ -182,7 +182,8 @@
 		<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b style="margin-top: 150px; margin-bottom: 100px;">
+						<span style="color: black; margin-left: 550px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"
