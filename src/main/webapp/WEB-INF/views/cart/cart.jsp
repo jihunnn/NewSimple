@@ -658,20 +658,20 @@
 								<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
 									type="text" id="totalPrice" name="totalPrice" value="0"
 									onkeyup="comma(this)"
-									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white;  " disabled/>
 							</div>
 							<img src="${contextPath}/resources/images/equls.jpg"
 								style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
 							<span
 								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 18px;">원</span>
 							<input type="text" id="" name="" value="0" onkeyup="comma(this)"
-								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white; "  disabled/>
 							<img src="${contextPath}/resources/images/plus.jpg"
 								style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
 							<span
 								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
 								type="text" id="price1" name="price1" value="0"
-								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white; " disabled  />
 						</div>
 						<div></div>
 						<br>
@@ -762,20 +762,20 @@
 								<span style="float: right; font-size: 13px; margin-top: 2px;">원</span><input
 									type="text" id="totalPrice" name="totalPrice" value="0"
 									onkeyup="comma(this)"
-									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+									style="border: none; width: 70px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white; " disabled />
 							</div>
 							<img src="${contextPath}/resources/images/equls.jpg"
 								style="width: 15px; float: right; height: 15px; margin-top: 5px;" />
 							<span
 								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 18px;">원</span>
 							<input type="text" id="" name="" value="0" onkeyup="comma(this)"
-								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								style="border: none; width: 20px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white;  " disabled/>
 							<img src="${contextPath}/resources/images/plus.jpg"
 								style="width: 15px; float: right; height: 15px; margin-top: 5px; margin-right: 28px;" />
 							<span
 								style="float: right; font-size: 13px; margin-top: 2px; margin-right: 38px;">원</span><input
-								type="text" id="price1" name="price1" value="0"
-								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold;" />
+								type="text" id="price1" name="price1" value="0" 
+								style="border: none; width: 100px; float: right; text-align: right; font-size: 15px; color: #7e9c8c; font-weight: bold; background-color:white;  " disabled/>
 						</div>
 
 

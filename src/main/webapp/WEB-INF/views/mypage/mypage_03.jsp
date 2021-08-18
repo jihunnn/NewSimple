@@ -12,6 +12,45 @@
 var check = 1;
 function div_show(selectList) {
     var obj1 = document.getElementById("phone_con"); // 핸드폰
+	var phone1 = jQuery("#phone1").val();
+
+	var phone2 = jQuery("#phone2").val();
+
+	var phone3 = jQuery("#phone3").val();
+
+	
+
+	if(phone1 =="")
+
+		{
+
+		 alert("핸드폰 번호를 입력하세요");
+
+		return false;
+
+		}
+
+	if(phone2 =="")
+
+	{
+
+	 alert("핸드폰 번호를 입력하세요");
+
+	return false;
+
+	}
+
+	if(phone3 =="")
+
+	{
+
+	 alert("핸드폰 번호를 입력하세요");
+
+	return false;
+
+	}
+
+
 
     if( selectList == "0" ) { // 핸드폰
         obj1.style.display = "block";   
@@ -184,6 +223,29 @@ function div_show(selectList) {
 			var phone1 = jQuery("#phone1").val();
 			var phone2 = jQuery("#phone2").val();
 			var phone3 = jQuery("#phone3").val();
+			if(phone1 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone2 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone3 =="")
+
+			{
+
+			return false;
+
+			}
 			var memPhoneNum4 = "";
 			memPhoneNum4 = phone1 +"-"+ phone2 +"-"+ phone3;
 			

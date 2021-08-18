@@ -927,10 +927,10 @@ public class ProductControllerImpl implements ProductController {
 	// 옵션 리스트 불러오기
 	@RequestMapping(value = "product/optionList.do", method = RequestMethod.GET)
 	@ResponseBody
-	private Map<String,Object> optionList(@ModelAttribute("option") OptionVO option, HttpServletRequest request,
+	private Map<String,Object> optionList(@RequestParam("productNum") String productNum, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Map<String, Object> optionMap = new HashMap<String, Object>();
-		List<OptionVO> optionList = productService.addNewOption(option);
+		List<OptionVO> optionList = productService.selectOptionList(productNum);
 		optionMap.put("optionList", optionList);
 	
 		return optionMap;

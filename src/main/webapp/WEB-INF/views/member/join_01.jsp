@@ -75,11 +75,54 @@ h3 {
 
 	function div_show(selectList) {
 		var obj1 = document.getElementById("phone_con"); // 핸드폰
+		var phone1 = jQuery("#phone1").val();
+
+		var phone2 = jQuery("#phone2").val();
+
+		var phone3 = jQuery("#phone3").val();
+
+		
+
+		if(phone1 =="")
+
+			{
+
+			 alert("핸드폰 번호를 입력하세요");
+
+			return false;
+
+			}
+
+		if(phone2 =="")
+
+		{
+
+		 alert("핸드폰 번호를 입력하세요");
+
+		return false;
+
+		}
+
+		if(phone3 =="")
+
+		{
+
+		 alert("핸드폰 번호를 입력하세요");
+
+		return false;
+
+		}
+
+ 
 
 		if (selectList == "0") { // 핸드폰
+
 			obj1.style.display = "block";
+
 		}
+
 	}
+
 	//로그인
 	function Check_Join() {
 		var form = document.CheckJoin;
@@ -337,6 +380,31 @@ h3 {
 			var phone1 = jQuery("#phone1").val();
 			var phone2 = jQuery("#phone2").val();
 			var phone3 = jQuery("#phone3").val();
+			if(phone1 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone2 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone3 =="")
+
+			{
+
+			return false;
+
+			}
+			
+			
 			var memPhoneNum4 = "";
 			memPhoneNum4 = phone1 + "-" + phone2 + "-" + phone3;
 
@@ -714,7 +782,7 @@ h3 {
 						onclick="Check_Join()"> <input type="reset" name="reset"
 						value="취    소"
 						style="width: 75px; background-color: white; margin-right: 40px; color: gray;cursor:pointer; border: 1px solid #eeeeee; border-radius: 2px; margin-left: 20px; width: 130px; height: 45px;"
-						onclick="location.href='/Main'">
+						onclick="location.href='${contextPath}/main.do'">
 				</div>
 			</form>
 		</div>

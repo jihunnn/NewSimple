@@ -66,7 +66,7 @@
               union
               select productNum,nonMemOrderNum,nonMemOrderSeqNum,productName
 			  from simple.nonmemberorder) as best
-              group by productNum order by  count(*)desc limit 3 ;
+              group by productNum order by  count(*)desc limit 10 ;
 	]]>
 	</select>
 	<select id="selectProductList" resultMap="proResult"
@@ -258,11 +258,11 @@
 	]]>
 	</select>
 
-  <select id ="addProductNum" resultType="String">
+	<select id="addProductNum" resultType="String">
    <![CDATA[
 		SELECT CONCAT('P', (SELECT LPAD(COUNT(*)+1,4,'0') FROM simple.product )) as productNum;
 	]]>
-   </select>
+	</select>
 
 	<!-- 상품추가 -->
 	<insert id="insertProduct" parameterType="java.util.Map">
@@ -564,7 +564,7 @@
 		]]>
 
 	</insert>
-	
+
 	<!-- 선택 옵션 삭제 -->
 	<delete id="deleteSelectOption" parameterType="OptionVO">
 		<![CDATA[ 
@@ -572,6 +572,8 @@
 			where optionNum = #{optionNum};
 		]]>
 	</delete>
+
+
 
 
 </mapper>

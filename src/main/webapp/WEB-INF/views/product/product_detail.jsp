@@ -748,8 +748,8 @@ function optionSelect(option) {
 							style="font-size: 15px; test-align: right; width: 400px; margin-left: 380px;">
 							총 상품 금액ㅤ<input type="text" name="totalPrice" id="totalPrice"
 								value="0"
-								style="border: none; text-align: right; font-size: 18px; color: #7e9c8c; font-weight: bold; width: 98px; margin-left: 18px;"
-								readonly />원
+								style="border: none; background-color:white;  text-align: right; font-size: 18px; color: #7e9c8c; font-weight: bold; width: 98px; margin-left: 18px;"
+								readonly/>원
 						</h2>
 
 					</div>

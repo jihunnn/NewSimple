@@ -73,29 +73,68 @@ public class MemberControllerImpl implements MemberController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		ModelAndView mav = new ModelAndView();
-		MemberVO memberVO = memberService.login(member);
-		boolean pwdMatch = pwdEncoder.matches(member.getmemPwd(), memberVO.getmemPwd());
+		if(memberService.check_id(member.getmemId()) == 0) {
 
-		if (memberVO != null && pwdMatch == true) {
-			HttpSession session = request.getSession();
-			String admin = memberVO.getlogintype();
-			if (admin.equals("관리자")) {
-				session.setAttribute("admin", memberVO);
-				session.setAttribute("AdminisLogOn", true);
-			} else {
-				session.setAttribute("member", memberVO);
-				session.setAttribute("isLogOn", true);
-			}
-
-			mav.setViewName("redirect:/main.do");
-		} else {
 			out.println("<script>");
+
 			out.println("alert('아이디 또는 비밀번호가 일치하지 않습니다.');");
+
 			out.println("history.go(-1);");
+
 			out.println("</script>");
+
 			out.close();
 
+		}else {
+
+			MemberVO memberVO = memberService.login(member);
+
+			boolean pwdMatch = pwdEncoder.matches(member.getmemPwd(), memberVO.getmemPwd());
+
+			if (memberVO != null && pwdMatch == true) {
+
+			HttpSession session = request.getSession();
+
+			String admin = memberVO.getlogintype();
+
+			if (admin.equals("관리자")) {
+
+				session.setAttribute("admin", memberVO);
+
+				session.setAttribute("AdminisLogOn", true);
+
+			} else {
+
+				session.setAttribute("member", memberVO);
+
+				session.setAttribute("isLogOn", true);
+
+			}
+
+ 
+
+			mav.setViewName("redirect:/main.do");
+
+		} else {
+
+			out.println("<script>");
+
+			out.println("alert('아이디 또는 비밀번호가 일치하지 않습니다.');");
+
+			out.println("history.go(-1);");
+
+			out.println("</script>");
+
+			out.close();
+
+ 
+
 		}
+
+		}
+
+		
+
 		return mav;
 	}
 
