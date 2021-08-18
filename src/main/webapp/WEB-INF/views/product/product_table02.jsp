@@ -159,16 +159,19 @@
 				<tr
 					style="font-weight: bold; font-size: 15px; height: 19px; color: black; text-align: center;">
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=소파테이블&filter=x'"
-						style="cursor: pointer;">ㆍSOFATABLE<span style="font-size: 12px;">(소파테이블)</span></a></td>
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=소파 테이블&filter=x'"
+						style="cursor: pointer;">ㆍSOFATABLE<span
+							style="font-size: 12px;">(소파테이블)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=좌식테이블&filter=x'"
-						style="cursor: pointer;">ㆍSEDENTARY<span style="font-size: 12px;">(좌식테이블)</span></a></td>
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=좌식 테이블&filter=x'"
+						style="cursor: pointer;">ㆍSEDENTARY<span
+							style="font-size: 12px;">(좌식테이블)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=원목테이블&filter=x'"
-						style="cursor: pointer;">ㆍWOODTABLE<span style="font-size: 12px;">(원목테이블)</span></a></td>
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=원목 테이블&filter=x'"
+						style="cursor: pointer;">ㆍWOODTABLE<span
+							style="font-size: 12px;">(원목테이블)</span></a></td>
 					<td style="vertical-align: middle;"><a
-						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=다용도테이블&filter=x'"
+						onclick="location.href ='${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=다용도 테이블&filter=x'"
 						style="cursor: pointer;">ㆍVERSATILE<span
 							style="font-size: 12px;">(다용도테이블)</span></a></td>
 					<td style="vertical-align: middle;"><a
@@ -177,7 +180,7 @@
 							style="font-size: 12px;">(책상/책장)</span></a></td>
 				</tr>
 			</table>
-			
+
 			<jsp:include page="/WEB-INF/views/common/productfilter.jsp"
 				flush="false" />
 			<hr style="margin-top: -20px; margin-bottom: 30px;">
@@ -186,10 +189,11 @@
 
 
 
-		<div class="row">
+			<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b style="margin-top: 150px; margin-bottom: 100px;"><span
+							style="color: black; margin-left: 550px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"
@@ -220,12 +224,12 @@
 														${product.favoriteCount}</span><img
 													src="${contextPath}/resources/images/heartfull.jpg"
 													id="favoritHeart"
-													style="width: 13px; height: 13px; margin-top: 9px; margin-bottom: 3px; margin-right:3px; float: right;" /></a>
+													style="width: 13px; height: 13px; margin-top: 9px; margin-bottom: 3px; margin-right: 3px; float: right;" /></a>
 											</h3>
 
 											<hr style="margin-top: 10px; margin-bottom: 10px;">
-											<h3 class="heading" 
-												style="float: right;font-size:13px; white-space: nowrap; margin-bottom: 10px;">
+											<h3 class="heading"
+												style="float: right; font-size: 13px; white-space: nowrap; margin-bottom: 10px;">
 												<a href="#" style="font-size: 14px;"><fmt:formatNumber
 														pattern="###,###,###" value="${product.productPrice}" />원</a>
 											</h3>

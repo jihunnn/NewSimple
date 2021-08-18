@@ -129,7 +129,8 @@
 			<div class="row">
 				<c:choose>
 					<c:when test="${empty productList}">
-						<b><span style="color: black;">등록된 상품이 없습니다.</span></b>
+						<b style="margin-top: 150px; margin-bottom: 100px;">
+						<span style="color: black; margin-left: 550px;">등록된 상품이 없습니다.</span></b>
 					</c:when>
 					<c:when test="${!empty productList}">
 						<c:forEach var="product" items="${productList}"

@@ -604,7 +604,7 @@ function optionSelect(option) {
 	 var productPrice =  document.getElementById('productPrice').value
 	
 	 //행추가내용
-	 row.innerHTML = "<td style='width:100px; '><div class='updown'><span onclick='javascript:basket.changePNum(1,i);'><i class='fas fa-arrow-alt-circle-up up'></i></span> <input type='text' name='productCnt' id='productCnt' size='2' maxlength='4' class='p_num' value='1' style='border:1px solid #dcdcdc;' onkeyup='javascript:basket.changePNum(1,i);''><span onclick='javascript:basket.changePNum(1,i);''><i class='fas fa-arrow-alt-circle-down down'></i></span></div></td><td style='width:200px;'>"+productName+"</td><td style='width:200px; '>"+option1Name+":"+option1ValueName+"<br>"+option2Name+":"+option2ValueName+"</td><td>"+productPrice+"원</td>";
+	 row.innerHTML = "<td style='width:100px; '><div class='updown'><span onclick='javascript:basket.changePNum(1,i);'><i class='fas fa-arrow-alt-circle-up up'></i></span> <input type='text' name='productCnt' id='productCnt' readonly size='2' maxlength='4' class='p_num' value='1' style='border:1px solid #dcdcdc;' onkeyup='javascript:basket.changePNum(1,i);''><span onclick='javascript:basket.changePNum(1,i);''><i class='fas fa-arrow-alt-circle-down down'></i></span></div></td><td style='width:200px;'>"+productName+"</td><td style='width:200px; '>"+option1Name+":"+option1ValueName+"<br>"+option2Name+":"+option2ValueName+"</td><td>"+productPrice+"원</td>";
 
 
 
