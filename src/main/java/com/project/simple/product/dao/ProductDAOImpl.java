@@ -198,6 +198,12 @@ public class ProductDAOImpl implements ProductDAO{
 		String productNum = sqlSession.selectOne("mapper.product.addProductNum");
 		return productNum;
 	}
+	
+	@Override
+	public List<OptionVO> selectOptionList(String productNum) throws DataAccessException {
+		List<OptionVO> selectOptionList = sqlSession.selectList("mapper.product.selectOptionList", productNum);
+		return selectOptionList;
+	}
 
 	
 	

@@ -13,8 +13,8 @@ public class NonmemberVO {
 	private String nonEmail;             //비회원 이메일
 	private String nonMemPhoneNum;             //비회원 전화번호
 	private String nonMemSpName;             //비회원 받는 사람
-	private String nonMemPhoneNum1;             //비회원 받는 사람 전화번호1
-	private String nonMemPhoneNum2;             //비회원 받는 사람 전화번호2
+	private String nonMemSpPhoneNum1;             //비회원 받는 사람 전화번호1
+	private String nonMemSpPhoneNum2;             //비회원 받는 사람 전화번호2
 	private String nonMemSpAdr;             //비회원 받는 사람 주소
 	private String nonMemOrderMsg;             //주문 메시지
 	private String nonMemDepositorName;             //
@@ -26,6 +26,11 @@ public class NonmemberVO {
 	private String productImage;
 	private String currentStatus;
 	private String productName;
+	private String option1value;
+	private String option2value;
+	private String option1name;
+	private String option2name; 
+	private String deliveryStatus; 
 	
 	public NonmemberVO() {
 
@@ -78,17 +83,17 @@ public class NonmemberVO {
 	public void setnonMemSpName(String nonMemSpName) {
 		this.nonMemSpName = nonMemSpName;
 	}
-	public String getnonMemPhoneNum1() {
-		return nonMemPhoneNum1;
+	public String getnonMemSpPhoneNum1() {
+		return nonMemSpPhoneNum1;
 	}
-	public void setnonMemPhoneNum1(String nonMemPhoneNum1) {
-		this.nonMemPhoneNum1 = nonMemPhoneNum1;
+	public void setnonMemSpPhoneNum1(String nonMemSpPhoneNum1) {
+		this.nonMemSpPhoneNum1 = nonMemSpPhoneNum1;
 	}
-	public String getnonMemPhoneNum2() {
-		return nonMemPhoneNum2;
+	public String getnonMemSpPhoneNum2() {
+		return nonMemSpPhoneNum2;
 	}
-	public void setnonMemPhoneNum2(String nonMemPhoneNum2) {
-		this.nonMemPhoneNum2 = nonMemPhoneNum2;
+	public void setnonMemSpPhoneNum2(String nonMemSpPhoneNum2) {
+		this.nonMemSpPhoneNum2 = nonMemSpPhoneNum2;
 	}
 	public String getnonMemSpAdr() {
 		return nonMemSpAdr;
@@ -156,6 +161,38 @@ public class NonmemberVO {
 
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	
+	public String getOption1value() {
+		return option1value;
+	}
+	public void setOption1value(String option1value) {
+		this.option1value = option1value;
+	}
+	public String getOption2value() {
+		return option2value;
+	}
+	public void setOption2value(String option2value) {
+		this.option2value = option2value;
+	}
+	public String getOption1name() {
+		return option1name;
+	}
+	public void setOption1name(String option1name) {
+		this.option1name = option1name;
+	}
+	public String getOption2name() {
+		return option2name;
+	}
+	public void setOption2name(String option2name) {
+		this.option2name = option2name;
+	}
+	
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
 
 	

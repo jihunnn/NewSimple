@@ -347,8 +347,8 @@ hr {
 						tabindex="-1" href="" id="categorydetile"
 						style="float: left; margin-left: -530px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">2인이상</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
-						tabindex="-1" href="" id="categorydetile"
-						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;">소파
+						tabindex="-1"id="categorydetile"  href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=소파 테이블&filter=x" 
+						style="float: left; margin-left: -300px; width: 180px; text-align: center; padding-top: 60px; color: #000000; font-size:14px;" >소파
 							테이블</a></li>
 
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -365,7 +365,7 @@ hr {
 						style="float: left; margin-left: -530px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">4인
 							이상</a></li>
 					<li id=sitemap role="presentation"><a role="menuitem"
-						tabindex="-1" href="" id="categorydetile"
+						tabindex="-1"  id="categorydetile" href="${contextPath}/product/listProduct.do?sort=테이블/책상/책장&subsort=좌식 테이블&filter=x"
 						style="float: left; margin-left: -300px; width: 180px; text-align: center; color: #000000; padding-top: 95px; font-size:14px;">좌식
 							테이블</a></li>
 

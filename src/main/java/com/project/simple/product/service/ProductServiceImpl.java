@@ -202,5 +202,11 @@ public class ProductServiceImpl implements ProductService {
 		String productNum = productDAO.addProductNum();
 		return productNum;
 	}
+	
+	@Override
+	public List<OptionVO> selectOptionList(String productNum) throws Exception {
+		List<OptionVO> selectOptionList = productDAO.selectOptionList(productNum);
+		return selectOptionList;
+	}
 
 }

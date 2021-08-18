@@ -72,7 +72,43 @@ h3 {
 var check = 0;
 function div_show(selectList) {
     var obj1 = document.getElementById("phone_con"); // 핸드폰
+    var phone1 = jQuery("#phone1").val();
 
+	var phone2 = jQuery("#phone2").val();
+
+	var phone3 = jQuery("#phone3").val();
+
+	
+
+	if(phone1 =="")
+
+		{
+
+		 alert("핸드폰 번호를 입력하세요");
+
+		return false;
+
+		}
+
+	if(phone2 =="")
+
+	{
+
+	 alert("핸드폰 번호를 입력하세요");
+
+	return false;
+
+	}
+
+	if(phone3 =="")
+
+	{
+
+	 alert("핸드폰 번호를 입력하세요");
+
+	return false;
+
+	}
     if( selectList == "0" ) { // 핸드폰
         obj1.style.display = "block";    
     } 
@@ -203,6 +239,29 @@ function div_show(selectList) {
 			var phone1 = jQuery("#phone1").val();
 			var phone2 = jQuery("#phone2").val();
 			var phone3 = jQuery("#phone3").val();
+			if(phone1 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone2 =="")
+
+			{
+
+			return false;
+
+			}
+
+			if(phone3 =="")
+
+			{
+
+			return false;
+
+			}
 			var memPhoneNum4 = "";
 			memPhoneNum4 = phone1 +"-"+ phone2 +"-"+ phone3;
 			
@@ -397,7 +456,7 @@ function div_show(selectList) {
 									   <div id="phone_con" style="display: none;">
 									    <input type="text" name="Approval_key" id="Approval_key"
 											size="10"  placeholder="인증번호를 입력하세요"
-											style="margin-left:49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 216px; height: 36px;">
+										style="margin-left:49px; margin-bottom: 10px; border: 1px solid #dcdcdc; width: 216px; height: 36px;">
 										<button type="button" id="findBtnPhone"
 											style="background-color: #c6c6c6; border: none; color: white; height: 36px; margin-left: 4px;">인증번호 확인</button>
 										</div>
