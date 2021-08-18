@@ -52,7 +52,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 	public void insertNewOrder(OrderVO ordervo) throws DataAccessException {
 		sqlSession.insert("mapper.order.insertNewOrder", ordervo);
-		sqlSession.insert("mapper.order.insertNewOrderdelivery", ordervo);
+	
 	}
 
 	public List<Integer> selectSeqNum(int orderNum) throws DataAccessException {

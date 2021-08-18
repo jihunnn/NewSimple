@@ -32,208 +32,7 @@ h4 {
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript">
-	//유효성검사 후 주문결제진행
-	//PG사 연동(결제시스템 IMPORT)
-	function iamport() {
-		var IMP = window.IMP;
-		var form = document.CheckOrder;
-		var payType = document
-				.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
 
-		if (form.nonMemName.value == "") {
-			alert("주문자정보의 이름을 입력하지 않았습니다.")
-			form.nonMemName.focus();
-			return false;
-		}
-		if (form.nonmemAdr.value == "") {
-			alert("주문자정보의 주소를 입력하지 않았습니다.")
-			form.nonmemAdr.focus();
-			return false;
-		}
-		if (form.nonmemAdr1.value == "") {
-			alert("주문자정보의 주소를 입력하지 않았습니다.")
-			form.nonmemAdr1.focus();
-			return false;
-		}
-		if (form.nonmemAdr2.value == "") {
-			alert("주문자정보의 주소를 입력하지 않았습니다.")
-			form.nonmemAdr2.focus();
-			return false;
-		}
-		if (form.nonmemPhoneNum.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.nonmemPhoneNum.focus();
-			return false;
-		}
-
-		if (form.nonmemPhoneNum1.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.nonmemPhoneNum1.focus();
-			return false;
-		}
-		for (var i = 0; i < form.nonmemPhoneNum1.value.length; i++) {
-			ch = form.nonmemPhoneNum1.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.nonmemPhoneNum1.focus();
-				form.nonmemPhoneNum1.select();
-				return false;
-			}
-		}
-		if (form.nonmemPhoneNum2.value == "") {
-			alert("주문자정보의 연락처를 입력하지 않았습니다.")
-			form.nonmemPhoneNum2.focus();
-			return false;
-		}
-		for (var i = 0; i < form.nonmemPhoneNum2.value.length; i++) {
-			ch = form.nonmemPhoneNum2.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("주문자정보의 연락처는 숫자만 입력가능합니다.")
-				form.nonmemPhoneNum2.focus();
-				form.nonmemPhoneNum2.select();
-				return false;
-			}
-		}
-		if (form.nonMemSpName.value == "") {
-			alert("배송받는분 이름을 입력하지 않았습니다.")
-			form.nonMemSpName.focus();
-			return false;
-		}
-		if (form.nonMemSpAdr.value == "") {
-			alert("배송지 주소를 입력하지 않았습니다.")
-			form.nonMemSpAdr.focus();
-			return false;
-		}
-		if (form.nonMemSpAdr1.value == "") {
-			alert("배송지 주소를 입력하지 않았습니다.")
-			form.nonMemSpAdr1.focus();
-			return false;
-		}
-		if (form.nonMemSpAdr2.value == "") {
-			alert("배송지 주소를 입력하지 않았습니다.")
-			form.nonMemSpAdr2.focus();
-			return false;
-		}
-		if (form.nonMemSpPhoneNum1_0.value == "") {
-			alert("배송받는분 연락처를 입력하지 않았습니다.")
-			form.nonMemSpPhoneNum1_0.focus();
-			return false;
-		}
-
-		if (form.nonMemSpPhoneNum1_1.value == "") {
-			alert("배송받는분 연락처를 입력하지 않았습니다.")
-			form.nonMemSpPhoneNum1_1.focus();
-			return false;
-		}
-		for (var i = 0; i < form.nonMemSpPhoneNum1_1.value.length; i++) {
-			ch = form.nonMemSpPhoneNum1_1.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송받는분 연락처는 숫자만 입력가능합니다.")
-				form.nonMemSpPhoneNum1_1.focus();
-				form.nonMemSpPhoneNum1_1.select();
-				return false;
-			}
-		}
-		if (form.nonMemSpPhoneNum1_2.value == "") {
-			alert("배송받는분 연락처를 입력하지 않았습니다.")
-			form.nonMemSpPhoneNum1_2.focus();
-			return false;
-		}
-		for (var i = 0; i < form.nonMemSpPhoneNum1_2.value.length; i++) {
-			ch = form.nonMemSpPhoneNum1_2.value.charAt(i)
-			if (!(ch >= '0' && ch <= '9')) {
-				alert("배송받는분 연락처는 숫자만 입력가능합니다.")
-				form.nonMemSpPhoneNum1_2.focus();
-				form.nonMemSpPhoneNum1_2.select();
-				return false;
-			}
-		}
-
-		//가맹점 식별코드
-		
-		var payType = document.querySelector('input[name="nonMemPaymentMethod"]:checked').value;
-		var paymentMethod = $("label[for='"+payType+"']").text();
-		//var name :  document.querySelector("input[name=nonMemName]").value;
-		//var phone : $('input[name=nonmemPhoneNum]').val();
-		//var phone1 : $('input[name=nonmemPhoneNum1]').val();
-		//var phone2 : $('input[name=nonmemPhoneNum2]').val();
-		//var addr0 : $('input[name=nonmemAdr0]').val();
-		//var addr1 : $('input[name=nonmemAdr1]').val();
-		//var addr2 : $('input[name=nonmemAdr2]').val();
-		
-		
-		var param = $("form[name=CheckOrder]").serialize();
-		var merchant_uid = ${orderNum};		
-		
-		
-		IMP.init('imp44341689');
-		IMP.request_pay({
-			pg : 'inicis',
-			pay_method : payType,
-			merchant_uid : merchant_uid,
-			name : '(주)SIMPLE', //결제창에서 보여질 이름
-			amount : ${totalPrice},
-			buyer_email : 'Enter your Email',
-			buyer_name : name
-		}, function(rsp) {
-			if (rsp.success) {		
-				console.log(rsp);
-				$.ajax({
-					url : "verifyIamport.do",
-					type : "POST",	
-					data : {
-						imp_uid : rsp.imp_uid,
-						merchant_uid: rsp.merchant_uid
-					}
-				}).done(function(data){			
-					console.log(data);
-					if(rsp.paid_amount == data.response.amount) {		
-						<!--var msg = '결제가 완료되었습니다.';
-						msg += '고유ID : ' + rsp.imp_uid;
-						msg += '상점 거래ID : ' + rsp.merchant_uid;
-						msg += '결제 금액 : ' + rsp.paid_amount;
-						msg += '카드 승인번호 : ' + rsp.apply_num;
-						alert(msg);-->
-						$.ajax({
-							url : "${contextPath}/nonmemaddorderlist.do",
-							type : "POST",
-							data :	param, paymentMethod,  	
-							success: function (data) {				                   
-				                    location.href="${contextPath}/nonMemberOrderResult.do?Price=${totalPrice}&nonMemOrderNum=${orderNum}&paymentMethod="+paymentMethod;
-				                }
-						})					
-					}else{
-						alert("결제 실패")
-						//아직제대로 결제가 되지 않았습니다.
-						//결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-					}		
-				});
-				
-				
-			} else {
-				var msg = '결제에 실패하였습니다.';
-				msg += '에러내용 : ' + rsp.error_msg;
-			}
-			alert(msg);
-		});
-	}
-	
-	function sameInfo(f) {
-		f.nonMemSpName.value = f.nonMemName.value;
-		f.nonMemSpAdr.value = f.nonmemAdr.value;
-		f.nonMemSpAdr1.value = f.nonmemAdr1.value;
-		f.nonMemSpAdr2.value = f.nonmemAdr2.value;
-		f.nonMemSpPhoneNum1_0.value = f.nonmemPhoneNum.value;
-		f.nonMemSpPhoneNum1_1.value = f.nonmemPhoneNum1.value;
-		f.nonMemSpPhoneNum1_2.value = f.nonmemPhoneNum2.value;
-	}
-
-	$("input[type=radio]").click(function() {
-		$(this).prop("checked", true);
-		$("form").submit();
-	})
-</script>
 
 <script type="text/javascript">
 	//유효성검사 후 주문결제진행
@@ -390,19 +189,13 @@ h4 {
 				}).done(function(data){			
 					console.log(data);
 					if(rsp.paid_amount == data.response.amount) {		
-						alert("결제 및 결제검증완료");
-						var msg = '결제가 완료되었습니다.';
-						msg += '고유ID : ' + rsp.imp_uid;
-						msg += '상점 거래ID : ' + rsp.merchant_uid;
-						msg += '결제 금액 : ' + rsp.paid_amount;
-						msg += '카드 승인번호 : ' + rsp.apply_num;
-						alert(msg);
+						
 						$.ajax({
 							url : "${contextPath}/nonmemaddorderlist.do",
 							type : "POST",
 							data :	param, paymentMethod,  	
 							success: function (data) {				                   
-				                    alert("주문내용테이블입력완료");	
+				                
 				                    location.href="${contextPath}/nonMemberOrderResult.do?Price=${totalPrice}&nonMemOrderNum=${orderNum}&paymentMethod="+paymentMethod;
 				                }
 						})					
@@ -548,8 +341,9 @@ h4 {
 
 		<div class="container">
 
-			<form name="CheckOrder" action="${contextPath}/addorderlist.do"
+			<form name="CheckOrder" action=""
 				method="post">
+				<input type="hidden" name="nonMemOrderNum" value="${orderNum}" />
 
 				<!-- 타이틀 끝 -->
 

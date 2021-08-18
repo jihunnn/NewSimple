@@ -190,27 +190,13 @@
 		</if>
 		
 		<if test="memId == null">
-			insert into simple.nonmemberorder(nonMemOrderSeqNum, nonMemOrderNum, nonMemName, productNum, productName, option1name, option1value, option2name, option2value, productCnt, productPrice, totalPrice, nonMemSpName, nonMemOrderMsg, nonMemSpAdr, nonMemSpPhoneNum1, nonMemSpPhoneNum2, nonMemDepositorName, nonMemPaymentMethod, CurrentStatus, productImage) 
+			insert into simple.nonmemberorder(nonMemOrderSeqNum, nonMemOrderNum, nonMemName, productNum, productName, option1name, option1value, option2name, option2value, productCnt, productPrice, totalPrice, nonMemSpName, nonMemOrderMsg, nonMemSpAdr, nonMemSpPhoneNum1, nonMemSpPhoneNum2, nonMemDepositorName, nonMemPaymentMethod, productImage) 
 			values(default, #{nonMemOrderNum}, #{nonMemName},  #{productNum}, #{productName}, #{option1name}, #{option1value}, #{option2name}, #{option2value}, #{productCnt}, #{productPrice}, #{totalPrice},  #{nonMemSpName}, #{nonMemOrderMsg}, (select concat_ws('-',#{nonMemSpAdr},#{nonMemSpAdr1},#{nonMemSpAdr2})),(select concat_ws('-',#{nonMemSpPhoneNum1_0},#{nonMemSpPhoneNum1_1},#{nonMemSpPhoneNum1_2})),
-					(select concat_ws('-',#{nonMemSpPhoneNum2_0},#{nonMemSpPhoneNum2_1},#{nonMemSpPhoneNum2_2})), #{nonMemDepositorName}, #{nonMemPaymentMethod}, default, #{productImage});
+					(select concat_ws('-',#{nonMemSpPhoneNum2_0},#{nonMemSpPhoneNum2_1},#{nonMemSpPhoneNum2_2})), #{nonMemDepositorName}, #{nonMemPaymentMethod}, #{productImage});
 		</if>
 		
 	</insert>
-	<!-- 주문테이블배송 -->
-	<insert id="insertNewOrderdelivery" parameterType="orderVO">
-		
-		
-		 <if test="memId != null">
-			insert into simple.memdelivery(memOrderSeqNum, deliveryStatus, memId) 
-			values(default, "주문접수", #{memId});
-		</if>
-		
-		<if test="memId == null">
-			insert into simple.nonmemdelivery(nonMemOrderSeqNum , deliveryStatus) 
-			values(default,"주문접수");
-		</if>
-		
-	</insert>
+
 	
 	<!-- 관리자 회원 주문 리스트 -->
 	<select id="selectAllNoOrdersList" resultMap="orderResult">
