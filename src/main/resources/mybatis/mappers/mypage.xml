@@ -357,7 +357,7 @@
 	<update id="updateReturnOrder" parameterType="java.util.Map">
 		update
 		 simple.memberOrder
-		set returnConfirm = '반품' where
+		set returnConfirm = '반품신청(미)' where
 		memOrderSeqNum =
 		#{memOrderSeqNum};
 	</update>
