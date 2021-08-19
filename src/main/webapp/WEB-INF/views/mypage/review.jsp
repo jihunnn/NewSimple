@@ -464,7 +464,7 @@
 														</div>
 													</th>
 
-													<th colspan="2"
+													<th colspan="2" 
 														style="padding-left: 5px; float: right; padding-right: 0px;">
 														<div 
 															style="border: 1px solid #eeeeee; margin-top:5px; margin-bottom:5px; padding-left: 10px; font-size:13px;background-color: #white; padding-top: 10px; padding-bottom: 10px; width: 600px; font-weight:normal;">${mypageReviewList.productContent}<br>
